@@ -1,5 +1,5 @@
 === BP Checkins ===
-Contributors: wbcomdesigns
+Contributors: wbcomdesigns,vapvarun
 Donate link: https://wbcomdesigns.com/contact/
 Tags: buddypress, checkins
 Requires at least: 3.0.1
@@ -9,20 +9,20 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
- 
+
 This plugin allows buddypress members to checkin when doing post update, just like other social sites, you can add places where you visited.
- 
+
 == Installation ==
- 
+
 1. Upload the entire bp-checkins folder to the /wp-content/plugins/ directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
- 
+
 == Frequently Asked Questions ==
- 
+
 = How can we add a place when updating post? =
- 
+
 Just goto your profile section where you can update post, there you can see a map marker icon clicking on which you can add your checked in place.
- 
+
 == Screenshots ==
 
 The screenshots are present in the root of the plugin folder.
@@ -38,4 +38,4 @@ The screenshots are present in the root of the plugin folder.
 
 == Upgrade Notice ==
 = 1.0.0 =
-This version is the initial version of the plugin provoding basic user checkin functionality.
+This version is the initial version of the plugin offers basic user checkin functionality using google api.
