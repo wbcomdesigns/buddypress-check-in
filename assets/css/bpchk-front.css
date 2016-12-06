@@ -1,0 +1,55 @@
+#locations-list .single-location div.loc-title {
+    float: left;
+    margin-left: 5%;
+    width: 86%;
+}
+#locations-list .single-location img {
+    float: left;
+}
+#locations-list .single-location div.loc-title h3 {
+    margin-bottom: 0;
+}
+#locations-list .single-location {
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding: 5px;
+    cursor:pointer;
+}
+#locations-list .single-location:hover {
+    background-color: #ddd;
+}
+.locations {
+    display: none;
+    height: 322px;
+    overflow-y: auto; border:1px solid #ddd;
+}
+.wait-text{
+    margin: 0px 0px 0px 10px;
+    display: inline-block;
+    color: green;
+}
+#locations-list{
+    list-style-type: none;
+    margin-left: 0 !important;
+}
+#checkin-img{
+    height: 30px;
+    width: 30px;
+}
+.locations{
+    display: none;
+    margin-top: 10px !important;
+}
+.bpchk-location-marker, .bpchk-close-marker{
+    font-size: 24px !important;
+}
+#bpchk-close{
+    margin-left: 10px;
+    display: none;
+}
+.locations > ul {
+  padding: 0;
+}
+.locations .loc-title > h3 {
+  margin-top: 0;
+}
