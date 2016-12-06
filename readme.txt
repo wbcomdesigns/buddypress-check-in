@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-This plugin allows buddypress members to checkin when doing post update, just like other social sites, you can add places where you visited.
+This plugin allows BuddyPress members to checkin when doing post update, just like other social sites, you can add places where you visited.
 
 == Installation ==
 

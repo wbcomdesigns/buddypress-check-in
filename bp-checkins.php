@@ -34,9 +34,9 @@ register_activation_hook( __FILE__, 'bpchk_plugin_activation' );
 function bpchk_plugin_activation() {
 	//Check if "Buddypress" plugin is active or not
 	if (!in_array('buddypress/bp-loader.php', apply_filters('active_plugins', get_option('active_plugins')))) {
-		//Buddypress Plugin is inactive, hence deactivate this plugin
+		//BuddyPress Plugin is inactive, hence deactivate this plugin
 		deactivate_plugins( plugin_basename( __FILE__ ) );
-		wp_die( 'The <b>BP Checkins</b> plugin requires <b>Buddypress</b> plugin to be installed and active. Return to <a href="'.admin_url('plugins.php').'">Plugins</a>' );
+		wp_die( 'The <b>BP Checkins</b> plugin requires <b>BuddyPress</b> plugin to be installed and active. Return to <a href="'.admin_url('plugins.php').'">Plugins</a>' );
 	}
 }
 
