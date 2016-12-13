@@ -33,27 +33,31 @@ jQuery(document).ready(function(){
                     'longitude' : crd.longitude,
                 },
                 function( response ) {
-                    jQuery( ".wait-text" ).hide();
-                    jQuery( ".locations" ).show();
-                    var li_html = '';
-                    
-                    for( i in response ){
-                        var div_html = '';
-                        
-                        div_html += '<div>';
-                        div_html += '<img height="25px" width="25px" title="'+response[i]['name']+'" src="'+response[i]['icon']+'">';
-                        div_html += '<div class="loc-title">';
-                        div_html += '<h3>'+response[i]['name']+'</h3>';
-                        div_html += '<span>'+response[i]['vicinity']+'</span>';
-                        div_html += '</div>';
-                        div_html += '</div>';
-                        
-                        li_html += '<li class="single-location" data-reference="'+response[i]['reference']+'" id="'+response[i]['place_id']+'">';
-                        li_html += div_html;
-                        li_html += '</li>';
+                    if( response['found'] == 'no' ) {
+                        console.log( response['msg'] );
+                    } else {
+                        jQuery( ".wait-text" ).hide();
+                        jQuery( ".locations" ).show();
+                        var li_html = '';
+
+                        for( i in response ){
+                            var div_html = '';
+
+                            div_html += '<div class="loc-icon">';
+                            div_html += '<img height="25px" width="25px" title="'+response[i]['name']+'" src="'+response[i]['icon']+'">';
+                            div_html += '<div class="loc-title">';
+                            div_html += '<h6>'+response[i]['name']+'</h6>';
+                            div_html += '<span>'+response[i]['vicinity']+'</span>';
+                            div_html += '</div>';
+                            div_html += '</div>';
+
+                            li_html += '<li class="single-location" data-reference="'+response[i]['reference']+'" id="'+response[i]['place_id']+'">';
+                            li_html += div_html;
+                            li_html += '</li>';
+                        }
+                        jQuery( "#locations-list" ).html( li_html )
+                        jQuery( '#bpchk-close' ).show();
                     }
-                    jQuery( "#locations-list" ).html( li_html )
-                    jQuery( '#bpchk-close' ).show();
                 },
                 "JSON"
             );

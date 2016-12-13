@@ -8,10 +8,11 @@ if( !class_exists( 'BpchkAjax' ) ) {
 
         //Constructor
         function __construct() {
-            //Add BP Group Types
+            //Get Location
             add_action( 'wp_ajax_bpchk_get_locations', array( $this, 'bpchk_get_locations' ) );
             add_action( 'wp_ajax_nopriv_bpchk_get_locations', array( $this, 'bpchk_get_locations' ) );
 
+            //Get location detail
             add_action( 'wp_ajax_bpchk_get_location_detail', array( $this, 'bpchk_get_location_detail' ) );
             add_action( 'wp_ajax_nopriv_bpchk_get_location_detail', array( $this, 'bpchk_get_location_detail' ) );
         }
@@ -23,11 +24,19 @@ if( !class_exists( 'BpchkAjax' ) ) {
                 $lon = sanitize_text_field( $_POST['longitude'] );
                 
                 $bpchk_settings = get_option( 'bpchk_settings', true );
-                if( $bpchk_settings != '' ) {
-                    $bpchk_settings = unserialize( $bpchk_settings );
+                if( !empty( $bpchk_settings ) ) {
                     $api_key = $bpchk_settings['api_key'];
                     $radius = $bpchk_settings['range'];
                     $place_type = $bpchk_settings['place_types'];
+                }
+
+                if( $api_key == '' ) {
+                    $err_arr = array(
+                        'found' => 'no',
+                        'msg' => 'API Key Missing! If admin, check the settings in administrator panel or ask site administrator to save the API key.',
+                    );
+                    echo json_encode( $err_arr );
+                    die;
                 }
 
                 if( $radius == '' ) {
@@ -51,30 +60,35 @@ if( !class_exists( 'BpchkAjax' ) ) {
                 if( $location_data ) {
                     $locations = json_decode( $location_data );
                     
-                    if( !empty( $locations->results ) ){
+                    if( !empty( $locations->results ) ) {
                         $loc_arr = array();
                         
                         foreach( $locations->results as $index => $location ){
-                        //  $url = sprintf('https://www.google.com/maps/embed/v1/search?key=%s&q=%s', $api_key,  $location->name);
-                            //print_r( $location ); die;
                             $arr = array(
                                 'name' => $location->name,
                                 'place_id' => $location->place_id,
                                 'reference' => $location->reference,
                                 'vicinity' => $location->vicinity,
                                 'icon' => $location->icon,
-                                 //'url' => $url,
                             );
                             $loc_arr[] = $arr;
                         }
                         echo json_encode( $loc_arr );
                         die;
                     } else {
-                        echo "No Locations Found!";
+                        $err_arr = array(
+                            'found' => 'no',
+                            'msg' => 'No Locations Found!',
+                        );
+                        echo json_encode( $err_arr );
                         die;
                     }
                 } else {
-                    echo "Error in getting locations";
+                    $err_arr = array(
+                        'found' => 'no',
+                        'msg' => 'Error in getting locations',
+                    );
+                    echo json_encode( $err_arr );
                     die;
                 }
             }
@@ -88,8 +102,7 @@ if( !class_exists( 'BpchkAjax' ) ) {
                 $output = "json"; //OR it can be XML
 
                 $bpchk_settings = get_option( 'bpchk_settings', true );
-                if( $bpchk_settings != '' ) {
-                    $bpchk_settings = unserialize( $bpchk_settings );
+                if( !empty( $bpchk_settings ) ) {
                     $api_key = $bpchk_settings['api_key'];
                 }
                 
@@ -105,9 +118,13 @@ if( !class_exists( 'BpchkAjax' ) ) {
 
                 if( !empty( $location ) ) {
                     $location_detail = json_decode( $location );
-                    
-                    if( !empty( $location_detail->result ) ){
-                        $href = 'http://maps.google.com/?q='.$location_detail->result->name;
+                    //echo '<pre>'; print_r( $location_detail ); die("here");
+                    if( !empty( $location_detail->result ) ) {
+
+                        $lat = $location_detail->result->geometry->location->lat;
+                        $lng = $location_detail->result->geometry->location->lng;
+
+                        $href = 'http://maps.google.com/?q='.$location_detail->result->name."/@$lat,$lng";
                         $html = "<a title='".$location_detail->result->name."' href='".$href."' target='_blank'>".$location_detail->result->name."</a>";
                         $place = array(
                             'place_name' => $location_detail->result->name,

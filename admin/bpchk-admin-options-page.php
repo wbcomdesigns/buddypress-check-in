@@ -11,7 +11,7 @@ include 'bpchk-admin-functions.php';
     
     <h1><?php _e( 'BuddyPress Checkins Settings', 'bp-checkins' );?></h1>
     <form action="" method="post">
-        <table class="form-table">
+        <table class="form-table bpchk-settings-tbl">
             <tbody>
                 <!-- API Key -->
                 <tr>
@@ -20,7 +20,12 @@ include 'bpchk-admin-functions.php';
                             <?php _e( 'API KEY', 'bp-checkins' );?>
                         </label>
                     </th>
-                    <td><input type="text" class="regular-text" name="api_key" placeholder="API KEY" value="<?php echo $saved_api;?>"></td>
+                    <td>
+                        <input type="text" class="regular-text" name="api_key" placeholder="API KEY" value="<?php echo $saved_api;?>">
+                        <a href="javascript:void(0);" onClick="window.open('https://developers.google.com/places/web-service/','pagename','resizable,height=600,width=700'); return false;">
+                            <?php _e( 'Don\'t have it? Get it here!', 'bp-checkins' );?>
+                        </a>
+                    </td>
                 </tr>
                 
                 <!-- Range -->
@@ -45,6 +50,11 @@ include 'bpchk-admin-functions.php';
                         <label for="place_types">
                             <?php _e( 'Place Types', 'bp-checkins' );?>
                         </label>
+                        <p>
+                            <small>
+                                    <?php _e( 'This lists the supported values for the types property in the Google Places API. You can select any type here to get the results when user tries to checkin activity.', 'bp-checkins' );?>
+                            </small>
+                        </p>
                     </th>
                     <td>
                         <p>

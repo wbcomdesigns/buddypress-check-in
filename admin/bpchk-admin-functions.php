@@ -99,7 +99,7 @@ $place_types = array(
 if( isset( $_POST['save_bpchk_settings'] ) && wp_verify_nonce( $_POST['save_checkin_settings_data_nonce'], 'bp-checkins' ) ) {
     $api = sanitize_text_field( $_POST['api_key'] );
     $range = sanitize_text_field( $_POST['range'] ) * 1000;
-    $selected_place_types = esc_html( $_POST['google_place_types'] );
+    $selected_place_types = wp_unslash( $_POST['google_place_types'] );
 
     $bpchk_settings = array(
         'api_key' => $api,
@@ -107,16 +107,15 @@ if( isset( $_POST['save_bpchk_settings'] ) && wp_verify_nonce( $_POST['save_chec
         'place_types' => $selected_place_types
     );
 
-    update_option( 'bpchk_settings', serialize( $bpchk_settings ) );
+    update_option( 'bpchk_settings', $bpchk_settings );
         
         echo '<div class="updated settings-error notice is-dismissible" id="setting-error-settings_updated"> 
 <p><strong>BP Checkins Settings Saved.</strong></p><button class="notice-dismiss" type="button"><span class="screen-reader-text">Dismiss this notice.</span></button></div>';
 }
 
 $saved_api = $saved_range = '';
-$bpchk_settings = get_option( 'bpchk_settings' );
+$bpchk_settings = get_option( 'bpchk_settings', true );
 if( $bpchk_settings != '' ) {
-    $bpchk_settings = unserialize( $bpchk_settings );
     $saved_api = $bpchk_settings['api_key'];
     $saved_range = $bpchk_settings['range'];
     if( $saved_range ) {

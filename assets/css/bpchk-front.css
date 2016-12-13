@@ -1,12 +1,14 @@
 #locations-list .single-location div.loc-title {
-    float: left;
-    margin-left: 5%;
+    margin-left: 10%;
     width: 86%;
+}
+#locations-list .single-location .loc-title span {
+    font-size: 14px;
 }
 #locations-list .single-location img {
     float: left;
 }
-#locations-list .single-location div.loc-title h3 {
+#locations-list .single-location div.loc-title h6 {
     margin-bottom: 0;
 }
 #locations-list .single-location {

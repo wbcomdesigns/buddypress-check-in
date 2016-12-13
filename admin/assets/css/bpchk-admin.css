@@ -1,3 +1,7 @@
 .bpchk-gmap-logo > img{
     width: 10%;
 }
+.bpchk-settings-tbl p {
+    display: inline-block;
+    width: 180px;
+}
