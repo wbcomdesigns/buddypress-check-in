@@ -130,6 +130,8 @@ if( !class_exists( 'BpchkAjax' ) ) {
                             'place_name' => $location_detail->result->name,
                             'place_id' => $place_id,
                             'place_reference' => $reference,
+                            'lat' => $lat,
+                            'lng' => $lng,
                         );
                         
                         //Update options table to save the checked in data temporarily

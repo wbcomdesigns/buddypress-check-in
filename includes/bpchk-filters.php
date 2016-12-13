@@ -17,7 +17,9 @@ function bpchk_update_meta_on_post_update( $content, $user_id, $activity_id ) {
 	//Update content on post update
 	$unserialized_place = unserialize( $place );
 	$location = $unserialized_place['place_name'];
-	$location_html = '-at <a class="checkin-loc" href="http://maps.google.com/?q='.$location.'" target="_blank" title="'.$location.'">'.$location.'</a>';
+	$lng = $unserialized_place['lng'];
+	$lat = $unserialized_place['lat'];
+	$location_html = '-at <a class=checkin-loc href="http://maps.google.com/?q='.$location.'/@'.$lat.','.$lng.'" target="_blank" title="'.$location.'">'.$location.'</a>';
 
 	//Get the content of the activity
 	$activity_tbl = $wpdb->prefix."bp_activity";
