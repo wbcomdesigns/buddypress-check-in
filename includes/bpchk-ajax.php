@@ -15,6 +15,21 @@ if( !class_exists( 'BpchkAjax' ) ) {
             //Get location detail
             add_action( 'wp_ajax_bpchk_get_location_detail', array( $this, 'bpchk_get_location_detail' ) );
             add_action( 'wp_ajax_nopriv_bpchk_get_location_detail', array( $this, 'bpchk_get_location_detail' ) );
+
+            //Cancel temp location
+            add_action( 'wp_ajax_bpchk_cancel_temp_location', array( $this, 'bpchk_cancel_temp_location' ) );
+            add_action( 'wp_ajax_nopriv_bpchk_cancel_temp_location', array( $this, 'bpchk_cancel_temp_location' ) );
+        }
+
+        //Actions performed to cancel temp location
+        function bpchk_cancel_temp_location() {
+            if (isset($_POST['action']) && $_POST['action'] === 'bpchk_cancel_temp_location') {
+                global $wpdb;
+                $tbl = $wpdb->prefix."options";
+                $wpdb->delete( $tbl, array( 'option_name' => 'temp_location' ), array( '%s' ) );
+                echo 'Checkin Location Cancelled!';
+                die;
+            }
         }
 
         //Actions performed to update group types
@@ -40,7 +55,7 @@ if( !class_exists( 'BpchkAjax' ) ) {
                 }
 
                 if( $radius == '' ) {
-                    $radius = 100;
+                    $radius = 1000;
                 }
                 
                 $type = implode(',', $place_type);
@@ -48,7 +63,7 @@ if( !class_exists( 'BpchkAjax' ) ) {
                 $parameters = "location=$lat,$lon&radius=$radius&type=$type&key=$api_key";
                 $curl = curl_init();
 
-                $curl_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lon&radius=1000&type=$type&heading=false&title=false&key=$api_key";
+                $curl_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lon&radius=$radius&type=$type&heading=false&title=false&key=$api_key";
                 
                 curl_setopt( $curl, CURLOPT_URL, $curl_url );
                 curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1 );
@@ -123,9 +138,10 @@ if( !class_exists( 'BpchkAjax' ) ) {
 
                         $lat = $location_detail->result->geometry->location->lat;
                         $lng = $location_detail->result->geometry->location->lng;
-
-                        $href = 'http://maps.google.com/?q='.$location_detail->result->name."/@$lat,$lng";
-                        $html = "<a title='".$location_detail->result->name."' href='".$href."' target='_blank'>".$location_detail->result->name."</a>";
+                        $location_name = preg_replace('/\s+/', '+', $location_detail->result->name);
+                        $href = 'http://maps.google.com/maps/place/'.$location_name."/@$lat,$lng";
+                        $html = "<a title='".$location_detail->result->name."' href='".$href."' target='_blank' id='bpchk-temp-location'>".$location_detail->result->name."</a>";
+                        $html .= '<a href="javascript:void(0);" title="Cancel This Location!" id="bpchk-cancel-place"><i class="fa fa-times"></i></a>';
                         $place = array(
                             'place_name' => $location_detail->result->name,
                             'place_id' => $place_id,

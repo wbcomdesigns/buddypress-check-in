@@ -24,7 +24,7 @@ jQuery(document).ready(function(){
     jQuery(document).on("click", "#position-me", function(){
         navigator.geolocation.getCurrentPosition(function success(pos) {
             var crd = pos.coords;
-            jQuery( ".wait-text" ).show();
+            jQuery( ".wait-text" ).html( "<i>Please Wait...</i>" ).show();
             jQuery.post(
                 ajaxurl,
                 {
@@ -78,7 +78,7 @@ jQuery(document).ready(function(){
                 'reference' : reference,
             },
             function( response ){
-                jQuery(".checkin-panel").html( "-at "+response );
+                jQuery( ".checkin-panel" ).html( "-at "+response ).show();
                 jQuery( ".wait-text" ).hide();
                 jQuery( ".locations" ).hide();
             }
@@ -88,5 +88,20 @@ jQuery(document).ready(function(){
     //Close the checkins list
     jQuery(document).on('click', '#bpchk-close', function(){
         jQuery( '.locations' ).hide();
+    });
+
+    //Cancel This Location
+    jQuery(document).on('click', '#bpchk-cancel-place', function(){
+        jQuery( '.checkin-panel' ).hide();
+        jQuery( '#bpchk-close' ).hide();
+        jQuery.post(
+            ajaxurl,
+            {
+                'action' : 'bpchk_cancel_temp_location',
+            },
+            function( response ){
+                console.log( response );
+            }
+        );
     });
 });

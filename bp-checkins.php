@@ -3,7 +3,7 @@
 Plugin Name: BuddyPress Check-in
 Plugin URI: https://wbcomdesigns.com/contact/
 Description: This plugin adds extra feature to BuddyPress Activity updates allowing users to check-ins.
-Version: 1.0.1
+Version: 1.0.2
 Author: Wbcom Designs
 Author URI: http://wbcomdesigns.com
 Text Domain: bp-checkins
