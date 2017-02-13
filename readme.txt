@@ -40,12 +40,9 @@ Just goto your profile section where you can update post, there you can see a ma
 == Changelog ==
 = 1.0.0 =
 * Initial release.
-
-== Upgrade Notice ==
-= 1.0.0 =
-This version is the initial version of the plugin offers basic user checkin functionality using google api.
 = 1.0.1 =
 Improved documentation and default Place type selection option
 = 1.0.2 =
 Fixed Map Linking in activity for specific location
-
+= 1.0.3 =
+Location selection fixes

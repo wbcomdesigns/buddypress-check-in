@@ -37,5 +37,16 @@ function bpchk_update_meta_on_post_update( $content, $user_id, $activity_id ) {
 				array( '%d' ) 
 			);
 		}
+
+		//Delete the temp location in `options` table
+		$wpdb->delete( $tbl, array( 'option_name' => 'temp_location' ) );
+		?>
+		<script>
+			jQuery(document).ready(function(){
+				jQuery('.checkin-panel').hide();
+				jQuery('#bpchk-close').hide();
+			});
+		</script>
+		<?php
 	}
 }

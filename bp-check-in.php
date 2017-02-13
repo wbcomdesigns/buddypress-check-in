@@ -1,22 +1,17 @@
 <?php
 /*
-Plugin Name: BuddyPress Check-in
+Plugin Name: BuddyPress Check-In
 Plugin URI: https://wbcomdesigns.com/contact/
 Description: This plugin adds extra feature to BuddyPress Activity updates allowing users to check-ins.
-Version: 1.0.2
+Version: 1.0.3
 Author: Wbcom Designs
-Author URI: http://wbcomdesigns.com
+Author URI: https://wbcomdesigns.com
 Text Domain: bp-checkins
 */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-//Defining constants
-$cons = array(
-	'BPCHK_PLUGIN_PATH' => plugin_dir_path(__FILE__),
-	'BPCHK_PLUGIN_URL' => plugin_dir_url(__FILE__),
-);
-foreach( $cons as $con => $value ) {
-	define( $con, $value);
-}
+define( 'BPCHK_PLUGIN_PATH', plugin_dir_path(__FILE__) );
+define( 'BPCHK_PLUGIN_URL', plugin_dir_url(__FILE__) );
 
 //Include needed files
 $include_files = array(

@@ -1,7 +1,60 @@
 <?php 
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
-include 'bpchk-admin-functions.php';
+
+$place_types = array(
+    'Accounting', 'Airport', 'Amusement Park', 'Aquarium', 'Art Gallery', 'ATM',
+    'Bakery', 'Bank', 'Bar', 'Beauty Salon', 'Bicycle Store', 'Book Store',
+    'Bowling Alley', 'Bus Station', 'Cafe', 'Campground', 'Car Dealer', 'Car Rental',
+    'Car Repair', 'Car Wash', 'Casino', 'Cemetery', 'Church', 'City Hall',
+    'Clothing Store', 'Convenience Store', 'Courthouse', 'Dentist', 'Department Store', 'Doctor',
+    'Electrician', 'Electronics Store', 'Embassy', 'Fire Station', 'Florist', 'Funeral Home',
+    'Furniture Home', 'Gas Station', 'Gym', 'Hair Care', 'Hardware Store', 'Hindu Temple',
+    'Home Goods Store', 'Hospital', 'Insurance Agency', 'Jewelery Store', 'Laundry', 'Lawyer',
+    'Library', 'Liquor Store', 'Local Government Office', 'Locksmith', 'Lodging', 'Meal Delivery',
+    'Meal Takeaway', 'Mosque', 'Movie Rental', 'Movie Theatre', 'Moving Company', 'Museum',
+    'Night Club', 'Painter', 'Park', 'Parking', 'Pet Store', 'Pharmacy',
+    'Physiotherapist', 'Plumber', 'Police', 'Post Office', 'Real Estate Agency', 'Restaurant',
+    'Roofing Contractor', 'RV Park', 'School', 'Shoe Store', 'Shopping Mall', 'SPA',
+    'Stadium', 'Storage', 'Store', 'Subway Station', 'Synagogue', 'Taxi Stand',
+    'Train Station', 'Transit Station', 'Travel Agency', 'University', 'Veterinary Care', 'Zoo'
+);
+
+//Save Deails
+if( isset( $_POST['save_bpchk_settings'] ) && wp_verify_nonce( $_POST['save_checkin_settings_data_nonce'], 'bp-checkins' ) ) {
+    $api = sanitize_text_field( $_POST['api_key'] );
+    $range = sanitize_text_field( $_POST['range'] ) * 1000;
+    $selected_place_types = wp_unslash( $_POST['google_place_types'] );
+    
+    $bpchk_settings = array(
+        'api_key' => $api,
+        'range' => $range,
+        'place_types' => $selected_place_types
+    );
+
+    update_option( 'bpchk_settings', $bpchk_settings );
+
+    //Save Success Message
+    $msg = '<div class="updated settings-error notice is-dismissible" id="setting-error-settings_updated">';
+    $msg .= '<p><strong>BP Checkins Settings Saved.</strong></p>';
+    $msg .= '<button class="notice-dismiss" type="button">';
+    $msg .= '<span class="screen-reader-text">Dismiss this notice.</span>';
+    $msg .= '</button>';
+    $msg .= '</div>';
+    echo $msg;
+}
+
+$saved_api = $saved_range = '';
+$bpchk_settings = get_option( 'bpchk_settings', true );
+if( $bpchk_settings != '' ) {
+    $saved_api = $bpchk_settings['api_key'];
+    $saved_range = $bpchk_settings['range'];
+    if( $saved_range ) {
+        $saved_range = $saved_range / 1000;
+    }
+    $saved_place_types = $bpchk_settings['place_types'];
+}
+
 ?>
 <div class="wrap">
     <div class="bpchk-gmap-logo">
@@ -40,7 +93,8 @@ include 'bpchk-admin-functions.php';
                         <span id="range_disp">
                             <?php if( $saved_range ) echo "$saved_range kms.";?>
                         </span>
-                        <input type="hidden" name="range" value="5" id="hidden_range">
+                        <?php $hidden_rnge = ( $saved_range == '' ) ? 5 : $saved_range;?>
+                        <input type="hidden" name="range" value="<?php echo $hidden_rnge;?>" id="hidden_range">
                     </td>
                 </tr>
                 
