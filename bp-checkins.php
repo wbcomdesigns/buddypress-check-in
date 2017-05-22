@@ -26,6 +26,10 @@ foreach( $include_files  as $include_file ) {
 
 //BP Checkins Plugin Activation
 register_activation_hook( __FILE__, 'bpchk_plugin_activation' );
+/**
+ * This plugin depends on the functionality of buddypress plugin.
+ */
+//add_action( 'plugins_loaded', 'bpchk_check_plugin_dependency' );
 function bpchk_plugin_activation() {
 	//Check if "Buddypress" plugin is active or not
 	if (!in_array('buddypress/bp-loader.php', apply_filters('active_plugins', get_option('active_plugins')))) {
