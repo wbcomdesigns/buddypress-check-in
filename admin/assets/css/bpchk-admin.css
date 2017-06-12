@@ -5,3 +5,4 @@
     display: inline-block;
     width: 180px;
 }
+input.regular-text { width: 40% !important; }

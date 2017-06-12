@@ -3,7 +3,7 @@
 Plugin Name: BuddyPress Check-In
 Plugin URI: https://wbcomdesigns.com/contact/
 Description: This plugin adds extra feature to BuddyPress Activity updates allowing users to check-ins.
-Version: 1.0.3
+Version: 1.0.5
 Author: Wbcom Designs
 Author URI: https://wbcomdesigns.com
 Text Domain: bp-checkins
@@ -26,10 +26,6 @@ foreach( $include_files  as $include_file ) {
 
 //BP Checkins Plugin Activation
 register_activation_hook( __FILE__, 'bpchk_plugin_activation' );
-/**
- * This plugin depends on the functionality of buddypress plugin.
- */
-//add_action( 'plugins_loaded', 'bpchk_check_plugin_dependency' );
 function bpchk_plugin_activation() {
 	//Check if "Buddypress" plugin is active or not
 	if (!in_array('buddypress/bp-loader.php', apply_filters('active_plugins', get_option('active_plugins')))) {
@@ -38,6 +34,22 @@ function bpchk_plugin_activation() {
 		wp_die( 'The <b>BP Checkins</b> plugin requires <b>Buddypress</b> plugin to be installed and active. Return to <a href="'.admin_url('plugins.php').'">Plugins</a>' );
 	}
 }
+
+/* custom post type function */
+function create_place_post_type() {
+	register_post_type( 'place',
+		array(
+			'labels' => array(
+				'name' => __( 'Place' ),
+				'singular_name' => __( 'Place' )
+			),
+			'public' => true,
+			'has_archive' => true,
+			'rewrite' => array('slug' => 'place'),
+		)
+	);
+}
+add_action( 'init', 'create_place_post_type' );
 
 //Settings link for this plugin
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'bpchk_settings_link' );

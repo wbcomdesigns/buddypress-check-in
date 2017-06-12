@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
@@ -21,19 +21,32 @@ $place_types = array(
 );
 
 //Save Deails
-if( isset( $_POST['save_bpchk_settings'] ) && wp_verify_nonce( $_POST['save_checkin_settings_data_nonce'], 'bp-checkins' ) ) {
+$selected_place_type = '';
+if( isset( $_POST['save_bpchk_settings'] ) && wp_verify_nonce( $_POST['save_checkin_settings_data_nonce'], 'bp-checkins' ) )
+{
     $api = sanitize_text_field( $_POST['api_key'] );
     $range = sanitize_text_field( $_POST['range'] ) * 1000;
+    $selected_option = $_POST['selected_option'];
     $selected_place_types = wp_unslash( $_POST['google_place_types'] );
-    
-    $bpchk_settings = array(
-        'api_key' => $api,
-        'range' => $range,
-        'place_types' => $selected_place_types
-    );
-
-    update_option( 'bpchk_settings', $bpchk_settings );
-
+    //$auto_complete = 0;
+    if( $selected_option == 'auto_complete' )
+    {
+      $bpchk_settings = array(
+          'api_key' => $api,
+          'range' => $range,
+          'selected_option' => 'auto_complete'
+      );
+      update_option( 'bpchk_settings', $bpchk_settings );
+    }
+    else {
+      $bpchk_settings = array(
+          'api_key' => $api,
+          'range' => $range,
+          'selected_option' => 'place_types',
+          'place_types' => $selected_place_types
+      );
+      update_option( 'bpchk_settings', $bpchk_settings );
+    }
     //Save Success Message
     $msg = '<div class="updated settings-error notice is-dismissible" id="setting-error-settings_updated">';
     $msg .= '<p><strong>BP Checkins Settings Saved.</strong></p>';
@@ -46,9 +59,11 @@ if( isset( $_POST['save_bpchk_settings'] ) && wp_verify_nonce( $_POST['save_chec
 
 $saved_api = $saved_range = '';
 $bpchk_settings = get_option( 'bpchk_settings', true );
+
 if( $bpchk_settings != '' ) {
     $saved_api = $bpchk_settings['api_key'];
     $saved_range = $bpchk_settings['range'];
+    $selected_option = $bpchk_settings['selected_option'];
     if( $saved_range ) {
         $saved_range = $saved_range / 1000;
     }
@@ -57,11 +72,11 @@ if( $bpchk_settings != '' ) {
 
 ?>
 <div class="wrap">
-    <div class="bpchk-gmap-logo">
-        <?php $img = BPCHK_PLUGIN_URL.'admin/assets/images/Google-Maps-icon.png';?>
-        <img src="<?php echo $img;?>" alt="Google Places Logo" title="Google Places"> 
-    </div>
-    
+    <!-- <div class="bpchk-gmap-logo">
+        <?php //$img = BPCHK_PLUGIN_URL.'admin/assets/images/Google-Maps-icon.png';?>
+        <img src="<?php //echo $img;?>" alt="Google Places Logo" title="Google Places">
+    </div> -->
+
     <h1><?php _e( 'BuddyPress Checkins Settings', 'bp-checkins' );?></h1>
     <form action="" method="post">
         <table class="form-table bpchk-settings-tbl">
@@ -80,8 +95,16 @@ if( $bpchk_settings != '' ) {
                         </a>
                     </td>
                 </tr>
-                
                 <!-- Range -->
+                <script>
+                jQuery(document).ready(function(){
+                  <?php if($selected_option =='' || $selected_option == 'auto_complete') { ?>
+                    jQuery( '.place_types' ).prop( 'disabled', true );
+                    jQuery( '#bpchk_select_all_place_types' ).prop( 'disabled', true );
+                    jQuery( '.place_type_div p' ).css( 'color', 'lightgrey' );
+                  <?php } ?>
+                });
+                </script>
                 <tr>
                     <th scope="row">
                         <label for="range">
@@ -97,34 +120,43 @@ if( $bpchk_settings != '' ) {
                         <input type="hidden" name="range" value="<?php echo $hidden_rnge;?>" id="hidden_range">
                     </td>
                 </tr>
-                
-                <!-- Place Types -->
-                <tr>
-                    <th scope="row">
-                        <label for="place_types">
-                            <?php _e( 'Place Types', 'bp-checkins' );?>
-                        </label>
-                        <p>
-                            <small>
-                                    <?php _e( 'This lists the supported values for the types property in the Google Places API. You can select any type here to get the results when user tries to checkin activity.', 'bp-checkins' );?>
-                            </small>
-                        </p>
-                    </th>
-                    <td>
-                        <p>
-                            <input type="checkbox" id="bpchk_select_all_place_types"><?php _e( 'Select All', 'bp-checkins' );?>
-                        </p>
-                        <?php foreach( $place_types as $place_type ) {?>
-                            <?php $place_type_slug = str_replace( ' ', '_', strtolower( $place_type ) );?>
-                            <p>
-                                <input type="checkbox" class="place_types" name="google_place_types[]" value="<?php echo $place_type_slug;?>" <?php if( !empty( $saved_place_types ) && in_array( $place_type_slug, $saved_place_types ) ) echo "checked='checked'";?>><?php echo $place_type;?>
-                            </p>
-                        <?php }?>
-                    </td>
+        <!-- Place Types -->
+				<tr>
+					<th> <p>Check in by: </p><br/>
+            <label for="auto_complete_radio">
+              <input <?php if($selected_option =='' || $selected_option == 'auto_complete') { ?> checked <?php } ?> type="radio" id="auto_complete_radio" name="selected_option" value="auto_complete" /> Auto complete <br/><br/>
+            </label>
+          </th>
+					<td>
+					</td>
+				</tr>
+        <tr>
+          <th scope="row">
+            <label for="place_types_radio">
+						 <input <?php if($selected_option =='place_types' && !empty($place_types)) { ?> checked <?php } ?> type="radio" id="place_types_radio" name="selected_option" value="place_types" />
+             <?php _e( 'Place Types', 'bp-checkins' );?>
+               <p>
+                  <small>
+                    <?php _e( 'This lists the supported values for the types property in the Google Places API. You can select any type here to get the results when user tries to checkin activity.', 'bp-checkins' );?>
+                  </small>
+               </p>
+            </label>
+          </th>
+                <td class="place_type_div">
+                  <p>
+                    <input type="checkbox" id="bpchk_select_all_place_types"><?php _e( 'Select All', 'bp-checkins' );?>
+                  </p>
+                  <?php foreach( $place_types as $place_type ) {?>
+                    <?php $place_type_slug = str_replace( ' ', '_', strtolower( $place_type ) );?>
+                      <p>
+                        <input type="checkbox" class="place_types" name="google_place_types[]" value="<?php echo $place_type_slug;?>" <?php if( !empty( $saved_place_types ) && in_array( $place_type_slug, $saved_place_types ) ) echo "checked='checked'";?>><?php echo $place_type;?>
+                      </p>
+                  <?php } ?>
+                 </td>
                 </tr>
             </tbody>
         </table>
-        
+
         <p class="submit">
             <?php wp_nonce_field( 'bp-checkins', 'save_checkin_settings_data_nonce'); ?>
             <input type="submit" value="Save Settings" class="button button-primary" name="save_bpchk_settings">

@@ -1,6 +1,7 @@
 #locations-list .single-location div.loc-title {
-    margin-left: 10%;
+    margin-left: 3%;
     width: 86%;
+	float:left;
 }
 #locations-list .single-location .loc-title span {
     font-size: 14px;
