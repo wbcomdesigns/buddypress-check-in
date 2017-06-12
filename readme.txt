@@ -10,13 +10,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-This plugin allows buddypress members to checkin when doing post update, just like other social sites, you can add places where you visited. 
+This plugin allows buddypress members to checkin when doing post update,just like other social sites,you can add places where you visited.
 
-Google Place API key is required for it, You can create your key from [Google Place Web Service Documentation](https://developers.google.com/places/web-service/) link.
+Google Place API key is required for it,You can create your key from [Google Place Web Service Documentation](https://developers.google.com/places/web-service/) link.This plugin also provide to select place types for your members,like if you are foodies you can select food related place type and your members will able to post food related places on your website activity stream. In the same way you can select auto complete box if you want to automatically filled up the location by google map API on member activity page.Both the options will show you a google map on frontend if you type and select a location either in auto complete box or in place types list.
 
- This plugin also provide to select place types for your members, like if you are foodies  you can select food related place type and your members will able to post food related places on your website activity stream. In the same way you can select auto complete box if you want to automatically filled up the location by google map API on member activity page. Both the options will show you a google map on frontend if you type and select a location either in auto complete box or in place types list. 
-
-It will also show a google map for all the activity posts that has a location. If you need additional help you can contact us for [Custom Development](https://wbcomdesigns.com/hire-us/).
+It will also show a google map for all the activity posts that has a location.If you need additional help you can contact us for [Custom Development](https://wbcomdesigns.com/hire-us/).
 
 == Installation ==
 
