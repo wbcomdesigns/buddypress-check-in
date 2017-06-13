@@ -1,5 +1,5 @@
 === BuddyPress Checkins ===
-Contributors: wbcomdesigns,vapvarun
+Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/donate/
 Tags: buddypress, checkins
 Requires at least: 3.0.1
@@ -63,9 +63,10 @@ Improved documentation and default Place type selection option
 Fixed Map Linking in activity for specific location
 = 1.0.3 =
 Location selection fixes
+= 1.0.4 = 
+Dual File Fixes
 
 = 1.0.5 =
-
 A New option auto complete is added in check in plugin setting. Now you can check either auto complete or place types options. 
 If you check auto complete, a auto complete text box will be shown at the top of page under textarea on member activity page where you can type and select any location from the list.
 Now all activity posts which have any place or location a google map will be shown below them to point that particular place.
