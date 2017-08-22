@@ -255,8 +255,6 @@ class Bp_Checkins_Admin {
 				'placetypes' => ( !empty( $_POST['bpchk-google-place-types'] ) ) ? wp_unslash( $_POST['bpchk-google-place-types'] ) : array(),
 			);
 
-			// echo '<pre>'; print_r( $admin_settings ); die;
-
 			update_option( 'bpchk_general_settings', $admin_settings );
 			$success_msg = "<div class='notice updated is-dismissible' id='message'>";
 			$success_msg .= "<p>".__( '<strong>Settings Saved.</strong>', BPCHK_TEXT_DOMAIN )."</p>";

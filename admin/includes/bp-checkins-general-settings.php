@@ -80,7 +80,7 @@ $place_types = array(
 					<select name="bpchk-google-place-types[]" id="bpchk-pre-place-types" multiple>
 						<?php foreach( $place_types as $place_type ) {?>
 							<?php $placetype_slug = str_replace( ' ', '_', strtolower( $place_type ) );?>
-							<option value="<?php echo $placetype_slug;?>" <?php echo ( !( empty( $bp_checkins->place_types ) && in_array( $placetype_slug, $bp_checkins->place_types ) ) ) ? 'selected' : '';?>><?php echo $place_type;?></option>
+							<option value="<?php echo $placetype_slug;?>" <?php echo ( !empty( $bp_checkins->place_types ) && in_array( $placetype_slug, $bp_checkins->place_types ) ) ? 'selected' : '';?>><?php echo $place_type;?></option>
 						<?php }?>
 					</select>
 					<p class="description"><?php _e( 'This will help in fetching the place types, that will be selected here.', BPCHK_TEXT_DOMAIN );?></p>
