@@ -80,22 +80,24 @@ class Bp_Checkins_Public {
 
 			//Create the checkin html
 			$checkin_html = '';
-			$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
-			if( $bp_checkins->checkin_by == 'autocomplete' ) {
-				$checkin_html .= '<div class="checkin-by-autocomplete">';
-				$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="'.__( 'Type in to checkin', BPCHK_TEXT_DOMAIN ).'" />';
-				$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
-				$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lng" />';
-				$checkin_html .= '<input type="checkbox" id="bpchk-add-as-place" checked />';
-				$checkin_html .= '<label for="bpchk-add-as-place">'.__( 'Add as my place', BPCHK_TEXT_DOMAIN ).'</label>';
+			if( $bp_checkins->apikey ) {
+				$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
+				if( $bp_checkins->checkin_by == 'autocomplete' ) {
+					$checkin_html .= '<div class="checkin-by-autocomplete">';
+					$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="'.__( 'Type in to checkin', BPCHK_TEXT_DOMAIN ).'" />';
+					$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
+					$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lng" />';
+					$checkin_html .= '<input type="checkbox" id="bpchk-add-as-place" checked />';
+					$checkin_html .= '<label for="bpchk-add-as-place">'.__( 'Add as my place', BPCHK_TEXT_DOMAIN ).'</label>';
+					$checkin_html .= '</div>';
+				} else {
+					$checkin_html .= '<div class="checkin-by-placetype">';
+					$checkin_html .= '<p>'.__( 'Please Wait..', BPCHK_TEXT_DOMAIN ).'</p>';
+					$checkin_html .= '</div>';
+				}
 				$checkin_html .= '</div>';
-			} else {
-				$checkin_html .= '<div class="checkin-by-placetype">';
-				$checkin_html .= '<p>'.__( 'Please Wait..', BPCHK_TEXT_DOMAIN ).'</p>';
-				$checkin_html .= '</div>';
+				$checkin_html .= '<span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span>';
 			}
-			$checkin_html .= '</div>';
-			$checkin_html .= '<span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span>';
 
 			wp_localize_script(
 				$this->plugin_name,

@@ -46,21 +46,23 @@ $place_types = array(
 				</td>
 			</tr>
 
-			<!-- Checkin By - autocomplete or placetype -->
-			<tr>
-				<th scope="row"><label for="checkin-by"><?php _e( 'Checkin by', BPCHK_TEXT_DOMAIN );?></label></th>
-				<td>
-					<p>
-						<input <?php echo ( $bp_checkins->checkin_by == 'autocomplete' ) ? 'checked' : '';?> required type="radio" value="autocomplete" name="bpchk-checkin-by" class="bpchk-checkin-by" id="bpchk-checkin-by-autocomplete">
-						<label for="bpchk-checkin-by-autocomplete"><?php _e( 'Location Autocomplete', BPCHK_TEXT_DOMAIN );?></label>
-					</p>
-					<p>
-						<input <?php echo ( $bp_checkins->checkin_by == 'placetype' ) ? 'checked' : '';?> required type="radio" value="placetype" name="bpchk-checkin-by" class="bpchk-checkin-by" id="bpchk-checkin-by-placetype">
-						<label for="bpchk-checkin-by-placetype"><?php _e( 'Place Types', BPCHK_TEXT_DOMAIN );?></label>
-					</p>
-					<p class="description"><?php _e( 'This setting will help the users checkin by autocomplete or placetype google features.', BPCHK_TEXT_DOMAIN );?></p>
-				</td>
-			</tr>
+			<?php if( $bp_checkins->apikey ) {?>
+				<!-- Checkin By - autocomplete or placetype -->
+				<tr>
+					<th scope="row"><label for="checkin-by"><?php _e( 'Checkin by', BPCHK_TEXT_DOMAIN );?></label></th>
+					<td>
+						<p>
+							<input <?php echo ( $bp_checkins->checkin_by == 'autocomplete' ) ? 'checked' : '';?> required type="radio" value="autocomplete" name="bpchk-checkin-by" class="bpchk-checkin-by" id="bpchk-checkin-by-autocomplete">
+							<label for="bpchk-checkin-by-autocomplete"><?php _e( 'Location Autocomplete', BPCHK_TEXT_DOMAIN );?></label>
+						</p>
+						<p>
+							<input <?php echo ( $bp_checkins->checkin_by == 'placetype' ) ? 'checked' : '';?> required type="radio" value="placetype" name="bpchk-checkin-by" class="bpchk-checkin-by" id="bpchk-checkin-by-placetype">
+							<label for="bpchk-checkin-by-placetype"><?php _e( 'Place Types', BPCHK_TEXT_DOMAIN );?></label>
+						</p>
+						<p class="description"><?php _e( 'This setting will help the users checkin by autocomplete or placetype google features.', BPCHK_TEXT_DOMAIN );?></p>
+					</td>
+				</tr>
+			<?php }?>
 
 			<!-- Settings for place types -->
 			<tr style="<?php echo $placetype_settings_style;?>" class="bpchk-placetype-settings-row">
