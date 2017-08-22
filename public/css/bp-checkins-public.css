@@ -1,0 +1,116 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+input#bpchk-save-place-to-visit {
+	float: right;
+}
+
+.bpchk-add-place th {
+	background-color: transparent !important;
+	color: #000 !important;
+}
+
+table.bpchk-add-place, .bpchk-add-place th, .bpchk-add-place td{
+	border: none !important;
+}
+table.bpchk-my-place-details, .bpchk-my-place-details th, .bpchk-my-place-details td{
+	border: none !important;
+}
+.bpchk-my-place-details th {
+	background-color: transparent !important;
+	color: #000 !important;
+}
+.bpchk-place-map iframe{
+	width: 100%;
+}
+button.bpchk-myplace-accordion {
+	background-color: hsl(0, 0%, 87%);
+	border: medium none;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	color: hsl(0, 0%, 27%);
+	cursor: pointer;
+	font-size: 15px;
+	margin: 0 5%;
+	outline: medium none;
+	padding: 15px 20px;
+	text-align: left;
+	transition: all 0.4s ease 0s;
+	width: 90%;
+}
+button.bpchk-myplace-accordion.active, button.bpchk-myplace-accordion:hover {
+	background-color: hsl(207, 90%, 54%);
+	color:white;
+}
+div.panel {
+	padding: 0 18px;
+	background-color: white;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+	margin:0px 5%;
+}
+button.bpchk-myplace-accordion::after {
+	color: hsl(0, 0%, 47%);
+	content: "+";
+	float: right;
+	font-size: 13px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+button.bpchk-myplace-accordion::after:hover {
+	color: white;
+}
+button.bpchk-myplace-accordion.active::after {
+	content: "−";
+	color:white;
+}
+.bpchk-myplace-admin-row{
+	clear: both;  
+	overflow: hidden;
+	padding-bottom: 5px;
+}
+.bpchk-autocomplete-place{
+	background-color: #ffffff !important;
+	background-image: url("http://loadinggif.com/images/image-selection/3.gif")  !important;
+	background-size: 25px 25px  !important;
+	background-position:right center  !important;
+	background-repeat: no-repeat  !important;
+}
+#bpchk-place-map iframe {
+	width: 100%;
+	height: 400px;
+	background-color: grey;
+}
+.bp-checkin-panel{
+	display: none;
+}
+span.bpchk-allow-checkin i {
+	font-size: 32px;
+	vertical-align: sub;
+	margin-top: 5%;
+}
+span.bpchk-allow-checkin {
+	background-color: #D9D6D6;
+	cursor: pointer;
+	border-radius: 50%;
+	padding: 10px;
+}
+.bpchk-places-fetched{
+	list-style-type: none;
+	height: 20em;
+	line-height: 2em;
+	border: 1px solid #ccc;
+	padding: 0px;
+	margin: 0;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+.bpchk-places-fetched li {
+	border-top: 1px solid #ccc;
+	cursor: pointer;
+}
+.bpchk-places-fetched li:hover {
+	background-color: #D9D6D6;
+}

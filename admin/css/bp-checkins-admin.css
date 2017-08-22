@@ -1,0 +1,66 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+span#range_disp {
+	vertical-align: super;
+}
+.bpchk-place-map iframe{
+	width: 100%;
+}
+
+/*************** SUPPORT ***************/
+.bpchk-adming-setting{
+	float: left;
+	width: 90%;
+}
+button.bpchk-accordion {
+	background-color: hsl(0, 0%, 87%);
+	border: medium none;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	color: hsl(0, 0%, 27%);
+	cursor: pointer;
+	font-size: 15px;
+	margin: 0 5%;
+	outline: medium none;
+	padding: 15px 20px;
+	text-align: left;
+	transition: all 0.4s ease 0s;
+	width: 90%;
+}
+button.bpchk-accordion.active, button.bpchk-accordion:hover {
+	background-color: hsl(207, 90%, 54%);
+	color:white;
+}
+div.panel {
+	padding: 0 18px;
+	background-color: white;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+	margin:0px 5%;
+}
+button.bpchk-accordion::after {
+	color: hsl(0, 0%, 47%);
+	content: "+";
+	float: right;
+	font-size: 13px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+button.bpchk-accordion::after:hover {
+	color: white;
+}
+button.bpchk-accordion.active::after {
+	content: "−";
+	color:white;
+}
+.bpchk-admin-row{
+	clear: both;  
+	overflow: hidden;
+	padding-bottom: 5px;
+}
+.bpchk-tab-header h3{
+	margin-left: 5%;
+}

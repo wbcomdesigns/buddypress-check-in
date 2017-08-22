@@ -70,4 +70,3 @@ Dual File Fixes
 A New option auto complete is added in check in plugin setting. Now you can check either auto complete or place types options. 
 If you check auto complete, a auto complete text box will be shown at the top of page under textarea on member activity page where you can type and select any location from the list.
 Now all activity posts which have any place or location a google map will be shown below them to point that particular place.
-
