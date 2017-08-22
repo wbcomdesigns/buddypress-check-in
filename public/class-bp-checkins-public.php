@@ -83,7 +83,7 @@ class Bp_Checkins_Public {
 			$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
 			if( $bp_checkins->checkin_by == 'autocomplete' ) {
 				$checkin_html .= '<div class="checkin-by-autocomplete">';
-				$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="'.__( 'Click to checkin', BPCHK_TEXT_DOMAIN ).'" />';
+				$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="'.__( 'Type in to checkin', BPCHK_TEXT_DOMAIN ).'" />';
 				$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
 				$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lng" />';
 				$checkin_html .= '<input type="checkbox" id="bpchk-add-as-place" checked />';
@@ -131,17 +131,19 @@ class Bp_Checkins_Public {
 				'show_for_displayed_user' => true,
 			)
 		);
-		bp_core_new_subnav_item(
-			array(
-				'name' => __( 'Add Place', BPCHK_TEXT_DOMAIN ),
-				'slug' => 'add-place',
-				'parent_url' => bp_core_get_userlink( $displayed_uid, false, true ).$parent_slug.'/',
-				'parent_slug' => $parent_slug,
-				'screen_function' => array($this, 'bpchk_add_place_show_screen'),
-				'position' => 200,
-				'link' => $add_place_link,
-			)
-		);
+		if( $displayed_uid == get_current_user_id() ) {
+			bp_core_new_subnav_item(
+				array(
+					'name' => __( 'Add Place', BPCHK_TEXT_DOMAIN ),
+					'slug' => 'add-place',
+					'parent_url' => bp_core_get_userlink( $displayed_uid, false, true ).$parent_slug.'/',
+					'parent_slug' => $parent_slug,
+					'screen_function' => array($this, 'bpchk_add_place_show_screen'),
+					'position' => 200,
+					'link' => $add_place_link,
+				)
+			);
+		}
 		bp_core_new_subnav_item(
 			array(
 				'name' => __( 'My Places', BPCHK_TEXT_DOMAIN ),

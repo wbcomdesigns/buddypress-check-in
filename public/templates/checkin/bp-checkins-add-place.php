@@ -1,6 +1,6 @@
 <?php
 if( !defined( 'ABSPATH' ) ) exit; //Exit if accessed directly
-$bpchk_redirect_url = bp_core_get_userlink( get_current_user_id(), false, true ).$parent_slug.'checkin/my-places';
+$bpchk_redirect_url = bp_core_get_userlink( get_current_user_id(), false, true ).'checkin/my-places';
 ?>
 <form method="POST" action="">
 	<table class="bpchk-add-place" border="0">

@@ -42,17 +42,13 @@ Step 5) if you click on enable API button then open a popup with API Key.
 Yes, It needs you to have BuddyPress installed and activated and the BuddyPress notifications component must be enabled.
 
 == Screenshots ==
-
-1. The screenshot shows the plugin name from the admin panel plugin listing and corresponds to screenshot-1.(png|jpg|jpeg|gif).
-2. The screenshot shows the admin settings to add api key and select place types to fetch places and corresponds to screenshot-2.(png|jpg|jpeg|gif).
-3. The screenshot shows the checkin icon on update activity page and corresponds to screenshot-3.(png|jpg|jpeg|gif).
-4. The screenshot shows the listing of places when user clicks on checkin icon and corresponds to screenshot-4.(png|jpg|jpeg|gif).
-5. The screenshot shows the posted activity and corresponds to screenshot-5.(png|jpg|jpeg|gif).
-6. The screenshot shows the modified plugin name, version and short description from the admin panel plugin listing and corresponds to screenshot-6.(png|jpg|jpeg|gif).
-7. The screenshot shows the modified admin settings to add api key and select place types to fetch places and corresponds to screenshot-7.(png|jpg|jpeg|gif).
-8. The screenshot shows the modified checkin icon on update activity page and corresponds to screenshot-8.(png|jpg|jpeg|gif).
-9. The screenshot shows the auto complete box on update activity page and corresponds to screenshot-9.(png|jpg|jpeg|gif).
-10. The screenshot shows the posted activity with or without google map and corresponds to screenshot-10.(png|jpg|jpeg|gif).
+1. screenshot-1 - shows the general settings in the plugin.
+2. screenshot-2 - shows the list of the places added in admin.
+3. screenshot-3 - shows the place details in admin edit.
+4. screenshot-4 - shows the front end panel, to checkin by autocomplete.
+5. screenshot-5 - shows the posted activity update, that includes checkin.
+6. screenshot-6 - shows the member profile, showing my added places.
+7. screenshot-7 - shows the member profile, shows the panel to manually add place to my place.
 
 == Changelog ==
 = 1.0.0 =
