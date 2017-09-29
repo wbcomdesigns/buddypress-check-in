@@ -79,6 +79,10 @@ $place_types = array(
 			<tr style="<?php echo $placetype_settings_style;?>" class="bpchk-placetype-settings-row">
 				<th scope="row"><?php _e( 'Place Types', BPCHK_TEXT_DOMAIN );?></th>
 				<td>
+					<p class="bpchk-selection-tags">
+						<a href="javascript:void(0);" id="bpchk-select-all-place-types"><?php _e( 'Select All', BPCHK_TEXT_DOMAIN );?></a> / 
+						<a href="javascript:void(0);" id="bpchk-unselect-all-place-types"><?php _e( 'Unselect All', BPCHK_TEXT_DOMAIN );?></a>
+					</p>
 					<select name="bpchk-google-place-types[]" id="bpchk-pre-place-types" multiple>
 						<?php foreach( $place_types as $place_type ) {?>
 							<?php $placetype_slug = str_replace( ' ', '_', strtolower( $place_type ) );?>

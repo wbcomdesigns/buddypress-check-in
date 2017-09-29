@@ -111,8 +111,14 @@ class Bp_Checkins_Admin {
 		$tab = isset($_GET['tab']) ? $_GET['tab'] : $this->plugin_name;
 		?>
 		<div class="wrap">
-			<h2><?php _e( 'Activity Updates Checkins - BuddyPress', BPCHK_TEXT_DOMAIN ); ?></h2>
-			<p><?php _e( 'This plugin will allow the site members to <strong>checkin</strong> when they go for any post update.', BPCHK_TEXT_DOMAIN ); ?></p>
+			<div class="bpchk-header">
+				<div class="bpchk-extra-actions">
+					<button type="button" class="button button-secondary" onclick="window.open('https://wbcomdesigns.com/contact/', '_blank');"><i class="fa fa-envelope" aria-hidden="true"></i> <?php _e( 'Email Support', BPCHK_TEXT_DOMAIN )?></button>
+					<button type="button" class="button button-secondary" onclick="window.open('https://wbcomdesigns.com/helpdesk/article-categories/buddypress-checkins/', '_blank');"><i class="fa fa-file" aria-hidden="true"></i> <?php _e( 'User Manual', BPCHK_TEXT_DOMAIN )?></button>
+					<button type="button" class="button button-secondary" onclick="window.open('https://wordpress.org/support/plugin/bp-check-in/reviews/', '_blank');"><i class="fa fa-star" aria-hidden="true"></i> <?php _e( 'Rate Us on WordPress.org', BPCHK_TEXT_DOMAIN )?></button>
+				</div>
+				<h2 class="bpchk-plugin-heading"><?php _e( 'BuddyPress Checkin', BPCHK_TEXT_DOMAIN );?></h2>
+			</div>
 			<?php $this->bpchk_plugin_settings_tabs();?>
 			<?php do_settings_sections( $tab );?>
 		</div>
@@ -248,9 +254,14 @@ class Bp_Checkins_Admin {
 	function bpchk_save_general_settings() {
 		if( isset( $_POST['bpchk-submit-general-settings'] ) && wp_verify_nonce( $_POST['bpchk-general-settings-nonce'], 'bpchk-general' ) ) {
 
+			$checkin_by = '';
+			if( isset( $_POST['bpchk-checkin-by'] ) ) {
+				$checkin_by = sanitize_text_field( $_POST['bpchk-checkin-by'] );
+			}
+
 			$admin_settings = array(
 				'apikey' => sanitize_text_field( $_POST['bpchk-api-key'] ),
-				'checkin_by' => sanitize_text_field( $_POST['bpchk-checkin-by'] ),
+				'checkin_by' => $checkin_by,
 				'range' => sanitize_text_field( $_POST['bpchk-google-places-range'] ),
 				'placetypes' => ( !empty( $_POST['bpchk-google-place-types'] ) ) ? wp_unslash( $_POST['bpchk-google-place-types'] ) : array(),
 			);

@@ -1,11 +1,26 @@
 jQuery(document).ready(function($){
 	'use strict';
 
-	$('#bpchk-pre-place-types').selectize({
+	var bpchk_post_types = $('#bpchk-pre-place-types').selectize({
 		placeholder		: "Select Place Types",
 		plugins			: ['remove_button'],
 	});
+	var plc_types_selectize = bpchk_post_types[0].selectize;
 
+	// Select-Unselect all place types
+	$(document).on('click', '#bpchk-select-all-place-types', function(){
+		var pt_names = [], i;
+		var pt_options = plc_types_selectize.options;
+		for( i in pt_options ) {
+			pt_names.push( pt_options[i]['value'] );
+		}
+		plc_types_selectize.setValue( pt_names );
+	});
+	$(document).on('click', '#bpchk-unselect-all-place-types', function(){
+		plc_types_selectize.setValue( [] );
+	});
+
+	//Support tab
 	var acc = document.getElementsByClassName("bpchk-accordion");
 	var i;
 	for ( i = 0; i < acc.length; i++ ) {
