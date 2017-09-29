@@ -2,7 +2,7 @@
 if( !defined( 'ABSPATH' ) ) exit; //Exit if accessed directly
 $displayed_user_id = bp_displayed_user_id();
 $args = array(
-	'post_type'			=>	'bpchk_places',
+	'post_type'			=>	'bpchk-places',
 	'post_status'		=>	'publish',
 	'posts_per_page'	=>	-1,
 	'author'			=>	$displayed_user_id,

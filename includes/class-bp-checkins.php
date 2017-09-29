@@ -160,11 +160,9 @@ class Bp_Checkins {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'init', $plugin_admin, 'bpchk_register_places_cpt' );
-		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'bpchk_location_metabox' );
-		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'bpchk_place_visit_date_metabox' );
+		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'bpchk_places_metabox' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'bpchk_add_menu_page' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'bpchk_register_general_settings' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'bpchk_register_support_settings' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'bpchk_plugin_settings' );
 		$this->loader->add_action( 'bp_setup_admin_bar', $plugin_admin, 'bpchk_setup_admin_bar_links', 80 );
 
 		//Ajax call for verifying the API Key
@@ -189,22 +187,11 @@ class Bp_Checkins {
 		$this->loader->add_action( 'bp_setup_nav', $plugin_public, 'bpchk_member_profile_checkin_tab' );
 		$this->loader->add_action( 'bp_activity_posted_update', $plugin_public, 'bpchk_update_meta_on_post_update', 10, 3 );
 		$this->loader->add_action( 'bp_activity_entry_content', $plugin_public, 'bpchk_show_google_map_in_checkin_activity', 10 );
-
-		//Ajax call for saving the temporary location
+		$this->loader->add_action( 'bp_member_header_actions', $plugin_public, 'bpchk_add_place_button_on_member_header' );
 		$this->loader->add_action( 'wp_ajax_bpchk_save_temp_location', $plugin_public, 'bpchk_save_temp_location' );
-		$this->loader->add_action( 'wp_ajax_nopriv_bpchk_save_temp_location', $plugin_public, 'bpchk_save_temp_location' );
-
-		//Ajax call for fetching the places
 		$this->loader->add_action( 'wp_ajax_bpchk_fetch_places', $plugin_public, 'bpchk_fetch_places' );
-		$this->loader->add_action( 'wp_ajax_nopriv_bpchk_fetch_places', $plugin_public, 'bpchk_fetch_places' );
-
-		//Ajax call for selecting the single place, making it the temp location
 		$this->loader->add_action( 'wp_ajax_bpchk_select_place_to_checkin', $plugin_public, 'bpchk_select_place_to_checkin' );
-		$this->loader->add_action( 'wp_ajax_nopriv_bpchk_select_place_to_checkin', $plugin_public, 'bpchk_select_place_to_checkin' );
-
-		//Ajax call for cancelling the checkin
 		$this->loader->add_action( 'wp_ajax_bpchk_cancel_checkin', $plugin_public, 'bpchk_cancel_checkin' );
-		$this->loader->add_action( 'wp_ajax_nopriv_bpchk_cancel_checkin', $plugin_public, 'bpchk_cancel_checkin' );
 	}
 
 	/**

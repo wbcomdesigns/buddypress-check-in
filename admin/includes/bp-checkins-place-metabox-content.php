@@ -19,7 +19,7 @@ $map_url = 'https://www.google.com/maps/embed/v1/place?key='.$apikey.'&q='.$form
 <div class="bpchk-place-content">
 	<div class="bpchk-place-map">
 		<p><?php echo __( 'Address: ', BPCHK_TEXT_DOMAIN ).$formatted_address;?></p>
-		<iframe frameborder="0" style="border:0" src="<?php echo $map_url;?>" allowfullscreen></iframe>
+		<iframe height="400px" frameborder="0" style="border:0" src="<?php echo $map_url;?>" allowfullscreen></iframe>
 	</div>
 	<div class="bpchk-place-details">
 		<table>

@@ -83,3 +83,7 @@ button.bpchk-accordion.active::after {
 .bpchk-selection-tags a{
 	text-decoration: none;
 }
+.bpchk-place-map {
+	width: 100%;
+	margin: 10px 0 30px;
+}

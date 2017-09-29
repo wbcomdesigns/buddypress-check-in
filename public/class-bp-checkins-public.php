@@ -242,7 +242,7 @@ class Bp_Checkins_Public {
 
 				$args = array(
 					'post_title' => $place_title,
-					'post_type' => 'bpchk_places',
+					'post_type' => 'bpchk-places',
 					'post_status' => 'publish'
 				);
 				$place_id = wp_insert_post( $args );
@@ -405,7 +405,7 @@ class Bp_Checkins_Public {
 
 					$args = array(
 						'post_title' => $place,
-						'post_type' => 'bpchk_places',
+						'post_type' => 'bpchk-places',
 						'post_status' => 'publish'
 					);
 					$place_id = wp_insert_post( $args );
@@ -600,6 +600,20 @@ class Bp_Checkins_Public {
 			);
 			wp_send_json_success( $result );
 			die;
+		}
+	}
+
+	/**
+	 * Actions performed to add a place button on member header
+	 */
+	public function bpchk_add_place_button_on_member_header() {
+		if ( bp_displayed_user_id() === bp_loggedin_user_id() ) {
+			$place_add_url = bp_core_get_userlink( bp_displayed_user_id(), false, true ) . 'checkin/add-place';
+			?>
+			<div id="bpchk-add-place-btn" class="generic-button">
+				<a href="<?php echo $place_add_url; ?>" class="add-place"><?php _e( 'Add Place', BPTODO_TEXT_DOMAIN ); ?></a>
+			</div>
+			<?php
 		}
 	}
 }

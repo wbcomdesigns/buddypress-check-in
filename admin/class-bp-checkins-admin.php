@@ -66,7 +66,7 @@ class Bp_Checkins_Admin {
 			$post_id = $_GET['post'];
 			$post_type = get_post_type( $post_id );
 		}
-		if( ( strpos( $_SERVER['REQUEST_URI'], 'bp-checkins' ) !== false ) || $post_type == 'bpchk_places' ) {
+		if( ( strpos( $_SERVER['REQUEST_URI'], 'bp-checkins' ) !== false ) || $post_type == 'bpchk-places' ) {
 			wp_enqueue_style( $this->plugin_name.'-font-awesome', BPCHK_PLUGIN_URL . 'public/css/font-awesome.min.css' );
 			wp_enqueue_style( $this->plugin_name.'-selectize-css', plugin_dir_url( __FILE__ ) . 'css/selectize.css' );
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bp-checkins-admin.css', array(), $this->version, 'all' );
@@ -141,10 +141,16 @@ class Bp_Checkins_Admin {
 	/**
 	 * General Tab
 	 */
-	public function bpchk_register_general_settings() {
+	public function bpchk_plugin_settings() {
+		//General settings tab
 		$this->plugin_settings_tabs['bp-checkins'] = __( 'General', BPCHK_TEXT_DOMAIN );
 		register_setting('bp-checkins', 'bp-checkins');
 		add_settings_section('bp-checkins-section', ' ', array(&$this, 'bpchk_general_settings_content'), 'bp-checkins');
+
+		//Support tab
+		$this->plugin_settings_tabs['bpchk-support'] = __( 'Support', BPCHK_TEXT_DOMAIN );
+		register_setting('bpchk-support', 'bpchk-support');
+		add_settings_section('bpchk-support-section', ' ', array(&$this, 'bpchk_support_settings_content'), 'bpchk-support');
 	}
 
 	/**
@@ -154,15 +160,6 @@ class Bp_Checkins_Admin {
 		if (file_exists(dirname(__FILE__) . '/includes/bp-checkins-general-settings.php')) {
 			require_once( dirname(__FILE__) . '/includes/bp-checkins-general-settings.php' );
 		}
-	}
-
-	/**
-	 * Support Tab
-	 */
-	public function bpchk_register_support_settings() {
-		$this->plugin_settings_tabs['bpchk-support'] = __( 'Support', BPCHK_TEXT_DOMAIN );
-		register_setting('bpchk-support', 'bpchk-support');
-		add_settings_section('bpchk-support-section', ' ', array(&$this, 'bpchk_support_settings_content'), 'bpchk-support');
 	}
 
 	/**
@@ -203,21 +200,24 @@ class Bp_Checkins_Admin {
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'bpchk_places' ),
+			'rewrite'            => array( 'slug' => 'bpchk-places' ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array( 'title', 'author' )
 		);
-		register_post_type( 'bpchk_places', $args );
+		register_post_type( 'bpchk-places', $args );
 	}
 
 	/**
-	 * Add meta box to ahow location of the added place
+	 * Add meta box to places cpt
 	 */
-	public function bpchk_location_metabox() {
-		add_meta_box( 'bpchk-place-metabox', __( 'Location', BPCHK_TEXT_DOMAIN ), array( $this, 'bpchk_place_metabox_content' ), 'bpchk_places', 'normal', 'high', null );
+	public function bpchk_places_metabox() {
+		//Location metabox
+		add_meta_box( 'bpchk-place-metabox', __( 'Location', BPCHK_TEXT_DOMAIN ), array( $this, 'bpchk_place_metabox_content' ), 'bpchk-places', 'normal', 'high', null );
+		//Place visit date metabox
+		add_meta_box( 'bpchk-placevisit-date-metabox', __( 'Visit Date', BPCHK_TEXT_DOMAIN ), array( $this, 'bpchk_place_visit_date_metabox_content' ), 'bpchk-places', 'side', 'low', null );
 	}
 
 	/**
@@ -228,13 +228,6 @@ class Bp_Checkins_Admin {
 		if( file_exists( $file ) ) {
 			include_once $file;
 		}
-	}
-
-	/**
-	 * Add meta box to ahow location of the added place
-	 */
-	public function bpchk_place_visit_date_metabox() {
-		add_meta_box( 'bpchk-placevisit-date-metabox', __( 'Visit Date', BPCHK_TEXT_DOMAIN ), array( $this, 'bpchk_place_visit_date_metabox_content' ), 'bpchk_places', 'side', 'low', null );
 	}
 
 	/**
