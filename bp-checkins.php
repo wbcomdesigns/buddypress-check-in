@@ -30,6 +30,10 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+//Define Plugin Constants
+define( 'BPCHK_PLUGIN_PATH', plugin_dir_path(__FILE__) );
+define( 'BPCHK_PLUGIN_URL', plugin_dir_url(__FILE__) );
+
 if ( ! defined( 'BPCHK_TEXT_DOMAIN' ) ) {
 	define( 'BPCHK_TEXT_DOMAIN', 'bp-checkins' );
 }

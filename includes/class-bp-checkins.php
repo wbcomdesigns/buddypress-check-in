@@ -192,6 +192,11 @@ class Bp_Checkins {
 		$this->loader->add_action( 'wp_ajax_bpchk_fetch_places', $plugin_public, 'bpchk_fetch_places' );
 		$this->loader->add_action( 'wp_ajax_bpchk_select_place_to_checkin', $plugin_public, 'bpchk_select_place_to_checkin' );
 		$this->loader->add_action( 'wp_ajax_bpchk_cancel_checkin', $plugin_public, 'bpchk_cancel_checkin' );
+		//$this->loader->add_action('bp_after_activity_post_form', $plugin_public, 'bpchk_add_location_html');
+		$this->loader->add_action( 'bp_init', $plugin_public, 'bpchk_add_location_xprofile_field' );
+		$this->loader->add_action( 'wp_ajax_bpchk_save_xprofile_location', $plugin_public, 'bpchk_save_xprofile_location' );
+		$this->loader->add_filter( 'bp_get_the_profile_field_value', $plugin_public, 'bpchk_show_xprofile_location',10,3);
+
 	}
 
 	/**
