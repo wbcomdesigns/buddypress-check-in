@@ -42,7 +42,7 @@ $place_types = array(
 				<td>
 					<input class="regular-text" type="text" value="<?php echo $bp_checkins->apikey;?>" name="bpchk-api-key" id="bpchk-api-key" placeholder="<?php _e( 'API Key', BPCHK_TEXT_DOMAIN );?>" required>
 					<button type="button" class="button button-secondary" style="<?php echo $verify_btn_style;?>" id="bpchk-verify-apikey"><?php _e( 'Verify', BPCHK_TEXT_DOMAIN );?></button>
-					<p class="description"><?php _e( "Due to changes in Google Maps API it's required to use an API key for the BuddyPress Check-ins plugin to work properly. You can get the API key", BPCHK_TEXT_DOMAIN );?>&nbsp;<a target="blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php _e('here.',BPCHK_TEXT_DOMAIN); ?></a></p>
+					<p class="description"><?php _e( 'This API Key will help fetch the google places while checking in.', BPCHK_TEXT_DOMAIN );?></p>
 				</td>
 			</tr>
 

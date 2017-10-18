@@ -3,11 +3,19 @@ jQuery(document).ready(function($){
 	var autocomplete1;
 	var autocomplete2;
 	function initialize() {
-		//var input1 = document.getElementById('bpchk-autocomplete-place');
-		//var autocomplete1 = new google.maps.places.Autocomplete(input1);
-		
+		var input1 = document.getElementById('bpchk-autocomplete-place');
 		var input2 = document.getElementById('bpchk-add-place-title');
+		var autocomplete1 = new google.maps.places.Autocomplete(input1);
 		var autocomplete2 = new google.maps.places.Autocomplete(input2);
+
+		google.maps.event.addListener(autocomplete1, 'place_changed', function () {
+			var place1 = autocomplete1.getPlace();
+			var latitude1 = place1.geometry.location.lat();
+			var longitude1 = place1.geometry.location.lng();
+			$('#bpchk-checkin-place-lat').val( latitude1 ).trigger('change');
+			$('#bpchk-checkin-place-lng').val( longitude1 ).trigger('change');
+		});
+
 		google.maps.event.addListener(autocomplete2, 'place_changed', function () {
 			var place2 = autocomplete2.getPlace();
 			var latitude2 = place2.geometry.location.lat();
@@ -15,121 +23,8 @@ jQuery(document).ready(function($){
 			document.getElementById('bpchk-place-latitude').value = latitude2;
 			document.getElementById('bpchk-place-longitude').value = longitude2;
 		});
-
-		var loc_xprof = document.getElementById(bpchk_public_js_obj.bpchk_loc_xprof);
-		var autocomplete3 = new google.maps.places.Autocomplete(loc_xprof);
-		google.maps.event.addListener(autocomplete3, 'place_changed', function () {
-			var place3 = autocomplete3.getPlace();
-			var latitude3 = place3.geometry.location.lat();
-			var longitude3 = place3.geometry.location.lng();
-			bpchk_loc_xprof_ajax_save(latitude3,longitude3);
-		});
-
-		// google.maps.event.addListener(autocomplete1, 'place_changed', function () {
-		// 	var place1 = autocomplete1.getPlace();
-		// 	var latitude1 = place1.geometry.location.lat();
-		// 	var longitude1 = place1.geometry.location.lng();
-		// 	$('#bpchk-checkin-place-lat').val( latitude1 ).trigger('change');
-		// 	$('#bpchk-checkin-place-lng').val( longitude1 ).trigger('change');
-		// });
-
-		
-
-		/*start google map api code*/
-		var map = new google.maps.Map(document.getElementById('checkin-by-autocomplete-map'), {
-          center: {lat: -33.8688, lng: 151.2195},
-          zoom: 13,
-          mapTypeId: 'roadmap'
-        });
-
-        // Create the search box and link it to the UI element.
-        var input = document.getElementById('bpchk-autocomplete-place');
-        var searchBox = new google.maps.places.SearchBox(input);
-        //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
-        });
-
-        var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener('places_changed', function() {
-          var places = searchBox.getPlaces();
-
-          if (places.length == 0) {
-            return;
-          }
-
-          // Clear out the old markers.
-          markers.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          markers = [];
-
-          // For each place, get the icon, name and location.
-          var bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            if (!place.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-            var icon = {
-              url: place.icon,
-              size: new google.maps.Size(71, 71),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
-            };
-
-            // Create a marker for each place.
-            markers.push(new google.maps.Marker({
-              map: map,
-              icon: icon,
-              title: place.name,
-              position: place.geometry.location
-            }));
-
-            if (place.geometry.viewport) {
-              // Only geocodes have viewport.
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-
-            var latitude1 = place.geometry.location.lat();
-		 	var longitude1 = place.geometry.location.lng();
-		 	$('#bpchk-checkin-place-lat').val( latitude1 ).trigger('change');
-		 	$('#bpchk-checkin-place-lng').val( longitude1 ).trigger('change');
-          });
-          map.fitBounds(bounds);
-        });
-        /*end google map api code*/
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
-
-	function bpchk_loc_xprof_ajax_save(latitude3,longitude3){
-		
-		var place = $('#'+bpchk_public_js_obj.bpchk_loc_xprof).val();
-		
-		var data = {
-			'action'			: 'bpchk_save_xprofile_location',
-			'place'				: place,
-			'latitude'			: latitude3,
-			'longitude'			: longitude3
-		}
-		
-		$.ajax({
-			dataType: "JSON",
-			url: bpchk_public_js_obj.ajaxurl,
-			type: 'POST',
-			data: data,
-			success: function( response ) {
-				
-			},
-		});
-	}
 
 	//Open the tabs - my places
 	var acc = document.getElementsByClassName("bpchk-myplace-accordion");
@@ -153,7 +48,6 @@ jQuery(document).ready(function($){
 	var checkin_html = bpchk_public_js_obj.checkin_html;
 	$(checkin_html).insertAfter( 'textarea#whats-new' );
 
-
 	$( '#bpchk-add-place-visit-date' ).datepicker( { dateFormat: 'yy-mm-dd', minDate: 0 } );
 
 	//Send AJAX to save the temp location just as location changed during checkin by autocomplete
@@ -165,8 +59,8 @@ jQuery(document).ready(function($){
 		if( $('#bpchk-add-as-place').is(':checked') ) {
 			add_as_my_place = 'yes';
 		}
-		
-		//$('#bpchk-autocomplete-place').addClass('bpchk-autocomplete-place');
+
+		$('#bpchk-autocomplete-place').addClass('bpchk-autocomplete-place');
 		
 		var data = {
 			'action'			: 'bpchk_save_temp_location',
@@ -175,8 +69,6 @@ jQuery(document).ready(function($){
 			'longitude'			: longitude,
 			'add_as_my_place'	: add_as_my_place
 		}
-		//console.log(data);
-		$('.bpchk-place-loader').show();
 		$.ajax({
 			dataType: "JSON",
 			url: bpchk_public_js_obj.ajaxurl,
@@ -184,9 +76,7 @@ jQuery(document).ready(function($){
 			data: data,
 			success: function( response ) {
 				if( response['data']['message'] == 'temp-locaition-saved' ) {
-
 					$('#bpchk-add-as-place').attr( 'disabled', true );
-					$('.bpchk-place-loader').hide();
 					$('#bpchk-autocomplete-place').removeClass('bpchk-autocomplete-place');
 				}
 			},
@@ -195,8 +85,7 @@ jQuery(document).ready(function($){
 
 	//Open the checkin panel when clicked
 	$(document).on('click', '.bpchk-allow-checkin', function(){
-		$('.bp-checkin-panel').slideToggle(500);
-		initialize();
+		$('.bp-checkin-panel').slideToggle();
 	});
 
 	//Send an AJAX to fetch the places when checkin is to be done by placetype

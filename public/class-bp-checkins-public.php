@@ -52,6 +52,7 @@ class Bp_Checkins_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 		$this->bpchk_add_place();
+
 	}
 
 	/**
@@ -74,13 +75,12 @@ class Bp_Checkins_Public {
 	public function enqueue_scripts() {
 		if( is_user_logged_in() ) {
 			global $bp_checkins;
-			wp_enqueue_script( $this->plugin_name-'google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key='.$bp_checkins->apikey, array( 'jquery' ) );
+			wp_enqueue_script( $this->plugin_name-'google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key='.$bp_checkins->apikey, array( 'jquery' ) );
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
 
 			//Create the checkin html
 			$checkin_html = '';
 			if( $bp_checkins->apikey ) {
-				$checkin_html .= '<div class="dispaly:inline-block;"><div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
 				$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
 				if( $bp_checkins->checkin_by == 'autocomplete' ) {
 					$checkin_html .= '<div class="checkin-by-autocomplete">';
@@ -89,31 +89,23 @@ class Bp_Checkins_Public {
 					$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lng" />';
 					$checkin_html .= '<input type="checkbox" id="bpchk-add-as-place" checked />';
 					$checkin_html .= '<label for="bpchk-add-as-place">'.__( 'Add as my place', BPCHK_TEXT_DOMAIN ).'</label>';
-					$checkin_html .= '<span class="bpchk-place-loader"><i class="fa fa-refresh fa-spin"></i></span><span class="clear"></span>';
 					$checkin_html .= '</div>';
-					$checkin_html .= '<div class="checkin-by-autocomplete-map" id="checkin-by-autocomplete-map">';
-					$checkin_html .= '</div><div class="clear"></div>';
-
 				} else {
 					$checkin_html .= '<div class="checkin-by-placetype">';
 					$checkin_html .= '<p>'.__( 'Please Wait..', BPCHK_TEXT_DOMAIN ).'</p>';
 					$checkin_html .= '</div>';
 				}
 				$checkin_html .= '</div>';
+				$checkin_html .= '<span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span>';
 			}
-			if(xprofile_get_field_id_from_name('Location')){	
-				$bpchk_location_id = xprofile_get_field_id_from_name('Location');
-				$bpchk_loc_xprof = 'field_'.$bpchk_location_id;
-			}
-			
+
 			wp_localize_script(
 				$this->plugin_name,
 				'bpchk_public_js_obj',
 				array(
 					'ajaxurl'		=>	admin_url( 'admin-ajax.php' ),
 					'checkin_html'	=>	$checkin_html,
-					'checkin_by'	=>	$bp_checkins->checkin_by,
-					'bpchk_loc_xprof' => $bpchk_loc_xprof
+					'checkin_by'	=>	$bp_checkins->checkin_by
 				)
 			);
 		}
@@ -165,8 +157,6 @@ class Bp_Checkins_Public {
 				'link' => $my_places_link,
 			)
 		);
-
-
 	}
 
 	/**
@@ -347,68 +337,6 @@ class Bp_Checkins_Public {
 	}
 
 	/**
-	 * Add location xprofile field.
-	 */
-	public function bpchk_add_location_xprofile_field(){
-		if (xprofile_get_field_id_from_name('Location')) return;
-		$location_list_args = array(
-			'field_group_id' => 1,
-			'type' => 'textbox',
-			'name' => 'Location',
-			'description' => 'Please select your location',
-			'is_required' => false,
-			'can_delete' => true,
-			'order_by' => 'default'
-		);
-		$location_list_id = xprofile_insert_field($location_list_args);
-	}
-
-	/**
-	 * Ajax request to save activity meta.
-	 */
-	public function bpchk_save_xprofile_location(){
-		if( isset( $_POST['action'] ) && $_POST['action'] == 'bpchk_save_xprofile_location' ) {
-			$args = array(
-				'place'					=> sanitize_text_field( $_POST['place'] ),
-				'latitude'				=> sanitize_text_field( $_POST['latitude'] ),
-				'longitude'				=> sanitize_text_field( $_POST['longitude'] )
-			);
-			if(xprofile_get_field_id_from_name('Location')){	
-				$bpchk_location_id = xprofile_get_field_id_from_name('Location');
-				bp_xprofile_update_meta($bpchk_location_id, 'data', 'bpchk_loc_xprofile',$args);
-			}	
-		}
-		exit;
-	}
-
-	/**
-     * Function to filter location xprofile field value at profile page.
-     *
-     * @since 1.0.1
-     * @param string $value Value for the profile field.
-	 * @param string $type  Type for the profile field.
-	 * @param int    $id    ID for the profile field.
-     */
-	public function bpchk_show_xprofile_location($field_value, $field_type, $field_id){
-		if(xprofile_get_field_id_from_name('Location')){	
-			$bpchk_location_id = xprofile_get_field_id_from_name('Location');
-			if($field_id == $bpchk_location_id ){
-				$loc_xprof_meta = bp_xprofile_get_meta($bpchk_location_id, 'data', 'bpchk_loc_xprofile');
-				if(!empty($loc_xprof_meta) && is_array($loc_xprof_meta)){
-					
-					$field_value = '<a class=checkin-loc href="http://maps.google.com/maps/place/' . $loc_xprof_meta['place'] . '/@' . $loc_xprof_meta['latitude'] . ',' . $loc_xprof_meta['longitude'] . '" target="_blank" title="' . $loc_xprof_meta['place'] . '">' . $loc_xprof_meta['place'] . '</a>';
-				    return $field_value;
-				}	
-			}
-			return $field_value;
-		}else{
-			return $field_value;
-		}
-	}
-
-	
-
-	/**
 	 * Action performed to save the activity update to show the checkin
 	 */
 	public function bpchk_update_meta_on_post_update( $content, $user_id, $activity_id ) {
@@ -416,7 +344,6 @@ class Bp_Checkins_Public {
 		$tbl	 = $wpdb->prefix . "options";
 		$qry	 = "SELECT `option_value` from $tbl where `option_name` = 'bpchk_temp_location'";
 		$result	 = $wpdb->get_results( $qry );
-		
 		if ( !empty( $result ) ) {
 			$place_details		= unserialize( $result[0]->option_value );
 			$place 				= $place_details['place'];
@@ -432,10 +359,8 @@ class Bp_Checkins_Public {
 			
 			$activity_qry	 	= "SELECT * from $activity_tbl where `id` = $activity_id";
 			$activity_result 	= $wpdb->get_results( $activity_qry );
-			
 
 			$pos = strpos( $activity_result[0]->content, '-at <a class="checkin-loc"' );
-
 			//Update the activity content to post the checkin along with the post update
 			if ( $pos === false ) {
 				$wpdb->update(
@@ -483,9 +408,6 @@ class Bp_Checkins_Public {
 						'post_type' => 'bpchk-places',
 						'post_status' => 'publish'
 					);
-
-					
-
 					$place_id = wp_insert_post( $args );
 					update_post_meta( $place_id, 'place_details', $address );
 				}
@@ -497,23 +419,8 @@ class Bp_Checkins_Public {
 			 */
 			$wpdb->delete( $tbl, array( 'option_name' => 'bpchk_temp_location' ) );
 
-			//$location = xprofile_get_field_data( 'BP Check-ins Favourite Location' , get_current_user_id() );
-			
 		}
 	}
-
-	// public function bpchk_add_location_xprofile_field_data(){
-	// 	$bpchk_location_id = xprofile_get_field_id_from_name('Location');
-		
-	// 	if ($bpchk_location_id) {
-	// 		$location_address = array();
-	// 		$location_address = xprofile_get_field_data($bpchk_location_id, get_current_user_id() );
-	// 		$location_address = $address;
-	// 		xprofile_set_field_data($bpchk_location_id, get_current_user_id(), $location_address);
-	// 		$location = xprofile_get_field_data( 'BP Check-ins Favourite Location' , get_current_user_id());
-	// 		echo '<pre>'; print_r($field_value); echo '</pre>';
-	// 	}
-	// }
 
 	/**
 	 * Show mep on checkin activities
@@ -704,7 +611,7 @@ class Bp_Checkins_Public {
 			$place_add_url = bp_core_get_userlink( bp_displayed_user_id(), false, true ) . 'checkin/add-place';
 			?>
 			<div id="bpchk-add-place-btn" class="generic-button">
-				<a href="<?php echo $place_add_url; ?>" class="add-place"><?php _e( 'Add Place', BPCHK_TEXT_DOMAIN ); ?></a>
+				<a href="<?php echo $place_add_url; ?>" class="add-place"><?php _e( 'Add Place', BPTODO_TEXT_DOMAIN ); ?></a>
 			</div>
 			<?php
 		}
