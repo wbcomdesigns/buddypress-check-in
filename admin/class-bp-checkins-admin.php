@@ -61,12 +61,7 @@ class Bp_Checkins_Admin {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		$post_type = '';
-		if( isset( $_GET['post'] ) ) {
-			$post_id = $_GET['post'];
-			$post_type = get_post_type( $post_id );
-		}
-		if( ( strpos( $_SERVER['REQUEST_URI'], 'bp-checkins' ) !== false ) || $post_type == 'bpchk-places' ) {
+		if( ( strpos( $_SERVER['REQUEST_URI'], 'bp-checkins' ) !== false )) {
 			wp_enqueue_style( $this->plugin_name.'-font-awesome', BPCHK_PLUGIN_URL . 'public/css/font-awesome.min.css' );
 			wp_enqueue_style( $this->plugin_name.'-selectize-css', plugin_dir_url( __FILE__ ) . 'css/selectize.css' );
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bp-checkins-admin.css', array(), $this->version, 'all' );
@@ -172,76 +167,6 @@ class Bp_Checkins_Admin {
 	}
 
 	/**
-	 * Register A CPT - Places
-	 */
-	public function bpchk_register_places_cpt() {
-		$labels = array(
-			'name'               => __( 'Places', BPCHK_TEXT_DOMAIN ),
-			'singular_name'      => __( 'Place', BPCHK_TEXT_DOMAIN ),
-			'menu_name'          => __( 'Places', 'admin menu', BPCHK_TEXT_DOMAIN ),
-			'name_admin_bar'     => __( 'Place', 'add new on admin bar', BPCHK_TEXT_DOMAIN ),
-			'add_new'            => __( 'Add New', BPCHK_TEXT_DOMAIN ),
-			'add_new_item'       => __( 'Add New Place', BPCHK_TEXT_DOMAIN ),
-			'new_item'           => __( 'New Place', BPCHK_TEXT_DOMAIN ),
-			'edit_item'          => __( 'Edit Place', BPCHK_TEXT_DOMAIN ),
-			'view_item'          => __( 'View Place', BPCHK_TEXT_DOMAIN ),
-			'all_items'          => __( 'All Places', BPCHK_TEXT_DOMAIN ),
-			'search_items'       => __( 'Search Places', BPCHK_TEXT_DOMAIN ),
-			'parent_item_colon'  => __( 'Parent Places:', BPCHK_TEXT_DOMAIN ),
-			'not_found'          => __( 'No Places Found.', BPCHK_TEXT_DOMAIN ),
-			'not_found_in_trash' => __( 'No Places Found In Trash.', BPCHK_TEXT_DOMAIN )
-		);
-
-		$args = array(
-			'labels'             => $labels,
-			'public'             => true,
-			'menu_icon'			 => 'dashicons-location-alt',
-			'publicly_queryable' => true,
-			'show_ui'            => true,
-			'show_in_menu'       => true,
-			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'bpchk-places' ),
-			'capability_type'    => 'post',
-			'has_archive'        => true,
-			'hierarchical'       => false,
-			'menu_position'      => null,
-			'supports'           => array( 'title', 'author' )
-		);
-		register_post_type( 'bpchk-places', $args );
-	}
-
-	/**
-	 * Add meta box to places cpt
-	 */
-	public function bpchk_places_metabox() {
-		//Location metabox
-		add_meta_box( 'bpchk-place-metabox', __( 'Location', BPCHK_TEXT_DOMAIN ), array( $this, 'bpchk_place_metabox_content' ), 'bpchk-places', 'normal', 'high', null );
-		//Place visit date metabox
-		add_meta_box( 'bpchk-placevisit-date-metabox', __( 'Visit Date', BPCHK_TEXT_DOMAIN ), array( $this, 'bpchk_place_visit_date_metabox_content' ), 'bpchk-places', 'side', 'low', null );
-	}
-
-	/**
-	 * Location metabox - show content
-	 */
-	public function bpchk_place_metabox_content() {
-		$file = BPCHK_PLUGIN_PATH.'admin/includes/bp-checkins-place-metabox-content.php';
-		if( file_exists( $file ) ) {
-			include_once $file;
-		}
-	}
-
-	/**
-	 * Location metabox - show content
-	 */
-	public function bpchk_place_visit_date_metabox_content() {
-		global $post;
-		$place_id = $post->ID;
-		$place_details = get_post_meta( $place_id, 'place_details', true );
-		$visit_date = isset( $place_details['visit_date'] ) ? $place_details['visit_date'] : '';
-		echo date( "F jS, Y", strtotime( $visit_date ) );
-	}
-
-	/**
 	 * Save Plugin General Settings
 	 */
 	function bpchk_save_general_settings() {
@@ -299,33 +224,15 @@ class Bp_Checkins_Admin {
 	public function bpchk_setup_admin_bar_links( $wp_admin_nav = array() ) {
 		global $wp_admin_bar;
 		$profile_menu_slug = 'checkin';
-		$profile_menu_title = 'Checkin';
+		$profile_menu_title = __( 'Check-ins', BPCHK_TEXT_DOMAIN );
 
 		$base_url		 = bp_loggedin_user_domain() . $profile_menu_slug;
-		$place_add_url	 = $base_url . '/add-place';
-		$place_list_url	 = $base_url . '/my-places';
 		if ( is_user_logged_in() ) {
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'my-account-buddypress',
 				'id'	 => 'my-account-' . $profile_menu_slug,
-				'title'	 => __( $profile_menu_title, BPCHK_TEXT_DOMAIN ),
-				'href'	 => trailingslashit( $place_list_url )
-			) );
-
-			// Add add-new submenu
-			$wp_admin_bar->add_menu( array(
-				'parent' => 'my-account-' . $profile_menu_slug,
-				'id'	 => 'my-account-' . $profile_menu_slug . '-' . 'my-places',
-				'title'	 => __( 'My Places', BPCHK_TEXT_DOMAIN ),
-				'href'	 => trailingslashit( $place_list_url )
-			) );
-
-			// Add add-new submenu
-			$wp_admin_bar->add_menu( array(
-				'parent' => 'my-account-' . $profile_menu_slug,
-				'id'	 => 'my-account-' . $profile_menu_slug . '-' . 'add-place',
-				'title'	 => __( 'Add Place', BPCHK_TEXT_DOMAIN ),
-				'href'	 => trailingslashit( $place_add_url )
+				'title'	 => $profile_menu_title,
+				'href'	 => trailingslashit( $base_url )
 			) );
 		}
 	}

@@ -42,14 +42,14 @@ $place_types = array(
 				<td>
 					<input class="regular-text" type="text" value="<?php echo $bp_checkins->apikey;?>" name="bpchk-api-key" id="bpchk-api-key" placeholder="<?php _e( 'API Key', BPCHK_TEXT_DOMAIN );?>" required>
 					<button type="button" class="button button-secondary" style="<?php echo $verify_btn_style;?>" id="bpchk-verify-apikey"><?php _e( 'Verify', BPCHK_TEXT_DOMAIN );?></button>
-					<p class="description"><?php _e( 'This API Key will help fetch the google places while checking in.', BPCHK_TEXT_DOMAIN );?></p>
+					<p class="description"><?php _e( "Due to changes in Google Maps API it's required to use an API key for the BuddyPress Check-ins plugin to work properly. You can get the API key", BPCHK_TEXT_DOMAIN );?>&nbsp;<a target="blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php _e('here.',BPCHK_TEXT_DOMAIN); ?></a></p>
 				</td>
 			</tr>
 
 			<?php if( $bp_checkins->apikey ) {?>
 				<!-- Checkin By - autocomplete or placetype -->
 				<tr>
-					<th scope="row"><label for="checkin-by"><?php _e( 'Checkin by', BPCHK_TEXT_DOMAIN );?></label></th>
+					<th scope="row"><label for="checkin-by"><?php _e( 'Check-in by', BPCHK_TEXT_DOMAIN );?></label></th>
 					<td>
 						<p>
 							<input <?php echo ( $bp_checkins->checkin_by == 'autocomplete' ) ? 'checked' : '';?> required type="radio" value="autocomplete" name="bpchk-checkin-by" class="bpchk-checkin-by" id="bpchk-checkin-by-autocomplete">
@@ -59,7 +59,7 @@ $place_types = array(
 							<input <?php echo ( $bp_checkins->checkin_by == 'placetype' ) ? 'checked' : '';?> required type="radio" value="placetype" name="bpchk-checkin-by" class="bpchk-checkin-by" id="bpchk-checkin-by-placetype">
 							<label for="bpchk-checkin-by-placetype"><?php _e( 'Place Types', BPCHK_TEXT_DOMAIN );?></label>
 						</p>
-						<p class="description"><?php _e( 'This setting will help the users checkin by autocomplete or placetype google features.', BPCHK_TEXT_DOMAIN );?></p>
+						<p class="description"><?php _e( 'This setting will help the users check-in by autocomplete or placetype google features.', BPCHK_TEXT_DOMAIN );?></p>
 					</td>
 				</tr>
 			<?php }?>
@@ -71,7 +71,7 @@ $place_types = array(
 					<input type="hidden" value="<?php echo $saved_range;?>" id="hidden_range" />
 					<input value="<?php echo $saved_range;?>" id="bpchk-google-places-range" type="range" name="bpchk-google-places-range" min="1" max="10">
 					<span id="range_disp"><?php if ( $saved_range ) echo "$saved_range kms.";?></span>
-					<p class="description"><?php _e( 'This will set the range for fetching the places while checkin.', BPCHK_TEXT_DOMAIN );?></p>
+					<p class="description"><?php _e( 'This will set the range for fetching the places while check-in.', BPCHK_TEXT_DOMAIN );?></p>
 				</td>
 			</tr>
 

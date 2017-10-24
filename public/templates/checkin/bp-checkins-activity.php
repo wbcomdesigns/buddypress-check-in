@@ -1,0 +1,59 @@
+<?php
+if( !defined( 'ABSPATH' ) ) exit;
+
+global $bp_checkins;
+$apikey = $bp_checkins->apikey;
+
+$bpchk_fav_places = get_user_meta( get_current_user_id(),'bpchk_fav_places',true);
+
+if($bpchk_fav_places){
+	?>
+	<div id="accordion" class="bpchk-fav-loc-map-container">
+	<?php
+	foreach ($bpchk_fav_places as $key => $fav_places) {
+	$map_url = 'https://www.google.com/maps/embed/v1/place?key='.$apikey.'&q='.$fav_places['formatted_address'];
+?>
+
+	<h3><?php echo $fav_places['place']; ?></h3>
+	<div>
+		<div class="bpchk-fav-loc-map">
+			<iframe frameborder="0" style="border:0" src="<?php echo $map_url;?>" allowfullscreen></iframe>
+		</div>
+		<div class="bpchk-fav-loc-map-details">
+			<?php if($fav_places['formatted_address']){ ?>
+			<p>
+				<label><?php _e( 'Address', BPCHK_TEXT_DOMAIN ); ?></label>
+				<span><?php echo $fav_places['formatted_address']; ?></span>
+			</p>
+			<?php } ?>
+			<?php if($fav_places['street']){ ?>
+			<p>
+				<label><?php _e( 'Street', BPCHK_TEXT_DOMAIN ); ?></label>
+				<span><?php echo $fav_places['street']; ?></span>
+			</p>
+			<?php } ?>
+			<?php if($fav_places['postal_code']){ ?>
+			<p>
+				<label><?php _e( 'Postal Code', BPCHK_TEXT_DOMAIN ); ?></label>
+				<span><?php echo $fav_places['postal_code']; ?></span>
+			</p>
+			<?php } ?>
+			<?php if($fav_places['city']){ ?>
+			<p>
+				<label><?php _e( 'City', BPCHK_TEXT_DOMAIN ); ?></label>
+				<span><?php echo $fav_places['city']; ?></span>
+			</p>
+			<?php } ?>
+			<?php if($fav_places['visit_date']){ ?>
+			<p>
+				<label><?php _e( 'Visited Date', BPCHK_TEXT_DOMAIN ); ?></label>
+				<span><?php echo $fav_places['visit_date']; ?></span>
+			</p>
+			<?php } ?>
+		</div>
+		<div class="clear"></div>
+	</div>
+<?php	
+	}
+	?></div><?php
+}

@@ -5,8 +5,10 @@ jQuery(document).ready(function($){
 		placeholder		: "Select Place Types",
 		plugins			: ['remove_button'],
 	});
-	var plc_types_selectize = bpchk_post_types[0].selectize;
-
+	if(bpchk_post_types[0]){
+		var plc_types_selectize = bpchk_post_types[0].selectize;
+	}
+	//console.log(plc_types_selectize);
 	// Select-Unselect all place types
 	$(document).on('click', '#bpchk-select-all-place-types', function(){
 		var pt_names = [], i;

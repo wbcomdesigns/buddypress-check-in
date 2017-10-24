@@ -159,15 +159,13 @@ class Bp_Checkins {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'init', $plugin_admin, 'bpchk_register_places_cpt' );
-		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'bpchk_places_metabox' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'bpchk_add_menu_page' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'bpchk_plugin_settings' );
 		$this->loader->add_action( 'bp_setup_admin_bar', $plugin_admin, 'bpchk_setup_admin_bar_links', 80 );
 
 		//Ajax call for verifying the API Key
 		$this->loader->add_action( 'wp_ajax_bpchk_verify_apikey', $plugin_admin, 'bpchk_verify_apikey' );
-		$this->loader->add_action( 'wp_ajax_nopriv_bpchk_verify_apikey', $plugin_admin, 'bpchk_verify_apikey' );
+		//$this->loader->add_action( 'wp_ajax_nopriv_bpchk_verify_apikey', $plugin_admin, 'bpchk_verify_apikey' );
 
 	}
 
@@ -187,11 +185,17 @@ class Bp_Checkins {
 		$this->loader->add_action( 'bp_setup_nav', $plugin_public, 'bpchk_member_profile_checkin_tab' );
 		$this->loader->add_action( 'bp_activity_posted_update', $plugin_public, 'bpchk_update_meta_on_post_update', 10, 3 );
 		$this->loader->add_action( 'bp_activity_entry_content', $plugin_public, 'bpchk_show_google_map_in_checkin_activity', 10 );
-		$this->loader->add_action( 'bp_member_header_actions', $plugin_public, 'bpchk_add_place_button_on_member_header' );
 		$this->loader->add_action( 'wp_ajax_bpchk_save_temp_location', $plugin_public, 'bpchk_save_temp_location' );
 		$this->loader->add_action( 'wp_ajax_bpchk_fetch_places', $plugin_public, 'bpchk_fetch_places' );
 		$this->loader->add_action( 'wp_ajax_bpchk_select_place_to_checkin', $plugin_public, 'bpchk_select_place_to_checkin' );
 		$this->loader->add_action( 'wp_ajax_bpchk_cancel_checkin', $plugin_public, 'bpchk_cancel_checkin' );
+		/*version 1.0.1 update*/
+		$this->loader->add_filter('bp_activity_check_activity_types', $plugin_public, 'bpchk_add_checkin_activity_type',10,1);
+		$this->loader->add_action( 'bp_init', $plugin_public, 'bpchk_add_location_xprofile_field' );
+		$this->loader->add_action( 'wp_ajax_bpchk_save_xprofile_location', $plugin_public, 'bpchk_save_xprofile_location' );
+		$this->loader->add_filter( 'bp_get_the_profile_field_value', $plugin_public, 'bpchk_show_xprofile_location',10,3);
+		$this->loader->add_action( 'bp_register_activity_actions', $plugin_public, 'custom_plugin_register_activity_actions' );
+		$this->loader->add_action('bp_activity_before_save',$plugin_public, 'bpchk_update_activity_type_checkins', 10,1);
 	}
 
 	/**

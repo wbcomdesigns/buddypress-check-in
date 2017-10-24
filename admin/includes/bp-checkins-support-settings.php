@@ -16,7 +16,55 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                     </div>
                 </div>
             </div>
-
+            <div class="bpchk-admin-row">
+                <div>
+                    <button class="bpchk-accordion"><?php _e( 'What is the use of API Key option provided in general settings section?', BPCHK_TEXT_DOMAIN );?></button>
+                    <div class="panel">
+                        <p><?php _e( 'With the help of Google Places Api Key, user can check-in with places autocomplete while updating post in buddypress and list checked in location in google map.', BPCHK_TEXT_DOMAIN );?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="bpchk-admin-row">
+                <div>
+                    <button class="bpchk-accordion"><?php _e( 'How to check-in using Location Autocomplete option provided in general settings section?', BPCHK_TEXT_DOMAIN );?></button>
+                    <div class="panel">
+                        <p><?php _e( 'Location Autocomplete setting provide interface at activity page to post an update using google places autocomplete.', BPCHK_TEXT_DOMAIN );?></p>
+                        <p><?php _e( 'Also there is an option [Add as my location] to set current check-in location as favourite location. ', BPCHK_TEXT_DOMAIN );?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="bpchk-admin-row">
+                <div>
+                    <button class="bpchk-accordion"><?php _e( 'How to check-in using Places Types option provided in general settings section?', BPCHK_TEXT_DOMAIN );?></button>
+                    <div class="panel">
+                        <p><?php _e( 'Places Types setting provide interface at activity page to post an update using selected google places types.Range will set the range for fetching the places while check-in.', BPCHK_TEXT_DOMAIN );?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="bpchk-admin-row">
+                <div>
+                    <button class="bpchk-accordion"><?php _e( 'Where can I see all check-ins activity?', BPCHK_TEXT_DOMAIN );?></button>
+                    <div class="panel">
+                        <p><?php _e( 'Check-ins filter option is provided in BuddyPress filter dropdown option to list all check-ins activity.', BPCHK_TEXT_DOMAIN );?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="bpchk-admin-row">
+                <div>
+                    <button class="bpchk-accordion"><?php _e( 'Where can I see favourite locations?', BPCHK_TEXT_DOMAIN );?></button>
+                    <div class="panel">
+                        <p><?php _e( 'All favourite locations are listed under Check-ins tab in at BuddyPress pages.', BPCHK_TEXT_DOMAIN );?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="bpchk-admin-row">
+                <div>
+                    <button class="bpchk-accordion"><?php _e( 'How to set location at profile page?', BPCHK_TEXT_DOMAIN );?></button>
+                    <div class="panel">
+                        <p><?php _e( 'The plugin provides extended xprofile location field to set location at BuddyPress profile page.', BPCHK_TEXT_DOMAIN );?></p>
+                    </div>
+                </div>
+            </div>
             <div class="bpchk-admin-row">
                 <div>
                     <button class="bpchk-accordion"><?php _e( 'How to go for any custom development?', BPCHK_TEXT_DOMAIN );?></button>

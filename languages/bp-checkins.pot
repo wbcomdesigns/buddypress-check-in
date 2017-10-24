@@ -1,0 +1,337 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Buddypress Checkins\n"
+"POT-Creation-Date: 2017-10-24 18:28+0530\n"
+"PO-Revision-Date: 2017-10-24 18:31+0530\n"
+"Last-Translator: \n"
+"Language-Team: wbcomdesigns <admin@wbcomdesigns.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/class-bp-checkins-admin.php:99
+msgid "BuddyPress Checkins Settings"
+msgstr ""
+
+#: admin/class-bp-checkins-admin.php:99
+msgid "Checkins"
+msgstr ""
+
+#: admin/class-bp-checkins-admin.php:111
+msgid "Email Support"
+msgstr ""
+
+#: admin/class-bp-checkins-admin.php:112
+msgid "User Manual"
+msgstr ""
+
+#: admin/class-bp-checkins-admin.php:113
+msgid "Rate Us on WordPress.org"
+msgstr ""
+
+#: admin/class-bp-checkins-admin.php:115
+msgid "BuddyPress Checkin"
+msgstr ""
+
+#: admin/class-bp-checkins-admin.php:141
+msgid "General"
+msgstr ""
+
+#: admin/class-bp-checkins-admin.php:146 bp-checkins.php:126
+msgid "Support"
+msgstr ""
+
+#: admin/class-bp-checkins-admin.php:189
+msgid "<strong>Settings Saved.</strong>"
+msgstr ""
+
+#: admin/class-bp-checkins-admin.php:227
+#: public/class-bp-checkins-public.php:135
+#: public/class-bp-checkins-public.php:348
+msgid "Check-ins"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:41
+#: admin/includes/bp-checkins-general-settings.php:43
+msgid "API Key"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:44
+msgid "Verify"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:45
+msgid ""
+"Due to changes in Google Maps API it's required to use an API key for the "
+"BuddyPress Check-ins plugin to work properly. You can get the API key"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:45
+msgid "here."
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:52
+msgid "Check-in by"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:56
+msgid "Location Autocomplete"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:60
+#: admin/includes/bp-checkins-general-settings.php:80
+msgid "Place Types"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:62
+msgid ""
+"This setting will help the users check-in by autocomplete or placetype "
+"google features."
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:69
+msgid "Range"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:74
+msgid "This will set the range for fetching the places while check-in."
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:83
+msgid "Select All"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:84
+msgid "Unselect All"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:92
+msgid "This will help in fetching the place types, that will be selected here."
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:99
+msgid "Save Changes"
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:6
+msgid "Have some questions?"
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:12
+msgid "What plugin does this plugin require?"
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:14
+msgid ""
+"As the name of the plugin justifies, this plugin helps the site members to "
+"<strong>checkin, during their post updates</strong>, this plugin requires "
+"<strong>BuddyPress</strong> plugin to be installed and active."
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:15
+msgid ""
+"You'll also get an admin notice and the plugin will become ineffective if "
+"the required plugin will not be there."
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:21
+msgid "What is the use of API Key option provided in general settings section?"
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:23
+msgid ""
+"With the help of Google Places Api Key, user can check-in with places "
+"autocomplete while updating post in buddypress and list checked in location "
+"in google map."
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:29
+msgid ""
+"How to check-in using Location Autocomplete option provided in general "
+"settings section?"
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:31
+msgid ""
+"Location Autocomplete setting provide interface at activity page to post an "
+"update using google places autocomplete."
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:32
+msgid ""
+"Also there is an option [Add as my location] to set current check-in "
+"location as favourite location. "
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:38
+msgid ""
+"How to check-in using Places Types option provided in general settings "
+"section?"
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:40
+msgid ""
+"Places Types setting provide interface at activity page to post an update "
+"using selected google places types.Range will set the range for fetching the "
+"places while check-in."
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:46
+msgid "Where can I see all check-ins activity?"
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:48
+msgid ""
+"Check-ins filter option is provided in BuddyPress filter dropdown option to "
+"list all check-ins activity."
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:54
+msgid "Where can I see favourite locations?"
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:56
+msgid ""
+"All favourite locations are listed under Check-ins tab in at BuddyPress "
+"pages."
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:62
+msgid "How to set location at profile page?"
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:64
+msgid ""
+"The plugin provides extended xprofile location field to set location at "
+"BuddyPress profile page."
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:70
+msgid "How to go for any custom development?"
+msgstr ""
+
+#: admin/includes/bp-checkins-support-settings.php:72
+msgid ""
+"If you need additional help you can contact us for <a href=\"https://"
+"wbcomdesigns.com/contact/\" target=\"_blank\" title=\"Custom Development by "
+"Wbcom Designs\">Custom Development</a>."
+msgstr ""
+
+#: bp-checkins.php:106
+#, php-format
+msgid "%1$s is ineffective as it requires %2$s to be installed and active."
+msgstr ""
+
+#: bp-checkins.php:117
+#, php-format
+msgid "%1$s is ineffective now as it requires %2$s to be active."
+msgstr ""
+
+#: bp-checkins.php:125
+msgid "Settings"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:89
+msgid "Type in to checkin"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:93
+#: public/class-bp-checkins-public.php:543
+msgid "Add as my location"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:94
+msgid "Saving location..."
+msgstr ""
+
+#: public/class-bp-checkins-public.php:100
+msgid "Please Wait.."
+msgstr ""
+
+#: public/class-bp-checkins-public.php:145
+msgid "Locations"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:169
+msgid "My Locations"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:348
+msgid "Check-ins Update"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:363
+#, php-format
+msgid "%s checked-in"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:523
+msgid "places-found"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:537
+msgid "Select this place"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:548
+msgid "places-not-found"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:549
+msgid "Places not found !"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:582
+msgid "place-details-found"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:598
+msgid "Click here to cancel your checkin."
+msgstr ""
+
+#: public/class-bp-checkins-public.php:601
+msgid "Show places"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:602
+msgid "Hide places"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:623
+msgid "place-details-not-found"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:624
+msgid "Place details not found !"
+msgstr ""
+
+#: public/class-bp-checkins-public.php:645
+msgid "Checkin cancelled !"
+msgstr ""
+
+#: public/templates/checkin/bp-checkins-activity.php:25
+msgid "Address"
+msgstr ""
+
+#: public/templates/checkin/bp-checkins-activity.php:31
+msgid "Street"
+msgstr ""
+
+#: public/templates/checkin/bp-checkins-activity.php:37
+msgid "Postal Code"
+msgstr ""
+
+#: public/templates/checkin/bp-checkins-activity.php:43
+msgid "City"
+msgstr ""
+
+#: public/templates/checkin/bp-checkins-activity.php:49
+msgid "Visited Date"
+msgstr ""
