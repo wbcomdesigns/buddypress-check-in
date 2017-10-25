@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 <div class="bpchk-adming-setting">
-    <div class="bpchk-tab-header"><h3><?php _e( 'Have some questions?', BPCHK_TEXT_DOMAIN );?></h3></div>
+    <div class="bpchk-tab-header"><h3><?php _e( 'FAQ(s)', BPCHK_TEXT_DOMAIN );?></h3></div>
 
     <div class="bpchk-admin-settings-block">
         <div id="bpchk-settings-tbl">
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 <div>
                     <button class="bpchk-accordion"><?php _e( 'What plugin does this plugin require?', BPCHK_TEXT_DOMAIN );?></button>
                     <div class="panel">
-                        <p><?php _e( 'As the name of the plugin justifies, this plugin helps the site members to <strong>checkin, during their post updates</strong>, this plugin requires <strong>BuddyPress</strong> plugin to be installed and active.', BPCHK_TEXT_DOMAIN );?></p>
+                        <p><?php _e( 'As the name of the plugin justifies, this plugin helps the site members to <strong>check-in, during their post updates</strong>, this plugin requires <strong>BuddyPress</strong> plugin to be installed and active.', BPCHK_TEXT_DOMAIN );?></p>
                         <p><?php _e( 'You\'ll also get an admin notice and the plugin will become ineffective if the required plugin will not be there.', BPCHK_TEXT_DOMAIN );?></p>
                     </div>
                 </div>
@@ -35,9 +35,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             </div>
             <div class="bpchk-admin-row">
                 <div>
-                    <button class="bpchk-accordion"><?php _e( 'How to check-in using Places Types option provided in general settings section?', BPCHK_TEXT_DOMAIN );?></button>
+                    <button class="bpchk-accordion"><?php _e( 'How to check-in using Place Types option provided in general settings section?', BPCHK_TEXT_DOMAIN );?></button>
                     <div class="panel">
-                        <p><?php _e( 'Places Types setting provide interface at activity page to post an update using selected google places types.Range will set the range for fetching the places while check-in.', BPCHK_TEXT_DOMAIN );?></p>
+                        <p><?php _e( 'Place Types setting provide interface at activity page to post an update using selected google places types.Range option will set the range in kilometers for fetching the places while check-in.', BPCHK_TEXT_DOMAIN );?></p>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 <div>
                     <button class="bpchk-accordion"><?php _e( 'Where can I see favourite locations?', BPCHK_TEXT_DOMAIN );?></button>
                     <div class="panel">
-                        <p><?php _e( 'All favourite locations are listed under Check-ins tab in at BuddyPress pages.', BPCHK_TEXT_DOMAIN );?></p>
+                        <p><?php _e( 'All favourite locations are listed under Check-ins tab at BuddyPress profile page.', BPCHK_TEXT_DOMAIN );?></p>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 <div>
                     <button class="bpchk-accordion"><?php _e( 'How to set location at profile page?', BPCHK_TEXT_DOMAIN );?></button>
                     <div class="panel">
-                        <p><?php _e( 'The plugin provides extended xprofile location field to set location at BuddyPress profile page.', BPCHK_TEXT_DOMAIN );?></p>
+                        <p><?php _e( 'The plugin provides extended xprofile location field to set location at BuddyPress edit profile page.', BPCHK_TEXT_DOMAIN );?></p>
                     </div>
                 </div>
             </div>
