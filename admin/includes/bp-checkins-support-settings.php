@@ -61,7 +61,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 <div>
                     <button class="bpchk-accordion"><?php _e( 'How to set location at profile page?', BPCHK_TEXT_DOMAIN );?></button>
                     <div class="panel">
-                        <p><?php _e( 'The plugin provides extended xprofile location field to set location at BuddyPress edit profile page.', BPCHK_TEXT_DOMAIN );?></p>
+                        <p><?php _e( 'The plugin provides xprofile location field to set location at BuddyPress edit profile page.', BPCHK_TEXT_DOMAIN );?></p>
                     </div>
                 </div>
             </div>

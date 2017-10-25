@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Buddypress Checkins\n"
-"POT-Creation-Date: 2017-10-24 18:28+0530\n"
-"PO-Revision-Date: 2017-10-24 18:31+0530\n"
+"Project-Id-Version: BuddyPress Checkin\n"
+"POT-Creation-Date: 2017-10-25 13:43+0530\n"
+"PO-Revision-Date: 2017-10-25 13:43+0530\n"
 "Last-Translator: \n"
 "Language-Team: wbcomdesigns <admin@wbcomdesigns.com>\n"
 "Language: en_US\n"
@@ -20,8 +20,10 @@ msgstr ""
 msgid "BuddyPress Checkins Settings"
 msgstr ""
 
-#: admin/class-bp-checkins-admin.php:99
-msgid "Checkins"
+#: admin/class-bp-checkins-admin.php:99 admin/class-bp-checkins-admin.php:227
+#: public/class-bp-checkins-public.php:135
+#: public/class-bp-checkins-public.php:348
+msgid "Check-ins"
 msgstr ""
 
 #: admin/class-bp-checkins-admin.php:111
@@ -37,7 +39,7 @@ msgid "Rate Us on WordPress.org"
 msgstr ""
 
 #: admin/class-bp-checkins-admin.php:115
-msgid "BuddyPress Checkin"
+msgid "BuddyPress Check-ins"
 msgstr ""
 
 #: admin/class-bp-checkins-admin.php:141
@@ -50,12 +52,6 @@ msgstr ""
 
 #: admin/class-bp-checkins-admin.php:189
 msgid "<strong>Settings Saved.</strong>"
-msgstr ""
-
-#: admin/class-bp-checkins-admin.php:227
-#: public/class-bp-checkins-public.php:135
-#: public/class-bp-checkins-public.php:348
-msgid "Check-ins"
 msgstr ""
 
 #: admin/includes/bp-checkins-general-settings.php:41
@@ -121,18 +117,15 @@ msgid "Save Changes"
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:6
-msgid "Have some questions?"
+msgid "FAQ(s)"
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:12
-msgid "What plugin does this plugin require?"
+msgid "Does This plugin requires BuddyPress ?"
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:14
-msgid ""
-"As the name of the plugin justifies, this plugin helps the site members to "
-"<strong>checkin, during their post updates</strong>, this plugin requires "
-"<strong>BuddyPress</strong> plugin to be installed and active."
+msgid "Yes, It needs you to have BuddyPress installed and activated."
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:15
@@ -172,15 +165,15 @@ msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:38
 msgid ""
-"How to check-in using Places Types option provided in general settings "
+"How to check-in using Place Types option provided in general settings "
 "section?"
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:40
 msgid ""
-"Places Types setting provide interface at activity page to post an update "
-"using selected google places types.Range will set the range for fetching the "
-"places while check-in."
+"Place Types setting provide interface at activity page to post an update "
+"using selected google places types.Range option will set the range in "
+"kilometers for fetching the places while check-in."
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:46
@@ -199,8 +192,8 @@ msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:56
 msgid ""
-"All favourite locations are listed under Check-ins tab in at BuddyPress "
-"pages."
+"All favourite locations are listed under Check-ins tab at BuddyPress profile "
+"page."
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:62
@@ -209,8 +202,8 @@ msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:64
 msgid ""
-"The plugin provides extended xprofile location field to set location at "
-"BuddyPress profile page."
+"The plugin provides xprofile location field to set location at BuddyPress "
+"edit profile page."
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:70
@@ -239,7 +232,7 @@ msgid "Settings"
 msgstr ""
 
 #: public/class-bp-checkins-public.php:89
-msgid "Type in to checkin"
+msgid "Start typing your location..."
 msgstr ""
 
 #: public/class-bp-checkins-public.php:93

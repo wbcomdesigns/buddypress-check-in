@@ -45,7 +45,7 @@ All favourite locations are listed under Check-ins tab at BuddyPress profile pag
 
 = How to set location at profile page? =
 
-The plugin provides extended xprofile location field to set location at BuddyPress edit profile page.
+The plugin provides xprofile location field to set location at BuddyPress edit profile page.
 
 = How to go for any custom development? =
 
