@@ -96,7 +96,7 @@ class Bp_Checkins_Admin {
 	 * @since    1.0.0
 	 */
 	public function bpchk_add_menu_page() {
-		add_menu_page( __( 'BuddyPress Checkins Settings', BPCHK_TEXT_DOMAIN ), __( 'Checkins', BPCHK_TEXT_DOMAIN ), 'manage_options', $this->plugin_name, array( $this, 'bpchk_admin_settings_page' ), 'dashicons-location', 59 );
+		add_menu_page( __( 'BuddyPress Checkins Settings', BPCHK_TEXT_DOMAIN ), __( 'Check-ins', BPCHK_TEXT_DOMAIN ), 'manage_options', $this->plugin_name, array( $this, 'bpchk_admin_settings_page' ), 'dashicons-location', 59 );
 	}
 
 	/**
