@@ -15,8 +15,8 @@
  * @wordpress-plugin
  * Plugin Name:       BuddyPress Checkin
  * Plugin URI:        https://wbcomdesigns.com/
- * Description:       This plugin adds extra feature to <strong>BuddyPress Activity</strong> updates allowing users to <strong>checkin their current location</strong>.
- * Version:           1.0.4
+ * Description:       This plugin adds extra feature to <strong>BuddyPress Activity</strong> updates allowing users to <strong>check-in their current location</strong>.
+ * Version:           1.0.5
  * Author:            Wbcom Designs
  * Author URI:        https://wbcomdesigns.com/
  * License:           GPL-2.0+
@@ -126,10 +126,4 @@ function bpchk_plugin_links( $links ) {
 		'<a href="https://wbcomdesigns.com/contact/" target="_blank">' . __( 'Support', BPCHK_TEXT_DOMAIN ) . '</a>'
 	);
 	return array_merge( $links, $bpchk_links );
-}
-
-function xxdebug( $result ) {
-	echo '<pre>';
-	print_r( $result );
-	echo '</pre>';
 }

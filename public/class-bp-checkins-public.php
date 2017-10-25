@@ -86,7 +86,7 @@ class Bp_Checkins_Public {
 				$checkin_html	 .= '<div class="bp-checkins bp-checkin-panel">';
 				if ( $bp_checkins->checkin_by == 'autocomplete' ) {
 					$checkin_html	 .= '<div class="checkin-by-autocomplete">';
-					$checkin_html	 .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Type in to checkin', BPCHK_TEXT_DOMAIN ) . '" />';
+					$checkin_html	 .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', BPCHK_TEXT_DOMAIN ) . '" />';
 					$checkin_html	 .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
 					$checkin_html	 .= '<input type="hidden" id="bpchk-checkin-place-lng" />';
 					$checkin_html	 .= '<input type="checkbox" id="bpchk-add-as-place" checked />';

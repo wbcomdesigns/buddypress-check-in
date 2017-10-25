@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
         <div id="bpchk-settings-tbl">
             <div class="bpchk-admin-row">
                 <div>
-                    <button class="bpchk-accordion"><?php _e( 'What plugin does this plugin require?', BPCHK_TEXT_DOMAIN );?></button>
+                    <button class="bpchk-accordion"><?php _e( 'Does This plugin requires BuddyPress ?', BPCHK_TEXT_DOMAIN );?></button>
                     <div class="panel">
-                        <p><?php _e( 'As the name of the plugin justifies, this plugin helps the site members to <strong>check-in, during their post updates</strong>, this plugin requires <strong>BuddyPress</strong> plugin to be installed and active.', BPCHK_TEXT_DOMAIN );?></p>
+                        <p><?php _e( 'Yes, It needs you to have BuddyPress installed and activated.', BPCHK_TEXT_DOMAIN );?></p>
                         <p><?php _e( 'You\'ll also get an admin notice and the plugin will become ineffective if the required plugin will not be there.', BPCHK_TEXT_DOMAIN );?></p>
                     </div>
                 </div>

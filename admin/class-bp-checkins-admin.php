@@ -112,7 +112,7 @@ class Bp_Checkins_Admin {
 					<button type="button" class="button button-secondary" onclick="window.open('https://wbcomdesigns.com/helpdesk/article-categories/buddypress-checkins/', '_blank');"><i class="fa fa-file" aria-hidden="true"></i> <?php _e( 'User Manual', BPCHK_TEXT_DOMAIN )?></button>
 					<button type="button" class="button button-secondary" onclick="window.open('https://wordpress.org/support/plugin/bp-check-in/reviews/', '_blank');"><i class="fa fa-star" aria-hidden="true"></i> <?php _e( 'Rate Us on WordPress.org', BPCHK_TEXT_DOMAIN )?></button>
 				</div>
-				<h2 class="bpchk-plugin-heading"><?php _e( 'BuddyPress Checkin', BPCHK_TEXT_DOMAIN );?></h2>
+				<h2 class="bpchk-plugin-heading"><?php _e( 'BuddyPress Check-ins', BPCHK_TEXT_DOMAIN );?></h2>
 			</div>
 			<?php $this->bpchk_plugin_settings_tabs();?>
 			<?php do_settings_sections( $tab );?>
