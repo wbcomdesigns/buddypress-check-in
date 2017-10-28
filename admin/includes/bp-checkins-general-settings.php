@@ -33,7 +33,7 @@ $place_types = array(
 	'Train Station', 'Transit Station', 'Travel Agency', 'University', 'Veterinary Care', 'Zoo'
 );
 ?>
-<form method="POST" action="">
+
 	<table class="form-table bpchk-admin-page-table">
 		<tbody>
 			<!-- API Key -->
@@ -95,7 +95,5 @@ $place_types = array(
 		</tbody>
 	</table>
 	<p class="submit">
-		<?php wp_nonce_field( 'bpchk-general', 'bpchk-general-settings-nonce'); ?>
-		<input type="submit" name="bpchk-submit-general-settings" class="button button-primary" value="<?php _e( 'Save Changes', BPCHK_TEXT_DOMAIN );?>">
+		<?php submit_button('Save Changes','primary','bpchk-submit-general-settings') ?>
 	</p>
-</form>

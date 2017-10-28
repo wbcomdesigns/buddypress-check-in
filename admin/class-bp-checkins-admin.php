@@ -114,8 +114,19 @@ class Bp_Checkins_Admin {
 				</div>
 				<h2 class="bpchk-plugin-heading"><?php _e( 'BuddyPress Check-ins', BPCHK_TEXT_DOMAIN );?></h2>
 			</div>
-			<?php $this->bpchk_plugin_settings_tabs();?>
-			<?php do_settings_sections( $tab );?>
+			<form method="POST" action="">
+
+				<?php settings_errors();
+				if( isset( $_POST['bpchk-submit-general-settings'] ) ) {
+					$success_msg = "<div class='notice updated is-dismissible' id='message'>";
+					$success_msg .= "<p>".__( '<strong>Settings Saved.</strong>', BPCHK_TEXT_DOMAIN )."</p>";
+					$success_msg .= "</div>";
+					echo $success_msg;
+				}
+				$this->bpchk_plugin_settings_tabs();
+				settings_fields($tab); ?>
+				<?php do_settings_sections( $tab );?>
+			</form>
 		</div>
 		<?php
 	}
@@ -170,7 +181,7 @@ class Bp_Checkins_Admin {
 	 * Save Plugin General Settings
 	 */
 	function bpchk_save_general_settings() {
-		if( isset( $_POST['bpchk-submit-general-settings'] ) && wp_verify_nonce( $_POST['bpchk-general-settings-nonce'], 'bpchk-general' ) ) {
+		if( isset( $_POST['bpchk-submit-general-settings'] ) ) {
 
 			$checkin_by = '';
 			if( isset( $_POST['bpchk-checkin-by'] ) ) {
@@ -185,10 +196,7 @@ class Bp_Checkins_Admin {
 			);
 
 			update_option( 'bpchk_general_settings', $admin_settings );
-			$success_msg = "<div class='notice updated is-dismissible' id='message'>";
-			$success_msg .= "<p>".__( '<strong>Settings Saved.</strong>', BPCHK_TEXT_DOMAIN )."</p>";
-			$success_msg .= "</div>";
-			echo $success_msg;
+			
 		}
 	}
 
