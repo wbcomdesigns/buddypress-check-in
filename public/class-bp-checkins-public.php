@@ -50,7 +50,7 @@ class Bp_Checkins_Public {
 		global $bp_checkins;
 		$this->plugin_name	 = $plugin_name;
 		$this->version		 = $version;
-		$this->bp_checkins		 = &$bp_checkins;
+		$this->bp_checkins	 = &$bp_checkins;
 		// global $bp_checkins;
 		// $placetypes	 = implode( ',', $bp_checkins->place_types );
 		// var_dump($placetypes);die;
@@ -426,27 +426,29 @@ class Bp_Checkins_Public {
 					$jsondata			 = json_decode( wp_remote_retrieve_body( $response ), true );
 					$place_visit_date	 = date( 'Y-m-d', time() );
 
-					$address						 = array();
-					$address[ 'latitude' ]			 = $latitude;
-					$address[ 'longitude' ]			 = $longitude;
-					$address[ 'activity_id' ]		 = $activity_id;
-					$address[ 'place' ]				 = $place;
-					$address[ 'country' ]			 = self::google_getCountry( $jsondata );
-					$address[ 'province' ]			 = self::google_getProvince( $jsondata );
-					$address[ 'city' ]				 = self::google_getCity( $jsondata );
-					$address[ 'street' ]			 = self::google_getStreet( $jsondata );
-					$address[ 'postal_code' ]		 = self::google_getPostalCode( $jsondata );
-					$address[ 'country_code' ]		 = self::google_getCountryCode( $jsondata );
-					$address[ 'formatted_address' ]	 = self::google_getAddress( $jsondata );
-					$address[ 'visit_date' ]		 = $place_visit_date;
+					if($jsondata[ "results" ][ 0 ][ "formatted_address" ]){
+						$address						 = array();
+						$address[ 'latitude' ]			 = $latitude;
+						$address[ 'longitude' ]			 = $longitude;
+						$address[ 'activity_id' ]		 = $activity_id;
+						$address[ 'place' ]				 = $place;
+						$address[ 'country' ]			 = self::google_getCountry( $jsondata );
+						$address[ 'province' ]			 = self::google_getProvince( $jsondata );
+						$address[ 'city' ]				 = self::google_getCity( $jsondata );
+						$address[ 'street' ]			 = self::google_getStreet( $jsondata );
+						$address[ 'postal_code' ]		 = self::google_getPostalCode( $jsondata );
+						$address[ 'country_code' ]		 = self::google_getCountryCode( $jsondata );
+						$address[ 'formatted_address' ]	 = self::google_getAddress( $jsondata );
+						$address[ 'visit_date' ]		 = $place_visit_date;
 
-					if ( $bpchk_fav_places ) {
-						array_push( $bpchk_fav_places, $address );
-						update_user_meta( $user_id, 'bpchk_fav_places', $bpchk_fav_places );
-					} else {
-						$fav_places		 = array();
-						$fav_places[]	 = $address;
-						update_user_meta( $user_id, 'bpchk_fav_places', $fav_places );
+						if ( $bpchk_fav_places ) {
+							array_push( $bpchk_fav_places, $address );
+							update_user_meta( $user_id, 'bpchk_fav_places', $bpchk_fav_places );
+						} else {
+							$fav_places		 = array();
+							$fav_places[]	 = $address;
+							update_user_meta( $user_id, 'bpchk_fav_places', $fav_places );
+						}
 					}
 				}
 			}
