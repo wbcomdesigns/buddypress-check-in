@@ -536,7 +536,7 @@ class Bp_Checkins_Public {
 						$places_html .= '<span>' . $place->vicinity . '</span>';
 						$places_html .= '</div>';
 						$places_html .= '<div class="place-actions">';
-						$places_html .= '<a href="javascript:void(0);" class="bpchk-select-place-to-checkin" data-place_reference="' . $place->reference . '" data-place_id="' . $place->place_id . '">' . __( 'Select this place', BPCHK_TEXT_DOMAIN ) . '</a>';
+						$places_html .= '<a href="javascript:void(0);" class="bpchk-select-place-to-checkin" data-place_reference="' . $place->reference . '" data-place_id="' . $place->place_id . '">' . __( 'Select this location', BPCHK_TEXT_DOMAIN ) . '</a>';
 						$places_html .= '</div>';
 						$places_html .= '</li>';
 					}
@@ -600,8 +600,8 @@ class Bp_Checkins_Public {
 				$place_html	 .= ' <a href="javascript:void(0);" id="bpchk-cancel-checkin" title="' . __( 'Click here to cancel your checkin.', BPCHK_TEXT_DOMAIN ) . '"><i class="fa fa-times"></i></a>';
 				$place_html	 .= '</div>';
 				$place_html	 .= '<div>';
-				$place_html	 .= '<a href="javascript:void(0);" id="bpchk-show-places-panel">' . __( 'Show places', BPCHK_TEXT_DOMAIN ) . '</a>';
-				$place_html	 .= '<a href="javascript:void(0);" id="bpchk-hide-places-panel">' . __( 'Hide places', BPCHK_TEXT_DOMAIN ) . '</a>';
+				$place_html	 .= '<a href="javascript:void(0);" id="bpchk-show-places-panel">' . __( 'Show Locations', BPCHK_TEXT_DOMAIN ) . '</a>';
+				// $place_html	 .= '<a href="javascript:void(0);" id="bpchk-hide-places-panel">' . __( 'Hide places', BPCHK_TEXT_DOMAIN ) . '</a>';
 				$place_html	 .= '</div>';
 
 				$qry	 = "SELECT `option_id`, `option_value` from $options_tbl where `option_name` = 'bpchk_temp_location'";

@@ -202,20 +202,26 @@ jQuery(document).ready(function($){
 					//alert(response);
 					//console.log(response);
 					var obj = JSON.parse(response);
-					console.log( obj.html );
+					//console.log( obj.html );
 					$('.checkin-by-placetype').html( obj.html );
 			});
 		}
 	}
 
 	$(document).on('click', '.bpchk-select-place-to-checkin', function(){
+		var clicked_event = $(this);
 		var place_reference = $(this).data('place_reference');
 		var place_id = $(this).data('place_id');
 		var add_as_my_place = 'no';
 		if( $('#bpchk-add-as-place').is(':checked') ) {
 			add_as_my_place = 'yes';
 		}
-		$(this).html( 'Selecting...' );
+		clicked_event.html( '<span class="bpchk-place-select-loader">Selecting location..<i class="fa fa-refresh fa-spin"></i></span>' );
+		
+		$('.bpchk-select-place-to-checkin').not(this).each(function(){
+			$(this).html('Select this location');
+		});
+
 		var data = {
 			'action'			: 'bpchk_select_place_to_checkin',
 			'place_reference'	: place_reference,
@@ -228,6 +234,7 @@ jQuery(document).ready(function($){
 			type: 'POST',
 			data: data,
 			success: function( response ) {
+				clicked_event.html('Selected');
 				console.log( response['data']['message'] );
 				$('.bpchk-single-location-added').html( response['data']['html'] );
 				$('.bpchk-places-fetched, #bpchk-add-as-place, #bpchk-add-my-place-label').hide();
@@ -235,18 +242,24 @@ jQuery(document).ready(function($){
 		});
 	});
 
+
 	//Show the places panel
 	$(document).on('click', '#bpchk-show-places-panel', function(){
-		$('.bpchk-places-fetched, #bpchk-add-as-place, #bpchk-add-my-place-label').show();
+		$('.bpchk-places-fetched').slideToggle(500);
+		//$('.bpchk-places-fetched, #bpchk-add-as-place, #bpchk-add-my-place-label').show();
 	});
 
-	//Hide the places panel
-	$(document).on('click', '#bpchk-hide-places-panel', function(){
-		$('.bpchk-places-fetched, #bpchk-add-as-place, #bpchk-add-my-place-label').hide();
-	});
+	// //Hide the places panel
+	// $(document).on('click', '#bpchk-hide-places-panel', function(){
+	// 	$('.bpchk-places-fetched').slideToggle(500);
+	// 	//$('.bpchk-places-fetched, #bpchk-add-as-place, #bpchk-add-my-place-label').hide();
+	// });
 
 	//Cancel checkin  - the temporary location
 	$(document).on('click', '#bpchk-cancel-checkin', function(){
+		$('.bpchk-select-place-to-checkin').each(function(){
+			$(this).html('Select this location');
+		});
 		var data = {
 			'action' : 'bpchk_cancel_checkin'
 		}
@@ -267,4 +280,12 @@ jQuery(document).ready(function($){
 	$( function() {
 		$( "#accordion" ).accordion();
 	} );
+	$("#aw-whats-new-submit").click(function(){
+		$('.bpchk-select-place-to-checkin').each(function(){
+			$(this).html('Select this location');
+		});
+		$('.bpchk-checkin-temp-location').remove();
+		$('#bpchk-show-places-panel').click();
+		$('.bpchk-allow-checkin').click();
+	});
 });
