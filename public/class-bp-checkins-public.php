@@ -489,6 +489,7 @@ class Bp_Checkins_Public {
 			}else{
 				$formatted_address	 = $place[ 'place' ];
 			}
+
 			$map_url			 = 'https://www.google.com/maps/embed/v1/place?key=' . $apikey . '&q=' . $formatted_address;
 			echo '<div id="bpchk-place-map"><iframe frameborder="0" style="border:0" src="' . $map_url . '" allowfullscreen></iframe></div>';
 		}

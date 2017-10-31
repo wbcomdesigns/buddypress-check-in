@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BuddyPress Checkin 1.0.5\n"
-"POT-Creation-Date: 2017-10-28 13:02+0530\n"
-"PO-Revision-Date: 2017-10-28 13:03+0530\n"
+"POT-Creation-Date: 2017-10-31 18:18+0530\n"
+"PO-Revision-Date: 2017-10-31 18:18+0530\n"
 "Last-Translator: \n"
 "Language-Team: wbcomdesigns <admin@wbcomdesigns.com>\n"
 "Language: en_US\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "BuddyPress Checkins Settings"
 msgstr ""
 
-#: admin/class-bp-checkins-admin.php:99 admin/class-bp-checkins-admin.php:227
+#: admin/class-bp-checkins-admin.php:99 admin/class-bp-checkins-admin.php:235
 #: public/class-bp-checkins-public.php:135
 #: public/class-bp-checkins-public.php:348
 msgid "Check-ins"
@@ -42,16 +42,16 @@ msgstr ""
 msgid "BuddyPress Check-ins"
 msgstr ""
 
-#: admin/class-bp-checkins-admin.php:141
+#: admin/class-bp-checkins-admin.php:122
+msgid "<strong>Settings Saved.</strong>"
+msgstr ""
+
+#: admin/class-bp-checkins-admin.php:152
 msgid "General"
 msgstr ""
 
-#: admin/class-bp-checkins-admin.php:146 bp-checkins.php:126
+#: admin/class-bp-checkins-admin.php:157 bp-checkins.php:126
 msgid "Support"
-msgstr ""
-
-#: admin/class-bp-checkins-admin.php:189
-msgid "<strong>Settings Saved.</strong>"
 msgstr ""
 
 #: admin/includes/bp-checkins-general-settings.php:41
@@ -110,10 +110,6 @@ msgstr ""
 
 #: admin/includes/bp-checkins-general-settings.php:92
 msgid "This will help in fetching the place types, that will be selected here."
-msgstr ""
-
-#: admin/includes/bp-checkins-general-settings.php:99
-msgid "Save Changes"
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:6
@@ -236,7 +232,7 @@ msgid "Start typing your location..."
 msgstr ""
 
 #: public/class-bp-checkins-public.php:93
-#: public/class-bp-checkins-public.php:543
+#: public/class-bp-checkins-public.php:546
 msgid "Add as my location"
 msgstr ""
 
@@ -265,47 +261,43 @@ msgstr ""
 msgid "%s checked-in"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:523
+#: public/class-bp-checkins-public.php:526
 msgid "places-found"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:537
-msgid "Select this place"
+#: public/class-bp-checkins-public.php:540
+msgid "Select this location"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:548
+#: public/class-bp-checkins-public.php:551
 msgid "places-not-found"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:549
+#: public/class-bp-checkins-public.php:552
 msgid "Places not found !"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:582
+#: public/class-bp-checkins-public.php:585
 msgid "place-details-found"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:598
+#: public/class-bp-checkins-public.php:601
 msgid "Click here to cancel your checkin."
 msgstr ""
 
-#: public/class-bp-checkins-public.php:601
-msgid "Show places"
+#: public/class-bp-checkins-public.php:604
+msgid "Show Locations"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:602
-msgid "Hide places"
-msgstr ""
-
-#: public/class-bp-checkins-public.php:623
+#: public/class-bp-checkins-public.php:626
 msgid "place-details-not-found"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:624
+#: public/class-bp-checkins-public.php:627
 msgid "Place details not found !"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:645
+#: public/class-bp-checkins-public.php:648
 msgid "Checkin cancelled !"
 msgstr ""
 
