@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-This plugin allows BuddyPress members to check-in while doing post update, just like other social sites, you can add places where you visited.
+This plugin allows BuddyPress members to share their location when they are posting activities, just like other social sites, you can add places where you visited.
 
 Google Place API key is required for it, You can create your key from [Google Place Web Service Documentation](https://developers.google.com/places/web-service/) link.
 
