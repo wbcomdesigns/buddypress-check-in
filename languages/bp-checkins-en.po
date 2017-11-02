@@ -1,20 +1,25 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: BuddyPress Checkin 1.0.5\n"
-"POT-Creation-Date: 2017-10-31 18:12+0530\n"
-"PO-Revision-Date: 2017-10-31 18:15+0530\n"
-"Last-Translator: \n"
-"Language-Team: wbcomdesigns <admin@wbcomdesigns.com>\n"
-"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: BuddyPress Checkin\n"
+"POT-Creation-Date: 2017-11-02 10:23+0530\n"
+"PO-Revision-Date: 2017-11-02 10:31+0530\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: bp-checkins.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: en\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: admin/class-bp-checkins-admin.php:99
 msgid "BuddyPress Checkins Settings"
@@ -88,7 +93,7 @@ msgstr ""
 
 #: admin/includes/bp-checkins-general-settings.php:62
 msgid ""
-"This setting will help the users check-in by autocomplete or placetype "
+"This setting will help the users check-in by autocomplete or place type "
 "google features."
 msgstr ""
 
@@ -117,7 +122,7 @@ msgid "FAQ(s)"
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:12
-msgid "Does This plugin requires BuddyPress ?"
+msgid "Does this plugin require BuddyPress?"
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:14
@@ -149,14 +154,14 @@ msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:31
 msgid ""
-"Location Autocomplete setting provide interface at activity page to post an "
-"update using google places autocomplete."
+"Location Autocomplete setting provide an interface at activity page to post "
+"an update using google places autocomplete."
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:32
 msgid ""
-"Also there is an option [Add as my location] to set current check-in "
-"location as favourite location. "
+"There is an option [Add as my location] to set current check-in location as "
+"a favourite location."
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:38
@@ -167,9 +172,9 @@ msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:40
 msgid ""
-"Place Types setting provide interface at activity page to post an update "
-"using selected google places types.Range option will set the range in "
-"kilometers for fetching the places while check-in."
+"Place Types setting provide an interface at activity page to post an update "
+"using selected google places types. Range option will set the range in "
+"kilometers for fetching the places during check-in."
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:46
@@ -178,8 +183,8 @@ msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:48
 msgid ""
-"Check-ins filter option is provided in BuddyPress filter dropdown option to "
-"list all check-ins activity."
+"Check-ins filter option provides BuddyPress filter drop-down to list all "
+"check-ins activity."
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:54
@@ -188,8 +193,8 @@ msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:56
 msgid ""
-"All favourite locations are listed under Check-ins tab at BuddyPress profile "
-"page."
+"We are listing all favorite locations under Check-ins tab at BuddyPress "
+"profile page."
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:62
@@ -203,14 +208,14 @@ msgid ""
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:70
-msgid "How to go for any custom development?"
+msgid "If I need to customize plugin, to whom I should contact?"
 msgstr ""
 
 #: admin/includes/bp-checkins-support-settings.php:72
 msgid ""
-"If you need additional help you can contact us for <a href=\"https://"
-"wbcomdesigns.com/contact/\" target=\"_blank\" title=\"Custom Development by "
-"Wbcom Designs\">Custom Development</a>."
+"If you need additional help you can contact us at <a href=\"https://"
+"wbcomdesigns.com/contact/\" target=\"_blank\" title=\"Wbcom Designs\">Wbcom "
+"Designs</a>."
 msgstr ""
 
 #: bp-checkins.php:106
@@ -319,4 +324,23 @@ msgstr ""
 
 #: public/templates/checkin/bp-checkins-activity.php:49
 msgid "Visited Date"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "BuddyPress Checkin"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://wbcomdesigns.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"This plugin adds extra feature to <strong>BuddyPress Activity</strong> "
+"updates allowing users to <strong>check-in their current location</strong>."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Wbcom Designs"
 msgstr ""
