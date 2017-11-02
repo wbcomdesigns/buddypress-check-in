@@ -59,7 +59,7 @@ $place_types = array(
 							<input <?php echo ( $bp_checkins->checkin_by == 'placetype' ) ? 'checked' : '';?> required type="radio" value="placetype" name="bpchk-checkin-by" class="bpchk-checkin-by" id="bpchk-checkin-by-placetype">
 							<label for="bpchk-checkin-by-placetype"><?php _e( 'Place Types', BPCHK_TEXT_DOMAIN );?></label>
 						</p>
-						<p class="description"><?php _e( 'This setting will help the users check-in by autocomplete or placetype google features.', BPCHK_TEXT_DOMAIN );?></p>
+						<p class="description"><?php _e( 'This setting will help the users check-in by autocomplete or place type google features.', BPCHK_TEXT_DOMAIN );?></p>
 					</td>
 				</tr>
 			<?php }?>
@@ -80,7 +80,7 @@ $place_types = array(
 				<th scope="row"><?php _e( 'Place Types', BPCHK_TEXT_DOMAIN );?></th>
 				<td>
 					<p class="bpchk-selection-tags">
-						<a href="javascript:void(0);" id="bpchk-select-all-place-types"><?php _e( 'Select All', BPCHK_TEXT_DOMAIN );?></a> / 
+						<a href="javascript:void(0);" id="bpchk-select-all-place-types"><?php _e( 'Select All', BPCHK_TEXT_DOMAIN );?></a> /
 						<a href="javascript:void(0);" id="bpchk-unselect-all-place-types"><?php _e( 'Unselect All', BPCHK_TEXT_DOMAIN );?></a>
 					</p>
 					<select name="bpchk-google-place-types[]" id="bpchk-pre-place-types" multiple>
