@@ -317,12 +317,18 @@ jQuery(document).ready(function($){
 	$( function() {
 		$( "#accordion" ).accordion();
 	} );
+	
 	$("#aw-whats-new-submit").click(function(){
 		$('.bpchk-select-place-to-checkin').each(function(){
 			$(this).html('Select this location');
 		});
 		$('.bpchk-checkin-temp-location').remove();
-		$('#bpchk-show-places-panel').click();
-		$('.bpchk-allow-checkin').click();
+		if ($('.bp-checkin-panel').is(':visible')) {
+			$('.bp-checkin-panel').slideToggle(500);
+		}
+		if ($('.bpchk-places-fetched').is(':visible')) {
+			$('.bpchk-places-fetched').slideToggle(500);
+		}
+		
 	});
 });
