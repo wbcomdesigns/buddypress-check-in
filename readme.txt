@@ -33,6 +33,9 @@ Yes, It needs you to have BuddyPress installed and activated.
 
 With the help of Google Places API Key, a user can check-in with places autocomplete while updating post in BuddyPress and list checked in a location in google map.
 
+= Does this plugin require current location service? =
+Yes, this plugin require location service and you can allow it from browser settings.
+
 = How can we add a place when updating post? =
 
 Just go to your profile section where you can update post, if you have checked place types option in check in setting where you can see a map marker icon clicking on which you can add your checked-in place but if you have checked autocomplete option then there you can see an auto-complete text box where you can type and select any location or place. After selection of any place, you can see a google map below it.

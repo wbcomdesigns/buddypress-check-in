@@ -26,6 +26,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             </div>
             <div class="bpchk-admin-row">
                 <div>
+                    <button class="bpchk-accordion"><?php _e( 'Does this plugin require current location service?', BPCHK_TEXT_DOMAIN );?></button>
+                    <div class="panel">
+                        <p><?php _e( 'Yes, this plugin require location service and you can allow it from browser settings.', BPCHK_TEXT_DOMAIN );?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="bpchk-admin-row">
+                <div>
                     <button class="bpchk-accordion"><?php _e( 'How to check-in using Location Autocomplete option provided in general settings section?', BPCHK_TEXT_DOMAIN );?></button>
                     <div class="panel">
                         <p><?php _e( 'Location Autocomplete setting provide an interface at activity page to post an update using google places autocomplete.', BPCHK_TEXT_DOMAIN );?></p>
