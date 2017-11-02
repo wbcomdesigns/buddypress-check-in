@@ -1,9 +1,21 @@
 jQuery(document).ready(function($){
 	'use strict';
+
 	var autocomplete1;
 	var autocomplete2;
 	function initialize() {
-		
+		 if (navigator.geolocation)
+
+          {
+
+              var options = {
+                  enableHighAccuracy: true,
+                  timeout: 5000,
+                  maximumAge: 0
+              };
+
+              navigator.geolocation.getCurrentPosition( success, error,options);
+          }else{ x.innerHTML= "Geolocation is not supported by this browser."; }
 
 		var loc_xprof = document.getElementById(bpchk_public_js_obj.bpchk_loc_xprof);
 		if(loc_xprof){
@@ -15,15 +27,34 @@ jQuery(document).ready(function($){
 				bpchk_loc_xprof_ajax_save(latitude3,longitude3);
 			});
 		}
+	}
+	 function error(e) {
 
-		/*start google map api code*/
-		if(document.getElementById('checkin-by-autocomplete-map')){
+		  console.log("error code:" + e.code + 'message: ' + e.message );
 
-		var map = new google.maps.Map(document.getElementById('checkin-by-autocomplete-map'), {
-          center: {lat: -33.8688, lng: 151.2195},
+	}
+    function success(position) {
+     var  lat  = position.coords.latitude;
+     var  lng =  position.coords.longitude;
+
+     var  myLocation =   new google.maps.LatLng(lat, lng);
+
+     var mapOptions = {
+           center: new google.maps.LatLng(myLocation.lat(),myLocation.lng()),
           zoom: 13,
-          mapTypeId: 'roadmap'
-        });
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+	/*start google map api code*/
+		if(document.getElementById('checkin-by-autocomplete-map')){
+      var map = new google.maps.Map(document.getElementById('checkin-by-autocomplete-map'),
+              mapOptions);
+
+
+      var marker = new google.maps.Marker({
+          position: myLocation,
+          map: map,
+          title:"you are here"
+      });
 
         // Create the search box and link it to the UI element.
         var input = document.getElementById('bpchk-autocomplete-place');
@@ -90,7 +121,7 @@ jQuery(document).ready(function($){
         });
         /*end google map api code*/
     	}
-	}
+  }
 	google.maps.event.addDomListener(window, 'load', initialize);
 
 	function bpchk_loc_xprof_ajax_save(latitude3,longitude3){
