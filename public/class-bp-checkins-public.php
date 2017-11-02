@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The public-facing functionality of the plugin.
  *
@@ -39,6 +40,7 @@ class Bp_Checkins_Public {
 	 */
 	private $version;
 	public $bp_checkins;
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -426,7 +428,7 @@ class Bp_Checkins_Public {
 					$jsondata			 = json_decode( wp_remote_retrieve_body( $response ), true );
 					$place_visit_date	 = date( 'Y-m-d', time() );
 
-					if($jsondata[ "results" ][ 0 ][ "formatted_address" ]){
+					if ( $jsondata[ "results" ][ 0 ][ "formatted_address" ] ) {
 						$address						 = array();
 						$address[ 'latitude' ]			 = $latitude;
 						$address[ 'longitude' ]			 = $longitude;
@@ -474,23 +476,23 @@ class Bp_Checkins_Public {
 		$qry	 = "SELECT `meta_value` from `$activity_meta_tbl` where `activity_id` = $activity_id AND `meta_key` = 'bpchk_place_details'";
 		$result	 = $wpdb->get_results( $qry );
 		if ( !empty( $result ) ) {
-			$place				 = unserialize( $result[ 0 ]->meta_value );
-			$apikey				 = $bp_checkins->apikey;
-			$latitude	 = $place[ 'latitude' ];
-			$longitude	 = $place[ 'longitude' ];
-			$place_get_url		 = "http://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&sensor=false";
-			$response			 = wp_remote_get( $place_get_url );
+			$place			 = unserialize( $result[ 0 ]->meta_value );
+			$apikey			 = $bp_checkins->apikey;
+			$latitude		 = $place[ 'latitude' ];
+			$longitude		 = $place[ 'longitude' ];
+			$place_get_url	 = "http://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&sensor=false";
+			$response		 = wp_remote_get( $place_get_url );
 
 			$response_code = wp_remote_retrieve_response_code( $response );
 
 			if ( $response_code == 200 ) {
 				$jsondata			 = json_decode( wp_remote_retrieve_body( $response ), true );
 				$formatted_address	 = self::google_getAddress( $jsondata );
-			}else{
-				$formatted_address	 = $place[ 'place' ];
+			} else {
+				$formatted_address = $place[ 'place' ];
 			}
 
-			$map_url			 = 'https://www.google.com/maps/embed/v1/place?key=' . $apikey . '&q=' . $formatted_address;
+			$map_url = 'https://www.google.com/maps/embed/v1/place?key=' . $apikey . '&q=' . $formatted_address;
 			echo '<div id="bpchk-place-map"><iframe frameborder="0" style="border:0" src="' . $map_url . '" allowfullscreen></iframe></div>';
 		}
 	}
@@ -501,11 +503,11 @@ class Bp_Checkins_Public {
 	public function bpchk_fetch_places() {
 		global $bp_checkins;
 		if ( isset( $_POST[ 'action' ] ) && $_POST[ 'action' ] == 'bpchk_fetch_places' ) {
-			
+
 			$apikey		 = $bp_checkins->apikey;
-			$range		 = $bp_checkins->google_places_range*1000;
+			$range		 = $bp_checkins->google_places_range * 1000;
 			$placetypes	 = implode( ',', $bp_checkins->place_types );
-			
+
 			$latitude	 = $_POST[ 'latitude' ];
 			$longitude	 = $_POST[ 'longitude' ];
 			$places_html = '';
@@ -524,7 +526,7 @@ class Bp_Checkins_Public {
 			$response_code	 = wp_remote_retrieve_response_code( $response );
 			if ( $response_code == 200 ) {
 				$msg	 = __( 'places-found', BPCHK_TEXT_DOMAIN );
-				$places	 = json_decode( wp_remote_retrieve_body( $response)  );
+				$places	 = json_decode( wp_remote_retrieve_body( $response ) );
 				if ( !empty( $places->results ) ) {
 					$places_html .= '<ul class="bpchk-places-fetched">';
 					foreach ( $places->results as $place ) {
@@ -555,7 +557,7 @@ class Bp_Checkins_Public {
 				'message'	 => $msg,
 				'html'		 => stripslashes( $places_html )
 			);
-			echo json_encode($result);
+			echo json_encode( $result );
 			//wp_send_json_success( $result );
 			die;
 		}
