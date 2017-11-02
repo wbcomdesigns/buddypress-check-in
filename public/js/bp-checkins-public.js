@@ -4,16 +4,21 @@ jQuery(document).ready(function($){
 	var autocomplete2;
 	function initialize() {
 		
+
 		var loc_xprof = document.getElementById(bpchk_public_js_obj.bpchk_loc_xprof);
-		var autocomplete3 = new google.maps.places.Autocomplete(loc_xprof);
-		google.maps.event.addListener(autocomplete3, 'place_changed', function () {
-			var place3 = autocomplete3.getPlace();
-			var latitude3 = place3.geometry.location.lat();
-			var longitude3 = place3.geometry.location.lng();
-			bpchk_loc_xprof_ajax_save(latitude3,longitude3);
-		});
+		if(loc_xprof){
+			var autocomplete3 = new google.maps.places.Autocomplete(loc_xprof);
+			google.maps.event.addListener(autocomplete3, 'place_changed', function () {
+				var place3 = autocomplete3.getPlace();
+				var latitude3 = place3.geometry.location.lat();
+				var longitude3 = place3.geometry.location.lng();
+				bpchk_loc_xprof_ajax_save(latitude3,longitude3);
+			});
+		}
 
 		/*start google map api code*/
+		if(document.getElementById('checkin-by-autocomplete-map')){
+
 		var map = new google.maps.Map(document.getElementById('checkin-by-autocomplete-map'), {
           center: {lat: -33.8688, lng: 151.2195},
           zoom: 13,
@@ -84,6 +89,7 @@ jQuery(document).ready(function($){
           map.fitBounds(bounds);
         });
         /*end google map api code*/
+    	}
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -175,7 +181,7 @@ jQuery(document).ready(function($){
 	//Open the checkin panel when clicked
 	$(document).on('click', '.bpchk-allow-checkin', function(){
 		$('.bp-checkin-panel').slideToggle(500);
-		initialize();
+		window.onload = initialize();
 	});
 
 	//Send an AJAX to fetch the places when checkin is to be done by placetype
