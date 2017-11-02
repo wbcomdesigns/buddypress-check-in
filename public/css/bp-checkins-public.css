@@ -201,10 +201,6 @@ span.bpchk-allow-checkin {
     display: none;
     float:right;
 }
-.bpchk-fav-loc-map-container .bpchk-fav-loc-map, .bpchk-fav-loc-map-container .bpchk-fav-loc-map-details{
-    width:50%;
-    float: left;
-}
 
 .bpchk-fav-loc-map-details label::after {
     content: ':';
