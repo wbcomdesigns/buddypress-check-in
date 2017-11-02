@@ -4,7 +4,7 @@ if( !defined( 'ABSPATH' ) ) exit;
 global $bp_checkins;
 $apikey = $bp_checkins->apikey;
 
-$bpchk_fav_places = get_user_meta( get_current_user_id(),'bpchk_fav_places',true);
+$bpchk_fav_places = get_user_meta( bp_displayed_user_id(),'bpchk_fav_places',true);
 
 if($bpchk_fav_places){
 	?>

@@ -75,14 +75,15 @@ class Bp_Checkins_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		if ( is_user_logged_in() ) {
 			global $bp_checkins;
 			wp_enqueue_script( 'jquery-ui-accordion' );
 			wp_enqueue_script( $this->plugin_name - 'google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $bp_checkins->apikey, array( 'jquery' ) );
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
-
+		$checkin_html = '';
+		if ( is_user_logged_in() ) {
+		
 			//Create the checkin html
-			$checkin_html = '';
+			
 			if ( $bp_checkins->apikey ) {
 				$checkin_html	 .= '<div class="dispaly:inline-block;"><div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
 				$checkin_html	 .= '<div class="bp-checkins bp-checkin-panel">';
@@ -109,7 +110,12 @@ class Bp_Checkins_Public {
 				$bpchk_loc_xprof	 = 'field_' . $bpchk_location_id;
 			}
 
-			wp_localize_script(
+		
+		}
+		if(!empty($bpchk_loc_xprof)){
+			$bpchk_loc_xprof = '';
+		}
+				wp_localize_script(
 			$this->plugin_name, 'bpchk_public_js_obj', array(
 				'ajaxurl'			 => admin_url( 'admin-ajax.php' ),
 				'checkin_html'		 => $checkin_html,
@@ -117,7 +123,6 @@ class Bp_Checkins_Public {
 				'bpchk_loc_xprof'	 => $bpchk_loc_xprof
 			)
 			);
-		}
 	}
 
 	/**
