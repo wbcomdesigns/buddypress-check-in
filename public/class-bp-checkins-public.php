@@ -401,7 +401,7 @@ class Bp_Checkins_Public {
 	public function bpchk_update_meta_on_post_update( $content, $user_id, $activity_id ) {
 		global $wpdb;
 		$place_details	 = get_option( 'bpchk_temp_location' );
-		$activity_tbl	 = $wpdb->prefix . 'bp_activity';
+		$activity_tbl	 = $wpdb->base_prefix . 'bp_activity';
 
 		if ( !empty( $place_details ) ) {
 			$place			 = $place_details[ 'place' ];
@@ -475,8 +475,8 @@ class Bp_Checkins_Public {
 	public function bpchk_show_google_map_in_checkin_activity() {
 		$activity_id		 = bp_get_activity_id();
 		global $wpdb, $bp_checkins;
-		$activity_tbl		 = $wpdb->prefix . 'bp_activity';
-		$activity_meta_tbl	 = $wpdb->prefix . 'bp_activity_meta';
+		$activity_tbl		 = $wpdb->base_prefix . 'bp_activity';
+		$activity_meta_tbl	 = $wpdb->base_prefix . 'bp_activity_meta';
 
 		$qry	 = "SELECT `meta_value` from `$activity_meta_tbl` where `activity_id` = $activity_id AND `meta_key` = 'bpchk_place_details'";
 		$result	 = $wpdb->get_results( $qry );
