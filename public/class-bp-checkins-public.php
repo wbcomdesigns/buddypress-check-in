@@ -112,7 +112,7 @@ class Bp_Checkins_Public {
 
 		
 		}
-		if(!empty($bpchk_loc_xprof)){
+		if(empty($bpchk_loc_xprof)){
 			$bpchk_loc_xprof = '';
 		}
 				wp_localize_script(
