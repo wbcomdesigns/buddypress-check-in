@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/donate/
 Tags: buddypress, check-ins , BuddyPress Location, update check-ins, location
 Requires at least: 3.0.1
-Tested up to: 4.8.2
-Stable tag: 1.0.5
+Tested up to: 4.8.3
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -84,3 +84,5 @@ Dual File Fixes
 * Fix - If you check autocomplete, a autocomplete text box will be shown at the top of the page under textarea on member activity page where you can type and select any location from the list.
 * Fix - All activity posts which have any place or location a google map will be shown below them to point that particular place.
 * Enhancement - A new x-profile location field is added at BuddyPress profile page from where a user can set location.
+= 1.0.6 =
+* Fix - Location fixes
