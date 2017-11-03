@@ -16,7 +16,7 @@
  * Plugin Name:       BuddyPress Check-ins
  * Plugin URI:        https://wbcomdesigns.com/
  * Description:       This plugin allows BuddyPress members to share their location when they are posting activities, just like other social sites, you can add places where you visited.
- * Version:           1.0.5
+ * Version:           1.0.6
  * Author:            Wbcom Designs
  * Author URI:        https://wbcomdesigns.com/
  * License:           GPL-2.0+
