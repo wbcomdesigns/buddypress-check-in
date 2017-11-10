@@ -81,9 +81,9 @@ class Bp_Checkins_Public {
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
 		$checkin_html = '';
 		if ( is_user_logged_in() ) {
-		
+
 			//Create the checkin html
-			
+
 			if ( $bp_checkins->apikey ) {
 				$checkin_html	 .= '<div class="dispaly:inline-block;"><div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
 				$checkin_html	 .= '<div class="bp-checkins bp-checkin-panel">';
@@ -110,7 +110,7 @@ class Bp_Checkins_Public {
 				$bpchk_loc_xprof	 = 'field_' . $bpchk_location_id;
 			}
 
-		
+
 		}
 		if(empty($bpchk_loc_xprof)){
 			$bpchk_loc_xprof = '';
@@ -236,7 +236,7 @@ class Bp_Checkins_Public {
 	}
 
 	/**
-	 * Searching in Google Geo json, return the long name given the type. 
+	 * Searching in Google Geo json, return the long name given the type.
 	 * (If short_name is true, return short name)
 	 */
 	public static function bpchk_find_long_name_given_type( $type, $array, $short_name = false ) {
@@ -537,14 +537,14 @@ class Bp_Checkins_Public {
 					foreach ( $places->results as $place ) {
 						$places_html .= '<li class="bpchk-single-place">';
 						$places_html .= '<div class="place-icon">';
-						$places_html .= '<img height="25px" width="25px" title="' . $place->name . '" src="' . $place->icon . '">';
+						$places_html .= '<img height="18px" width="18px" title="' . $place->name . '" src="' . $place->icon . '">';
 						$places_html .= '</div>';
 						$places_html .= '<div class="place-details">';
-						$places_html .= '<h6>' . $place->name . '</h6>';
-						$places_html .= '<span>' . $place->vicinity . '</span>';
+						$places_html .= '<b>' . $place->name . '</b>';
+						$places_html .= '<div>' . $place->vicinity . '</div>';
 						$places_html .= '</div>';
 						$places_html .= '<div class="place-actions">';
-						$places_html .= '<a href="javascript:void(0);" class="bpchk-select-place-to-checkin" data-place_reference="' . $place->reference . '" data-place_id="' . $place->place_id . '">' . __( 'Select this location', BPCHK_TEXT_DOMAIN ) . '</a>';
+						$places_html .= '<a href="javascript:void(0);" class="bpchk-select-place-to-checkin" data-place_reference="' . $place->reference . '" data-place_id="' . $place->place_id . '">' . __( 'Select', BPCHK_TEXT_DOMAIN ) . '</a>';
 						$places_html .= '</div>';
 						$places_html .= '</li>';
 					}
