@@ -315,7 +315,7 @@ function bpchk_loc_xprof_ajax_save(latitude3,longitude3){
 	});
 
 	$( function() {
-		$( "#accordion" ).accordion({collapsible: true});
+		$( "#accordion" ).accordion({collapsible: true, heightStyle: "content"});
 	} );
 
 	$("#aw-whats-new-submit").click(function(){
