@@ -222,14 +222,99 @@ span.bpchk-allow-checkin {
 }
 .bpchk-fav-loc-map-details label, .bpchk-fav-loc-map-details span
 {
-    min-width: 150px;
     float: left;
     text-align: left;
-    width: 150px;
     font-size: 16px;
 }
 .bpchk-fav-loc-map-details p
 {
     margin: 5px 0px;
     float: left;
+}
+.bpchk-fav-loc-map iframe {
+    width: 100%;
+    height: 300px;
+}
+.bpchk-fav-loc-map-details > p > label {
+    float: left;
+    width: 30%;
+}
+
+.bpchk-fav-loc-map-details span {
+    width: 70%;
+}
+.bpchk-fav-loc-map-container .ui-accordion-content {
+    background: #fff;
+}
+.bpchk-fav-loc-row {
+    clear: both;
+    overflow: hidden;
+}
+.bpchk-fav-loc-map-details label {
+    width: 30%;
+}
+.bpchk-fav-loc-map-details span {
+    width: 70%;
+}
+@media( max-width: 767px ) {
+    .bpchk-fav-loc-map-details label {
+        width: 50%;
+    }
+    .bpchk-fav-loc-map-details span {
+        width: 50%;
+    }
+}
+
+.bpchk-fav-loc-map-container h3 {
+    margin-top: 10px!important;
+    border-radius: 0;
+    border: 0;
+    border-left: 2px solid darkgray;
+    font-weight: 500;
+    color: #000;
+    background:none;
+}
+
+.bpchk-fav-loc-map-container .ui-accordion-content{
+    border-radius: 0;
+    border: 0;
+    border-left: 2px solid gray;
+}
+
+.bpchk-fav-loc-map-container .ui-button.ui-state-active {
+    color: #000;
+}
+
+.bpchk-fav-loc-map-container .ui-state-hover, .bpchk-fav-loc-map-container .ui-state-focus,.bpchk-fav-loc-map-container .ui-button.ui-state-active:hover, .bpchk-fav-loc-map-container a.ui-button:active {
+    border: 0;
+    border-left: 2px solid gray;
+    background: auto;
+    background: white;
+    color: #000;
+    outline: 0;
+}
+.bpchk-fav-loc-map-container .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active {
+    color: #000;
+}
+.bpchk-fav-loc-map-container h3.ui-state-active {
+    border: 0;
+    border-left: 2px solid gray;
+    font-weight: 700;
+    outline: 0;
+}
+
+.bpchk-fav-loc-map-container .ui-state-active .ui-icon, .bpchk-fav-loc-map-container .ui-button:active .ui-icon, .bpchk-fav-loc-map-container .ui-state-hover .ui-icon, .bpchk-fav-loc-map-container .ui-button:hover .ui-icon, .bpchk-fav-loc-map-container .ui-state-focus .ui-icon{
+    background-image: url(images/ui-icons_222222_256x240.png)!important;
+}
+
+.bpchk-fav-loc-map-container .ui-state-active .ui-icon, .bpchk-fav-loc-map-container .ui-button:active .ui-icon-triangle-1-s {
+    background-position: -65px 2px;
+}
+
+.bpchk-fav-loc-map-container .ui-icon-triangle-1-e {
+    background-position: -32px 2px;
+}
+
+.bpchk-fav-loc-map-details {
+    margin-top: 10px;
 }

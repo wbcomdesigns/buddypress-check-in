@@ -64,7 +64,7 @@ class Bp_Checkins_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		wp_enqueue_style( $this->plugin_name . '-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui.min.css' );
+		wp_enqueue_style( $this->plugin_name . '-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui.css' );
 		wp_enqueue_style( $this->plugin_name . '-font-awesome', plugin_dir_url( __FILE__ ) . 'css/font-awesome.min.css' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bp-checkins-public.css', array(), $this->version, 'all' );
 	}
@@ -75,10 +75,10 @@ class Bp_Checkins_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-			global $bp_checkins;
-			wp_enqueue_script( 'jquery-ui-accordion' );
-			wp_enqueue_script( $this->plugin_name - 'google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $bp_checkins->apikey, array( 'jquery' ) );
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
+		global $bp_checkins;
+		wp_enqueue_script( 'jquery-ui-accordion' );
+		wp_enqueue_script( $this->plugin_name - 'google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $bp_checkins->apikey, array( 'jquery' ) );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
 		$checkin_html = '';
 		if ( is_user_logged_in() ) {
 
@@ -115,14 +115,14 @@ class Bp_Checkins_Public {
 		if(empty($bpchk_loc_xprof)){
 			$bpchk_loc_xprof = '';
 		}
-				wp_localize_script(
+		wp_localize_script(
 			$this->plugin_name, 'bpchk_public_js_obj', array(
 				'ajaxurl'			 => admin_url( 'admin-ajax.php' ),
 				'checkin_html'		 => $checkin_html,
 				'checkin_by'		 => $bp_checkins->checkin_by,
 				'bpchk_loc_xprof'	 => $bpchk_loc_xprof
 			)
-			);
+		);
 	}
 
 	/**
@@ -138,25 +138,25 @@ class Bp_Checkins_Public {
 		$my_places_link	 = bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/my-places';
 
 		bp_core_new_nav_item(
-		array(
-			'name'						 => __( 'Check-ins', BPCHK_TEXT_DOMAIN ),
-			'slug'						 => 'checkin',
-			'screen_function'			 => array( $this, 'bpchk_checkin_tab_function_to_show_screen' ),
-			'position'					 => 75,
-			'default_subnav_slug'		 => 'my-places',
-			'show_for_displayed_user'	 => true,
-		)
+			array(
+				'name'						 => __( 'Check-ins', BPCHK_TEXT_DOMAIN ),
+				'slug'						 => 'checkin',
+				'screen_function'			 => array( $this, 'bpchk_checkin_tab_function_to_show_screen' ),
+				'position'					 => 75,
+				'default_subnav_slug'		 => 'my-places',
+				'show_for_displayed_user'	 => true,
+			)
 		);
 		bp_core_new_subnav_item(
-		array(
-			'name'				 => __( 'Locations', BPCHK_TEXT_DOMAIN ),
-			'slug'				 => 'my-places',
-			'parent_url'		 => bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/',
-			'parent_slug'		 => $parent_slug,
-			'screen_function'	 => array( $this, 'bpchk_checkins_activity_show_screen' ),
-			'position'			 => 100,
-			'link'				 => $my_places_link,
-		)
+			array(
+				'name'				 => __( 'Locations', BPCHK_TEXT_DOMAIN ),
+				'slug'				 => 'my-places',
+				'parent_url'		 => bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/',
+				'parent_slug'		 => $parent_slug,
+				'screen_function'	 => array( $this, 'bpchk_checkins_activity_show_screen' ),
+				'position'			 => 100,
+				'link'				 => $my_places_link,
+			)
 		);
 	}
 
@@ -352,7 +352,7 @@ class Bp_Checkins_Public {
 		$component_id = buddypress()->activity->id;
 
 		bp_activity_set_action(
-		$component_id, 'activity_bpchk_chkins', __( 'Check-ins Update', BPCHK_TEXT_DOMAIN ), array( $this, 'bp_activity_format_activity_action_activity_bpchk_chkins' ), __( 'Check-ins', BPCHK_TEXT_DOMAIN ), array( 'member' )
+			$component_id, 'activity_bpchk_chkins', __( 'Check-ins Update', BPCHK_TEXT_DOMAIN ), array( $this, 'bp_activity_format_activity_action_activity_bpchk_chkins' ), __( 'Check-ins', BPCHK_TEXT_DOMAIN ), array( 'member' )
 		);
 	}
 
@@ -415,7 +415,7 @@ class Bp_Checkins_Public {
 			//Update the activity content to post the checkin along with the post update
 			if ( $pos === false ) {
 				$wpdb->update(
-				$activity_tbl, array( 'content' => $content ), array( 'id' => $activity_id ), array( '%s' ), array( '%d' )
+					$activity_tbl, array( 'content' => $content ), array( 'id' => $activity_id ), array( '%s' ), array( '%d' )
 				);
 
 				//Update the location details in activity meta
@@ -617,16 +617,16 @@ class Bp_Checkins_Public {
 				if ( empty( $result ) ) {
 					//Insert the temp location in options table
 					$wpdb->insert(
-					$options_tbl, array(
-						'option_name'	 => 'bpchk_temp_location',
-						'option_value'	 => serialize( $args )
-					)
+						$options_tbl, array(
+							'option_name'	 => 'bpchk_temp_location',
+							'option_value'	 => serialize( $args )
+						)
 					);
 				} else {
 					//Update the previously existing temp location in options table
 					$option_id = $result[ 0 ]->option_id;
 					$wpdb->update(
-					$options_tbl, array( 'option_value' => serialize( $args ) ), array( 'option_id' => $option_id )
+						$options_tbl, array( 'option_value' => serialize( $args ) ), array( 'option_id' => $option_id )
 					);
 				}
 			} else {

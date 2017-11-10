@@ -4,18 +4,18 @@ jQuery(document).ready(function($){
 	var autocomplete1;
 	var autocomplete2;
 	function initialize() {
-		 if (navigator.geolocation)
+		if (navigator.geolocation)
 
-          {
+		{
 
-              var options = {
-                  enableHighAccuracy: true,
-                  timeout: 5000,
-                  maximumAge: 0
-              };
+			var options = {
+				enableHighAccuracy: true,
+				timeout: 5000,
+				maximumAge: 0
+			};
 
-              navigator.geolocation.getCurrentPosition( success, error,options);
-          }else{ x.innerHTML= "Geolocation is not supported by this browser."; }
+			navigator.geolocation.getCurrentPosition( success, error,options);
+		}else{ x.innerHTML= "Geolocation is not supported by this browser."; }
 
 		var loc_xprof = document.getElementById(bpchk_public_js_obj.bpchk_loc_xprof);
 		if(loc_xprof){
@@ -28,33 +28,33 @@ jQuery(document).ready(function($){
 			});
 		}
 	}
-	 function error(e) {
+	function error(e) {
 
-		  console.log("error code:" + e.code + 'message: ' + e.message );
+		console.log("error code:" + e.code + 'message: ' + e.message );
 
 	}
-    function success(position) {
-     var  lat  = position.coords.latitude;
-     var  lng =  position.coords.longitude;
+	function success(position) {
+		var  lat  = position.coords.latitude;
+		var  lng =  position.coords.longitude;
 
-     var  myLocation =   new google.maps.LatLng(lat, lng);
+		var  myLocation =   new google.maps.LatLng(lat, lng);
 
-     var mapOptions = {
-           center: new google.maps.LatLng(myLocation.lat(),myLocation.lng()),
-          zoom: 13,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-	/*start google map api code*/
+		var mapOptions = {
+			center: new google.maps.LatLng(myLocation.lat(),myLocation.lng()),
+			zoom: 13,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		/*start google map api code*/
 		if(document.getElementById('checkin-by-autocomplete-map')){
-      var map = new google.maps.Map(document.getElementById('checkin-by-autocomplete-map'),
-              mapOptions);
+			var map = new google.maps.Map(document.getElementById('checkin-by-autocomplete-map'),
+				mapOptions);
 
 
-      var marker = new google.maps.Marker({
-          position: myLocation,
-          map: map,
-          title:"you are here"
-      });
+			var marker = new google.maps.Marker({
+				position: myLocation,
+				map: map,
+				title:"you are here"
+			});
 
         // Create the search box and link it to the UI element.
         var input = document.getElementById('bpchk-autocomplete-place');
@@ -63,88 +63,88 @@ jQuery(document).ready(function($){
 
         // Bias the SearchBox results towards current map's viewport.
         map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
+        	searchBox.setBounds(map.getBounds());
         });
 
         var markers = [];
         // Listen for the event fired when the user selects a prediction and retrieve
         // more details for that place.
         searchBox.addListener('places_changed', function() {
-          var places = searchBox.getPlaces();
+        	var places = searchBox.getPlaces();
 
-          if (places.length == 0) {
-            return;
-          }
+        	if (places.length == 0) {
+        		return;
+        	}
 
           // Clear out the old markers.
           markers.forEach(function(marker) {
-            marker.setMap(null);
+          	marker.setMap(null);
           });
           markers = [];
 
           // For each place, get the icon, name and location.
           var bounds = new google.maps.LatLngBounds();
           places.forEach(function(place) {
-            if (!place.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-            var icon = {
-              url: place.icon,
-              size: new google.maps.Size(71, 71),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
-            };
+          	if (!place.geometry) {
+          		console.log("Returned place contains no geometry");
+          		return;
+          	}
+          	var icon = {
+          		url: place.icon,
+          		size: new google.maps.Size(71, 71),
+          		origin: new google.maps.Point(0, 0),
+          		anchor: new google.maps.Point(17, 34),
+          		scaledSize: new google.maps.Size(25, 25)
+          	};
 
             // Create a marker for each place.
             markers.push(new google.maps.Marker({
-              map: map,
-              icon: icon,
-              title: place.name,
-              position: place.geometry.location
+            	map: map,
+            	icon: icon,
+            	title: place.name,
+            	position: place.geometry.location
             }));
 
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
               bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
+          } else {
+          	bounds.extend(place.geometry.location);
+          }
 
-            var latitude1 = place.geometry.location.lat();
-		 	var longitude1 = place.geometry.location.lng();
-		 	$('#bpchk-checkin-place-lat').val( latitude1 ).trigger('change');
-		 	$('#bpchk-checkin-place-lng').val( longitude1 ).trigger('change');
-          });
+          var latitude1 = place.geometry.location.lat();
+          var longitude1 = place.geometry.location.lng();
+          $('#bpchk-checkin-place-lat').val( latitude1 ).trigger('change');
+          $('#bpchk-checkin-place-lng').val( longitude1 ).trigger('change');
+      });
           map.fitBounds(bounds);
-        });
+      });
         /*end google map api code*/
-    	}
-  }
-	google.maps.event.addDomListener(window, 'load', initialize);
+    }
+}
+google.maps.event.addDomListener(window, 'load', initialize);
 
-	function bpchk_loc_xprof_ajax_save(latitude3,longitude3){
-		
-		var place = $('#'+bpchk_public_js_obj.bpchk_loc_xprof).val();
-		
-		var data = {
-			'action'			: 'bpchk_save_xprofile_location',
-			'place'				: place,
-			'latitude'			: latitude3,
-			'longitude'			: longitude3
-		}
-		
-		$.ajax({
-			dataType: "JSON",
-			url: bpchk_public_js_obj.ajaxurl,
-			type: 'POST',
-			data: data,
-			success: function( response ) {
-				
-			},
-		});
+function bpchk_loc_xprof_ajax_save(latitude3,longitude3){
+
+	var place = $('#'+bpchk_public_js_obj.bpchk_loc_xprof).val();
+
+	var data = {
+		'action'			: 'bpchk_save_xprofile_location',
+		'place'				: place,
+		'latitude'			: latitude3,
+		'longitude'			: longitude3
 	}
+
+	$.ajax({
+		dataType: "JSON",
+		url: bpchk_public_js_obj.ajaxurl,
+		type: 'POST',
+		data: data,
+		success: function( response ) {
+
+		},
+	});
+}
 
 	//Open the tabs - my places
 	var acc = document.getElementsByClassName("bpchk-myplace-accordion");
@@ -157,7 +157,7 @@ jQuery(document).ready(function($){
 				panel.style.maxHeight = null;
 			} else {
 				panel.style.maxHeight = panel.scrollHeight + "px";
-			} 
+			}
 		}
 	}
 	$(document).on('click', '.bpchk-myplace-accordion', function(){
@@ -172,7 +172,7 @@ jQuery(document).ready(function($){
 	$( '#bpchk-add-place-visit-date' ).datepicker( { dateFormat: 'yy-mm-dd', minDate: 0 } );
 
 	//Send AJAX to save the temp location just as location changed during checkin by autocomplete
-	$(document).on('change', '#bpchk-checkin-place-lng', function() {  
+	$(document).on('change', '#bpchk-checkin-place-lng', function() {
 		$('.bpchk-place-loader').show();
 		var latitude = $('#bpchk-checkin-place-lat').val();
 		var longitude = $('#bpchk-checkin-place-lng').val();
@@ -181,9 +181,9 @@ jQuery(document).ready(function($){
 		if( $('#bpchk-add-as-place').is(':checked') ) {
 			add_as_my_place = 'yes';
 		}
-		
+
 		//$('#bpchk-autocomplete-place').addClass('bpchk-autocomplete-place');
-		
+
 		var data = {
 			'action'			: 'bpchk_save_temp_location',
 			'place'				: place,
@@ -192,7 +192,7 @@ jQuery(document).ready(function($){
 			'add_as_my_place'	: add_as_my_place
 		}
 		//console.log(data);
-		
+
 		$.ajax({
 			dataType: "JSON",
 			url: bpchk_public_js_obj.ajaxurl,
@@ -221,7 +221,7 @@ jQuery(document).ready(function($){
 		var longitude = '';
 		bpchk_get_current_geolocation();
 		function bpchk_get_current_geolocation() {
-			if (navigator.geolocation) { 
+			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(showPosition);
 			} else {
 				console.log( 'Geolocation is not supported by your browser.' );
@@ -241,7 +241,7 @@ jQuery(document).ready(function($){
 					var obj = JSON.parse(response);
 					//console.log( obj.html );
 					$('.checkin-by-placetype').html( obj.html );
-			});
+				});
 		}
 	}
 
@@ -254,7 +254,7 @@ jQuery(document).ready(function($){
 			add_as_my_place = 'yes';
 		}
 		clicked_event.html( '<span class="bpchk-place-select-loader">Selecting location..<i class="fa fa-refresh fa-spin"></i></span>' );
-		
+
 		$('.bpchk-select-place-to-checkin').not(this).each(function(){
 			$(this).html('Select this location');
 		});
@@ -315,9 +315,9 @@ jQuery(document).ready(function($){
 	});
 
 	$( function() {
-		$( "#accordion" ).accordion();
+		$( "#accordion" ).accordion({collapsible: true});
 	} );
-	
+
 	$("#aw-whats-new-submit").click(function(){
 		$('.bpchk-select-place-to-checkin').each(function(){
 			$(this).html('Select this location');
@@ -329,6 +329,6 @@ jQuery(document).ready(function($){
 		if ($('.bpchk-places-fetched').is(':visible')) {
 			$('.bpchk-places-fetched').slideToggle(500);
 		}
-		
+
 	});
 });
