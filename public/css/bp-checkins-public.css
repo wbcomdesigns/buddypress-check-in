@@ -169,10 +169,11 @@ span.bpchk-allow-checkin {
 }
 /*bpchk marker container css*/
 .bpchk-marker-container{
-    padding:1px;
+    padding:3px;
 }
 .bpchk-marker-container i{
     margin-left:5px;
+    font-size: 18px;
 }
 .checkin-by-autocomplete{
     width:100%;
