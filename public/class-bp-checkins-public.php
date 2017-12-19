@@ -118,7 +118,7 @@ class Bp_Checkins_Public {
 		wp_localize_script(
 			$this->plugin_name, 'bpchk_public_js_obj', array(
 				'ajaxurl'			 => admin_url( 'admin-ajax.php' ),
-				'checkin_html'		 => $checkin_html,
+				'checkin_html'         => apply_filters( 'alter_bpchk_checkin_html', $checkin_html ),
 				'checkin_by'		 => $bp_checkins->checkin_by,
 				'bpchk_loc_xprof'	 => $bpchk_loc_xprof
 			)
