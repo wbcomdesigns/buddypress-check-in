@@ -85,7 +85,7 @@ class Bp_Checkins_Public {
 			//Create the checkin html
 
 			if ( $bp_checkins->apikey ) {
-				$checkin_html	 .= '<div class="dispaly:inline-block;"><div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
+				$checkin_html	 .= '<div><div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
 				$checkin_html	 .= '<div class="bp-checkins bp-checkin-panel">';
 				if ( $bp_checkins->checkin_by == 'autocomplete' ) {
 					$checkin_html	 .= '<div class="checkin-by-autocomplete">';
