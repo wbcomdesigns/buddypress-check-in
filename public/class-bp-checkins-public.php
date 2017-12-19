@@ -77,7 +77,7 @@ class Bp_Checkins_Public {
 	public function enqueue_scripts() {
 		global $bp_checkins;
 		wp_enqueue_script( 'jquery-ui-accordion' );
-		wp_enqueue_script( $this->plugin_name - 'google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $bp_checkins->apikey, array( 'jquery' ) );
+		wp_enqueue_script( $this->plugin_name.'-google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $bp_checkins->apikey, array( 'jquery' ) );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
 		$checkin_html = '';
 		if ( is_user_logged_in() ) {
