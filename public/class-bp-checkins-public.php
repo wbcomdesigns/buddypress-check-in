@@ -492,7 +492,9 @@ class Bp_Checkins_Public {
 
 			if ( $response_code == 200 ) {
 				$jsondata			 = json_decode( wp_remote_retrieve_body( $response ), true );
-				$formatted_address	 = self::google_getAddress( $jsondata );
+				if(isset ( $jsondata[ "results" ][ 0 ][ "formatted_address" ] )){
+					$formatted_address	 = self::google_getAddress( $jsondata );
+				}
 			} else {
 				$formatted_address = $place[ 'place' ];
 			}
