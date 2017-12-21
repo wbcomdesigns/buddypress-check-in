@@ -362,3 +362,9 @@ span.bpchk-allow-checkin {
 .bpchk-fav-loc-map-details {
     margin-top: 10px;
 }
+
+.bpchk-fav-loc-map-container .ui-accordion-header .ui-icon {
+    position: relative!important;
+    left: 0em!important;
+    display: inline-block;
+}

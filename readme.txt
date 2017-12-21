@@ -176,7 +176,7 @@ Dual File Fixes
 
 = 1.0.7 =
 
-* Fix - Design Improvements
+* Fix - UI Improvements
 
 * Fix - Error with PHP 7.0+ version.
 
