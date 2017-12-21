@@ -2,6 +2,51 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+/* css update for version 1.0.7 :: start */
+.bpchk-marker-container {
+    background: transparent;
+    color: #a7a7b2;
+}
+.bpchk-marker-container i {
+    margin-left: 10px;
+    font-size: 20px;
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bp-checkins.bp-checkin-panel {
+    width: 100%;
+    margin: 10px 0;
+}
+.bpchk-single-location-added {
+    font-size: 14px;
+    padding: 10px;
+}
+#bpchk-cancel-checkin .fa.fa-times {
+    padding: 0px;
+    background: black;
+    border-radius: 100%;
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    text-align: center;
+    line-height: 17px;
+    margin-left: 5px;
+}
+#bpchk-cancel-checkin .fa.fa-times:hover {
+ background: red;
+}
+#bpchk-temp-location {
+    font-size: 16px;
+    text-decoration: underline;
+}
+/* css update for version 1.0.7 :: end */
+
 .bpchk-place-map iframe{
     width: 100%;
 }

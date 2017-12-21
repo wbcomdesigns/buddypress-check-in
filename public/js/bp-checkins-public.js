@@ -253,11 +253,15 @@ function bpchk_loc_xprof_ajax_save(latitude3,longitude3){
 		if( $('#bpchk-add-as-place').is(':checked') ) {
 			add_as_my_place = 'yes';
 		}
+
 		clicked_event.html( '<span class="bpchk-place-select-loader">Selecting location..<i class="fa fa-refresh fa-spin"></i></span>' );
 
-		$('.bpchk-select-place-to-checkin').not(this).each(function(){
-			$(this).html('Select this location');
-		});
+		// $('.bpchk-select-place-to-checkin').each(function(){
+		// 	$(this).html('Select this location');
+		// });
+		// $('.bpchk-select-place-to-checkin').not(this).each(function(){
+		// 	$(this).html('Select this location');
+		// });
 
 		var data = {
 			'action'			: 'bpchk_select_place_to_checkin',
@@ -271,6 +275,7 @@ function bpchk_loc_xprof_ajax_save(latitude3,longitude3){
 			type: 'POST',
 			data: data,
 			success: function( response ) {
+				$('.bpchk-select-place-to-checkin').html('Select');
 				clicked_event.html('Selected');
 				console.log( response['data']['message'] );
 				$('.bpchk-single-location-added').html( response['data']['html'] );

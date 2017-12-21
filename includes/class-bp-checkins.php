@@ -196,6 +196,12 @@ class Bp_Checkins {
 		$this->loader->add_filter( 'bp_get_the_profile_field_value', $plugin_public, 'bpchk_show_xprofile_location',10,3);
 		$this->loader->add_action( 'bp_register_activity_actions', $plugin_public, 'custom_plugin_register_activity_actions' );
 		$this->loader->add_action('bp_activity_before_save',$plugin_public, 'bpchk_update_activity_type_checkins', 10,1);
+
+		/**
+		* @since 1.0.7
+		*/
+		$this->loader->add_action( 'bp_activity_post_form_options', $plugin_public, 'render_location_pickup_html', 0 );
+		$this->loader->add_action( 'alter_bpchk_checkin_html', $plugin_public, 'alter_bpchk_checkin_html', 10, 1 );
 	}
 
 	/**

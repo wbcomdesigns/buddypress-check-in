@@ -59,6 +59,52 @@ class Bp_Checkins_Public {
 	}
 
 	/**
+	 * Modify the html localized to main js file.
+	 * @since    1.0.7
+	 */
+	public function alter_bpchk_checkin_html( $checkin_html ) {
+		$checkin_html = '';
+		return $checkin_html;
+	}
+	
+	/**
+	 * Render location pickup html to buddypress what's new section.
+	 * @since    1.0.7
+	 */
+	public function render_location_pickup_html() {
+		global $bp_checkins;
+		$checkin_html = '';
+		if ( is_user_logged_in() ) {
+			//Create the checkin html
+			if ( $bp_checkins->apikey ) {
+				// $checkin_html .= '<div class="bpchk-checkin-html-container">';
+					$checkin_html .= '<div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
+					$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
+					if ( $bp_checkins->checkin_by == 'autocomplete' ) {
+						$checkin_html .= '<div class="checkin-by-autocomplete">';
+							$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', BPCHK_TEXT_DOMAIN ) . '" />';
+							$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
+							$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lng" />';
+							$checkin_html .= '<input type="checkbox" id="bpchk-add-as-place" checked />';
+							$checkin_html .= '<label for="bpchk-add-as-place">' . __( 'Add as my location', BPCHK_TEXT_DOMAIN ) . '</label>';
+							$checkin_html .= '<span class="bpchk-place-loader">' . __( 'Saving location...', BPCHK_TEXT_DOMAIN ) . '<i class="fa fa-refresh fa-spin"></i></span><span class="clear"></span>';
+						$checkin_html .= '</div>';
+						$checkin_html .= '<div class="checkin-by-autocomplete-map" id="checkin-by-autocomplete-map"></div>';
+						$checkin_html .= '<div class="clear"></div>';
+					} else {
+						$checkin_html .= '<div class="checkin-by-placetype">';
+							$checkin_html .= '<p>' . __( 'Please Wait..', BPCHK_TEXT_DOMAIN ) . '</p>';
+						$checkin_html .= '</div>';
+					}
+					$checkin_html .= '</div>';
+				// $checkin_html .= '</div>';	
+			}
+		}
+		echo $checkin_html;
+	}
+
+
+	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
 	 * @since    1.0.0
@@ -610,7 +656,7 @@ class Bp_Checkins_Public {
 				$place_html	 .= ' <a href="javascript:void(0);" id="bpchk-cancel-checkin" title="' . __( 'Click here to cancel your checkin.', BPCHK_TEXT_DOMAIN ) . '"><i class="fa fa-times"></i></a>';
 				$place_html	 .= '</div>';
 				$place_html	 .= '<div>';
-				$place_html	 .= '<a href="javascript:void(0);" id="bpchk-show-places-panel">' . __( 'Show Locations', BPCHK_TEXT_DOMAIN ) . '</a>';
+				$place_html	 .= '<a class="button" href="javascript:void(0);" id="bpchk-show-places-panel">' . __( 'Show Locations', BPCHK_TEXT_DOMAIN ) . '</a>';
 				// $place_html	 .= '<a href="javascript:void(0);" id="bpchk-hide-places-panel">' . __( 'Hide places', BPCHK_TEXT_DOMAIN ) . '</a>';
 				$place_html	 .= '</div>';
 
