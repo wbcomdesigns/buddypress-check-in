@@ -535,7 +535,7 @@ class Bp_Checkins_Public {
 			$response		 = wp_remote_get( $place_get_url );
 
 			$response_code = wp_remote_retrieve_response_code( $response );
-
+			$formatted_address = $place[ 'place' ];
 			if ( $response_code == 200 ) {
 				$jsondata			 = json_decode( wp_remote_retrieve_body( $response ), true );
 				if(isset ( $jsondata[ "results" ][ 0 ][ "formatted_address" ] )){
@@ -544,7 +544,6 @@ class Bp_Checkins_Public {
 			} else {
 				$formatted_address = $place[ 'place' ];
 			}
-
 			$map_url = 'https://www.google.com/maps/embed/v1/place?key=' . $apikey . '&q=' . $formatted_address;
 			echo '<div id="bpchk-place-map"><iframe frameborder="0" style="border:0" src="' . $map_url . '" allowfullscreen></iframe></div>';
 		}
