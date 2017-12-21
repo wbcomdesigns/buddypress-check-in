@@ -42,7 +42,11 @@ $place_types = array(
 			<td>
 				<input class="regular-text" type="text" value="<?php echo $bp_checkins->apikey; ?>" name="bpchk-api-key" id="bpchk-api-key" placeholder="<?php _e( 'API Key', BPCHK_TEXT_DOMAIN ); ?>" required>
 				<button type="button" class="button button-secondary" style="<?php echo $verify_btn_style; ?>" id="bpchk-verify-apikey"><?php _e( 'Verify', BPCHK_TEXT_DOMAIN ); ?></button>
-				<p class="description"><?php _e( "Due to changes in Google Maps API it's required to use an API key for the BuddyPress Check-ins plugin to work properly. You can get the API key", BPCHK_TEXT_DOMAIN ); ?>&nbsp;<a target="blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php _e( 'here.', BPCHK_TEXT_DOMAIN ); ?></a></p>
+				<p class="description"><?php _e( "Due to changes in Google Maps API it's required to use an API key for the BuddyPress Check-ins plugin to work properly. You can get the API key", BPCHK_TEXT_DOMAIN ); ?>&nbsp;<a target="blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php _e( 'here.', BPCHK_TEXT_DOMAIN ); ?></a>&nbsp;
+					<a href="javascript:void(0);" onClick="window.open('https://wbcomdesigns.com/helpdesk/knowledge-base/get-google-api-key/','pagename','resizable,height=600,width=700'); return false;">
+							<?php _e('( How to Get Google API Key? )', BPCHK_TEXT_DOMAIN );?>
+					</a>
+				</p>
 			</td>
 		</tr>
 
