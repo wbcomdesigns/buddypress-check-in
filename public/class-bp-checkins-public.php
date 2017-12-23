@@ -558,7 +558,7 @@ class Bp_Checkins_Public {
 
 			$apikey		 = $bp_checkins->apikey;
 			$range		 = $bp_checkins->google_places_range * 1000;
-			$placetypes	 = implode( ',', $bp_checkins->place_types );
+			$placetypes	 = implode( '||', $bp_checkins->place_types );
 
 			$latitude	 = $_POST[ 'latitude' ];
 			$longitude	 = $_POST[ 'longitude' ];
@@ -574,11 +574,14 @@ class Bp_Checkins_Public {
 			);
 			$places_url		 = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
 			$url			 = add_query_arg( $parameters, esc_url_raw( $places_url ) );
+			
 			$response		 = wp_remote_get( esc_url_raw( $url ) );
+			
 			$response_code	 = wp_remote_retrieve_response_code( $response );
 			if ( $response_code == 200 ) {
 				$msg	 = __( 'places-found', BPCHK_TEXT_DOMAIN );
 				$places	 = json_decode( wp_remote_retrieve_body( $response ) );
+
 				if ( !empty( $places->results ) ) {
 					$places_html .= '<ul class="bpchk-places-fetched">';
 					foreach ( $places->results as $place ) {

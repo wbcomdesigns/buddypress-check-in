@@ -236,10 +236,8 @@ function bpchk_loc_xprof_ajax_save(latitude3,longitude3){
 				'longitude'			: longitude
 			}
 			$.post(bpchk_public_js_obj.ajaxurl,data,function(response){
-					//alert(response);
-					//console.log(response);
+					
 					var obj = JSON.parse(response);
-					//console.log( obj.html );
 					$('.checkin-by-placetype').html( obj.html );
 				});
 		}
