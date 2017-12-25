@@ -30,7 +30,7 @@ Google Place API key is required for it, You can create your key from [Google Pl
 
 This plugin also provides to select place types for your members, like if you are foodies you can select food-related place type and your members will able to post food-related places on your website activity stream. In the same way, you can select autocomplete box if you want to automatically fill up the location by google map API on member activity page.Both the options will show you a google map on frontend if you type and select a location either in autocomplete box or in place types list. Also, the plugin provides an x-profile field to set location at BuddyPress profile page.
 
-It will also show a google map for all the activity posts that has a location. If you need additional help you can contact us for [Wbcom Designs](https://wbcomdesigns.com/contact/).
+It will also show a google map for all the activity posts that has a location. If you need additional help you can contact us for [BuddyPress Check-ins](https://wbcomdesigns.com/downloads/buddypress-checkins/).
 
 
 == Installation ==
