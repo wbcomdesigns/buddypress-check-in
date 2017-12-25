@@ -83,6 +83,7 @@ If you need additional help you can contact us for <a href="https://wbcomdesigns
 
 4. screenshot-4 - shows the member profile, showing favorite locations.
 
+5. screenshot-5 - Mobile view for check-ins inside activity.
 
 == Changelog ==
 
