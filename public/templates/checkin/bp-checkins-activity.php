@@ -6,7 +6,13 @@ $apikey = $bp_checkins->apikey;
 
 $bpchk_fav_places = get_user_meta( bp_displayed_user_id(),'bpchk_fav_places',true);
 
-$bpchk_fav_places = array_reverse($bpchk_fav_places);
+if( !empty( $bpchk_fav_places ) ) {
+	$bpchk_fav_places = array_reverse($bpchk_fav_places);
+}
+else {
+	$bpchk_fav_places = $bpchk_fav_places;
+}
+
 if($bpchk_fav_places){
 	?>
 	<div id="accordion" class="bpchk-fav-loc-map-container">
