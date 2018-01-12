@@ -184,6 +184,8 @@ class Bp_Checkins {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_action( 'bp_setup_nav', $plugin_public, 'bpchk_member_profile_checkin_tab' );
 		$this->loader->add_action( 'bp_activity_posted_update', $plugin_public, 'bpchk_update_meta_on_post_update', 10, 3 );
+		$this->loader->add_action( 'bp_groups_posted_update', $plugin_public, 'bpchk_update_group_meta_on_post_update', 10, 4 );
+		$this->loader->add_filter( 'groups_activity_new_update_action', $plugin_public, 'bpchk_groups_activity_new_update_action', 10, 1 );
 		$this->loader->add_action( 'bp_activity_entry_content', $plugin_public, 'bpchk_show_google_map_in_checkin_activity', 10 );
 		$this->loader->add_action( 'wp_ajax_bpchk_save_temp_location', $plugin_public, 'bpchk_save_temp_location' );
 		$this->loader->add_action( 'wp_ajax_bpchk_fetch_places', $plugin_public, 'bpchk_fetch_places' );

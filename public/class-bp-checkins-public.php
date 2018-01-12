@@ -110,10 +110,11 @@ class Bp_Checkins_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		if( !bp_is_activity_component() ) { return; }
-		wp_enqueue_style( $this->plugin_name . '-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui.css' );
-		wp_enqueue_style( $this->plugin_name . '-font-awesome', plugin_dir_url( __FILE__ ) . 'css/font-awesome.min.css' );
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bp-checkins-public.css', array(), $this->version, 'all' );
+		if( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() ){
+			wp_enqueue_style( $this->plugin_name . '-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui.css' );
+			wp_enqueue_style( $this->plugin_name . '-font-awesome', plugin_dir_url( __FILE__ ) . 'css/font-awesome.min.css' );
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bp-checkins-public.css', array(), $this->version, 'all' );
+		}
 	}
 
 	/**
@@ -122,55 +123,56 @@ class Bp_Checkins_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		if( !bp_is_activity_component() ) { return; }
-		global $bp_checkins;
-		wp_enqueue_script( 'jquery-ui-accordion' );
-		wp_enqueue_script( $this->plugin_name.'-google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $bp_checkins->apikey, array( 'jquery' ) );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
-		$checkin_html = '';
-		if ( is_user_logged_in() ) {
+		if( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() ){
+			global $bp_checkins;
+			wp_enqueue_script( 'jquery-ui-accordion' );
+			wp_enqueue_script( $this->plugin_name.'-google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $bp_checkins->apikey, array( 'jquery' ) );
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
+			$checkin_html = '';
+			if ( is_user_logged_in() ) {
 
-			//Create the checkin html
+				//Create the checkin html
 
-			if ( $bp_checkins->apikey ) {
-				$checkin_html	 .= '<div><div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
-				$checkin_html	 .= '<div class="bp-checkins bp-checkin-panel">';
-				if ( $bp_checkins->checkin_by == 'autocomplete' ) {
-					$checkin_html	 .= '<div class="checkin-by-autocomplete">';
-					$checkin_html	 .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', BPCHK_TEXT_DOMAIN ) . '" />';
-					$checkin_html	 .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
-					$checkin_html	 .= '<input type="hidden" id="bpchk-checkin-place-lng" />';
-					$checkin_html	 .= '<input type="checkbox" id="bpchk-add-as-place" checked />';
-					$checkin_html	 .= '<label for="bpchk-add-as-place">' . __( 'Add as my location', BPCHK_TEXT_DOMAIN ) . '</label>';
-					$checkin_html	 .= '<span class="bpchk-place-loader">' . __( 'Saving location...', BPCHK_TEXT_DOMAIN ) . '<i class="fa fa-refresh fa-spin"></i></span><span class="clear"></span>';
-					$checkin_html	 .= '</div>';
-					$checkin_html	 .= '<div class="checkin-by-autocomplete-map" id="checkin-by-autocomplete-map">';
-					$checkin_html	 .= '</div><div class="clear"></div>';
-				} else {
-					$checkin_html	 .= '<div class="checkin-by-placetype">';
-					$checkin_html	 .= '<p>' . __( 'Please Wait..', BPCHK_TEXT_DOMAIN ) . '</p>';
-					$checkin_html	 .= '</div>';
+				if ( $bp_checkins->apikey ) {
+					$checkin_html	 .= '<div><div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
+					$checkin_html	 .= '<div class="bp-checkins bp-checkin-panel">';
+					if ( $bp_checkins->checkin_by == 'autocomplete' ) {
+						$checkin_html	 .= '<div class="checkin-by-autocomplete">';
+						$checkin_html	 .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', BPCHK_TEXT_DOMAIN ) . '" />';
+						$checkin_html	 .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
+						$checkin_html	 .= '<input type="hidden" id="bpchk-checkin-place-lng" />';
+						$checkin_html	 .= '<input type="checkbox" id="bpchk-add-as-place" checked />';
+						$checkin_html	 .= '<label for="bpchk-add-as-place">' . __( 'Add as my location', BPCHK_TEXT_DOMAIN ) . '</label>';
+						$checkin_html	 .= '<span class="bpchk-place-loader">' . __( 'Saving location...', BPCHK_TEXT_DOMAIN ) . '<i class="fa fa-refresh fa-spin"></i></span><span class="clear"></span>';
+						$checkin_html	 .= '</div>';
+						$checkin_html	 .= '<div class="checkin-by-autocomplete-map" id="checkin-by-autocomplete-map">';
+						$checkin_html	 .= '</div><div class="clear"></div>';
+					} else {
+						$checkin_html	 .= '<div class="checkin-by-placetype">';
+						$checkin_html	 .= '<p>' . __( 'Please Wait..', BPCHK_TEXT_DOMAIN ) . '</p>';
+						$checkin_html	 .= '</div>';
+					}
+					$checkin_html .= '</div>';
 				}
-				$checkin_html .= '</div>';
-			}
-			if ( xprofile_get_field_id_from_name( 'Location' ) ) {
-				$bpchk_location_id	 = xprofile_get_field_id_from_name( 'Location' );
-				$bpchk_loc_xprof	 = 'field_' . $bpchk_location_id;
-			}
+				if ( xprofile_get_field_id_from_name( 'Location' ) ) {
+					$bpchk_location_id	 = xprofile_get_field_id_from_name( 'Location' );
+					$bpchk_loc_xprof	 = 'field_' . $bpchk_location_id;
+				}
 
 
+			}
+			if(empty($bpchk_loc_xprof)){
+				$bpchk_loc_xprof = '';
+			}
+			wp_localize_script(
+				$this->plugin_name, 'bpchk_public_js_obj', array(
+					'ajaxurl'			 => admin_url( 'admin-ajax.php' ),
+					'checkin_html'         => apply_filters( 'alter_bpchk_checkin_html', $checkin_html ),
+					'checkin_by'		 => $bp_checkins->checkin_by,
+					'bpchk_loc_xprof'	 => $bpchk_loc_xprof
+				)
+			);
 		}
-		if(empty($bpchk_loc_xprof)){
-			$bpchk_loc_xprof = '';
-		}
-		wp_localize_script(
-			$this->plugin_name, 'bpchk_public_js_obj', array(
-				'ajaxurl'			 => admin_url( 'admin-ajax.php' ),
-				'checkin_html'         => apply_filters( 'alter_bpchk_checkin_html', $checkin_html ),
-				'checkin_by'		 => $bp_checkins->checkin_by,
-				'bpchk_loc_xprof'	 => $bpchk_loc_xprof
-			)
-		);
 	}
 
 	/**
@@ -514,6 +516,90 @@ class Bp_Checkins_Public {
 			 */
 			delete_option( 'bpchk_temp_location' );
 		}
+	}
+
+	/**
+	 * Action performed to save the group activity update to show the checkin.
+	 * @since 1.0.1
+	 */
+	public function bpchk_update_group_meta_on_post_update( $content, $user_id, $group_id, $activity_id ){
+		global $wpdb;
+		$place_details	 = get_option( 'bpchk_temp_location' );
+		$activity_tbl	 = $wpdb->base_prefix . 'bp_activity';
+
+		if ( !empty( $place_details ) ) {
+			$place			 = $place_details[ 'place' ];
+			$longitude		 = $place_details[ 'longitude' ];
+			$latitude		 = $place_details[ 'latitude' ];
+			$add_as_my_place = $place_details[ 'add_as_my_place' ];
+
+			$location_html	 = ' -at <a class=checkin-loc href="http://maps.google.com/maps/place/' . $place . '/@' . $latitude . ',' . $longitude . '" target="_blank" title="' . $place . '">' . $place . '</a>';
+			$content		 .= $location_html;
+			$pos			 = strpos( $content, '-at <a class="checkin-loc"' );
+			//Update the activity content to post the checkin along with the post update
+			if ( $pos === false ) {
+				$wpdb->update(
+					$activity_tbl, array( 'content' => $content ), array( 'id' => $activity_id ), array( '%s' ), array( '%d' )
+				);
+
+				//Update the location details in activity meta
+				bp_activity_update_meta( $activity_id, 'bpchk_place_details', $place_details );
+			}
+
+			if ( $add_as_my_place == 'yes' ) {
+				$bpchk_fav_places	 = get_user_meta( $user_id, 'bpchk_fav_places', true );
+				$place_get_url		 = "http://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&sensor=false";
+				$response			 = wp_remote_get( $place_get_url );
+
+				$response_code = wp_remote_retrieve_response_code( $response );
+
+				if ( $response_code == 200 ) {
+					$jsondata			 = json_decode( wp_remote_retrieve_body( $response ), true );
+					$place_visit_date	 = date( 'Y-m-d', time() );
+
+					if ( $jsondata[ "results" ][ 0 ][ "formatted_address" ] ) {
+						$address						 = array();
+						$address[ 'latitude' ]			 = $latitude;
+						$address[ 'longitude' ]			 = $longitude;
+						$address[ 'activity_id' ]		 = $activity_id;
+						$address[ 'place' ]				 = $place;
+						$address[ 'country' ]			 = self::google_getCountry( $jsondata );
+						$address[ 'province' ]			 = self::google_getProvince( $jsondata );
+						$address[ 'city' ]				 = self::google_getCity( $jsondata );
+						$address[ 'street' ]			 = self::google_getStreet( $jsondata );
+						$address[ 'postal_code' ]		 = self::google_getPostalCode( $jsondata );
+						$address[ 'country_code' ]		 = self::google_getCountryCode( $jsondata );
+						$address[ 'formatted_address' ]	 = self::google_getAddress( $jsondata );
+						$address[ 'visit_date' ]		 = $place_visit_date;
+
+						if ( $bpchk_fav_places ) {
+							array_push( $bpchk_fav_places, $address );
+							update_user_meta( $user_id, 'bpchk_fav_places', $bpchk_fav_places );
+						} else {
+							$fav_places		 = array();
+							$fav_places[]	 = $address;
+							update_user_meta( $user_id, 'bpchk_fav_places', $fav_places );
+						}
+					}
+				}
+			}
+			/**
+			 * Delete the temp location after posting update,
+			 * so that the same place doesn't gets posted
+			 * when no checkin is done.
+			 */
+			delete_option( 'bpchk_temp_location' );
+		}
+	}
+
+	public function bpchk_groups_activity_new_update_action( $activity_action ){
+		global $bp;
+		$user_id   = bp_loggedin_user_id();
+		$place_details	 = get_option( 'bpchk_temp_location' );
+		if(!empty($place_details)){
+			$activity_action  = sprintf( __( '%1$s checked-in in the group %2$s', 'buddypress'), bp_core_get_userlink( $user_id ), '<a href="' . bp_get_group_permalink( $bp->groups->current_group ) . '">' . esc_attr( $bp->groups->current_group->name ) . '</a>' );
+		}
+		return $activity_action;
 	}
 
 	/**
