@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -96,7 +95,7 @@ class Bp_Checkins_Admin {
 	 * @since    1.0.0
 	 */
 	public function bpchk_add_menu_page() {
-		add_menu_page( __( 'BuddyPress Checkins Settings', BPCHK_TEXT_DOMAIN ), __( 'Check-ins', BPCHK_TEXT_DOMAIN ), 'manage_options', $this->plugin_name, array( $this, 'bpchk_admin_settings_page' ), 'dashicons-location', 59 );
+		add_menu_page( __( 'BuddyPress Checkins Settings', 'bp-checkins' ), __( 'Check-ins', 'bp-checkins' ), 'manage_options', $this->plugin_name, array( $this, 'bpchk_admin_settings_page' ), 'dashicons-location', 59 );
 	}
 
 	/**
@@ -108,11 +107,11 @@ class Bp_Checkins_Admin {
 		<div class="wrap">
 			<div class="bpchk-header">
 				<div class="bpchk-extra-actions">
-					<button type="button" class="button button-secondary" onclick="window.open('https://wbcomdesigns.com/contact/', '_blank');"><i class="fa fa-envelope" aria-hidden="true"></i> <?php _e( 'Email Support', BPCHK_TEXT_DOMAIN ); ?></button>
-					<button type="button" class="button button-secondary" onclick="window.open('https://wbcomdesigns.com/helpdesk/article-categories/buddypress-checkins/', '_blank');"><i class="fa fa-file" aria-hidden="true"></i> <?php _e( 'User Manual', BPCHK_TEXT_DOMAIN ); ?></button>
-					<button type="button" class="button button-secondary" onclick="window.open('https://wordpress.org/support/plugin/bp-check-in/reviews/', '_blank');"><i class="fa fa-star" aria-hidden="true"></i> <?php _e( 'Rate Us on WordPress.org', BPCHK_TEXT_DOMAIN ); ?></button>
+					<button type="button" class="button button-secondary" onclick="window.open('https://wbcomdesigns.com/contact/', '_blank');"><i class="fa fa-envelope" aria-hidden="true"></i> <?php _e( 'Email Support', 'bp-checkins' ); ?></button>
+					<button type="button" class="button button-secondary" onclick="window.open('https://wbcomdesigns.com/helpdesk/article-categories/buddypress-checkins/', '_blank');"><i class="fa fa-file" aria-hidden="true"></i> <?php _e( 'User Manual', 'bp-checkins' ); ?></button>
+					<button type="button" class="button button-secondary" onclick="window.open('https://wordpress.org/support/plugin/bp-check-in/reviews/', '_blank');"><i class="fa fa-star" aria-hidden="true"></i> <?php _e( 'Rate Us on WordPress.org', 'bp-checkins' ); ?></button>
 				</div>
-				<h2 class="bpchk-plugin-heading"><?php _e( 'BuddyPress Check-ins', BPCHK_TEXT_DOMAIN ); ?></h2>
+				<h2 class="bpchk-plugin-heading"><?php _e( 'BuddyPress Check-ins', 'bp-checkins' ); ?></h2>
 			</div>
 			<form method="POST" action="">
 
@@ -120,7 +119,7 @@ class Bp_Checkins_Admin {
 				settings_errors();
 				if ( isset( $_POST['bpchk-submit-general-settings'] ) ) {
 					$success_msg  = "<div class='notice updated is-dismissible' id='message'>";
-					$success_msg .= '<p>' . __( '<strong>Settings Saved.</strong>', BPCHK_TEXT_DOMAIN ) . '</p>';
+					$success_msg .= '<p>' . __( '<strong>Settings Saved.</strong>', 'bp-checkins' ) . '</p>';
 					$success_msg .= '</div>';
 					echo $success_msg;
 				}
@@ -151,12 +150,12 @@ class Bp_Checkins_Admin {
 	 */
 	public function bpchk_plugin_settings() {
 		// General settings tab
-		$this->plugin_settings_tabs['bp-checkins'] = __( 'General', BPCHK_TEXT_DOMAIN );
+		$this->plugin_settings_tabs['bp-checkins'] = __( 'General', 'bp-checkins' );
 		register_setting( 'bp-checkins', 'bp-checkins' );
 		add_settings_section( 'bp-checkins-section', ' ', array( &$this, 'bpchk_general_settings_content' ), 'bp-checkins' );
 
 		// Support tab
-		$this->plugin_settings_tabs['bpchk-support'] = __( 'Support', BPCHK_TEXT_DOMAIN );
+		$this->plugin_settings_tabs['bpchk-support'] = __( 'Support', 'bp-checkins' );
 		register_setting( 'bpchk-support', 'bpchk-support' );
 		add_settings_section( 'bpchk-support-section', ' ', array( &$this, 'bpchk_support_settings_content' ), 'bpchk-support' );
 	}
@@ -233,7 +232,7 @@ class Bp_Checkins_Admin {
 	public function bpchk_setup_admin_bar_links( $wp_admin_nav = array() ) {
 		global $wp_admin_bar;
 		$profile_menu_slug  = 'checkin';
-		$profile_menu_title = __( 'Check-ins', BPCHK_TEXT_DOMAIN );
+		$profile_menu_title = __( 'Check-ins', 'bp-checkins' );
 
 		$base_url = bp_loggedin_user_domain() . $profile_menu_slug;
 		if ( is_user_logged_in() ) {

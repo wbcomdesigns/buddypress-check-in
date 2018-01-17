@@ -1,5 +1,5 @@
 <?php
-// Exit if accessed directly
+// Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
 global $bp_checkins;
@@ -113,13 +113,13 @@ $place_types = array(
 	<tbody>
 		<!-- API Key -->
 		<tr>
-			<th scope="row"><label for="api-key"><?php _e( 'API Key', BPCHK_TEXT_DOMAIN ); ?></label></th>
+			<th scope="row"><label for="api-key"><?php _e( 'API Key', 'bp-checkins' ); ?></label></th>
 			<td>
-				<input class="regular-text" type="text" value="<?php echo $bp_checkins->apikey; ?>" name="bpchk-api-key" id="bpchk-api-key" placeholder="<?php _e( 'API Key', BPCHK_TEXT_DOMAIN ); ?>" required>
-				<button type="button" class="button button-secondary" style="<?php echo $verify_btn_style; ?>" id="bpchk-verify-apikey"><?php _e( 'Verify', BPCHK_TEXT_DOMAIN ); ?></button>
-				<p class="description"><?php _e( "Due to changes in Google Maps API it's required to use an API key for the BuddyPress Check-ins plugin to work properly. You can get the API key", BPCHK_TEXT_DOMAIN ); ?>&nbsp;<a target="blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php _e( 'here.', BPCHK_TEXT_DOMAIN ); ?></a>&nbsp;
+				<input class="regular-text" type="text" value="<?php echo $bp_checkins->apikey; ?>" name="bpchk-api-key" id="bpchk-api-key" placeholder="<?php _e( 'API Key', 'bp-checkins' ); ?>" required>
+				<button type="button" class="button button-secondary" style="<?php echo $verify_btn_style; ?>" id="bpchk-verify-apikey"><?php _e( 'Verify', 'bp-checkins' ); ?></button>
+				<p class="description"><?php _e( "Due to changes in Google Maps API it's required to use an API key for the BuddyPress Check-ins plugin to work properly. You can get the API key", 'bp-checkins' ); ?>&nbsp;<a target="blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php _e( 'here.', 'bp-checkins' ); ?></a>&nbsp;
 					<a href="javascript:void(0);" onClick="window.open('https://wbcomdesigns.com/helpdesk/knowledge-base/get-google-api-key/','pagename','resizable,height=600,width=700'); return false;">
-							<?php _e( '( How to Get Google API Key? )', BPCHK_TEXT_DOMAIN ); ?>
+							<?php _e( '( How to Get Google API Key? )', 'bp-checkins' ); ?>
 					</a>
 				</p>
 			</td>
@@ -128,24 +128,24 @@ $place_types = array(
 		<?php if ( $bp_checkins->apikey ) { ?>
 			<!-- Checkin By - autocomplete or placetype -->
 			<tr>
-				<th scope="row"><label for="checkin-by"><?php _e( 'Check-in by', BPCHK_TEXT_DOMAIN ); ?></label></th>
+				<th scope="row"><label for="checkin-by"><?php _e( 'Check-in by', 'bp-checkins' ); ?></label></th>
 				<td>
 					<p>
 						<input <?php echo ( $bp_checkins->checkin_by == 'autocomplete' ) ? 'checked' : ''; ?> required type="radio" value="autocomplete" name="bpchk-checkin-by" class="bpchk-checkin-by" id="bpchk-checkin-by-autocomplete" checked="checked">
-						<label for="bpchk-checkin-by-autocomplete"><?php _e( 'Location Autocomplete', BPCHK_TEXT_DOMAIN ); ?></label>
+						<label for="bpchk-checkin-by-autocomplete"><?php _e( 'Location Autocomplete', 'bp-checkins' ); ?></label>
 					</p>
 					<p>
 						<input <?php echo ( $bp_checkins->checkin_by == 'placetype' ) ? 'checked' : ''; ?> required type="radio" value="placetype" name="bpchk-checkin-by" class="bpchk-checkin-by" id="bpchk-checkin-by-placetype">
-						<label for="bpchk-checkin-by-placetype"><?php _e( 'Place Types', BPCHK_TEXT_DOMAIN ); ?></label>
+						<label for="bpchk-checkin-by-placetype"><?php _e( 'Place Types', 'bp-checkins' ); ?></label>
 					</p>
-					<p class="description"><?php _e( 'This setting will help the users check-in by autocomplete or place type google features.', BPCHK_TEXT_DOMAIN ); ?></p>
+					<p class="description"><?php _e( 'This setting will help the users check-in by autocomplete or place type google features.', 'bp-checkins' ); ?></p>
 				</td>
 			</tr>
 		<?php } ?>
 
 		<!-- Settings for place types -->
 		<tr style="<?php echo $placetype_settings_style; ?>" class="bpchk-placetype-settings-row">
-			<th scope="row"><?php _e( 'Range', BPCHK_TEXT_DOMAIN ); ?></th>
+			<th scope="row"><?php _e( 'Range', 'bp-checkins' ); ?></th>
 			<td>
 				<input type="hidden" value="<?php echo $saved_range; ?>" id="hidden_range" />
 				<input value="<?php echo $saved_range; ?>" id="bpchk-google-places-range" type="range" name="bpchk-google-places-range" min="1" max="10">
@@ -155,17 +155,17 @@ $place_types = array(
 					echo "$saved_range kms.";}
 ?>
 </span>
-				<p class="description"><?php _e( 'This will set the range for fetching the places while check-in.', BPCHK_TEXT_DOMAIN ); ?></p>
+				<p class="description"><?php _e( 'This will set the range for fetching the places while check-in.', 'bp-checkins' ); ?></p>
 			</td>
 		</tr>
 
 		<!-- Settings for place types -->
 		<tr style="<?php echo $placetype_settings_style; ?>" class="bpchk-placetype-settings-row">
-			<th scope="row"><?php _e( 'Place Types', BPCHK_TEXT_DOMAIN ); ?></th>
+			<th scope="row"><?php _e( 'Place Types', 'bp-checkins' ); ?></th>
 			<td>
 				<p class="bpchk-selection-tags">
-					<a href="javascript:void(0);" id="bpchk-select-all-place-types"><?php _e( 'Select All', BPCHK_TEXT_DOMAIN ); ?></a> /
-					<a href="javascript:void(0);" id="bpchk-unselect-all-place-types"><?php _e( 'Unselect All', BPCHK_TEXT_DOMAIN ); ?></a>
+					<a href="javascript:void(0);" id="bpchk-select-all-place-types"><?php _e( 'Select All', 'bp-checkins' ); ?></a> /
+					<a href="javascript:void(0);" id="bpchk-unselect-all-place-types"><?php _e( 'Unselect All', 'bp-checkins' ); ?></a>
 				</p>
 				<select name="bpchk-google-place-types[]" id="bpchk-pre-place-types" multiple>
 					<?php foreach ( $place_types as $place_type ) { ?>
@@ -173,7 +173,7 @@ $place_types = array(
 						<option value="<?php echo $placetype_slug; ?>" <?php echo ( ! empty( $bp_checkins->place_types ) && in_array( $placetype_slug, $bp_checkins->place_types ) ) ? 'selected' : ''; ?>><?php echo $place_type; ?></option>
 					<?php } ?>
 				</select>
-				<p class="description"><?php _e( 'This will help in fetching the place types, that will be selected here.', BPCHK_TEXT_DOMAIN ); ?></p>
+				<p class="description"><?php _e( 'This will help in fetching the place types, that will be selected here.', 'bp-checkins' ); ?></p>
 			</td>
 		</tr>
 	</tbody>

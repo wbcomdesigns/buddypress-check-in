@@ -84,18 +84,18 @@ class Bp_Checkins_Public {
 					$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
 				if ( $bp_checkins->checkin_by == 'autocomplete' ) {
 					$checkin_html     .= '<div class="checkin-by-autocomplete">';
-						$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', BPCHK_TEXT_DOMAIN ) . '" />';
+						$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', 'bp-checkins' ) . '" />';
 						$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
 						$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lng" />';
 						$checkin_html .= '<input type="checkbox" id="bpchk-add-as-place" checked />';
-						$checkin_html .= '<label for="bpchk-add-as-place">' . __( 'Add as my location', BPCHK_TEXT_DOMAIN ) . '</label>';
-						$checkin_html .= '<span class="bpchk-place-loader">' . __( 'Saving location...', BPCHK_TEXT_DOMAIN ) . '<i class="fa fa-refresh fa-spin"></i></span><span class="clear"></span>';
+						$checkin_html .= '<label for="bpchk-add-as-place">' . __( 'Add as my location', 'bp-checkins' ) . '</label>';
+						$checkin_html .= '<span class="bpchk-place-loader">' . __( 'Saving location...', 'bp-checkins' ) . '<i class="fa fa-refresh fa-spin"></i></span><span class="clear"></span>';
 					$checkin_html     .= '</div>';
 					$checkin_html     .= '<div class="checkin-by-autocomplete-map" id="checkin-by-autocomplete-map"></div>';
 					$checkin_html     .= '<div class="clear"></div>';
 				} else {
 					$checkin_html     .= '<div class="checkin-by-placetype">';
-						$checkin_html .= '<p>' . __( 'Please Wait..', BPCHK_TEXT_DOMAIN ) . '</p>';
+						$checkin_html .= '<p>' . __( 'Please Wait..', 'bp-checkins' ) . '</p>';
 					$checkin_html     .= '</div>';
 				}
 					$checkin_html .= '</div>';
@@ -139,18 +139,18 @@ class Bp_Checkins_Public {
 					$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
 					if ( $bp_checkins->checkin_by == 'autocomplete' ) {
 						$checkin_html .= '<div class="checkin-by-autocomplete">';
-						$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', BPCHK_TEXT_DOMAIN ) . '" />';
+						$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', 'bp-checkins' ) . '" />';
 						$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
 						$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lng" />';
 						$checkin_html .= '<input type="checkbox" id="bpchk-add-as-place" checked />';
-						$checkin_html .= '<label for="bpchk-add-as-place">' . __( 'Add as my location', BPCHK_TEXT_DOMAIN ) . '</label>';
-						$checkin_html .= '<span class="bpchk-place-loader">' . __( 'Saving location...', BPCHK_TEXT_DOMAIN ) . '<i class="fa fa-refresh fa-spin"></i></span><span class="clear"></span>';
+						$checkin_html .= '<label for="bpchk-add-as-place">' . __( 'Add as my location', 'bp-checkins' ) . '</label>';
+						$checkin_html .= '<span class="bpchk-place-loader">' . __( 'Saving location...', 'bp-checkins' ) . '<i class="fa fa-refresh fa-spin"></i></span><span class="clear"></span>';
 						$checkin_html .= '</div>';
 						$checkin_html .= '<div class="checkin-by-autocomplete-map" id="checkin-by-autocomplete-map">';
 						$checkin_html .= '</div><div class="clear"></div>';
 					} else {
 						$checkin_html .= '<div class="checkin-by-placetype">';
-						$checkin_html .= '<p>' . __( 'Please Wait..', BPCHK_TEXT_DOMAIN ) . '</p>';
+						$checkin_html .= '<p>' . __( 'Please Wait..', 'bp-checkins' ) . '</p>';
 						$checkin_html .= '</div>';
 					}
 					$checkin_html .= '</div>';
@@ -188,7 +188,7 @@ class Bp_Checkins_Public {
 
 		bp_core_new_nav_item(
 			array(
-				'name'                    => __( 'Check-ins', BPCHK_TEXT_DOMAIN ),
+				'name'                    => __( 'Check-ins', 'bp-checkins' ),
 				'slug'                    => 'checkin',
 				'screen_function'         => array( $this, 'bpchk_checkin_tab_function_to_show_screen' ),
 				'position'                => 75,
@@ -198,7 +198,7 @@ class Bp_Checkins_Public {
 		);
 		bp_core_new_subnav_item(
 			array(
-				'name'            => __( 'Locations', BPCHK_TEXT_DOMAIN ),
+				'name'            => __( 'Locations', 'bp-checkins' ),
 				'slug'            => 'my-places',
 				'parent_url'      => bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/',
 				'parent_slug'     => $parent_slug,
@@ -222,7 +222,7 @@ class Bp_Checkins_Public {
 	 * My Places - Title
 	 */
 	function bpchk_checkins_tab_function_to_show_title() {
-		_e( 'My Locations', BPCHK_TEXT_DOMAIN );
+		_e( 'My Locations', 'bp-checkins' );
 	}
 
 	/**
@@ -405,7 +405,7 @@ class Bp_Checkins_Public {
 		$component_id = buddypress()->activity->id;
 
 		bp_activity_set_action(
-			$component_id, 'activity_bpchk_chkins', __( 'Check-ins Update', BPCHK_TEXT_DOMAIN ), array( $this, 'bp_activity_format_activity_action_activity_bpchk_chkins' ), __( 'Check-ins', BPCHK_TEXT_DOMAIN ), array( 'member' )
+			$component_id, 'activity_bpchk_chkins', __( 'Check-ins Update', 'bp-checkins' ), array( $this, 'bp_activity_format_activity_action_activity_bpchk_chkins' ), __( 'Check-ins', 'bp-checkins' ), array( 'member' )
 		);
 	}
 
@@ -673,7 +673,7 @@ class Bp_Checkins_Public {
 
 			$response_code = wp_remote_retrieve_response_code( $response );
 			if ( $response_code == 200 ) {
-				$msg    = __( 'places-found', BPCHK_TEXT_DOMAIN );
+				$msg    = __( 'places-found', 'bp-checkins' );
 				$places = json_decode( wp_remote_retrieve_body( $response ) );
 
 				if ( ! empty( $places->results ) ) {
@@ -688,19 +688,19 @@ class Bp_Checkins_Public {
 						$places_html .= '<div>' . $place->vicinity . '</div>';
 						$places_html .= '</div>';
 						$places_html .= '<div class="place-actions">';
-						$places_html .= '<a href="javascript:void(0);" class="bpchk-select-place-to-checkin" data-place_reference="' . $place->reference . '" data-place_id="' . $place->place_id . '">' . __( 'Select', BPCHK_TEXT_DOMAIN ) . '</a>';
+						$places_html .= '<a href="javascript:void(0);" class="bpchk-select-place-to-checkin" data-place_reference="' . $place->reference . '" data-place_id="' . $place->place_id . '">' . __( 'Select', 'bp-checkins' ) . '</a>';
 						$places_html .= '</div>';
 						$places_html .= '</li>';
 					}
 					$places_html .= '</ul>';
 					$places_html .= '<input type="checkbox" id="bpchk-add-as-place" checked />';
-					$places_html .= '<label for="bpchk-add-as-place" id="bpchk-add-my-place-label">' . __( 'Add as my location', BPCHK_TEXT_DOMAIN ) . '</label>';
+					$places_html .= '<label for="bpchk-add-as-place" id="bpchk-add-my-place-label">' . __( 'Add as my location', 'bp-checkins' ) . '</label>';
 					$places_html .= '<div class="bpchk-single-location-added"></div>';
 					$places_html .= '';
 				}
 			} else {
-				$msg          = __( 'places-not-found', BPCHK_TEXT_DOMAIN );
-				$places_html .= '<p>' . __( 'Places not found !', BPCHK_TEXT_DOMAIN ) . '</p>';
+				$msg          = __( 'places-not-found', 'bp-checkins' );
+				$places_html .= '<p>' . __( 'Places not found !', 'bp-checkins' ) . '</p>';
 			}
 			$result = array(
 				'message' => $msg,
@@ -733,7 +733,7 @@ class Bp_Checkins_Public {
 			$response         = wp_remote_get( esc_url_raw( $url ) );
 			$response_code    = wp_remote_retrieve_response_code( $response );
 			if ( $response_code == 200 ) {
-				$msg   = __( 'place-details-found', BPCHK_TEXT_DOMAIN );
+				$msg   = __( 'place-details-found', 'bp-checkins' );
 				$place = json_decode( wp_remote_retrieve_body( $response ) );
 
 				$place_name = $place->result->name;
@@ -749,11 +749,11 @@ class Bp_Checkins_Public {
 
 				$href        = 'http://maps.google.com/maps/place/' . $place_name . "/@$latitude,$longitude";
 				$place_html .= "<div class='bpchk-checkin-temp-location'>-at <a title='" . $place_name . "' href='" . $href . "' target='_blank' id='bpchk-temp-location'>" . $place_name . '</a>';
-				$place_html .= ' <a href="javascript:void(0);" id="bpchk-cancel-checkin" title="' . __( 'Click here to cancel your checkin.', BPCHK_TEXT_DOMAIN ) . '"><i class="fa fa-times"></i></a>';
+				$place_html .= ' <a href="javascript:void(0);" id="bpchk-cancel-checkin" title="' . __( 'Click here to cancel your checkin.', 'bp-checkins' ) . '"><i class="fa fa-times"></i></a>';
 				$place_html .= '</div>';
 				$place_html .= '<div>';
-				$place_html .= '<a class="button" href="javascript:void(0);" id="bpchk-show-places-panel">' . __( 'Show Locations', BPCHK_TEXT_DOMAIN ) . '</a>';
-				// $place_html	 .= '<a href="javascript:void(0);" id="bpchk-hide-places-panel">' . __( 'Hide places', BPCHK_TEXT_DOMAIN ) . '</a>';
+				$place_html .= '<a class="button" href="javascript:void(0);" id="bpchk-show-places-panel">' . __( 'Show Locations', 'bp-checkins' ) . '</a>';
+				// $place_html	 .= '<a href="javascript:void(0);" id="bpchk-hide-places-panel">' . __( 'Hide places', 'bp-checkins' ) . '</a>';
 				$place_html .= '</div>';
 
 				$qry    = "SELECT `option_id`, `option_value` from $options_tbl where `option_name` = 'bpchk_temp_location'";
@@ -774,8 +774,8 @@ class Bp_Checkins_Public {
 					);
 				}
 			} else {
-				$msg         = __( 'place-details-not-found', BPCHK_TEXT_DOMAIN );
-				$place_html .= '<p>' . __( 'Place details not found !', BPCHK_TEXT_DOMAIN ) . '</p>';
+				$msg         = __( 'place-details-not-found', 'bp-checkins' );
+				$place_html .= '<p>' . __( 'Place details not found !', 'bp-checkins' ) . '</p>';
 			}
 
 			$result = array(
@@ -796,7 +796,7 @@ class Bp_Checkins_Public {
 			$tbl = $wpdb->prefix . 'options';
 			$wpdb->delete( $tbl, array( 'option_name' => 'bpchk_temp_location' ) );
 			$result = array(
-				'message' => __( 'Checkin cancelled !', BPCHK_TEXT_DOMAIN ),
+				'message' => __( 'Checkin cancelled !', 'bp-checkins' ),
 			);
 			wp_send_json_success( $result );
 			die;
