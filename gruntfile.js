@@ -10,7 +10,7 @@ module.exports = function ( grunt ) {
 				// Check text domain
 			checktextdomain: {
 				options: {
-					text_domain: [ 'bp-group-reviews', 'buddypress' ], // Specify allowed domain(s)
+					text_domain: [ 'bp-checkins', 'buddypress' ], // Specify allowed domain(s)
 					keywords: [ // List keyword specifications
 						'__:1,2d',
 						'_e:1,2d',
@@ -49,7 +49,7 @@ module.exports = function ( grunt ) {
 						domainPath: 'languages/', // Where to save the POT file.
 						exclude: [ 'node_modules/*', 'options/framework/*' ], // List of files or directories to ignore.
 						mainFile: 'index.php', // Main project file.
-						potFilename: 'bp-group-reviews.pot', // Name of the POT file.
+						potFilename: 'bp-checkins.pot', // Name of the POT file.
 						potHeaders: { // Headers to add to the generated POT file.
 							poedit: true, // Includes common Poedit headers.
 							'Last-Translator': 'Varun Dubey',
@@ -57,7 +57,7 @@ module.exports = function ( grunt ) {
 							'report-msgid-bugs-to': '',
 							'x-poedit-keywordslist': true // Include a list of all possible gettext functions.
 						},
-						type: 'wp-theme', // Type of project (wp-plugin or wp-theme).
+						type: 'wp-plugin', // Type of project (wp-plugin or wp-theme).
 						updateTimestamp: true // Whether the POT-Creation-Date should be updated without other changes.
 					}
 				}
