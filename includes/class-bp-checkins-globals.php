@@ -77,7 +77,7 @@ class Bp_Checkins_Globals {
 	public function __construct() {
 
 		$this->plugin_name = 'bp-checkins';
-		$this->version = '1.0.0';
+		$this->version     = '1.0.0';
 		$this->setup_plugin_global();
 	}
 
@@ -92,25 +92,24 @@ class Bp_Checkins_Globals {
 	public function setup_plugin_global() {
 		global $bp_checkins;
 		$bpchk_settings = get_option( 'bpchk_general_settings' );
-		
 
 		$this->apikey = '';
-		if( isset( $bpchk_settings['apikey'] ) ) {
+		if ( isset( $bpchk_settings['apikey'] ) ) {
 			$this->apikey = $bpchk_settings['apikey'];
 		}
 
 		$this->checkin_by = 'autocomplete';
-		if( isset( $bpchk_settings['checkin_by'] ) ) {
+		if ( isset( $bpchk_settings['checkin_by'] ) ) {
 			$this->checkin_by = $bpchk_settings['checkin_by'];
 		}
 
 		$this->google_places_range = 5;
-		if( isset( $bpchk_settings['range'] ) ) {
+		if ( isset( $bpchk_settings['range'] ) ) {
 			$this->google_places_range = $bpchk_settings['range'];
 		}
 
 		$this->place_types = array();
-		if( isset( $bpchk_settings['placetypes'] ) ) {
+		if ( isset( $bpchk_settings['placetypes'] ) ) {
 			$this->place_types = $bpchk_settings['placetypes'];
 		}
 	}

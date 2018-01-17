@@ -69,7 +69,7 @@ class Bp_Checkins {
 	public function __construct() {
 
 		$this->plugin_name = 'bp-checkins';
-		$this->version = '1.0.0';
+		$this->version     = '1.0.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -163,10 +163,9 @@ class Bp_Checkins {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'bpchk_plugin_settings' );
 		$this->loader->add_action( 'bp_setup_admin_bar', $plugin_admin, 'bpchk_setup_admin_bar_links', 80 );
 
-		//Ajax call for verifying the API Key
+		// Ajax call for verifying the API Key
 		$this->loader->add_action( 'wp_ajax_bpchk_verify_apikey', $plugin_admin, 'bpchk_verify_apikey' );
-		//$this->loader->add_action( 'wp_ajax_nopriv_bpchk_verify_apikey', $plugin_admin, 'bpchk_verify_apikey' );
-
+		// $this->loader->add_action( 'wp_ajax_nopriv_bpchk_verify_apikey', $plugin_admin, 'bpchk_verify_apikey' );
 	}
 
 	/**
@@ -192,12 +191,12 @@ class Bp_Checkins {
 		$this->loader->add_action( 'wp_ajax_bpchk_select_place_to_checkin', $plugin_public, 'bpchk_select_place_to_checkin' );
 		$this->loader->add_action( 'wp_ajax_bpchk_cancel_checkin', $plugin_public, 'bpchk_cancel_checkin' );
 		/*version 1.0.1 update*/
-		$this->loader->add_filter('bp_activity_check_activity_types', $plugin_public, 'bpchk_add_checkin_activity_type',10,1);
+		$this->loader->add_filter( 'bp_activity_check_activity_types', $plugin_public, 'bpchk_add_checkin_activity_type', 10, 1 );
 		$this->loader->add_action( 'bp_init', $plugin_public, 'bpchk_add_location_xprofile_field' );
 		$this->loader->add_action( 'wp_ajax_bpchk_save_xprofile_location', $plugin_public, 'bpchk_save_xprofile_location' );
-		$this->loader->add_filter( 'bp_get_the_profile_field_value', $plugin_public, 'bpchk_show_xprofile_location',10,3);
+		$this->loader->add_filter( 'bp_get_the_profile_field_value', $plugin_public, 'bpchk_show_xprofile_location', 10, 3 );
 		$this->loader->add_action( 'bp_register_activity_actions', $plugin_public, 'custom_plugin_register_activity_actions' );
-		$this->loader->add_action('bp_activity_before_save',$plugin_public, 'bpchk_update_activity_type_checkins', 10,1);
+		$this->loader->add_action( 'bp_activity_before_save', $plugin_public, 'bpchk_update_activity_type_checkins', 10, 1 );
 
 		/**
 		* @since 1.0.7
@@ -257,15 +256,15 @@ class Bp_Checkins {
 		return $this->version;
 	}
 
-	public static function bpchk_fetch_google_places( $apikey, $lat = '', $lon = '', $radius = '' ){
+	public static function bpchk_fetch_google_places( $apikey, $lat = '', $lon = '', $radius = '' ) {
 		$places_url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
 		$parameters = array(
 			'location' => "$lat,$lon",
-			'radius' => $radius,
-			'key' => $apikey
+			'radius'   => $radius,
+			'key'      => $apikey,
 		);
-		$url = add_query_arg( $parameters, esc_url_raw( $places_url ) );
-		$response = wp_remote_get( esc_url_raw( $url ) );
+		$url        = add_query_arg( $parameters, esc_url_raw( $places_url ) );
+		$response   = wp_remote_get( esc_url_raw( $url ) );
 		return $response;
 	}
 

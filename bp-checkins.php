@@ -25,14 +25,14 @@
  * Domain Path:       /languages
  */
 // If this file is called directly, abort.
-if ( !defined( 'WPINC' ) ) {
+if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-//Define Plugin Constants
+// Define Plugin Constants
 define( 'BPCHK_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'BPCHK_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-if ( !defined( 'BPCHK_TEXT_DOMAIN' ) ) {
+if ( ! defined( 'BPCHK_TEXT_DOMAIN' ) ) {
 	define( 'BPCHK_TEXT_DOMAIN', 'bp-checkins' );
 }
 
@@ -89,7 +89,7 @@ function bpchk_plugin_init() {
 		add_action( 'admin_notices', 'bpchk_plugin_admin_notice' );
 	} else {
 		$bp_active_components = get_option( 'bp-active-components', true );
-		if ( !array_key_exists( 'activity', $bp_active_components ) ) {
+		if ( ! array_key_exists( 'activity', $bp_active_components ) ) {
 			add_action( 'admin_notices', 'bpchk_plugin_require_activity_component_admin_notice' );
 		} else {
 			run_bp_checkins();
@@ -99,31 +99,33 @@ function bpchk_plugin_init() {
 }
 
 function bpchk_plugin_admin_notice() {
-	$bpchk_plugin	 = 'BuddyPress Checkin';
-	$bp_plugin		 = 'BuddyPress';
+	$bpchk_plugin = 'BuddyPress Checkin';
+	$bp_plugin    = 'BuddyPress';
 
 	echo '<div class="error"><p>'
 	. sprintf( __( '%1$s is ineffective as it requires %2$s to be installed and active.', BPCHK_TEXT_DOMAIN ), '<strong>' . esc_html( $bpchk_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' )
 	. '</p></div>';
-	if ( isset( $_GET[ 'activate' ] ) )
-		unset( $_GET[ 'activate' ] );
+	if ( isset( $_GET['activate'] ) ) {
+		unset( $_GET['activate'] );
+	}
 }
 
 function bpchk_plugin_require_activity_component_admin_notice() {
-	$bpchk_plugin	 = 'BuddyPress Checkin';
-	$bp_component	 = 'BuddyPress\'s Activity Component';
+	$bpchk_plugin = 'BuddyPress Checkin';
+	$bp_component = 'BuddyPress\'s Activity Component';
 
 	echo '<div class="error"><p>'
 	. sprintf( __( '%1$s is ineffective now as it requires %2$s to be active.', BPGT_TEXT_DOMAIN ), '<strong>' . esc_html( $bpchk_plugin ) . '</strong>', '<strong>' . esc_html( $bp_component ) . '</strong>' )
 	. '</p></div>';
-	if ( isset( $_GET[ 'activate' ] ) )
-		unset( $_GET[ 'activate' ] );
+	if ( isset( $_GET['activate'] ) ) {
+		unset( $_GET['activate'] );
+	}
 }
 
 function bpchk_plugin_links( $links ) {
 	$bpchk_links = array(
 		'<a href="' . admin_url( 'admin.php?page=bp-checkins' ) . '">' . __( 'Settings', BPCHK_TEXT_DOMAIN ) . '</a>',
-		'<a href="https://wbcomdesigns.com/contact/" target="_blank">' . __( 'Support', BPCHK_TEXT_DOMAIN ) . '</a>'
+		'<a href="https://wbcomdesigns.com/contact/" target="_blank">' . __( 'Support', BPCHK_TEXT_DOMAIN ) . '</a>',
 	);
 	return array_merge( $links, $bpchk_links );
 }

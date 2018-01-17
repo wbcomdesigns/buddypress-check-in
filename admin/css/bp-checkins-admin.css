@@ -55,7 +55,7 @@ button.bpchk-accordion.active::after {
 	color:white;
 }
 .bpchk-admin-row{
-	clear: both;  
+	clear: both;
 	overflow: hidden;
 	padding-bottom: 5px;
 }

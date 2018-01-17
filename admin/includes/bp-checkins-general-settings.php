@@ -6,7 +6,7 @@ global $bp_checkins;
 $saved_range = $bp_checkins->google_places_range;
 
 $verify_btn_style = 'display: none;';
-if ( !empty( $bp_checkins->apikey ) ) {
+if ( ! empty( $bp_checkins->apikey ) ) {
 	$verify_btn_style = '';
 }
 
@@ -16,21 +16,96 @@ if ( $bp_checkins->checkin_by == 'placetype' ) {
 }
 
 $place_types = array(
-	'Accounting', 'Airport', 'Amusement Park', 'Aquarium', 'Art Gallery', 'ATM',
-	'Bakery', 'Bank', 'Bar', 'Beauty Salon', 'Bicycle Store', 'Book Store',
-	'Bowling Alley', 'Bus Station', 'Cafe', 'Campground', 'Car Dealer', 'Car Rental',
-	'Car Repair', 'Car Wash', 'Casino', 'Cemetery', 'Church', 'City Hall',
-	'Clothing Store', 'Convenience Store', 'Courthouse', 'Dentist', 'Department Store', 'Doctor',
-	'Electrician', 'Electronics Store', 'Embassy', 'Fire Station', 'Florist', 'Funeral Home',
-	'Furniture Home', 'Gas Station', 'Gym', 'Hair Care', 'Hardware Store', 'Hindu Temple',
-	'Home Goods Store', 'Hospital', 'Insurance Agency', 'Jewelery Store', 'Laundry', 'Lawyer',
-	'Library', 'Liquor Store', 'Local Government Office', 'Locksmith', 'Lodging', 'Meal Delivery',
-	'Meal Takeaway', 'Mosque', 'Movie Rental', 'Movie Theatre', 'Moving Company', 'Museum',
-	'Night Club', 'Painter', 'Park', 'Parking', 'Pet Store', 'Pharmacy',
-	'Physiotherapist', 'Plumber', 'Police', 'Post Office', 'Real Estate Agency', 'Restaurant',
-	'Roofing Contractor', 'RV Park', 'School', 'Shoe Store', 'Shopping Mall', 'SPA',
-	'Stadium', 'Storage', 'Store', 'Subway Station', 'Synagogue', 'Taxi Stand',
-	'Train Station', 'Transit Station', 'Travel Agency', 'University', 'Veterinary Care', 'Zoo'
+	'Accounting',
+	'Airport',
+	'Amusement Park',
+	'Aquarium',
+	'Art Gallery',
+	'ATM',
+	'Bakery',
+	'Bank',
+	'Bar',
+	'Beauty Salon',
+	'Bicycle Store',
+	'Book Store',
+	'Bowling Alley',
+	'Bus Station',
+	'Cafe',
+	'Campground',
+	'Car Dealer',
+	'Car Rental',
+	'Car Repair',
+	'Car Wash',
+	'Casino',
+	'Cemetery',
+	'Church',
+	'City Hall',
+	'Clothing Store',
+	'Convenience Store',
+	'Courthouse',
+	'Dentist',
+	'Department Store',
+	'Doctor',
+	'Electrician',
+	'Electronics Store',
+	'Embassy',
+	'Fire Station',
+	'Florist',
+	'Funeral Home',
+	'Furniture Home',
+	'Gas Station',
+	'Gym',
+	'Hair Care',
+	'Hardware Store',
+	'Hindu Temple',
+	'Home Goods Store',
+	'Hospital',
+	'Insurance Agency',
+	'Jewelery Store',
+	'Laundry',
+	'Lawyer',
+	'Library',
+	'Liquor Store',
+	'Local Government Office',
+	'Locksmith',
+	'Lodging',
+	'Meal Delivery',
+	'Meal Takeaway',
+	'Mosque',
+	'Movie Rental',
+	'Movie Theatre',
+	'Moving Company',
+	'Museum',
+	'Night Club',
+	'Painter',
+	'Park',
+	'Parking',
+	'Pet Store',
+	'Pharmacy',
+	'Physiotherapist',
+	'Plumber',
+	'Police',
+	'Post Office',
+	'Real Estate Agency',
+	'Restaurant',
+	'Roofing Contractor',
+	'RV Park',
+	'School',
+	'Shoe Store',
+	'Shopping Mall',
+	'SPA',
+	'Stadium',
+	'Storage',
+	'Store',
+	'Subway Station',
+	'Synagogue',
+	'Taxi Stand',
+	'Train Station',
+	'Transit Station',
+	'Travel Agency',
+	'University',
+	'Veterinary Care',
+	'Zoo',
 );
 ?>
 
@@ -44,7 +119,7 @@ $place_types = array(
 				<button type="button" class="button button-secondary" style="<?php echo $verify_btn_style; ?>" id="bpchk-verify-apikey"><?php _e( 'Verify', BPCHK_TEXT_DOMAIN ); ?></button>
 				<p class="description"><?php _e( "Due to changes in Google Maps API it's required to use an API key for the BuddyPress Check-ins plugin to work properly. You can get the API key", BPCHK_TEXT_DOMAIN ); ?>&nbsp;<a target="blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php _e( 'here.', BPCHK_TEXT_DOMAIN ); ?></a>&nbsp;
 					<a href="javascript:void(0);" onClick="window.open('https://wbcomdesigns.com/helpdesk/knowledge-base/get-google-api-key/','pagename','resizable,height=600,width=700'); return false;">
-							<?php _e('( How to Get Google API Key? )', BPCHK_TEXT_DOMAIN );?>
+							<?php _e( '( How to Get Google API Key? )', BPCHK_TEXT_DOMAIN ); ?>
 					</a>
 				</p>
 			</td>
@@ -74,7 +149,12 @@ $place_types = array(
 			<td>
 				<input type="hidden" value="<?php echo $saved_range; ?>" id="hidden_range" />
 				<input value="<?php echo $saved_range; ?>" id="bpchk-google-places-range" type="range" name="bpchk-google-places-range" min="1" max="10">
-				<span id="range_disp"><?php if ( $saved_range ) echo "$saved_range kms."; ?></span>
+				<span id="range_disp">
+				<?php
+				if ( $saved_range ) {
+					echo "$saved_range kms.";}
+?>
+</span>
 				<p class="description"><?php _e( 'This will set the range for fetching the places while check-in.', BPCHK_TEXT_DOMAIN ); ?></p>
 			</td>
 		</tr>
@@ -90,7 +170,7 @@ $place_types = array(
 				<select name="bpchk-google-place-types[]" id="bpchk-pre-place-types" multiple>
 					<?php foreach ( $place_types as $place_type ) { ?>
 						<?php $placetype_slug = str_replace( ' ', '_', strtolower( $place_type ) ); ?>
-						<option value="<?php echo $placetype_slug; ?>" <?php echo (!empty( $bp_checkins->place_types ) && in_array( $placetype_slug, $bp_checkins->place_types ) ) ? 'selected' : ''; ?>><?php echo $place_type; ?></option>
+						<option value="<?php echo $placetype_slug; ?>" <?php echo ( ! empty( $bp_checkins->place_types ) && in_array( $placetype_slug, $bp_checkins->place_types ) ) ? 'selected' : ''; ?>><?php echo $place_type; ?></option>
 					<?php } ?>
 				</select>
 				<p class="description"><?php _e( 'This will help in fetching the place types, that will be selected here.', BPCHK_TEXT_DOMAIN ); ?></p>
@@ -99,5 +179,5 @@ $place_types = array(
 	</tbody>
 </table>
 <p class="submit">
-	<?php submit_button( 'Save Changes', 'primary', 'bpchk-submit-general-settings' ) ?>
+	<?php submit_button( 'Save Changes', 'primary', 'bpchk-submit-general-settings' ); ?>
 </p>
