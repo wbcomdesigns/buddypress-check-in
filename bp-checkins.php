@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -24,12 +23,13 @@
  * Text Domain:       bp-checkins
  * Domain Path:       /languages
  */
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Define Plugin Constants
+// Define Plugin Constants.
 define( 'BPCHK_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'BPCHK_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 if ( ! defined( 'BPCHK_TEXT_DOMAIN' ) ) {
@@ -83,9 +83,14 @@ function run_bp_checkins() {
  */
 add_action( 'plugins_loaded', 'bpchk_plugin_init' );
 
+/**
+ * Check plugin requirement on plugins loaded,this plugin requires BuddyPress to be installed and active.
+ *
+ * @since    1.0.0
+ */
 function bpchk_plugin_init() {
-	$bp_active = in_array( 'buddypress/bp-loader.php', get_option( 'active_plugins' ) );
-	if ( current_user_can( 'activate_plugins' ) && $bp_active !== true ) {
+	$bp_active = in_array( 'buddypress/bp-loader.php', get_option( 'active_plugins' ), true );
+	if ( current_user_can( 'activate_plugins' ) && true !== $bp_active ) {
 		add_action( 'admin_notices', 'bpchk_plugin_admin_notice' );
 	} else {
 		$bp_active_components = get_option( 'bp-active-components', true );
@@ -98,34 +103,50 @@ function bpchk_plugin_init() {
 	}
 }
 
+/**
+ * Function to through notice when buddypress plugin is not activated.
+ *
+ * @since    1.0.0
+ */
 function bpchk_plugin_admin_notice() {
 	$bpchk_plugin = 'BuddyPress Checkin';
 	$bp_plugin    = 'BuddyPress';
 
 	echo '<div class="error"><p>'
-	. sprintf( __( '%1$s is ineffective as it requires %2$s to be installed and active.', BPCHK_TEXT_DOMAIN ), '<strong>' . esc_html( $bpchk_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' )
+	. sprintf( esc_attr( '%1$s is ineffective as it requires %2$s to be installed and active.', 'bp-checkins' ), '<strong>' . esc_attr( $bpchk_plugin ) . '</strong>', '<strong>' . esc_attr( $bp_plugin ) . '</strong>' )
 	. '</p></div>';
 	if ( isset( $_GET['activate'] ) ) {
 		unset( $_GET['activate'] );
 	}
 }
 
+/**
+ * Function to through notice when buddypress activity component is not activated.
+ *
+ * @since    1.0.0
+ */
 function bpchk_plugin_require_activity_component_admin_notice() {
 	$bpchk_plugin = 'BuddyPress Checkin';
 	$bp_component = 'BuddyPress\'s Activity Component';
 
 	echo '<div class="error"><p>'
-	. sprintf( __( '%1$s is ineffective now as it requires %2$s to be active.', BPGT_TEXT_DOMAIN ), '<strong>' . esc_html( $bpchk_plugin ) . '</strong>', '<strong>' . esc_html( $bp_component ) . '</strong>' )
+	. sprintf( esc_attr( '%1$s is ineffective now as it requires %2$s to be active.', 'bp-checkins' ), '<strong>' . esc_attr( $bpchk_plugin ) . '</strong>', '<strong>' . esc_attr( $bp_component ) . '</strong>' )
 	. '</p></div>';
 	if ( isset( $_GET['activate'] ) ) {
 		unset( $_GET['activate'] );
 	}
 }
 
+/**
+ * Function to set plugin actions links.
+ *
+ * @param    array $links    Plugin settings link array.
+ * @since    1.0.0
+ */
 function bpchk_plugin_links( $links ) {
 	$bpchk_links = array(
-		'<a href="' . admin_url( 'admin.php?page=bp-checkins' ) . '">' . __( 'Settings', BPCHK_TEXT_DOMAIN ) . '</a>',
-		'<a href="https://wbcomdesigns.com/contact/" target="_blank">' . __( 'Support', BPCHK_TEXT_DOMAIN ) . '</a>',
+		'<a href="' . admin_url( 'admin.php?page=bp-checkins' ) . '">' . __( 'Settings', 'bp-checkins' ) . '</a>',
+		'<a href="https://wbcomdesigns.com/contact/" target="_blank">' . __( 'Support', 'bp-checkins' ) . '</a>',
 	);
 	return array_merge( $links, $bpchk_links );
 }
