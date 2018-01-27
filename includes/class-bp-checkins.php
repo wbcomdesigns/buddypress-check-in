@@ -162,9 +162,8 @@ class Bp_Checkins {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'bpchk_plugin_settings' );
 		$this->loader->add_action( 'bp_setup_admin_bar', $plugin_admin, 'bpchk_setup_admin_bar_links', 80 );
 
-		// Ajax call for verifying the API Key
+		// Ajax call for verifying the API Key.
 		$this->loader->add_action( 'wp_ajax_bpchk_verify_apikey', $plugin_admin, 'bpchk_verify_apikey' );
-		// $this->loader->add_action( 'wp_ajax_nopriv_bpchk_verify_apikey', $plugin_admin, 'bpchk_verify_apikey' );
 	}
 
 	/**
@@ -196,10 +195,7 @@ class Bp_Checkins {
 		$this->loader->add_filter( 'bp_get_the_profile_field_value', $plugin_public, 'bpchk_show_xprofile_location', 10, 3 );
 		$this->loader->add_action( 'bp_register_activity_actions', $plugin_public, 'custom_plugin_register_activity_actions' );
 		$this->loader->add_action( 'bp_activity_before_save', $plugin_public, 'bpchk_update_activity_type_checkins', 10, 1 );
-
-		/**
-		* @since 1.0.7
-		*/
+		/*version 1.0.7 update*/
 		$this->loader->add_action( 'bp_activity_post_form_options', $plugin_public, 'render_location_pickup_html', 0 );
 		$this->loader->add_action( 'alter_bpchk_checkin_html', $plugin_public, 'alter_bpchk_checkin_html', 10, 1 );
 	}
@@ -255,6 +251,16 @@ class Bp_Checkins {
 		return $this->version;
 	}
 
+	/**
+	 * Function to fetch google places.
+	 *
+	 * @since     1.0.0
+	 * @param     string $apikey     Api key.
+	 * @param     string $lat        Latitude.
+	 * @param     string $lon        Longitude.
+	 * @param     string $radius     Radius.
+	 * @return    array  $response   Response array.
+	 */
 	public static function bpchk_fetch_google_places( $apikey, $lat = '', $lon = '', $radius = '' ) {
 		$places_url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
 		$parameters = array(
