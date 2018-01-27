@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The public-facing functionality of the plugin.
  *
@@ -39,6 +38,14 @@ class Bp_Checkins_Public {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+
+	/**
+	 * The version of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      array    $bp_checkins    The plugin settings.
+	 */
 	public $bp_checkins;
 
 	/**
@@ -53,15 +60,13 @@ class Bp_Checkins_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
 		$this->bp_checkins = &$bp_checkins;
-		// global $bp_checkins;
-		// $placetypes	 = implode( ',', $bp_checkins->place_types );
-		// var_dump($placetypes);die;
 	}
 
 	/**
 	 * Modify the html localized to main js file.
 	 *
 	 * @since    1.0.7
+	 * @param    string $checkin_html    The checkin html.
 	 */
 	public function alter_bpchk_checkin_html( $checkin_html ) {
 		$checkin_html = '';
@@ -77,12 +82,11 @@ class Bp_Checkins_Public {
 		global $bp_checkins;
 		$checkin_html = '';
 		if ( is_user_logged_in() ) {
-			// Create the checkin html
+			// Create the checkin html.
 			if ( $bp_checkins->apikey ) {
-				// $checkin_html .= '<div class="bpchk-checkin-html-container">';
 					$checkin_html .= '<div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
 					$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
-				if ( $bp_checkins->checkin_by == 'autocomplete' ) {
+				if ( 'autocomplete' === $bp_checkins->checkin_by ) {
 					$checkin_html     .= '<div class="checkin-by-autocomplete">';
 						$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', 'bp-checkins' ) . '" />';
 						$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
@@ -99,7 +103,6 @@ class Bp_Checkins_Public {
 					$checkin_html     .= '</div>';
 				}
 					$checkin_html .= '</div>';
-				// $checkin_html .= '</div>';
 			}
 		}
 		echo $checkin_html;
