@@ -9,6 +9,14 @@
  * @subpackage Bp_Checkins/includes
  * @author     Wbcom Designs <admin@wbcomdesigns.com>
  */
+
+/**
+ * The admin-specific functionality of the plugin.
+ *
+ * @package    Bp_Checkins
+ * @subpackage Bp_Checkins/admin
+ * @author     Wbcom Designs <admin@wbcomdesigns.com>
+ */
 class Bp_Checkins_Globals {
 	/**
 	 * The unique identifier of this plugin.

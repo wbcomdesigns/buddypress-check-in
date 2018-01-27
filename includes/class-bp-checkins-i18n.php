@@ -23,7 +23,7 @@
  * @subpackage Bp_Checkins/includes
  * @author     Wbcom Designs <admin@wbcomdesigns.com>
  */
-class Bp_Checkins_i18n {
+class Bp_Checkins_I18n {
 
 
 	/**

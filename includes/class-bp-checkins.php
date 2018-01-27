@@ -84,7 +84,7 @@ class Bp_Checkins {
 	 * Include the following files that make up the plugin:
 	 *
 	 * - Bp_Checkins_Loader. Orchestrates the hooks of the plugin.
-	 * - Bp_Checkins_i18n. Defines internationalization functionality.
+	 * - Bp_Checkins_I18n. Defines internationalization functionality.
 	 * - Bp_Checkins_Admin. Defines all hooks for the admin area.
 	 * - Bp_Checkins_Public. Defines all hooks for the public side of the site.
 	 *
@@ -131,7 +131,7 @@ class Bp_Checkins {
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Bp_Checkins_i18n class in order to set the domain and to register the hook
+	 * Uses the Bp_Checkins_I18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -139,7 +139,7 @@ class Bp_Checkins {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Bp_Checkins_i18n();
+		$plugin_i18n = new Bp_Checkins_I18n();
 
 		$this->loader->add_action( 'init', $plugin_i18n, 'load_plugin_textdomain' );
 
