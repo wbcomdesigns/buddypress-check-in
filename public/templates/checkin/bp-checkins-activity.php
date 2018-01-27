@@ -1,4 +1,14 @@
 <?php
+/**
+ * The admin-specific functionality of the plugin.
+ *
+ * @link       https://wbcomdesigns.com/
+ * @since      1.0.0
+ *
+ * @package    Bp_Checkins
+ * @subpackage Bp_Checkins/admin
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -22,49 +32,49 @@ if ( $bpchk_fav_places ) {
 		$map_url = 'https://www.google.com/maps/embed/v1/place?key=' . $apikey . '&q=' . $fav_places['formatted_address'];
 ?>
 
-	<h3><?php echo $fav_places['place']; ?></h3>
+	<h3><?php echo esc_attr( $fav_places['place'] ); ?></h3>
 	<div>
 		<div class="bpchk-fav-loc-map">
-			<iframe frameborder="0" style="border:0" src="<?php echo $map_url; ?>" allowfullscreen></iframe>
+			<iframe frameborder="0" style="border:0" src="<?php echo esc_url( $map_url ); ?>" allowfullscreen></iframe>
 		</div>
 		<div class="bpchk-fav-loc-map-details">
 			<?php if ( $fav_places['formatted_address'] ) { ?>
 
 				<div class="bpchk-fav-loc-row">
-					<label><?php _e( 'Address', 'bp-checkins' ); ?></label>
-					<span><?php echo $fav_places['formatted_address']; ?></span>
+					<label><?php esc_html_e( 'Address', 'bp-checkins' ); ?></label>
+					<span><?php echo esc_attr( $fav_places['formatted_address'] ); ?></span>
 				</div>
 
 			<?php } ?>
 			<?php if ( $fav_places['street'] ) { ?>
 
 				<div class="bpchk-fav-loc-row">
-					<label><?php _e( 'Street', 'bp-checkins' ); ?></label>
-					<span><?php echo $fav_places['street']; ?></span>
+					<label><?php esc_html_e( 'Street', 'bp-checkins' ); ?></label>
+					<span><?php echo esc_attr( $fav_places['street'] ); ?></span>
 				</div>
 
 			<?php } ?>
 			<?php if ( $fav_places['postal_code'] ) { ?>
 
 				<div class="bpchk-fav-loc-row">
-					<label><?php _e( 'Postal Code', 'bp-checkins' ); ?></label>
-					<span><?php echo $fav_places['postal_code']; ?></span>
+					<label><?php esc_html_e( 'Postal Code', 'bp-checkins' ); ?></label>
+					<span><?php echo esc_attr( $fav_places['postal_code'] ); ?></span>
 				</div>
 
 			<?php } ?>
 			<?php if ( $fav_places['city'] ) { ?>
 
 				<div class="bpchk-fav-loc-row">
-					<label><?php _e( 'City', 'bp-checkins' ); ?></label>
-					<span><?php echo $fav_places['city']; ?></span>
+					<label><?php esc_html_e( 'City', 'bp-checkins' ); ?></label>
+					<span><?php echo esc_attr( $fav_places['city'] ); ?></span>
 				</div>
 
 			<?php } ?>
 			<?php if ( $fav_places['visit_date'] ) { ?>
 
 				<div class="bpchk-fav-loc-row">
-					<label><?php _e( 'Visited Date', 'bp-checkins' ); ?></label>
-					<span><?php echo $fav_places['visit_date']; ?></span>
+					<label><?php esc_html_e( 'Visited Date', 'bp-checkins' ); ?></label>
+					<span><?php echo esc_attr( $fav_places['visit_date'] ); ?></span>
 				</div>
 
 			<?php } ?>
