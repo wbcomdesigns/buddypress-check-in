@@ -289,7 +289,7 @@ class Bp_Checkins_Public {
 	 * Ajax served to save the temporary location
 	 */
 	public function bpchk_save_temp_location() {
-		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) === 'bpchk_save_temp_location' ) {
+		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && 'bpchk_save_temp_location' === filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) ) {
 			$args = array(
 				'place'           => filter_input( INPUT_POST, 'place', FILTER_SANITIZE_STRING ),
 				'latitude'        => filter_input( INPUT_POST, 'latitude', FILTER_SANITIZE_STRING ),
@@ -330,7 +330,7 @@ class Bp_Checkins_Public {
 	 * @since 1.0.1
 	 */
 	public function bpchk_save_xprofile_location() {
-		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) === 'bpchk_save_xprofile_location' ) {
+		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && 'bpchk_save_xprofile_location' === filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) ) {
 			$args = array(
 				'place'     => filter_input( INPUT_POST, 'place', FILTER_SANITIZE_STRING ),
 				'latitude'  => filter_input( INPUT_POST, 'latitude', FILTER_SANITIZE_STRING ),
@@ -644,7 +644,7 @@ class Bp_Checkins_Public {
 	 */
 	public function bpchk_fetch_places() {
 		global $bp_checkins;
-		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) === 'bpchk_fetch_places' ) {
+		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && 'bpchk_fetch_places' === filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) ) {
 
 			$apikey     = $bp_checkins->apikey;
 			$range      = $bp_checkins->google_places_range * 1000;
@@ -711,7 +711,7 @@ class Bp_Checkins_Public {
 	 * Ajax served to save the temporary location
 	 */
 	public function bpchk_select_place_to_checkin() {
-		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) === 'bpchk_select_place_to_checkin' ) {
+		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && 'bpchk_select_place_to_checkin' === filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) ) {
 			global $bp_checkins, $wpdb;
 			$place_id        = filter_input( INPUT_POST, 'place_id', FILTER_SANITIZE_STRING );
 			$place_html      = '';
@@ -785,7 +785,7 @@ class Bp_Checkins_Public {
 	 * Ajax served to cancel the checkin
 	 */
 	public function bpchk_cancel_checkin() {
-		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) === 'bpchk_cancel_checkin' ) {
+		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && 'bpchk_cancel_checkin' === filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) ) {
 			global $wpdb;
 			$tbl = $wpdb->prefix . 'options';
 			$wpdb->delete( $tbl, array( 'option_name' => 'bpchk_temp_location' ) );
