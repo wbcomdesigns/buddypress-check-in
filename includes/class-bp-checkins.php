@@ -197,7 +197,6 @@ class Bp_Checkins {
 		$this->loader->add_action( 'bp_activity_before_save', $plugin_public, 'bpchk_update_activity_type_checkins', 10, 1 );
 		/*version 1.0.7 update*/
 		$this->loader->add_action( 'bp_activity_post_form_options', $plugin_public, 'render_location_pickup_html', 0 );
-		$this->loader->add_action( 'alter_bpchk_checkin_html', $plugin_public, 'alter_bpchk_checkin_html', 10, 1 );
 	}
 
 	/**

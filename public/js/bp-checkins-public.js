@@ -184,10 +184,6 @@ jQuery( document ).ready(
 			}
 		);
 
-		// Add the checkin html in post new form
-		var checkin_html = bpchk_public_js_obj.checkin_html;
-		$( checkin_html ).insertAfter( 'textarea#whats-new' );
-
 		$( '#bpchk-add-place-visit-date' ).datepicker( { dateFormat: 'yy-mm-dd', minDate: 0 } );
 
 		// Send AJAX to save the temp location just as location changed during checkin by autocomplete

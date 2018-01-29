@@ -61,18 +61,7 @@ class Bp_Checkins_Public {
 		$this->version     = $version;
 		$this->bp_checkins = &$bp_checkins;
 	}
-
-	/**
-	 * Modify the html localized to main js file.
-	 *
-	 * @since    1.0.7
-	 * @param    string $checkin_html    The checkin html.
-	 */
-	public function alter_bpchk_checkin_html( $checkin_html ) {
-		$checkin_html = '';
-		return $checkin_html;
-	}
-
+	
 	/**
 	 * Render location pickup html to buddypress what's new section.
 	 *
@@ -136,29 +125,6 @@ class Bp_Checkins_Public {
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
 			$checkin_html = '';
 			if ( is_user_logged_in() ) {
-
-				// Create the checkin html.
-				if ( $bp_checkins->apikey ) {
-					$checkin_html .= '<div><div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
-					$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
-					if ( 'autocomplete' === $bp_checkins->checkin_by ) {
-						$checkin_html .= '<div class="checkin-by-autocomplete">';
-						$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', 'bp-checkins' ) . '" />';
-						$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
-						$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lng" />';
-						$checkin_html .= '<input type="checkbox" id="bpchk-add-as-place" checked />';
-						$checkin_html .= '<label for="bpchk-add-as-place">' . __( 'Add as my location', 'bp-checkins' ) . '</label>';
-						$checkin_html .= '<span class="bpchk-place-loader">' . __( 'Saving location...', 'bp-checkins' ) . '<i class="fa fa-refresh fa-spin"></i></span><span class="clear"></span>';
-						$checkin_html .= '</div>';
-						$checkin_html .= '<div class="checkin-by-autocomplete-map" id="checkin-by-autocomplete-map">';
-						$checkin_html .= '</div><div class="clear"></div>';
-					} else {
-						$checkin_html .= '<div class="checkin-by-placetype">';
-						$checkin_html .= '<p>' . __( 'Please Wait..', 'bp-checkins' ) . '</p>';
-						$checkin_html .= '</div>';
-					}
-					$checkin_html .= '</div>';
-				}
 				if ( xprofile_get_field_id_from_name( 'Location' ) ) {
 					$bpchk_location_id = xprofile_get_field_id_from_name( 'Location' );
 					$bpchk_loc_xprof   = 'field_' . $bpchk_location_id;
@@ -170,7 +136,6 @@ class Bp_Checkins_Public {
 			wp_localize_script(
 				$this->plugin_name, 'bpchk_public_js_obj', array(
 					'ajaxurl'         => admin_url( 'admin-ajax.php' ),
-					'checkin_html'    => apply_filters( 'alter_bpchk_checkin_html', $checkin_html ),
 					'checkin_by'      => $bp_checkins->checkin_by,
 					'bpchk_loc_xprof' => $bpchk_loc_xprof,
 				)
