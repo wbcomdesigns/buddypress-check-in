@@ -69,6 +69,7 @@ class Bp_Checkins_Public {
 	 */
 	public function render_location_pickup_html() {
 		global $bp_checkins;
+		global $allowedposttags;
 		$checkin_html = '';
 		if ( is_user_logged_in() ) {
 			// Create the checkin html.
@@ -148,10 +149,8 @@ class Bp_Checkins_Public {
 	 * @since    1.0.1
 	 */
 	public function bpchk_member_profile_checkin_tab() {
-		$name           = bp_get_displayed_user_username();
 		$displayed_uid  = bp_displayed_user_id();
 		$parent_slug    = 'checkin';
-		$add_place_link = bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/add-place';
 		$my_places_link = bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/my-places';
 
 		bp_core_new_nav_item(
@@ -169,7 +168,7 @@ class Bp_Checkins_Public {
 				'name'            => __( 'Locations', 'bp-checkins' ),
 				'slug'            => 'my-places',
 				'parent_url'      => bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/',
-				'parent_slug'     => $parent_slug,
+				'parent_slug'     => esc_attr( $parent_slug ),
 				'screen_function' => array( $this, 'bpchk_checkins_activity_show_screen' ),
 				'position'        => 100,
 				'link'            => $my_places_link,
@@ -321,7 +320,7 @@ class Bp_Checkins_Public {
 			'can_delete'     => true,
 			'order_by'       => 'default',
 		);
-		$location_list_id   = xprofile_insert_field( $location_list_args );
+		xprofile_insert_field( $location_list_args );
 	}
 
 	/**
@@ -611,7 +610,6 @@ class Bp_Checkins_Public {
 	public function bpchk_show_google_map_in_checkin_activity() {
 		$activity_id = bp_get_activity_id();
 		global $wpdb, $bp_checkins;
-		$activity_tbl      = $wpdb->base_prefix . 'bp_activity';
 		$activity_meta_tbl = $wpdb->base_prefix . 'bp_activity_meta';
 
 		$qry    = "SELECT `meta_value` from `$activity_meta_tbl` where `activity_id` = $activity_id AND `meta_key` = 'bpchk_place_details'";
@@ -738,7 +736,7 @@ class Bp_Checkins_Public {
 					'place'           => $place_name,
 					'latitude'        => $latitude,
 					'longitude'       => $longitude,
-					'add_as_my_place' => sanitize_text_field( $_POST['add_as_my_place'] ),
+					'add_as_my_place' => filter_input( INPUT_POST, 'add_as_my_place', FILTER_SANITIZE_STRING ),
 				);
 
 				$href        = 'http://maps.google.com/maps/place/' . $place_name . "/@$latitude,$longitude";
@@ -747,7 +745,6 @@ class Bp_Checkins_Public {
 				$place_html .= '</div>';
 				$place_html .= '<div>';
 				$place_html .= '<a class="button" href="javascript:void(0);" id="bpchk-show-places-panel">' . __( 'Show Locations', 'bp-checkins' ) . '</a>';
-				// $place_html	 .= '<a href="javascript:void(0);" id="bpchk-hide-places-panel">' . __( 'Hide places', 'bp-checkins' ) . '</a>';
 				$place_html .= '</div>';
 
 				$qry    = "SELECT `option_id`, `option_value` from $options_tbl where `option_name` = 'bpchk_temp_location'";
