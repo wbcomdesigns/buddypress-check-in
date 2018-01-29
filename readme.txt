@@ -1,6 +1,6 @@
 === BuddyPress Checkins ===
 
-Contributors: wbcomdesigns
+Contributors: wbcomdesigns, vapvarun
 
 Donate link: https://wbcomdesigns.com/donate/
 
@@ -8,9 +8,9 @@ Tags: buddypress, check-ins , BuddyPress Location, update check-ins, location
 
 Requires at least: 3.0.1
 
-Tested up to: 4.9.1
+Tested up to: 4.9.2
 
-Stable tag: 4.0
+Stable tag: 1.0.8
 
 License: GPLv2 or later
 
@@ -86,6 +86,11 @@ If you need additional help you can contact us for <a href="https://wbcomdesigns
 5. screenshot-5 - Mobile view for check-ins inside activity.
 
 == Changelog ==
+
+= 1.0.8 =
+
+* Enhancement- Code Quality Improviement with WPCS
+* Fix - Tanslation Fixes
 
 = 1.0.7 =
 
