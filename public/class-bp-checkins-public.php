@@ -749,7 +749,6 @@ class Bp_Checkins_Public {
 	public function bpchk_select_place_to_checkin() {
 		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) === 'bpchk_select_place_to_checkin' ) {
 			global $bp_checkins, $wpdb;
-			$place_reference = filter_input( INPUT_POST, 'place_reference', FILTER_SANITIZE_STRING );
 			$place_id        = filter_input( INPUT_POST, 'place_id', FILTER_SANITIZE_STRING );
 			$place_html      = '';
 			$options_tbl     = $wpdb->prefix . 'options';
