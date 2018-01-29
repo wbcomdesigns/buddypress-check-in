@@ -137,11 +137,11 @@ class Bp_Checkins_Public {
 			$checkin_html = '';
 			if ( is_user_logged_in() ) {
 
-				// Create the checkin html
+				// Create the checkin html.
 				if ( $bp_checkins->apikey ) {
 					$checkin_html .= '<div><div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
 					$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
-					if ( $bp_checkins->checkin_by == 'autocomplete' ) {
+					if ( 'autocomplete' === $bp_checkins->checkin_by ) {
 						$checkin_html .= '<div class="checkin-by-autocomplete">';
 						$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', 'bp-checkins' ) . '" />';
 						$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
@@ -216,7 +216,7 @@ class Bp_Checkins_Public {
 	/**
 	 * Screen function for listing all my places in menu item
 	 */
-	function bpchk_checkins_activity_show_screen() {
+	public function bpchk_checkins_activity_show_screen() {
 		add_action( 'bp_template_title', array( $this, 'bpchk_checkins_tab_function_to_show_title' ) );
 		add_action( 'bp_template_content', array( $this, 'bpchk_checkins_tab_function_to_show_content' ) );
 		bp_core_load_template( apply_filters( 'bp_core_template_plugin', 'members/single/plugins' ) );
@@ -225,14 +225,14 @@ class Bp_Checkins_Public {
 	/**
 	 * My Places - Title
 	 */
-	function bpchk_checkins_tab_function_to_show_title() {
-		_e( 'My Locations', 'bp-checkins' );
+	public function bpchk_checkins_tab_function_to_show_title() {
+		esc_html_e( 'My Locations', 'bp-checkins' );
 	}
 
 	/**
 	 * My Places - Content
 	 */
-	function bpchk_checkins_tab_function_to_show_content() {
+	public function bpchk_checkins_tab_function_to_show_content() {
 		$file = BPCHK_PLUGIN_PATH . 'public/templates/checkin/bp-checkins-activity.php';
 		if ( file_exists( $file ) ) {
 			include_once $file;
@@ -241,61 +241,78 @@ class Bp_Checkins_Public {
 
 	/**
 	 * Return country from json data
+	 *
+	 * @param    array $jsondata    Google places api data.
 	 */
-	public static function google_getCountry( $jsondata ) {
+	public static function google_get_country( $jsondata ) {
 		return self::bpchk_find_long_name_given_type( 'country', $jsondata['results'][0]['address_components'] );
 	}
 
 	/**
 	 * Return province from json data
+	 *
+	 * @param    array $jsondata    Google places api data.
 	 */
-	public static function google_getProvince( $jsondata ) {
+	public static function google_get_province( $jsondata ) {
 		return self::bpchk_find_long_name_given_type( 'administrative_area_level_1', $jsondata['results'][0]['address_components'], true );
 	}
 
 	/**
 	 * Return city from json data
+	 *
+	 * @param    array $jsondata    Google places api data.
 	 */
-	public static function google_getCity( $jsondata ) {
+	public static function google_get_city( $jsondata ) {
 		return self::bpchk_find_long_name_given_type( 'locality', $jsondata['results'][0]['address_components'] );
 	}
 
 	/**
 	 * Return street from json data
+	 *
+	 * @param    array $jsondata    Google places api data.
 	 */
-	public static function google_getStreet( $jsondata ) {
+	public static function google_get_street( $jsondata ) {
 		return self::bpchk_find_long_name_given_type( 'street_number', $jsondata['results'][0]['address_components'] ) . ' ' . self::bpchk_find_long_name_given_type( 'route', $jsondata['results'][0]['address_components'] );
 	}
 
 	/**
 	 * Return postal code from json data
+	 *
+	 * @param    array $jsondata    Google places api data.
 	 */
-	public static function google_getPostalCode( $jsondata ) {
+	public static function google_get_postalcode( $jsondata ) {
 		return self::bpchk_find_long_name_given_type( 'postal_code', $jsondata['results'][0]['address_components'] );
 	}
 
 	/**
 	 * Return country code from json data
+	 *
+	 * @param    array $jsondata    Google places api data.
 	 */
-	public static function google_getCountryCode( $jsondata ) {
+	public static function google_get_country_code( $jsondata ) {
 		return self::bpchk_find_long_name_given_type( 'country', $jsondata['results'][0]['address_components'], true );
 	}
 
 	/**
 	 * Return formatted address from json data
+	 *
+	 * @param    array $jsondata    Google places api data.
 	 */
-	public static function google_getAddress( $jsondata ) {
+	public static function google_get_address( $jsondata ) {
 		return $jsondata['results'][0]['formatted_address'];
 	}
 
 	/**
 	 * Searching in Google Geo json, return the long name given the type.
 	 * (If short_name is true, return short name)
+	 *
+	 * @param    string  $type  The type of the place.
+	 * @param    array   $array    The place type array.
+	 * @param    boolean $short_name    Short name exist.
 	 */
 	public static function bpchk_find_long_name_given_type( $type, $array, $short_name = false ) {
-
 		foreach ( $array as $value ) {
-			if ( in_array( $type, $value['types'] ) ) {
+			if ( in_array( $type, $value['types'], true ) ) {
 				if ( $short_name ) {
 					return $value['short_name'];
 				}
@@ -308,12 +325,12 @@ class Bp_Checkins_Public {
 	 * Ajax served to save the temporary location
 	 */
 	public function bpchk_save_temp_location() {
-		if ( isset( $_POST['action'] ) && $_POST['action'] == 'bpchk_save_temp_location' ) {
+		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) === 'bpchk_save_temp_location' ) {
 			$args = array(
-				'place'           => sanitize_text_field( $_POST['place'] ),
-				'latitude'        => sanitize_text_field( $_POST['latitude'] ),
-				'longitude'       => sanitize_text_field( $_POST['longitude'] ),
-				'add_as_my_place' => sanitize_text_field( $_POST['add_as_my_place'] ),
+				'place'           => filter_input( INPUT_POST, 'place', FILTER_SANITIZE_STRING ),
+				'latitude'        => filter_input( INPUT_POST, 'latitude', FILTER_SANITIZE_STRING ),
+				'longitude'       => filter_input( INPUT_POST, 'longitude', FILTER_SANITIZE_STRING ),
+				'add_as_my_place' => filter_input( INPUT_POST, 'add_as_my_place', FILTER_SANITIZE_STRING ),
 			);
 			update_option( 'bpchk_temp_location', $args );
 			$response = array( 'message' => 'temp-locaition-saved' );
@@ -349,11 +366,11 @@ class Bp_Checkins_Public {
 	 * @since 1.0.1
 	 */
 	public function bpchk_save_xprofile_location() {
-		if ( isset( $_POST['action'] ) && $_POST['action'] == 'bpchk_save_xprofile_location' ) {
+		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) === 'bpchk_save_xprofile_location' ) {
 			$args = array(
-				'place'     => sanitize_text_field( $_POST['place'] ),
-				'latitude'  => sanitize_text_field( $_POST['latitude'] ),
-				'longitude' => sanitize_text_field( $_POST['longitude'] ),
+				'place'     => filter_input( INPUT_POST, 'place', FILTER_SANITIZE_STRING ),
+				'latitude'  => filter_input( INPUT_POST, 'latitude', FILTER_SANITIZE_STRING ),
+				'longitude' => filter_input( INPUT_POST, 'longitude', FILTER_SANITIZE_STRING ),
 			);
 			if ( xprofile_get_field_id_from_name( 'Location' ) ) {
 				$bpchk_location_id = xprofile_get_field_id_from_name( 'Location' );
@@ -367,14 +384,14 @@ class Bp_Checkins_Public {
 	 * Function to filter location xprofile field value at profile page.
 	 *
 	 * @since 1.0.1
-	 * @param string $value Value for the profile field.
-	 * @param string $type  Type for the profile field.
-	 * @param int    $id    ID for the profile field.
+	 * @param string $field_value Value for the profile field.
+	 * @param string $field_type  Type for the profile field.
+	 * @param int    $field_id    ID for the profile field.
 	 */
 	public function bpchk_show_xprofile_location( $field_value, $field_type, $field_id ) {
 		if ( xprofile_get_field_id_from_name( 'Location' ) ) {
 			$bpchk_location_id = xprofile_get_field_id_from_name( 'Location' );
-			if ( $field_id == $bpchk_location_id ) {
+			if ( $field_id === $bpchk_location_id ) {
 				$loc_xprof_meta = bp_xprofile_get_meta( $bpchk_location_id, 'data', 'bpchk_loc_xprofile' );
 				if ( ! empty( $loc_xprof_meta ) && is_array( $loc_xprof_meta ) ) {
 
@@ -422,8 +439,7 @@ class Bp_Checkins_Public {
 	 * @param object $activity Activity data object.
 	 * @return string $action
 	 */
-	function bp_activity_format_activity_action_activity_bpchk_chkins( $action, $activity ) {
-		// echo '<pre>'; print_r($activity); echo '</pre>';
+	public function bp_activity_format_activity_action_activity_bpchk_chkins( $action, $activity ) {
 		$action = sprintf( __( '%s checked-in', 'buddypress' ), bp_core_get_userlink( $activity->user_id ) );
 
 		/**
@@ -441,7 +457,7 @@ class Bp_Checkins_Public {
 	 * Function to set activity type activity_bpchk_chkins.
 	 *
 	 * @since 1.0.1
-	 * @param array $activity_object
+	 * @param array $activity_object Activity object.
 	 */
 	public function bpchk_update_activity_type_checkins( $activity_object ) {
 
@@ -452,8 +468,11 @@ class Bp_Checkins_Public {
 	}
 
 	/**
-	 * Action performed to save the activity update to show the checkin
+	 * Action performed to save the activity update to show the checkin.
 	 *
+	 * @param string $content The actvity content.
+	 * @param int    $user_id User id.
+	 * @param int    $activity_id Activity id.
 	 * @since 1.0.1
 	 */
 	public function bpchk_update_meta_on_post_update( $content, $user_id, $activity_id ) {
@@ -470,24 +489,23 @@ class Bp_Checkins_Public {
 			$location_html = ' -at <a class=checkin-loc href="http://maps.google.com/maps/place/' . $place . '/@' . $latitude . ',' . $longitude . '" target="_blank" title="' . $place . '">' . $place . '</a>';
 			$content      .= $location_html;
 			$pos           = strpos( $content, '-at <a class="checkin-loc"' );
-			// Update the activity content to post the checkin along with the post update
-			if ( $pos === false ) {
+			// Update the activity content to post the checkin along with the post update.
+			if ( false === $pos ) {
 				$wpdb->update(
 					$activity_tbl, array( 'content' => $content ), array( 'id' => $activity_id ), array( '%s' ), array( '%d' )
 				);
 
-				// Update the location details in activity meta
+				// Update the location details in activity meta.
 				bp_activity_update_meta( $activity_id, 'bpchk_place_details', $place_details );
 			}
-
-			if ( $add_as_my_place == 'yes' ) {
+			if ( 'yes' === $add_as_my_place ) {
 				$bpchk_fav_places = get_user_meta( $user_id, 'bpchk_fav_places', true );
 				$place_get_url    = "http://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&sensor=false";
 				$response         = wp_remote_get( $place_get_url );
 
 				$response_code = wp_remote_retrieve_response_code( $response );
 
-				if ( $response_code == 200 ) {
+				if ( 200 === $response_code ) {
 					$jsondata         = json_decode( wp_remote_retrieve_body( $response ), true );
 					$place_visit_date = date( 'Y-m-d', time() );
 
@@ -497,13 +515,13 @@ class Bp_Checkins_Public {
 						$address['longitude']         = $longitude;
 						$address['activity_id']       = $activity_id;
 						$address['place']             = $place;
-						$address['country']           = self::google_getCountry( $jsondata );
-						$address['province']          = self::google_getProvince( $jsondata );
-						$address['city']              = self::google_getCity( $jsondata );
-						$address['street']            = self::google_getStreet( $jsondata );
-						$address['postal_code']       = self::google_getPostalCode( $jsondata );
-						$address['country_code']      = self::google_getCountryCode( $jsondata );
-						$address['formatted_address'] = self::google_getAddress( $jsondata );
+						$address['country']           = self::google_get_country( $jsondata );
+						$address['province']          = self::google_get_province( $jsondata );
+						$address['city']              = self::google_get_city( $jsondata );
+						$address['street']            = self::google_get_street( $jsondata );
+						$address['postal_code']       = self::google_get_postalcode( $jsondata );
+						$address['country_code']      = self::google_get_country_code( $jsondata );
+						$address['formatted_address'] = self::google_get_address( $jsondata );
 						$address['visit_date']        = $place_visit_date;
 
 						if ( $bpchk_fav_places ) {
@@ -529,6 +547,10 @@ class Bp_Checkins_Public {
 	/**
 	 * Action performed to save the group activity update to show the checkin.
 	 *
+	 * @param string $content The group activity content.
+	 * @param int    $user_id The user id.
+	 * @param int    $group_id The group id.
+	 * @param int    $activity_id The group id.
 	 * @since 1.0.1
 	 */
 	public function bpchk_update_group_meta_on_post_update( $content, $user_id, $group_id, $activity_id ) {
@@ -545,24 +567,24 @@ class Bp_Checkins_Public {
 			$location_html = ' -at <a class=checkin-loc href="http://maps.google.com/maps/place/' . $place . '/@' . $latitude . ',' . $longitude . '" target="_blank" title="' . $place . '">' . $place . '</a>';
 			$content      .= $location_html;
 			$pos           = strpos( $content, '-at <a class="checkin-loc"' );
-			// Update the activity content to post the checkin along with the post update
-			if ( $pos === false ) {
+			// Update the activity content to post the checkin along with the post update.
+			if ( false === $pos ) {
 				$wpdb->update(
 					$activity_tbl, array( 'content' => $content ), array( 'id' => $activity_id ), array( '%s' ), array( '%d' )
 				);
 
-				// Update the location details in activity meta
+				// Update the location details in activity meta.
 				bp_activity_update_meta( $activity_id, 'bpchk_place_details', $place_details );
 			}
 
-			if ( $add_as_my_place == 'yes' ) {
+			if ( 'yes' === $add_as_my_place ) {
 				$bpchk_fav_places = get_user_meta( $user_id, 'bpchk_fav_places', true );
 				$place_get_url    = "http://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&sensor=false";
 				$response         = wp_remote_get( $place_get_url );
 
 				$response_code = wp_remote_retrieve_response_code( $response );
 
-				if ( $response_code == 200 ) {
+				if ( 200 === $response_code ) {
 					$jsondata         = json_decode( wp_remote_retrieve_body( $response ), true );
 					$place_visit_date = date( 'Y-m-d', time() );
 
@@ -572,13 +594,13 @@ class Bp_Checkins_Public {
 						$address['longitude']         = $longitude;
 						$address['activity_id']       = $activity_id;
 						$address['place']             = $place;
-						$address['country']           = self::google_getCountry( $jsondata );
-						$address['province']          = self::google_getProvince( $jsondata );
-						$address['city']              = self::google_getCity( $jsondata );
-						$address['street']            = self::google_getStreet( $jsondata );
-						$address['postal_code']       = self::google_getPostalCode( $jsondata );
-						$address['country_code']      = self::google_getCountryCode( $jsondata );
-						$address['formatted_address'] = self::google_getAddress( $jsondata );
+						$address['country']           = self::google_get_country( $jsondata );
+						$address['province']          = self::google_get_province( $jsondata );
+						$address['city']              = self::google_get_city( $jsondata );
+						$address['street']            = self::google_get_street( $jsondata );
+						$address['postal_code']       = self::google_get_postalcode( $jsondata );
+						$address['country_code']      = self::google_get_country_code( $jsondata );
+						$address['formatted_address'] = self::google_get_address( $jsondata );
 						$address['visit_date']        = $place_visit_date;
 
 						if ( $bpchk_fav_places ) {
@@ -601,6 +623,12 @@ class Bp_Checkins_Public {
 		}
 	}
 
+	/**
+	 * To set activity action for check-in type activity in group.
+	 *
+	 * @param string $activity_action The group activity action.
+	 * @since 1.0.1
+	 */
 	public function bpchk_groups_activity_new_update_action( $activity_action ) {
 		global $bp;
 		$user_id       = bp_loggedin_user_id();
@@ -634,16 +662,16 @@ class Bp_Checkins_Public {
 
 			$response_code     = wp_remote_retrieve_response_code( $response );
 			$formatted_address = $place['place'];
-			if ( $response_code == 200 ) {
+			if ( 200 === $response_code ) {
 				$jsondata = json_decode( wp_remote_retrieve_body( $response ), true );
 				if ( isset( $jsondata['results'][0]['formatted_address'] ) ) {
-					$formatted_address = self::google_getAddress( $jsondata );
+					$formatted_address = self::google_get_address( $jsondata );
 				}
 			} else {
 				$formatted_address = $place['place'];
 			}
 			$map_url = 'https://www.google.com/maps/embed/v1/place?key=' . $apikey . '&q=' . $formatted_address;
-			echo '<div id="bpchk-place-map"><iframe frameborder="0" style="border:0" src="' . $map_url . '" allowfullscreen></iframe></div>';
+			echo '<div id="bpchk-place-map"><iframe frameborder="0" style="border:0" src="' . esc_url( $map_url ) . '" allowfullscreen></iframe></div>';
 		}
 	}
 
@@ -652,14 +680,14 @@ class Bp_Checkins_Public {
 	 */
 	public function bpchk_fetch_places() {
 		global $bp_checkins;
-		if ( isset( $_POST['action'] ) && $_POST['action'] == 'bpchk_fetch_places' ) {
+		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) === 'bpchk_fetch_places' ) {
 
 			$apikey     = $bp_checkins->apikey;
 			$range      = $bp_checkins->google_places_range * 1000;
 			$placetypes = implode( '||', $bp_checkins->place_types );
 
-			$latitude    = $_POST['latitude'];
-			$longitude   = $_POST['longitude'];
+			$latitude    = filter_input( INPUT_POST, 'latitude', FILTER_SANITIZE_STRING );
+			$longitude   = filter_input( INPUT_POST, 'longitude', FILTER_SANITIZE_STRING );
 			$places_html = '';
 
 			$parameters = array(
@@ -673,10 +701,10 @@ class Bp_Checkins_Public {
 			$places_url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
 			$url        = add_query_arg( $parameters, esc_url_raw( $places_url ) );
 
-			$response = wp_remote_get( esc_url_raw( $url ) );
+			$response   = wp_remote_get( esc_url_raw( $url ) );
 
 			$response_code = wp_remote_retrieve_response_code( $response );
-			if ( $response_code == 200 ) {
+			if ( 200 === $response_code ) {
 				$msg    = __( 'places-found', 'bp-checkins' );
 				$places = json_decode( wp_remote_retrieve_body( $response ) );
 
@@ -711,7 +739,6 @@ class Bp_Checkins_Public {
 				'html'    => stripslashes( $places_html ),
 			);
 			echo json_encode( $result );
-			// wp_send_json_success( $result );
 			die;
 		}
 	}
@@ -720,10 +747,10 @@ class Bp_Checkins_Public {
 	 * Ajax served to save the temporary location
 	 */
 	public function bpchk_select_place_to_checkin() {
-		if ( isset( $_POST['action'] ) && $_POST['action'] == 'bpchk_select_place_to_checkin' ) {
+		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) === 'bpchk_select_place_to_checkin' ) {
 			global $bp_checkins, $wpdb;
-			$place_reference = sanitize_text_field( $_POST['place_reference'] );
-			$place_id        = sanitize_text_field( $_POST['place_id'] );
+			$place_reference = filter_input( INPUT_POST, 'place_reference', FILTER_SANITIZE_STRING );
+			$place_id        = filter_input( INPUT_POST, 'place_id', FILTER_SANITIZE_STRING );
 			$place_html      = '';
 			$options_tbl     = $wpdb->prefix . 'options';
 
@@ -736,7 +763,7 @@ class Bp_Checkins_Public {
 			$url              = add_query_arg( $parameters, esc_url_raw( $place_detail_url ) );
 			$response         = wp_remote_get( esc_url_raw( $url ) );
 			$response_code    = wp_remote_retrieve_response_code( $response );
-			if ( $response_code == 200 ) {
+			if ( 200 === $response_code ) {
 				$msg   = __( 'place-details-found', 'bp-checkins' );
 				$place = json_decode( wp_remote_retrieve_body( $response ) );
 
@@ -763,7 +790,7 @@ class Bp_Checkins_Public {
 				$qry    = "SELECT `option_id`, `option_value` from $options_tbl where `option_name` = 'bpchk_temp_location'";
 				$result = $wpdb->get_results( $qry );
 				if ( empty( $result ) ) {
-					// Insert the temp location in options table
+					// Insert the temp location in options table.
 					$wpdb->insert(
 						$options_tbl, array(
 							'option_name'  => 'bpchk_temp_location',
@@ -771,7 +798,7 @@ class Bp_Checkins_Public {
 						)
 					);
 				} else {
-					// Update the previously existing temp location in options table
+					// Update the previously existing temp location in options table.
 					$option_id = $result[0]->option_id;
 					$wpdb->update(
 						$options_tbl, array( 'option_value' => serialize( $args ) ), array( 'option_id' => $option_id )
@@ -795,7 +822,7 @@ class Bp_Checkins_Public {
 	 * Ajax served to cancel the checkin
 	 */
 	public function bpchk_cancel_checkin() {
-		if ( isset( $_POST['action'] ) && $_POST['action'] == 'bpchk_cancel_checkin' ) {
+		if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) === 'bpchk_cancel_checkin' ) {
 			global $wpdb;
 			$tbl = $wpdb->prefix . 'options';
 			$wpdb->delete( $tbl, array( 'option_name' => 'bpchk_temp_location' ) );
