@@ -80,11 +80,11 @@ If you need additional help you can contact us for <a href="https://wbcomdesigns
 
 == Changelog ==
 
-= 1.0.8 =
+= 1.1.0 =
 
 * Enhancement- Multisite Support
 
-= 1.1.0 =
+= 1.0.8 =
 
 * Enhancement- Code Quality Improviement with WPCS
 * Fix - Tanslation Fixes
