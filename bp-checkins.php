@@ -142,7 +142,8 @@ function bp_checkins_check_config(){
 			add_action( 'admin_notices', 'bpcheckins_same_network_config' );
 			$warnings[] = __( 'BuddyPress Check-ins and BuddyPress need to share the same network configuration.',  'bp-checkins');
 		}
-		if ( !bp_is_active( 'activity') ) {
+		$bp_active_components = bp_get_option( 'bp-active-components');
+		if ( ! array_key_exists( 'activity', $bp_active_components ) ) {
 			add_action( $config['network_active'] ? 'network_admin_notices' : 'admin_notices', 'bpchk_plugin_require_activity_component_admin_notice' );
 			$warnings[] = __( 'Activity component required.',  'bp-checkins');
 		}
