@@ -158,7 +158,7 @@ class Bp_Checkins {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'bpchk_add_menu_page' );
+		$this->loader->add_action( bp_core_admin_hook(), $plugin_admin, 'bpchk_add_menu_page' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'bpchk_plugin_settings' );
 		$this->loader->add_action( 'bp_setup_admin_bar', $plugin_admin, 'bpchk_setup_admin_bar_links', 80 );
 

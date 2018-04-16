@@ -98,7 +98,7 @@ class Bp_Checkins_Globals {
 	 */
 	public function setup_plugin_global() {
 		global $bp_checkins;
-		$bpchk_settings = get_option( 'bpchk_general_settings' );
+		$bpchk_settings = bp_get_option( 'bpchk_general_settings' );
 
 		$this->apikey = '';
 		if ( isset( $bpchk_settings['apikey'] ) ) {

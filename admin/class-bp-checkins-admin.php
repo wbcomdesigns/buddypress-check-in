@@ -196,7 +196,7 @@ class Bp_Checkins_Admin {
 				'placetypes' => ( ! empty( $_POST['bpchk-google-place-types'] ) ) ? wp_unslash( $_POST['bpchk-google-place-types'] ) : array(),
 			);
 
-			update_option( 'bpchk_general_settings', $admin_settings );
+			bp_update_option( 'bpchk_general_settings', $admin_settings );
 
 		}
 	}
@@ -214,10 +214,10 @@ class Bp_Checkins_Admin {
 			$response = Bp_Checkins::bpchk_fetch_google_places( $apikey, $latitude, $longitude, $radius );
 			$code     = wp_remote_retrieve_response_code( $response );
 			$message  = 'verified';
-			update_option( 'bpchk_apikey_verified', 'yes' );
+			bp_update_option( 'bpchk_apikey_verified', 'yes' );
 			if ( 200 !== $code ) {
 				$message = 'not-verified';
-				update_option( 'bpchk_apikey_verified', 'no' );
+				bp_update_option( 'bpchk_apikey_verified', 'no' );
 			}
 
 			$response = array( 'message' => $message );

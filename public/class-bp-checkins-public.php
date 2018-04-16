@@ -295,7 +295,7 @@ class Bp_Checkins_Public {
 				'longitude'       => filter_input( INPUT_POST, 'longitude', FILTER_SANITIZE_STRING ),
 				'add_as_my_place' => filter_input( INPUT_POST, 'add_as_my_place', FILTER_SANITIZE_STRING ),
 			);
-			update_option( 'bpchk_temp_location', $args );
+			bp_update_option( 'bpchk_temp_location', $args );
 			$response = array( 'message' => 'temp-locaition-saved' );
 			wp_send_json_success( $response );
 			die;
@@ -424,7 +424,7 @@ class Bp_Checkins_Public {
 	 */
 	public function bpchk_update_activity_type_checkins( $activity_object ) {
 
-		$bpchk_temp_location = get_option( 'bpchk_temp_location' );
+		$bpchk_temp_location = bp_get_option( 'bpchk_temp_location' );
 		if ( $bpchk_temp_location ) {
 			$activity_object->type = 'activity_bpchk_chkins';
 		}
@@ -440,7 +440,7 @@ class Bp_Checkins_Public {
 	 */
 	public function bpchk_update_meta_on_post_update( $content, $user_id, $activity_id ) {
 		global $wpdb;
-		$place_details = get_option( 'bpchk_temp_location' );
+		$place_details = bp_get_option( 'bpchk_temp_location' );
 		$activity_tbl  = $wpdb->base_prefix . 'bp_activity';
 
 		if ( ! empty( $place_details ) ) {
@@ -518,7 +518,7 @@ class Bp_Checkins_Public {
 	 */
 	public function bpchk_update_group_meta_on_post_update( $content, $user_id, $group_id, $activity_id ) {
 		global $wpdb;
-		$place_details = get_option( 'bpchk_temp_location' );
+		$place_details = bp_get_option( 'bpchk_temp_location' );
 		$activity_tbl  = $wpdb->base_prefix . 'bp_activity';
 
 		if ( ! empty( $place_details ) ) {
@@ -595,7 +595,7 @@ class Bp_Checkins_Public {
 	public function bpchk_groups_activity_new_update_action( $activity_action ) {
 		global $bp;
 		$user_id       = bp_loggedin_user_id();
-		$place_details = get_option( 'bpchk_temp_location' );
+		$place_details = bp_get_option( 'bpchk_temp_location' );
 		if ( ! empty( $place_details ) ) {
 			$activity_action = sprintf( __( '%1$s checked-in in the group %2$s', 'buddypress' ), bp_core_get_userlink( $user_id ), '<a href="' . bp_get_group_permalink( $bp->groups->current_group ) . '">' . esc_attr( $bp->groups->current_group->name ) . '</a>' );
 		}
