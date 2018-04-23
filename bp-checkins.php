@@ -82,7 +82,7 @@ function run_bp_checkins() {
  * Check plugin requirement on plugins loaded
  * this plugin requires BuddyPress to be installed and active
  */
-add_action( 'plugins_loaded', 'bpchk_plugin_init' );
+add_action( 'bp_loaded', 'bpchk_plugin_init' );
 
 /**
  * Check plugin requirement on plugins loaded,this plugin requires BuddyPress to be installed and active.
