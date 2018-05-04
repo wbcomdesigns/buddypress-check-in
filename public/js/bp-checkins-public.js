@@ -370,5 +370,21 @@ jQuery( document ).ready(
 
 			}
 		);
+
+		jQuery( document ).on( 'click', '.bpcp-checkin-trash', function(e) {
+			var parent_id = jQuery( this ).parent().parent().attr('id');
+	      	var attr_key  = jQuery( this ).attr('attr-key');
+				jQuery.post(
+					ajaxurl,
+						{
+						'action'     : 'bpchk_delete_user_checkin_location',
+						'checkin_id' : attr_key,
+						success: function( response ) {
+							jQuery( '#'+parent_id ).next().remove();
+							jQuery( '#'+parent_id ).remove();
+						},
+					}
+				);
+	    });
 	}
 );

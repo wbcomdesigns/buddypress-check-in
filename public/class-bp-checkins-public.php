@@ -794,4 +794,26 @@ class Bp_Checkins_Public {
 		}
 	}
 
+	/**
+	 * Ajax served to delete checkin locations from check-ins tab.
+	 */
+	public function bpchk_delete_user_checkin_location() {
+		global $bp;
+		$activity_id = filter_input( INPUT_POST, 'checkin_id', FILTER_SANITIZE_STRING );
+		$bpchk_fav_places = get_user_meta( bp_displayed_user_id(), 'bpchk_fav_places', true );
+
+		if ( ! empty( $bpchk_fav_places ) ) {
+			$bpchk_fav_places = array_reverse( $bpchk_fav_places );
+		} else {
+			$bpchk_fav_places = $bpchk_fav_places;
+		}
+		foreach ( $bpchk_fav_places as $key => $fav_places ) {
+			if( $fav_places['activity_id'] == $activity_id ) {
+				unset( $bpchk_fav_places[$key] );
+				update_user_meta( bp_displayed_user_id(), 'bpchk_fav_places', $bpchk_fav_places );
+			}
+		}
+		die;
+	}
+
 }

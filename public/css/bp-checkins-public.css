@@ -368,3 +368,7 @@ span.bpchk-allow-checkin {
 	left: 0em!important;
 	display: inline-block;
 }
+
+.bpcp-checkin-trash {
+	float: right!important;
+}

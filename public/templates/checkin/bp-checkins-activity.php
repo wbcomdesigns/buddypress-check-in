@@ -32,7 +32,11 @@ if ( $bpchk_fav_places ) {
 		$map_url = 'https://www.google.com/maps/embed/v1/place?key=' . $apikey . '&q=' . $fav_places['formatted_address'];
 ?>
 
-	<h3><?php echo esc_attr( $fav_places['place'] ); ?></h3>
+	<h3><?php echo esc_attr( $fav_places['place'] ); ?>
+		<?php if( bp_displayed_user_id() === get_current_user_id() ) { ?>
+			<span><i class="fa fa-trash bpcp-checkin-trash" attr-key="<?php echo esc_attr( $fav_places['activity_id'] ); ?>"></i></span>
+		<?php } ?>
+	</h3>
 	<div>
 		<div class="bpchk-fav-loc-map">
 			<iframe frameborder="0" style="border:0" src="<?php echo esc_url( $map_url ); ?>" allowfullscreen></iframe>

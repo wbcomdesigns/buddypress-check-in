@@ -197,6 +197,10 @@ class Bp_Checkins {
 		$this->loader->add_action( 'bp_activity_before_save', $plugin_public, 'bpchk_update_activity_type_checkins', 10, 1 );
 		/*version 1.0.7 update*/
 		$this->loader->add_action( 'bp_activity_post_form_options', $plugin_public, 'render_location_pickup_html', 0 );
+
+		/* Filter to delete check-in location */
+		$this->loader->add_action( 'wp_ajax_bpchk_delete_user_checkin_location', $plugin_public, 'bpchk_delete_user_checkin_location' );
+		$this->loader->add_action( 'wp_ajax_nopriv_bpchk_delete_user_checkin_location', $plugin_public, 'bpchk_delete_user_checkin_location' );
 	}
 
 	/**
