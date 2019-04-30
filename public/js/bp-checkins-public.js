@@ -189,15 +189,14 @@ jQuery( document ).ready(
 		// Send AJAX to save the temp location just as location changed during checkin by autocomplete
 		$( document ).on(
 			'change', '#bpchk-checkin-place-lng', function() {
-				$( '.bpchk-place-loader' ).show();
+				$('.bpchk-place-loader').show();
 				var latitude        = $( '#bpchk-checkin-place-lat' ).val();
 				var longitude       = $( '#bpchk-checkin-place-lng' ).val();
 				var place           = $( '#bpchk-autocomplete-place' ).val();
 				var add_as_my_place = 'no';
-				if ( $( '#bpchk-add-as-place' ).is( ':checked' ) ) {
+				if ( $('#bpchk-add-as-place').is(':checked') ) {
 					add_as_my_place = 'yes';
 				}
-
 				// $('#bpchk-autocomplete-place').addClass('bpchk-autocomplete-place');
 				var data = {
 					'action'			: 'bpchk_save_temp_location',
@@ -215,10 +214,9 @@ jQuery( document ).ready(
 						data: data,
 						success: function( response ) {
 							if ( response['data']['message'] == 'temp-locaition-saved' ) {
-
-								$( '#bpchk-add-as-place' ).attr( 'disabled', true );
-								$( '.bpchk-place-loader' ).hide();
-								$( '#bpchk-autocomplete-place' ).removeClass( 'bpchk-autocomplete-place' );
+								$('#bpchk-add-as-place').attr('disabled', true);
+								$('.bpchk-place-loader').hide();
+								$('#bpchk-autocomplete-place').removeClass('bpchk-autocomplete-place');
 							}
 						},
 					}
@@ -256,8 +254,7 @@ jQuery( document ).ready(
 				}
 				$.post(
 					bpchk_public_js_obj.ajaxurl,data,function(response){
-
-						var obj = JSON.parse( response );
+						var obj = JSON.parse(response);
 						$('.checkin-by-placetype').html(obj.html);
 					}
 				);

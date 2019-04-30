@@ -442,7 +442,8 @@ class Bp_Checkins_Public {
 		global $wpdb;
 		$place_details = bp_get_option( 'bpchk_temp_location' );
 		$activity_tbl  = $wpdb->base_prefix . 'bp_activity';
-
+		global $bp_checkins;
+		$apikey = $bp_checkins->apikey;
 		if ( ! empty( $place_details ) ) {
 			$place           = $place_details['place'];
 			$longitude       = $place_details['longitude'];
@@ -463,15 +464,14 @@ class Bp_Checkins_Public {
 			}
 			if ( 'yes' === $add_as_my_place ) {
 				$bpchk_fav_places = get_user_meta( $user_id, 'bpchk_fav_places', true );
-				$place_get_url    = "http://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&sensor=false";
+				$place_get_url    = "https://maps.googleapis.com/maps/api/geocode/json?key=".$apikey."&latlng=$latitude,$longitude&sensor=false";
 				$response         = wp_remote_get( $place_get_url );
 
 				$response_code = wp_remote_retrieve_response_code( $response );
-
 				if ( 200 === $response_code ) {
 					$jsondata         = json_decode( wp_remote_retrieve_body( $response ), true );
 					$place_visit_date = date( 'Y-m-d', time() );
-
+					
 					if ( $jsondata['results'][0]['formatted_address'] ) {
 						$address                      = array();
 						$address['latitude']          = $latitude;
@@ -486,7 +486,6 @@ class Bp_Checkins_Public {
 						$address['country_code']      = self::google_get_country_code( $jsondata );
 						$address['formatted_address'] = self::google_get_address( $jsondata );
 						$address['visit_date']        = $place_visit_date;
-
 						if ( $bpchk_fav_places ) {
 							array_push( $bpchk_fav_places, $address );
 							update_user_meta( $user_id, 'bpchk_fav_places', $bpchk_fav_places );

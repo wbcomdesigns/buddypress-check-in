@@ -95,7 +95,15 @@ class Bp_Checkins_Admin {
 	 * @since    1.0.0
 	 */
 	public function bpchk_add_menu_page() {
-		add_menu_page( __( 'BuddyPress Checkins Settings', 'bp-checkins' ), __( 'Check-ins', 'bp-checkins' ), 'manage_options', $this->plugin_name, array( $this, 'bpchk_admin_settings_page' ), 'dashicons-location', 59 );
+	
+		// add_menu_page( __( 'BuddyPress Checkins Settings', 'bp-checkins' ), __( 'Check-ins', 'bp-checkins' ), 'manage_options', $this->plugin_name, array( $this, 'bpchk_admin_settings_page' ), 'dashicons-location', 59 );
+
+		if ( empty ( $GLOBALS['admin_page_hooks']['wbcomplugins'] ) ) {
+
+			add_menu_page( esc_html__( 'WB Plugins', 'bp-checkins' ), esc_html__( 'WB Plugins', 'bp-checkins' ), 'manage_options', 'wbcomplugins', array( $this, 'bpchk_admin_settings_page' ), 'dashicons-lightbulb', 59 );
+			add_submenu_page( 'wbcomplugins', esc_html__( 'General', 'bp-checkins' ), esc_html__( 'General', 'bp-checkins' ), 'manage_options', 'wbcomplugins' );
+		}
+		add_submenu_page( 'wbcomplugins', esc_html__( 'BuddyPress Check-ins Settings Page', 'bp-checkins' ), esc_html__( 'Check-ins', 'bp-checkins' ), 'manage_options', 'bp-checkins', array( $this, 'bpchk_admin_settings_page' ) );
 	}
 
 	/**
@@ -106,29 +114,31 @@ class Bp_Checkins_Admin {
 		$tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : $this->plugin_name;
 		?>
 		<div class="wrap">
-			<div class="bpchk-header">
-				<div class="bpchk-extra-actions">
-					<button type="button" class="button button-secondary" onclick="window.open('https://wbcomdesigns.com/contact/', '_blank');"><i class="fa fa-envelope" aria-hidden="true"></i> <?php esc_html_e( 'Email Support', 'bp-checkins' ); ?></button>
-					<button type="button" class="button button-secondary" onclick="window.open('https://wbcomdesigns.com/helpdesk/article-categories/buddypress-checkins/', '_blank');"><i class="fa fa-file" aria-hidden="true"></i> <?php esc_html_e( 'User Manual', 'bp-checkins' ); ?></button>
-					<button type="button" class="button button-secondary" onclick="window.open('https://wordpress.org/support/plugin/bp-check-in/reviews/', '_blank');"><i class="fa fa-star" aria-hidden="true"></i> <?php esc_html_e( 'Rate Us on WordPress.org', 'bp-checkins' ); ?></button>
-				</div>
-				<h2 class="bpchk-plugin-heading"><?php esc_html_e( 'BuddyPress Check-ins', 'bp-checkins' ); ?></h2>
+			<div class="blpro-header">
+				<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
+				<h1 class="wbcom-plugin-heading">
+					<?php esc_html_e( 'BuddyPress Check-ins Settings', 'bp-checkins' ); ?>
+				</h1>
 			</div>
-			<form method="POST" action="">
-
-				<?php
-				settings_errors();
-				if ( filter_input( INPUT_POST, 'bpchk-submit-general-settings' ) !== null ) {
-					$success_msg  = "<div class='notice updated is-dismissible' id='message'>";
-					$success_msg .= '<p>' . __( '<strong>Settings Saved.</strong>', 'bp-checkins' ) . '</p>';
-					$success_msg .= '</div>';
-					echo wp_kses( $success_msg, $allowedposttags );
-				}
-				$this->bpchk_plugin_settings_tabs();
-				settings_fields( $tab );
-				?>
-				<?php do_settings_sections( $tab ); ?>
-			</form>
+			<div class="wbcom-admin-settings-page">
+				<?php $this->bpchk_plugin_settings_tabs(); ?>
+				<div class="wbcom-tab-content">
+					<form method="POST" action="">
+						<?php
+						settings_errors();
+						if ( filter_input( INPUT_POST, 'bpchk-submit-general-settings' ) !== null ) {
+							$success_msg  = "<div class='notice updated is-dismissible' id='message'>";
+							$success_msg .= '<p>' . __( '<strong>Settings Saved.</strong>', 'bp-checkins' ) . '</p>';
+							$success_msg .= '</div>';
+							echo wp_kses( $success_msg, $allowedposttags );
+						}
+						
+						settings_fields( $tab );
+						?>
+						<?php do_settings_sections( $tab ); ?>
+					</form>
+				</div>
+			</div>
 		</div>
 		<?php
 	}
@@ -138,12 +148,12 @@ class Bp_Checkins_Admin {
 	 */
 	public function bpchk_plugin_settings_tabs() {
 		$current_tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : $this->plugin_name;
-		echo '<h2 class="nav-tab-wrapper">';
+		echo '<div class="wbcom-tabs-section"><h2 class="nav-tab-wrapper">';
 		foreach ( $this->plugin_settings_tabs as $tab_key => $tab_caption ) {
 			$active = $current_tab === $tab_key ? 'nav-tab-active' : '';
 			echo '<a class="nav-tab ' . esc_attr( $active ) . '" id="' . esc_attr( $tab_key ) . '-tab" href="?page=' . esc_attr( $this->plugin_name ) . '&tab=' . esc_attr( $tab_key ) . '">' . esc_attr( $tab_caption ) . '</a>';
 		}
-		echo '</h2>';
+		echo '</h2></div>';
 	}
 
 	/**
