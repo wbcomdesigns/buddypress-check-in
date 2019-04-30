@@ -258,7 +258,7 @@ jQuery( document ).ready(
 					bpchk_public_js_obj.ajaxurl,data,function(response){
 
 						var obj = JSON.parse( response );
-						$( '.checkin-by-placetype' ).html( obj.html );
+						$('.checkin-by-placetype').html(obj.html);
 					}
 				);
 			}
