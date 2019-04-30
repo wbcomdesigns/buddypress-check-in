@@ -4,7 +4,7 @@ Contributors: wbcomdesigns, vapvarun
 Donate link: https://wbcomdesigns.com/donate/
 Tags: buddypress, check-ins , BuddyPress Location, update check-ins, location
 Requires at least: 3.0.1
-Tested up to: 4.9.5
+Tested up to: 5.1.1
 Stable tag: 4.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -79,6 +79,13 @@ If you need additional help you can contact us for <a href="https://wbcomdesigns
 5. screenshot-5 - Mobile view for check-ins inside activity.
 
 == Changelog ==
+
+= 1.2.0 =
+
+* Enhancement- Plugin backend settings ui enhancement.
+* Enhancement- BP 4.3.0 compatibility.
+* Fix- Google placetypes missing with nouveau #44.
+* Fix- Add as my place fix #45.
 
 = 1.1.0 =
 
