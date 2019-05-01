@@ -217,7 +217,7 @@ span.bpchk-allow-checkin {
 	padding:3px;
 }
 .bpchk-marker-container i{
-	margin-left:5px;
+	margin:5px 5px 5px 0;
 	font-size: 18px;
 }
 .checkin-by-autocomplete{
@@ -320,9 +320,10 @@ span.bpchk-allow-checkin {
 }
 
 .bpchk-fav-loc-map-container .ui-accordion-content{
-	border-radius: 0;
 	border: 0;
-	border-left: 2px solid gray;
+    border-left: 0px solid gray;
+    padding: 15px;
+    padding-top: 0;
 }
 
 .bpchk-fav-loc-map-container .ui-button.ui-state-active {
@@ -340,11 +341,19 @@ span.bpchk-allow-checkin {
 .bpchk-fav-loc-map-container .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active {
 	color: #000;
 }
-.bpchk-fav-loc-map-container h3.ui-state-active {
+.bpchk-fav-loc-map-container h3.ui-accordion-header {
 	border: 0;
-	border-left: 2px solid gray;
-	font-weight: 700;
-	outline: 0;
+    border-left: 0px solid gray;
+    outline: 0;
+    background: #fff;
+    padding: 5px 30px 5px 30px !important;
+    position: relative;
+    margin-bottom: 0 !important;
+}
+.bpchk-fav-loc-map-container h3.ui-accordion-header .checkin-trash{
+	position: absolute;
+    right: 10px;
+    top: 10px;
 }
 
 .bpchk-fav-loc-map-container .ui-state-active .ui-icon, .bpchk-fav-loc-map-container .ui-button:active .ui-icon, .bpchk-fav-loc-map-container .ui-state-hover .ui-icon, .bpchk-fav-loc-map-container .ui-button:hover .ui-icon, .bpchk-fav-loc-map-container .ui-state-focus .ui-icon{
@@ -364,9 +373,10 @@ span.bpchk-allow-checkin {
 }
 
 .bpchk-fav-loc-map-container .ui-accordion-header .ui-icon {
-	position: relative!important;
-	left: 0em!important;
-	display: inline-block;
+	position: absolute;
+    left: 8px;
+    display: inline-block;
+    top: 13px;
 }
 
 .bpcp-checkin-trash {
