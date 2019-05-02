@@ -5,21 +5,21 @@
 	$free_plugins		 = $wbcom_setting_obj->wbcom_all_free_plugins();
 	$paid_plugins		 = $wbcom_setting_obj->wbcom_all_paid_plugins();
 	?>
-	<h4 class="wbcom-plugin-heading"><?php esc_html_e( 'Free Addons', 'wb-todo' ); ?></h4>
+	<h4 class="wbcom-plugin-heading"><?php esc_html_e( 'Free Addons', 'bp-checkins' ); ?></h4>
 	<div class="reign-demos-wrapper reign-importer-section">
 		<div class="reign-demos-inner-wrapper">
 			<?php
 			foreach ( $free_plugins as $key => $plugin_details ) {
 				if ( 'not_installed' == $plugin_details[ 'status' ] ) {
-					$plugin_btn_text = esc_html__( 'Install', 'wb-todo' );
+					$plugin_btn_text = esc_html__( 'Install', 'bp-checkins' );
 					$toggle_class	 = 'fas fa-toggle-off';
 					$plugin_action	 = 'install_plugin';
 				} else if ( 'installed' == $plugin_details[ 'status' ] ) {
-					$plugin_btn_text = esc_html__( 'Activate', 'wb-todo' );
+					$plugin_btn_text = esc_html__( 'Activate', 'bp-checkins' );
 					$toggle_class	 = 'fas fa-toggle-off';
 					$plugin_action	 = 'activate_plugin';
 				} else {
-					$plugin_btn_text = esc_html__( 'Deactivate', 'wb-todo' );
+					$plugin_btn_text = esc_html__( 'Deactivate', 'bp-checkins' );
 					$toggle_class	 = 'fas fa-toggle-on';
 					$plugin_action	 = 'deactivate_plugin';
 				}
@@ -47,7 +47,7 @@
 			<?php } ?>
 		</div>
 	</div>
-	<h4 class="wbcom-plugin-heading"><?php esc_html_e( 'Paid Addons', 'wb-todo' ); ?></h4>
+	<h4 class="wbcom-plugin-heading"><?php esc_html_e( 'Paid Addons', 'bp-checkins' ); ?></h4>
 	<div class="reign-demos-wrapper reign-importer-section">
 		<div class="reign-demos-inner-wrapper">
 			<?php foreach ( $paid_plugins as $key => $plugin_details ) {
@@ -64,7 +64,7 @@
 						<div class="activation_button_wrap">
 							<a href="<?php echo esc_url( $plugin_details[ 'download_url' ] ); ?>" class="wb_btn wb_btn_default" target="_blank" >
 								<i class="far fa-eye"></i>
-								<?php esc_html_e( 'View', 'wb-todo' ); ?>
+								<?php esc_html_e( 'View', 'bp-checkins' ); ?>
 							</a>
 						</div>
 					</div>
