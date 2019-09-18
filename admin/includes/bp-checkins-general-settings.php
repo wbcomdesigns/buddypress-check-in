@@ -123,7 +123,7 @@ $place_types = array(
 				<input class="regular-text" type="text" value="<?php echo esc_attr( $bp_checkins->apikey ); ?>" name="bpchk-api-key" id="bpchk-api-key" placeholder="<?php esc_html_e( 'API Key', 'bp-checkins' ); ?>" required>
 				<button type="button" class="button button-secondary" style="<?php echo esc_attr( $verify_btn_style ); ?>" id="bpchk-verify-apikey"><?php esc_html_e( 'Verify', 'bp-checkins' ); ?></button>
 				<p class="description"><?php esc_html_e( "Due to changes in Google Maps API it's required to use an API key for the BuddyPress Check-ins plugin to work properly. You can get the API key", 'bp-checkins' ); ?>&nbsp;<a target="blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key"><?php esc_html_e( 'here.', 'bp-checkins' ); ?></a>&nbsp;
-					<a href="javascript:void(0);" onClick="window.open('https://wbcomdesigns.com/helpdesk/knowledge-base/get-google-api-key/','pagename','resizable,height=600,width=700'); return false;">
+					<a href="javascript:void(0);" onClick="window.open('https://support.wbcomdesigns.com/portal/kb/articles/how-to-get-google-api-key','pagename','resizable,height=600,width=700'); return false;">
 							<?php esc_html_e( '( How to Get Google API Key? )', 'bp-checkins' ); ?>
 					</a>
 				</p>
