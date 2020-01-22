@@ -106,37 +106,6 @@ jQuery( document ).ready(
 				);
 			}
 		);
-
-		// Open the settings panel once checkinby placetype is selected
-		$( document ).on(
-			'click', '.bpchk-checkin-by', function(){
-				var checkin_by = $( this ).val();
-				if ( checkin_by == 'placetype' ) {
-					$( '.bpchk-placetype-settings-row' ).show();
-				} else {
-					$( '.bpchk-placetype-settings-row' ).hide();
-				}
-			}
-		);
-
-		// Update the range value when the slider changes
-		$( document ).on(
-			'change', '#bpchk-google-places-range', function(){
-				var val = $( this ).val();
-				$( '#range_disp' ).html( val + ' kms.' );
-				$( '#hidden_range' ).val( val );
-			}
-		);
-
-		// Select all place types
-		$( document ).on(
-			'change', '#bpchk-select-all-place-types', function(){
-				if ( $( this ).is( ':checked' ) ) {
-					$( '.google-place-types' ).prop( 'checked', true );
-				} else {
-					$( '.google-place-types' ).prop( 'checked', false );
-				}
-			}
-		);
+		
 	}
 );

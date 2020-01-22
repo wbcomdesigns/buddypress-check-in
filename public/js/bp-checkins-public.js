@@ -232,35 +232,6 @@ jQuery( document ).ready(
 			}
 		);
 
-		// Send an AJAX to fetch the places when checkin is to be done by placetype
-		if ( bpchk_public_js_obj.checkin_by == 'placetype' ) {
-			var latitude  = '';
-			var longitude = '';
-			bpchk_get_current_geolocation();
-			function bpchk_get_current_geolocation() {
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition( showPosition );
-				} else {
-					console.log( 'Geolocation is not supported by your browser.' );
-				}
-			}
-			function showPosition(position) {
-				latitude  = position.coords.latitude;
-				longitude = position.coords.longitude;
-				var data  = {
-					'action'			: 'bpchk_fetch_places',
-					'latitude'			: latitude,
-					'longitude'			: longitude
-				}
-				$.post(
-					bpchk_public_js_obj.ajaxurl,data,function(response){
-						var obj = JSON.parse(response);
-						$(document).find('.checkin-by-placetype').html(obj.html);
-					}
-				);
-			}
-		}
-
 		$( document ).on(
 			'click', '.bpchk-select-place-to-checkin', function(){
 				var clicked_event   = $( this );

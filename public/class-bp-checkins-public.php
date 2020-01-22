@@ -76,7 +76,7 @@ class Bp_Checkins_Public {
 			if ( $bp_checkins->apikey ) {
 					$checkin_html .= '<div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
 					$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
-				if ( 'autocomplete' === $bp_checkins->checkin_by ) {
+				
 					$checkin_html     .= '<div class="checkin-by-autocomplete">';
 						$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', 'bp-checkins' ) . '" />';
 						$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
@@ -87,11 +87,7 @@ class Bp_Checkins_Public {
 					$checkin_html     .= '</div>';
 					$checkin_html     .= '<div class="checkin-by-autocomplete-map" id="checkin-by-autocomplete-map"></div>';
 					$checkin_html     .= '<div class="clear"></div>';
-				} else {
-					$checkin_html     .= '<div class="checkin-by-placetype">';
-						$checkin_html .= '<p>' . __( 'Please Wait..', 'bp-checkins' ) . '</p>';
-					$checkin_html     .= '</div>';
-				}
+				
 					$checkin_html .= '</div>';
 			}
 		}
