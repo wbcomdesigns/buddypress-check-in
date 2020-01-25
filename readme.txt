@@ -3,9 +3,9 @@
 Contributors: wbcomdesigns, vapvarun
 Donate link: https://wbcomdesigns.com/donate/
 Tags: buddypress, check-ins , BuddyPress Location, update check-ins, location
-Requires at least: 3.0.1
-Tested up to: 5.2.2
-Stable tag: 4.0.1
+Requires at least: 5.0.0
+Tested up to: 5.3.2
+Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,14 +14,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin allows BuddyPress members to share their location when they are posting activities, you can add places where you visited, nearby locations based on google places.
 
-Plugins have two mode of operations.
-1) Auto Complete feature: You can add location for your choice start typing location name and it will suggest based on your inbut and you can select it.
-
-2) Place Type Feature: You can ristrict your members to add locations based on nature of your website, like religious website can allows to add Church, Templates etc. Foodies websites can restrict check-ins for bars, pub and restaurant only.
+Auto Complete feature: You can add location for your choice start typing location name and it will suggest based on your inbut and you can select it.
 
 Google Place API key is required for it, You can create your key from [Google Place Web Service Documentation](https://developers.google.com/places/web-service/) link.
-
-This plugin also provides to select place types for your members, like if you are foodies you can select food-related place type and your members will able to post food-related places on your website activity stream. In the same way, you can select autocomplete box if you want to automatically fill up the location by google map API on member activity page.Both the options will show you a google map on frontend if you type and select a location either in autocomplete box or in place types list. Also, the plugin provides an x-profile field to set location at BuddyPress profile page.
 
 It will also show a google map for all the activity posts that has a location. If you need additional help you can contact us for [BuddyPress Check-ins](https://wbcomdesigns.com/downloads/buddypress-checkins/).
 
@@ -68,17 +63,17 @@ If you need additional help you can contact us for <a href="https://wbcomdesigns
 
 == Screenshots ==
 
-1. screenshot-1 - shows the general settings in the plugin.
+1. screenshot-1 - 
 
-2. screenshot-2 - shows the front end panel, to check-ins by autocomplete.
+2. screenshot-2 - 
 
-3. screenshot-3 - shows the front end panel, to check-ins by place types.
-
-4. screenshot-4 - shows the member profile, showing favorite locations.
-
-5. screenshot-5 - Mobile view for check-ins inside activity.
+3. screenshot-3 -
 
 == Changelog ==
+
+= 1.3.0 =
+
+* Fix - updated settings
 
 = 1.2.0 =
 
