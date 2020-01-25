@@ -195,3 +195,37 @@ function bpchk_plugin_links( $links ) {
 	);
 	return array_merge( $links, $bpchk_links );
 }
+
+/**
+ *  Check if buddypress activate.
+ */
+function bpchk_requires_buddypress()
+{
+
+    if ( !class_exists( 'Buddypress' ) ) {
+        deactivate_plugins( plugin_basename( __FILE__ ) );
+        //deactivate_plugins('buddypress-polls/buddypress-polls.php');
+        add_action( 'admin_notices', 'bpchk_required_plugin_admin_notice' );
+        unset($_GET['activate']);
+    }
+}
+
+add_action( 'admin_init', 'bpchk_requires_buddypress' );
+/**
+ * Throw an Alert to tell the Admin why it didn't activate.
+ *
+ * @author wbcomdesigns
+ * @since  1.1.0
+ */
+function bpchk_required_plugin_admin_notice()
+{
+
+    $bpquotes_plugin          = esc_html__('BuddyPress Check-ins', 'bp-checkins');
+    $bp_plugin                = esc_html__('BuddyPress', 'bp-checkins');
+    echo '<div class="error"><p>';
+    echo sprintf(esc_html__('%1$s is ineffective now as it requires %2$s to be installed and active.', 'bp-checkins'), '<strong>' . esc_html($bpquotes_plugin) . '</strong>', '<strong>' . esc_html($bp_plugin) . '</strong>');
+    echo '</p></div>';
+    if (isset($_GET['activate']) ) {
+        unset($_GET['activate']);
+    }
+}
