@@ -74,6 +74,8 @@ If you need additional help you can contact us for <a href="https://wbcomdesigns
 = 1.3.0 =
 
 * Fix - updated settings
+* Fix - Added condition for BuddyPress plugin already active
+* Fix - Checkin listing will be displayed to logged in user at their profile only ( no public listing of checkins)
 
 = 1.2.0 =
 
