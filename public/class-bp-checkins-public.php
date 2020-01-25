@@ -76,7 +76,7 @@ class Bp_Checkins_Public {
 			if ( $bp_checkins->apikey ) {
 					$checkin_html .= '<div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
 					$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
-				
+
 					$checkin_html     .= '<div class="checkin-by-autocomplete">';
 						$checkin_html .= '<input type="text" id="bpchk-autocomplete-place" placeholder="' . __( 'Start typing your location...', 'bp-checkins' ) . '" />';
 						$checkin_html .= '<input type="hidden" id="bpchk-checkin-place-lat" />';
@@ -87,7 +87,7 @@ class Bp_Checkins_Public {
 					$checkin_html     .= '</div>';
 					$checkin_html     .= '<div class="checkin-by-autocomplete-map" id="checkin-by-autocomplete-map"></div>';
 					$checkin_html     .= '<div class="clear"></div>';
-				
+
 					$checkin_html .= '</div>';
 			}
 		}
@@ -145,31 +145,33 @@ class Bp_Checkins_Public {
 	 * @since    1.0.1
 	 */
 	public function bpchk_member_profile_checkin_tab() {
-		$displayed_uid  = bp_displayed_user_id();
-		$parent_slug    = 'checkin';
-		$my_places_link = bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/my-places';
+		if ( bp_is_my_profile() ) {
+			$displayed_uid  = bp_displayed_user_id();
+			$parent_slug    = 'checkin';
+			$my_places_link = bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/check-ins';
 
-		bp_core_new_nav_item(
-			array(
-				'name'                    => __( 'Check-ins', 'bp-checkins' ),
-				'slug'                    => 'checkin',
-				'screen_function'         => array( $this, 'bpchk_checkin_tab_function_to_show_screen' ),
-				'position'                => 75,
-				'default_subnav_slug'     => 'my-places',
-				'show_for_displayed_user' => true,
-			)
-		);
-		bp_core_new_subnav_item(
-			array(
-				'name'            => __( 'Locations', 'bp-checkins' ),
-				'slug'            => 'my-places',
-				'parent_url'      => bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/',
-				'parent_slug'     => esc_attr( $parent_slug ),
-				'screen_function' => array( $this, 'bpchk_checkins_activity_show_screen' ),
-				'position'        => 100,
-				'link'            => $my_places_link,
-			)
-		);
+			bp_core_new_nav_item(
+				array(
+					'name'                    => __( 'Check-ins', 'bp-checkins' ),
+					'slug'                    => 'checkin',
+					'screen_function'         => array( $this, 'bpchk_checkin_tab_function_to_show_screen' ),
+					'position'                => 75,
+					'default_subnav_slug'     => 'check-ins',
+					'show_for_displayed_user' => true,
+				)
+			);
+			bp_core_new_subnav_item(
+				array(
+					'name'            => __( 'Check-ins', 'bp-checkins' ),
+					'slug'            => 'check-ins',
+					'parent_url'      => bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/',
+					'parent_slug'     => esc_attr( $parent_slug ),
+					'screen_function' => array( $this, 'bpchk_checkins_activity_show_screen' ),
+					'position'        => 100,
+					'link'            => $my_places_link,
+				)
+			);
+		}
 	}
 
 	/**
@@ -467,7 +469,7 @@ class Bp_Checkins_Public {
 				if ( 200 === $response_code ) {
 					$jsondata         = json_decode( wp_remote_retrieve_body( $response ), true );
 					$place_visit_date = date( 'Y-m-d', time() );
-					
+
 					if ( $jsondata['results'][0]['formatted_address'] ) {
 						$address                      = array();
 						$address['latitude']          = $latitude;
