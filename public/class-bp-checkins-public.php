@@ -446,7 +446,7 @@ class Bp_Checkins_Public {
 			$latitude        = $place_details['latitude'];
 			$add_as_my_place = $place_details['add_as_my_place'];
 
-			$location_html = ' -at <a class=checkin-loc href="http://maps.google.com/maps/place/' . $place . '/@' . $latitude . ',' . $longitude . '" target="_blank" title="' . $place . '">' . $place . '</a>';
+			$location_html =  __( '-at ', 'bp-checkins' ).'<a class=checkin-loc href="http://maps.google.com/maps/place/' . $place . '/@' . $latitude . ',' . $longitude . '" target="_blank" title="' . $place . '">' . $place . '</a>';
 			$content      .= $location_html;
 			$pos           = strpos( $content, '-at <a class="checkin-loc"' );
 			// Update the activity content to post the checkin along with the post update.
@@ -592,7 +592,7 @@ class Bp_Checkins_Public {
 		$user_id       = bp_loggedin_user_id();
 		$place_details = bp_get_option( 'bpchk_temp_location' );
 		if ( ! empty( $place_details ) ) {
-			$activity_action = sprintf( __( '%1$s checked-in in the group %2$s', 'buddypress' ), bp_core_get_userlink( $user_id ), '<a href="' . bp_get_group_permalink( $bp->groups->current_group ) . '">' . esc_attr( $bp->groups->current_group->name ) . '</a>' );
+			$activity_action = sprintf( __( '%1$s checked-in in the group %2$s', 'bp-checkins' ), bp_core_get_userlink( $user_id ), '<a href="' . bp_get_group_permalink( $bp->groups->current_group ) . '">' . esc_attr( $bp->groups->current_group->name ) . '</a>' );
 		}
 		return $activity_action;
 	}
