@@ -401,7 +401,7 @@ class Bp_Checkins_Public {
 	 * @return string $action
 	 */
 	public function bp_activity_format_activity_action_activity_bpchk_chkins( $action, $activity ) {
-		$action = sprintf( __( '%s checked-in', 'buddypress' ), bp_core_get_userlink( $activity->user_id ) );
+		$action = sprintf( __( '%s checked-in', 'bp-checkins' ), bp_core_get_userlink( $activity->user_id ) );
 
 		/**
 		 * Filters the formatted activity action update string.
@@ -594,7 +594,7 @@ class Bp_Checkins_Public {
 		$user_id       = bp_loggedin_user_id();
 		$place_details = bp_get_option( 'bpchk_temp_location' );
 		if ( ! empty( $place_details ) ) {
-			$activity_action = sprintf( __( '%1$s checked-in in the group %2$s', 'buddypress' ), bp_core_get_userlink( $user_id ), '<a href="' . bp_get_group_permalink( $bp->groups->current_group ) . '">' . esc_attr( $bp->groups->current_group->name ) . '</a>' );
+			$activity_action = sprintf( __( '%1$s checked-in in the group %2$s', 'bp-checkins' ), bp_core_get_userlink( $user_id ), '<a href="' . bp_get_group_permalink( $bp->groups->current_group ) . '">' . esc_attr( $bp->groups->current_group->name ) . '</a>' );
 		}
 		return $activity_action;
 	}

@@ -10,7 +10,7 @@ module.exports = function ( grunt ) {
 				// Check text domain
 			checktextdomain: {
 				options: {
-					text_domain: [ 'bp-checkins', 'buddypress' ], // Specify allowed domain(s)
+					text_domain: [ 'bp-checkins' ], // Specify allowed domain(s)
 					keywords: [ // List keyword specifications
 						'__:1,2d',
 						'_e:1,2d',

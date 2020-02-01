@@ -29,7 +29,7 @@ if ( ! empty( $bp_checkins->apikey ) ) {
 				
 				<p class="description"><?php esc_html_e( "Due to changes in Google Maps API it's required to use an API key for the BuddyPress Check-ins plugin to work properly.", 'bp-checkins' ); ?>
 				</p>
-				<a id="gd-api-key" onclick='window.open("<?php echo wp_slash($gm_api_url);?>", "newwindow", "width=600, height=400"); return false;' href='<?php echo $gm_api_url;?>' class="button-primary" name="<?php _e('Generate API Key - ( MUST be logged in to your Google account )','geodirectory');?>" ><?php _e('Generate API Key','geodirectory');?></a>&nbsp;
+				<a id="gd-api-key" onclick='window.open("<?php echo wp_slash($gm_api_url);?>", "newwindow", "width=600, height=400"); return false;' href='<?php echo $gm_api_url;?>' class="button-primary" name="<?php _e('Generate API Key - ( MUST be logged in to your Google account )','bp-checkins');?>" ><?php _e('Generate API Key','bp-checkins');?></a>&nbsp;
 					<a href="javascript:void(0);" onClick="window.open('https://support.wbcomdesigns.com/portal/kb/articles/how-to-get-google-api-key','pagename','resizable,height=600,width=700'); return false;">
 							<?php esc_html_e( '( How to Get Google API Key? )', 'bp-checkins' ); ?>
 					</a>
