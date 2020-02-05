@@ -1,5 +1,4 @@
-jQuery( document ).ready(
-	function($){
+jQuery( document ).ready( function($){
 		'use strict';
 
 		var autocomplete1;
@@ -354,5 +353,11 @@ jQuery( document ).ready(
 					}
 				);
 	    });
-	}
-);
+		$('#whats-new').focus( function(){
+			$( '.bp-checkin-panel' ).appendTo('#whats-new-options');
+			jQuery('.bpchk-marker-container').click(function(){
+				jQuery( '.bpquotes-bg-selection-div' ).hide();
+				jQuery( '.bpolls-polls-option-html' ).hide();				
+			});
+		});
+});
