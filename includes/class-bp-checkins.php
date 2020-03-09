@@ -127,6 +127,9 @@ class Bp_Checkins {
 		/* Enqueue wbcom plugin folder file. */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/wbcom/wbcom-admin-settings.php';
 
+		/* Enqueue Admin review file.  */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bp-checkins-admin-feedback.php';
+
 		$this->loader = new Bp_Checkins_Loader();
 
 	}
