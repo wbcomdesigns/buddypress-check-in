@@ -6,6 +6,7 @@
   "description": "Location checkins for BuddyPress",
   "devDependencies": {
     "grunt": "^1.1.0",
+    "minimist": ">=1.2.2",
     "grunt-wp-i18n": "^1.0.3"
   },
   "engines": {
