@@ -15,7 +15,7 @@
  * Plugin Name:       BuddyPress Check-ins
  * Plugin URI:        https://wbcomdesigns.com/downloads/buddypress-checkins/
  * Description:       This plugin allows BuddyPress members to share their location when they are posting activities, just like other social sites, you can add places where you visited.
- * Version:           1.3.0
+ * Version:           1.4.0
  * Author:            Wbcom Designs
  * Author URI:        https://wbcomdesigns.com/
  * License:           GPL-2.0+
@@ -98,16 +98,16 @@ function bpchk_plugin_init() {
 
 function bp_checkins_check_config(){
 	global $bp;
-	
+
 	$config = array(
-		'blog_status'    => false, 
-		'network_active' => false, 
-		'network_status' => true 
+		'blog_status'    => false,
+		'network_active' => false,
+		'network_status' => true
 	);
 	if ( get_current_blog_id() == bp_get_root_blog_id() ) {
 		$config['blog_status'] = true;
 	}
-	
+
 	$network_plugins = get_site_option( 'active_sitewide_plugins', array() );
 
 	// No Network plugins
@@ -119,7 +119,7 @@ function bp_checkins_check_config(){
 
 	// Are they active on the network ?
 	$network_active = array_diff( $check, array_keys( $network_plugins ) );
-	
+
 	// If result is 1, your plugin is network activated
 	// and not BuddyPress or vice & versa. Config is not ok
 	if ( count( $network_active ) == 1 )

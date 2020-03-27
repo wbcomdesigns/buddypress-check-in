@@ -63,13 +63,17 @@ If you need additional help you can contact us for <a href="https://wbcomdesigns
 
 == Screenshots ==
 
-1. screenshot-1 - 
+1. screenshot-1 -
 
-2. screenshot-2 - 
+2. screenshot-2 -
 
 3. screenshot-3 -
 
 == Changelog ==
+
+= 1.4.0 =
+* Fix - Added plugin review notice.
+* Fix - Hide Checking toggle to hide other button like Quotes, Polls
 
 = 1.3.0 =
 
@@ -104,12 +108,12 @@ If you need additional help you can contact us for <a href="https://wbcomdesigns
 
 = 1.0.5 =
 
-* Fix - A New option autocomplete is added in check-ins plugin setting. Now you can check either autocomplete or place types options. 
+* Fix - A New option autocomplete is added in check-ins plugin setting. Now you can check either autocomplete or place types options.
 * Fix - If you check autocomplete, a autocomplete text box will be shown at the top of the page under textarea on member activity page where you can type and select any location from the list.
 * Fix - All activity posts which have any place or location a google map will be shown below them to point that particular place.
 * Enhancement - A new x-profile location field is added at BuddyPress profile page from where a user can set location.
 
-= 1.0.4 = 
+= 1.0.4 =
 
 * Fix - Dual File Fixes
 
