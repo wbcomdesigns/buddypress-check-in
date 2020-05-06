@@ -19,17 +19,19 @@
  * @subpackage Bp_Checkins/includes
  * @author     Wbcom Designs <admin@wbcomdesigns.com>
  */
-class Bp_Checkins_Activator {
+if ( ! class_exists( 'Bp_Checkins_Activator' ) ) :
+	class Bp_Checkins_Activator {
 
-	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
-	 *
-	 * @since    1.0.0
-	 */
-	public static function activate() {
+		/**
+		 * Short Description. (use period)
+		 *
+		 * Long Description.
+		 *
+		 * @since    1.0.0
+		 */
+		public static function activate() {
+
+		}
 
 	}
-
-}
+endif;
