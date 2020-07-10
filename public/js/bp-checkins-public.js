@@ -353,11 +353,20 @@ jQuery( document ).ready( function($){
 					}
 				);
 	    });
-		$('#whats-new').focus( function(){
+		
+		$( document ).on( 'focus', '#whats-new', function(){
+			
+			if ($(".rtmedia-plupload-container .bpolls-html-container").length == 0){
+				$(".bpchk-marker-container").appendTo(".rtmedia-plupload-container");				
+				$('#whats-new-options .bpchk-marker-container').hide();
+				
+			} 
 			$( '.bp-checkin-panel' ).appendTo('#whats-new-options');
+			
 			jQuery('.bpchk-marker-container').click(function(){
 				jQuery( '.bpquotes-bg-selection-div' ).hide();
 				jQuery( '.bpolls-polls-option-html' ).hide();				
 			});
 		});
+		
 });
