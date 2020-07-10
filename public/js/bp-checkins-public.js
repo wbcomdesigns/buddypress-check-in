@@ -358,9 +358,12 @@ jQuery( document ).ready( function($){
 			
 			if ($(".rtmedia-plupload-container .bpchk-marker-container").length == 0 && $(".rtmedia-plupload-container").length != 0){
 				$(".bpchk-marker-container").appendTo(".rtmedia-plupload-container");				
-				$('#whats-new-options .bpchk-marker-container').hide();				
-			} 
-			$( '.bp-checkin-panel' ).appendTo('#whats-new-options');
+				
+			}
+			if ( $(".rtmedia-plupload-container").length != 0) {
+				$('#whats-new-options .bpchk-marker-container').hide();
+			}
+			//$( '.bp-checkin-panel' ).appendTo('#whats-new-options');
 			
 			jQuery('.bpchk-marker-container').click(function(){
 				jQuery( '.bpquotes-bg-selection-div' ).hide();
