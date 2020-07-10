@@ -5,11 +5,17 @@
 
 /* css update for version 1.0.7 :: start */
 .bpchk-marker-container {
+    margin: 0 10px 10px 0;
+    margin-left: 65px;
+    display: inline-block;
     background: transparent;
     color: #a7a7b2;
 }
+.rtmedia-plupload-container .bpchk-marker-container {
+    margin-left: 0;
+}
 .bpchk-marker-container i {
-    margin-left: 10px;
+    margin: 0;
     font-size: 20px;
     border: 1px solid;
     border-radius: 100%;
@@ -20,8 +26,9 @@
     justify-content: center;
 }
 .bp-checkins.bp-checkin-panel {
-    width: 100%;
+    width: calc(100% - 65px);
     margin: 10px 0;
+    margin-left: 65px;
 }
 .bpchk-single-location-added {
     font-size: 14px;
@@ -217,7 +224,7 @@ span.bpchk-allow-checkin {
     padding:3px;
 }
 .bp-nouveau .bpchk-marker-container i {
-    margin:5px 5px 5px 0;
+    margin: 0;
     font-size: 18px;
 }
 .checkin-by-autocomplete{
@@ -383,8 +390,9 @@ span.bpchk-allow-checkin {
     float: right!important;
 }
 
-/**********************/
-
-.bp-nouveau #whats-new-options{
-    margin-left:65px;
+.bpchk-marker-container+.quote-btn,
+.bp-checkins + .bpolls-html-container {
+    margin-left: 0 !important;
 }
+
+/**********************/
