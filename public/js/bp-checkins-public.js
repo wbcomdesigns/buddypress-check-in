@@ -356,10 +356,9 @@ jQuery( document ).ready( function($){
 		
 		$( document ).on( 'focus', '#whats-new', function(){
 			
-			if ($(".rtmedia-plupload-container .bpolls-html-container").length == 0){
+			if ($(".rtmedia-plupload-container .bpchk-marker-container").length == 0 && $(".rtmedia-plupload-container").length != 0){
 				$(".bpchk-marker-container").appendTo(".rtmedia-plupload-container");				
-				$('#whats-new-options .bpchk-marker-container').hide();
-				
+				$('#whats-new-options .bpchk-marker-container').hide();				
 			} 
 			$( '.bp-checkin-panel' ).appendTo('#whats-new-options');
 			
