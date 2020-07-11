@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BuddyPress Check-ins\n"
-"POT-Creation-Date: 2020-07-11 18:58+0530\n"
-"PO-Revision-Date: 2020-07-11 18:58+0530\n"
+"POT-Creation-Date: 2020-07-11 18:44+0530\n"
+"PO-Revision-Date: 2020-07-11 18:57+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: fr_FR\n"
+"Language: hi_IN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3.1\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: bp-checkins.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -21,72 +21,71 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
+"X-Poedit-SearchPathExcluded-2: .git\n"
 
 #. translators: Number of years
 #: admin/class-bp-checkins-admin-feedback.php:88
 #, fuzzy, php-format
 msgid "%s years"
-msgstr "%s années"
+msgstr "%s वर्ष"
 
 #: admin/class-bp-checkins-admin-feedback.php:90
 #, fuzzy
 msgid "a year"
-msgstr "une année"
+msgstr "एक साल"
 
 #. translators: Number of weeks
 #: admin/class-bp-checkins-admin-feedback.php:97
-#, fuzzy, php-format
+#, php-format
 msgid "%s weeks"
-msgstr "%s semaines"
+msgstr ""
 
 #: admin/class-bp-checkins-admin-feedback.php:99
-#, fuzzy
 msgid "a week"
-msgstr "une semaine"
+msgstr ""
 
 #. translators: Number of days
 #: admin/class-bp-checkins-admin-feedback.php:106
 #, fuzzy, php-format
 msgid "%s days"
-msgstr "%s jours"
+msgstr "%s दिन"
 
 #: admin/class-bp-checkins-admin-feedback.php:108
 #, fuzzy
 msgid "a day"
-msgstr "un jour"
+msgstr "एक दिन"
 
 #. translators: Number of hours
 #: admin/class-bp-checkins-admin-feedback.php:115
 #, fuzzy, php-format
 msgid "%s hours"
-msgstr "%s heures"
+msgstr "%s घंटा"
 
 #: admin/class-bp-checkins-admin-feedback.php:117
 #, fuzzy
 msgid "an hour"
-msgstr "Une heure"
+msgstr "एक घंटा"
 
 #. translators: Number of minutes
 #: admin/class-bp-checkins-admin-feedback.php:124
 #, fuzzy, php-format
 msgid "%s minutes"
-msgstr "%s minutes"
+msgstr "%s मिनट"
 
 #: admin/class-bp-checkins-admin-feedback.php:126
 #, fuzzy
 msgid "a minute"
-msgstr "une minute"
+msgstr "एक मिनट"
 
 #. translators: Number of seconds
 #: admin/class-bp-checkins-admin-feedback.php:133
-#, fuzzy, php-format
+#, php-format
 msgid "%s seconds"
-msgstr "%s secondes"
+msgstr "%s सेकंड"
 
 #: admin/class-bp-checkins-admin-feedback.php:135
-#, fuzzy
 msgid "a second"
-msgstr "une seconde"
+msgstr "एक  सेकंड"
 
 #. Plugin Name of the plugin/theme
 #: admin/class-bp-checkins-admin-feedback.php:271
@@ -100,35 +99,29 @@ msgstr ""
 
 #. translators: 1. Name
 #: admin/class-bp-checkins-admin-feedback.php:277
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "We hope you're enjoying %1$s! Could you please do us a BIG favor and give it "
 "a 5-star rating on WordPress to help us spread the word and boost our "
 "motivation?"
 msgstr ""
-"Nous espérons que vous appréciez %1$s ! Pourriez-vous nous faire une GRANDE "
-"faveur et lui donner une note de 5 étoiles sur WordPress pour nous aider à "
-"passer le mot et à renforcer notre motivation ?"
 
 #: admin/class-bp-checkins-admin-feedback.php:281
-#, fuzzy
 msgid "Leave a Review"
-msgstr "Laisser un avis"
+msgstr "समीक्षा छोड़ें"
 
 #: admin/class-bp-checkins-admin-feedback.php:282
-#, fuzzy
 msgid "No thanks / I already have"
-msgstr "Non merci / Je l’ai déjà"
+msgstr "धन्यवाद"
 
 #: admin/class-bp-checkins-admin.php:103
-#, fuzzy
 msgid "WB Plugins"
-msgstr "Plugins WB"
+msgstr ""
 
 #: admin/class-bp-checkins-admin.php:104 admin/class-bp-checkins-admin.php:164
 #, fuzzy
 msgid "General"
-msgstr "Général"
+msgstr "सामान्य"
 
 #: admin/class-bp-checkins-admin.php:106
 msgid "BuddyPress Check-ins Settings Page"
@@ -138,18 +131,16 @@ msgstr ""
 #: public/class-bp-checkins-public.php:155
 #: public/class-bp-checkins-public.php:165
 #: public/class-bp-checkins-public.php:390
-#, fuzzy
 msgid "Check-ins"
-msgstr "Enregistrements"
+msgstr "चेक-इन"
 
 #: admin/class-bp-checkins-admin.php:120
 msgid "BuddyPress Check-ins Settings"
 msgstr ""
 
 #: admin/class-bp-checkins-admin.php:131
-#, fuzzy
 msgid "<strong>Settings Saved.</strong>"
-msgstr "<strong>Paramètres Sauvegardés.</strong>"
+msgstr ""
 
 #: admin/class-bp-checkins-admin.php:169
 #: admin/wbcom/templates/wbcom-support-page.php:3
@@ -157,18 +148,17 @@ msgstr "<strong>Paramètres Sauvegardés.</strong>"
 #: admin/wbcom/wbcom-admin-settings.php:625 bp-checkins.php:194
 #, fuzzy
 msgid "Support"
-msgstr "Support"
+msgstr "मदद"
 
 #: admin/includes/bp-checkins-general-settings.php:24
 #: admin/includes/bp-checkins-general-settings.php:26
-#, fuzzy
 msgid "API Key"
-msgstr "Clé API"
+msgstr "एपीआई कुंजी"
 
 #: admin/includes/bp-checkins-general-settings.php:27
 #, fuzzy
 msgid "Verify"
-msgstr "Vérifier"
+msgstr "सत्यापन"
 
 #: admin/includes/bp-checkins-general-settings.php:30
 msgid ""
@@ -177,298 +167,262 @@ msgid ""
 msgstr ""
 
 #: admin/includes/bp-checkins-general-settings.php:32
-#, fuzzy
 msgid "Generate API Key - ( MUST be logged in to your Google account )"
-msgstr "Générer une clé API - (Vous devez être connecté à votre compte Google)"
+msgstr ""
 
 #: admin/includes/bp-checkins-general-settings.php:32
-#, fuzzy
 msgid "Generate API Key"
-msgstr "Générer une clé API"
+msgstr "एपीआई कुंजी जेनरेट करें"
 
 #: admin/includes/bp-checkins-general-settings.php:34
 msgid "( How to Get Google API Key? )"
-msgstr ""
+msgstr "( Google एपीआई कुंजी कैसे प्राप्त करें? )"
 
 #: admin/includes/bp-checkins-support-settings.php:14
-#, fuzzy
 msgid "FAQ(s)"
-msgstr "FAQ"
+msgstr "एफएक्यू"
 
 #: admin/includes/bp-checkins-support-settings.php:20
-#, fuzzy
 msgid "Does this plugin require BuddyPress?"
-msgstr "Est-ce que ce plugin nécessite BuddyPress?"
+msgstr "क्या इस प्लगइन को बडीप्रेस की आवश्यकता है?"
 
 #: admin/includes/bp-checkins-support-settings.php:22
-#, fuzzy
 msgid "Yes, It needs you to have BuddyPress installed and activated."
-msgstr "Oui, il a besoin de BuddyPress installé et activé."
+msgstr "हां, इसे आपको बडीप्रेस स्थापित और सक्रिय करने की आवश्यकता है।"
 
 #: admin/includes/bp-checkins-support-settings.php:23
-#, fuzzy
 msgid ""
 "You'll also get an admin notice and the plugin will become ineffective if "
 "the required plugin will not be there."
 msgstr ""
-"Vous obtiendrez également un avis d'administration et le plugin deviendra "
-"inactif si le plugin requis n'est pas présent."
+"आपको एक एडमिन नोटिस भी मिलेगा और यदि आवश्यक प्लगइन नहीं होगा तो प्लगइन अप्रभावी हो "
+"जाएगा।"
 
 #: admin/includes/bp-checkins-support-settings.php:29
 msgid "What is the use of API Key option provided in general settings section?"
-msgstr ""
+msgstr "सामान्य सेटिंग्स सेक्शन में दिए गए एपीआई कुंजी विकल्प का क्या उपयोग है?"
 
 #: admin/includes/bp-checkins-support-settings.php:31
-#, fuzzy
 msgid ""
 "With the help of Google Places Api Key, user can check-in with places "
 "autocomplete while updating post in buddypress and list checked in location "
 "in google map."
 msgstr ""
-"Avec l'aide de Google Places API Key, l'utilisateur peut faire un Check-in "
-"avec des lieux connus tout en mettant à jour le post dans BuddyPress et la "
-"liste checked-in dans Google Map."
+"गूगल प्लेस एपीआई कुंजी की मदद से, उपयोगकर्ता गूगल मैप में स्थान में चेक किए गए बडप्रेस और सूची "
+"में पोस्ट को अपडेट करते समय ऑटोकम्प्लीट स्थानों के साथ चेक-इन कर सकता है।"
 
 #: admin/includes/bp-checkins-support-settings.php:37
 msgid "Does this plugin require current location service?"
-msgstr ""
+msgstr "क्या इस प्लगइन को वर्तमान स्थान सेवा की आवश्यकता होती है?"
 
 #: admin/includes/bp-checkins-support-settings.php:39
 msgid ""
 "Yes, this plugin require location service and you can allow it from browser "
 "settings."
 msgstr ""
+"हां, इस प्लगइन के लिए स्थान सेवा की आवश्यकता होती है और आप इसे ब्राउज़र सेटिंग्स से अनुमति "
+"दे सकते हैं।"
 
 #: admin/includes/bp-checkins-support-settings.php:45
-#, fuzzy
 msgid ""
 "How to check-in using Location Autocomplete option provided in general "
 "settings section?"
 msgstr ""
-"Comment effectuer un check-in en utilisant l'option emplacement AutoComplete "
-"fourni dans la section Paramètres généraux?"
+"सामान्य सेटिंग्स सेक्शन में दिए गए स्थान ऑटोकम्प्लीट विकल्प का उपयोग करके चेक-इन कैसे करें?"
 
 #: admin/includes/bp-checkins-support-settings.php:47
-#, fuzzy
 msgid ""
 "Location Autocomplete setting provide an interface at activity page to post "
 "an update using google places autocomplete."
 msgstr ""
-"Lieu AutoComplete fourni une interface à la page d'activité pour valider une "
-"mise à jour à l'aide de Google Places AutoComplete."
+"स्थान ऑटोकम्प्लीट सेटिंग Google स्थानों को ऑटोकम्पलेट का उपयोग करके अपडेट पोस्ट करने के "
+"लिए गतिविधि पृष्ठ पर एक इंटरफ़ेस प्रदान करता है।"
 
 #: admin/includes/bp-checkins-support-settings.php:48
 msgid ""
 "There is an option [Add as my location] to set current check-in location as "
 "a favourite location."
 msgstr ""
+"एक पसंदीदा स्थान के रूप में वर्तमान चेक-इन स्थान सेट करने के लिए एक विकल्प [मेरे स्थान के रूप "
+"में जोड़ें] है।"
 
 #: admin/includes/bp-checkins-support-settings.php:54
-#, fuzzy
 msgid ""
 "How to check-in using Place Types option provided in general settings "
 "section?"
 msgstr ""
-"Comment faire un check-in en utilisant les types de place en option fournie "
-"dans la section Paramètres généraux?"
+"सामान्य सेटिंग अनुभाग में प्रदान किए गए प्लेस टाइप विकल्प का उपयोग करके चेक-इन कैसे करें?"
 
 #: admin/includes/bp-checkins-support-settings.php:56
-#, fuzzy
 msgid ""
 "Place Types setting provide an interface at activity page to post an update "
 "using selected google places types. Range option will set the range in "
 "kilometers for fetching the places during check-in."
 msgstr ""
-"Paramètre des Types de Places fournis une interface à la page activité pour "
-"valider une mise à jour à l'aide des types Google Places sélectionnés. "
-"L'option distance permet de régler la plage en kilomètres pour récupérer les "
-"lieux pendant l'enregistrement."
+"प्लेस टाइप सेटिंग चयनित Google स्थानों प्रकारों का उपयोग करके अपडेट पोस्ट करने के लिए "
+"गतिविधि पृष्ठ पर एक इंटरफ़ेस प्रदान करती है. रेंज विकल्प चेक-इन के दौरान स्थानों को लाने के "
+"लिए किलोमीटर में सीमा निर्धारित करेगा।"
 
 #: admin/includes/bp-checkins-support-settings.php:62
 msgid "Where can I see all check-ins activity?"
-msgstr ""
+msgstr "मैं सभी चेक-इन गतिविधि कहां देख सकता हूं?"
 
 #: admin/includes/bp-checkins-support-settings.php:64
-#, fuzzy
 msgid ""
 "Check-ins filter option provides BuddyPress filter drop-down to list all "
 "check-ins activity."
 msgstr ""
-"Le filtre Check-ins du menu déroulant permet de séparer les activités "
-"affichées."
+"चेक-इन फ़िल्टर विकल्प सभी चेक-इन गतिविधि को सूचीबद्ध करने के लिए बडीप्रेस फ़िल्टर ड्रॉप-"
+"डाउन प्रदान करता है।"
 
 #: admin/includes/bp-checkins-support-settings.php:70
-#, fuzzy
 msgid "Where can I see favourite locations?"
-msgstr "Où puis-je voir les lieux préférés?"
+msgstr "मैं पसंदीदा स्थान कहां देख सकता हूं?"
 
 #: admin/includes/bp-checkins-support-settings.php:72
 msgid ""
 "We are listing all favorite locations under Check-ins tab at BuddyPress "
 "profile page."
 msgstr ""
+"हम बडीप्रेस प्रोफाइल पेज पर चेक-इन टैब के तहत सभी पसंदीदा स्थानों को सूचीबद्ध कर रहे हैं।"
 
 #: admin/includes/bp-checkins-support-settings.php:78
-#, fuzzy
 msgid "How to set location at profile page?"
-msgstr "Comment définir le lieu dans la page de profil?"
+msgstr "प्रोफाइल पेज पर स्थान कैसे सेट करें?"
 
 #: admin/includes/bp-checkins-support-settings.php:80
-#, fuzzy
 msgid ""
 "The plugin provides xprofile location field to set location at BuddyPress "
 "edit profile page."
 msgstr ""
-"Le plugin fournit un champs xprofile pour définir l'emplacement à modifier "
-"la page de profil."
+"प्लगइन बडीप्रेस एडिट प्रोफाइल पेज पर स्थान निर्धारित करने के लिए एक्सप्रोफाइल स्थान फ़ील्ड "
+"प्रदान करता है।"
 
 #: admin/includes/bp-checkins-support-settings.php:86
-#, fuzzy
 msgid "If I need to customize plugin, to whom I should contact?"
-msgstr "Si j'ai besoin de personnaliser plugin, qui dois-je contacter?"
+msgstr ""
+"अगर मुझे प्लगइन को अनुकूलित करने की आवश्यकता है, तो मुझे किसके लिए संपर्क करना चाहिए?"
 
 #: admin/includes/bp-checkins-support-settings.php:88
-#, fuzzy
 msgid ""
 "If you need additional help you can contact us at <a href=\"https://"
 "wbcomdesigns.com/contact/\" target=\"_blank\" title=\"Wbcom Designs\">Wbcom "
 "Designs</a>."
 msgstr ""
-"Si vous avez besoin d'aide supplémentaire, vous pouvez nous contacter à <a "
-"href=\"https://wbcomdesigns.com/contact/\" target=\"_ blank\" title=\"Wbcom "
-"Designs\">Wbcom designs</a>."
+"यदि आपको अतिरिक्त मदद की आवश्यकता है तो आप <a href=\"https://wbcomdesigns.com/"
+"contact/\" target=\"_blank\" title=\"Wbcom Designs\">Wbcom डिजाइन</a>पर हमसे "
+"संपर्क कर सकते हैं ।"
 
 #: admin/wbcom/templates/wbcom-plugins-page.php:8
-#, fuzzy
 msgid "Free Addons"
-msgstr "Addons gratuits"
+msgstr "फ्री एडऑन"
 
 #: admin/wbcom/templates/wbcom-plugins-page.php:14
-#, fuzzy
 msgid "Install"
-msgstr "Installer"
+msgstr "इन्स्टाल करें"
 
 #: admin/wbcom/templates/wbcom-plugins-page.php:18
 #: admin/wbcom/wbcom-admin-settings.php:488
-#, fuzzy
 msgid "Activate"
-msgstr "Activer"
+msgstr "एक्टिवेट"
 
 #: admin/wbcom/templates/wbcom-plugins-page.php:22
 #: admin/wbcom/wbcom-admin-settings.php:489
-#, fuzzy
 msgid "Deactivate"
-msgstr "Désactiver"
+msgstr "अक्रिय"
 
 #: admin/wbcom/templates/wbcom-plugins-page.php:50
-#, fuzzy
 msgid "Paid Addons"
-msgstr "Addons payants"
+msgstr ""
 
 #: admin/wbcom/templates/wbcom-plugins-page.php:67
 #, fuzzy
 msgid "View"
-msgstr "Voir"
+msgstr "देखें"
 
 #: admin/wbcom/templates/wbcom-support-page.php:5
-#, fuzzy
 msgid "Having any question or issue ?"
-msgstr "Vous avez des questions ou des problèmes ?"
+msgstr "कोई प्रश्न या मुद्दा होने?"
 
 #: admin/wbcom/templates/wbcom-support-page.php:7
-#, fuzzy
 msgid ""
 "Our team is here to help you out at anytime. If you have any idea about how "
 "we could improve. You can share access to your site on our helpdesk if it "
 "can help getting faster. There are two ways to in touch with us :"
 msgstr ""
-"Notre équipe est là pour vous aider à tout moment. Si vous avez une idée de "
-"la façon dont nous pourrions nous améliorer. Vous pouvez partager l'accès à "
-"votre site sur notre service d'assistance s'il peut vous aider à aller plus "
-"vite. Il y a deux façons de nous contacter :"
+"हमारी टीम यहां आपको किसी भी समय मदद करने के लिए है । यदि आप कैसे हम सुधार सकता है के "
+"बारे में कोई विचार है । यदि यह तेजी से प्राप्त करने में मदद कर सकता है तो आप हमारी "
+"हेल्पडेस्क पर अपनी साइट तक पहुंच साझा कर सकते हैं। हमारे साथ संपर्क में आने के दो तरीके हैं :"
 
 #: admin/wbcom/templates/wbcom-support-page.php:19
-#, fuzzy
 msgid "Tickets Support"
-msgstr "Support des tickets"
+msgstr "टिकट समर्थन"
 
 #: admin/wbcom/templates/wbcom-support-page.php:20
-#, fuzzy
 msgid ""
 "Open a ticket on our helpdesk, we don't guarantee a fast response but within "
 "a week. Except if you've purchased one of our product we'll reply within 24 "
 "hours."
 msgstr ""
-"Ouvrez un billet sur notre service d'assistance, nous ne garantissons pas "
-"une réponse rapide, mais dans une semaine. Sauf si vous avez acheté un de "
-"nos produits, nous vous répondons dans les 24 heures."
+"हमारे हेल्पडेस्क पर टिकट खोलें, हम एक तेज प्रतिक्रिया की गारंटी नहीं देते हैं लेकिन एक सप्ताह "
+"के भीतर। सिवाय इसके कि अगर आपने हमारे उत्पाद में से एक खरीदा है, तो हम 24 घंटे के भीतर "
+"जवाब देंगे।"
 
 #: admin/wbcom/templates/wbcom-support-page.php:24
-#, fuzzy
 msgid "Open a ticket"
-msgstr "Créer un Billet"
+msgstr "एक टिकट खोलें"
 
 #: admin/wbcom/templates/wbcom-support-page.php:39
 #: admin/wbcom/templates/wbcom-support-page.php:44
 #, fuzzy
 msgid "Contact Us"
-msgstr "Contactez-nous"
+msgstr "हमसे संपर्क करें"
 
 #: admin/wbcom/templates/wbcom-support-page.php:40
-#, fuzzy
 msgid ""
 "Create a new thread on our plugin page, participation is open to anyone from "
 "all around the world. We'll be there to help as well but can't guarantee any "
 "delay."
 msgstr ""
-"Créer un nouveau fil sur notre page plugin, la participation est ouverte à "
-"tous ceux du monde entier. Nous serons là pour vous aider, mais nous ne "
-"pouvons garantir aucun retard."
+"हमारे प्लगइन पेज पर एक नया धागा बनाएं, भागीदारी दुनिया भर के किसी भी व्यक्ति के लिए "
+"खुली है। हम वहां के रूप में अच्छी तरह से मदद करने के लिए होगा, लेकिन किसी भी देरी की "
+"गारंटी नहीं कर सकते ।"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:4
-#, fuzzy
 msgid "Reign BuddyPress"
-msgstr "Règne BuddyPress"
+msgstr ""
 
 #: admin/wbcom/templates/wbcom-themes-page.php:12
-#, fuzzy
 msgid "REIGN Community"
-msgstr "Communauté REIGN"
+msgstr ""
 
 #: admin/wbcom/templates/wbcom-themes-page.php:14
-#, fuzzy
 msgid "Multiple Member Directory Layout"
-msgstr "Présentation de plusieurs répertoires de membres"
+msgstr "कई सदस्य निर्देशिका लेआउट"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:15
-#, fuzzy
 msgid "Multiple Member Header Layout"
-msgstr "Disposition d'en-tête de membre multiple"
+msgstr "मल्टीपल मेंबर हेडर लेआउट"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:16
-#, fuzzy
 msgid "Multiple Group Directory Layout"
-msgstr "Mise en page d'annuaire de groupes multiples"
+msgstr "कई समूह निर्देशिका लेआउट"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:17
-#, fuzzy
 msgid "Multiple Group Header Layout"
-msgstr "Disposition d'en-tête de groupe multiple"
+msgstr "मल्टीपल ग्रुप हेडर लेआउट"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:18
-#, fuzzy
 msgid "BuddyPress Customization Options"
-msgstr "Options de personnalisation BuddyPress"
+msgstr "बडीप्रेस अनुकूलन विकल्प"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:19
-#, fuzzy
 msgid "BuddyPress Extra Widgets"
-msgstr "BuddyPress widgets supplémentaires"
+msgstr "बडेप्रेस एक्स्ट्रा विजेट्स"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:20
-#, fuzzy
 msgid "Inbuilt Social Profile Module"
-msgstr "Module de profil social intégré"
+msgstr "इनबिल्ट सोशल प्रोफाइल मॉड्यूल"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:23
 #: admin/wbcom/templates/wbcom-themes-page.php:49
@@ -476,7 +430,7 @@ msgstr "Module de profil social intégré"
 #: admin/wbcom/templates/wbcom-themes-page.php:96
 #, fuzzy
 msgid "Purchase"
-msgstr "Acheter"
+msgstr "खरीदें"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:24
 #: admin/wbcom/templates/wbcom-themes-page.php:50
@@ -484,554 +438,398 @@ msgstr "Acheter"
 #: admin/wbcom/templates/wbcom-themes-page.php:97
 #, fuzzy
 msgid "Preview"
-msgstr "Aperçu"
+msgstr "In this view the user can edit the palette"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:30
-#, fuzzy
 msgid "LearnMate"
-msgstr "LearnMate"
+msgstr "लर्नमेट"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:38
-#, fuzzy
 msgid "Learnmate"
-msgstr "Learnmate"
+msgstr "लर्नमेट"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:40
-#, fuzzy
 msgid "Add Review to your course"
-msgstr "Ajouter un avis à votre cours"
+msgstr "अपने कोर्स में रिव्यू जोड़ें"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:41
-#, fuzzy
 msgid "Course Coming Soon"
-msgstr "Cours à venir bientôt"
+msgstr "पाठ्यक्रम जल्द ही आ रहा है"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:42
 #: admin/wbcom/templates/wbcom-themes-page.php:69
-#, fuzzy
 msgid "Grid And List Layout"
-msgstr "Grille et mise en page de la liste"
+msgstr "ग्रिड और सूची लेआउट"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:43
-#, fuzzy
 msgid "Learndash/LifterLMS Extra Widgets"
-msgstr "Widgets extra Learndash/LifterLMS"
+msgstr "Learndash/LifterLMS अतिरिक्त विजेट्स"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:44
-#, fuzzy
 msgid "Unparalleled Course Layout"
-msgstr "Agencement de cours inégalé"
+msgstr "अद्वितीय पाठ्यक्रम लेआउट"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:45
-#, fuzzy
 msgid "Awesome Learndash/LifterLMS Pages"
-msgstr "Awesome Learndash/LifterLMS Pages"
+msgstr "बहुत बढ़िया Learndash/LifterLMS पेज"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:46
-#, fuzzy
 msgid "Distraction Free Reading"
-msgstr "Lecture sans distraction"
+msgstr "व्याकुलता मुक्त पठन"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:56
-#, fuzzy
 msgid "StoreMate"
-msgstr "StoreMate"
+msgstr "स्टोरमेट"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:64
-#, fuzzy
 msgid "ShopMate Dokan"
-msgstr "Dokan StoreMate"
+msgstr "शॉपमेट डोकान"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:66
-#, fuzzy
 msgid "Dokan Extra Widgets"
-msgstr "Widgets extra Dokan"
+msgstr "डोकान एक्स्ट्रा विजेट्स"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:67
-#, fuzzy
 msgid "Unique Single Product Page Customization"
-msgstr "Personnalisation unique des pages de produits uniques"
+msgstr "अद्वितीय एकल उत्पाद पेज अनुकूलन"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:68
-#, fuzzy
 msgid "Awesome WooCommerce Pages"
-msgstr "Awesome pages WooCommerce"
+msgstr ""
 
 #: admin/wbcom/templates/wbcom-themes-page.php:70
-#, fuzzy
 msgid "Automated Mega Menu Support"
-msgstr "Support de méga menu automatisé"
+msgstr "स्वचालित मेगा मेनू समर्थन"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:80
-#, fuzzy
 msgid "Jobmate"
-msgstr "Jobmate"
+msgstr "जॉबमेट"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:88
-#, fuzzy
 msgid "Jobmate Theme"
-msgstr "Jobmate thème"
+msgstr "जॉबमेट थीम"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:90
-#, fuzzy
 msgid "Simple live searching and filtering"
-msgstr "Simple recherche et filtrage en direct"
+msgstr "सरल लाइव खोज और फ़िल्टरिंग"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:91
-#, fuzzy
 msgid "Unique Job listing Page"
-msgstr "Page de liste d'emplois unique"
+msgstr "अद्वितीय नौकरी लिस्टिंग पेज"
 
 #: admin/wbcom/templates/wbcom-themes-page.php:92
-#, fuzzy
 msgid "Awesome Resume list Page"
-msgstr "Page de liste de résumé impressionnant"
+msgstr ""
 
 #: admin/wbcom/templates/wbcom-themes-page.php:93
-#, fuzzy
 msgid "Outstanding all job maanger pagesLayout"
-msgstr "En cours toutes les pages maanger emploi en circulationLayout"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:179
-#, fuzzy
 msgid "Custom Font Uploader"
-msgstr "Uploader de polices personnalisé"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:181
-#, fuzzy
 msgid ""
 "It also allows you to upload your own custom font to your site and use them "
 "using custom css."
 msgstr ""
-"Il vous permet également de télécharger votre propre police personnalisée "
-"sur votre site et de les utiliser en utilisant CSS personnalisé."
 
 #: admin/wbcom/wbcom-admin-settings.php:187
-#, fuzzy
 msgid "BuddyPress Activity Filter"
-msgstr "BuddyPress Filtrage des Activités"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:189
-#, fuzzy
 msgid ""
 "Admin can set default and customised activities to be listed on front-end."
 msgstr ""
-"Admin peut définir des activités par défaut et personnalisées à figurer sur "
-"le front-end."
 
 #: admin/wbcom/wbcom-admin-settings.php:195
-#, fuzzy
 msgid "BuddyPress Activity Social Share"
-msgstr "Partage d'Activité Sociale"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:197
-#, fuzzy
 msgid ""
 "This plugin allows anyone easily share BuddyPress Activites on major social "
 "media (Facebook, Twitter, Google+, Linkedin )."
 msgstr ""
-"Ce plugin permet à n'importe qui de partager facilement les activités "
-"BuddyPress sur les principaux médias sociaux (Facebook, Twitter, Google +, "
-"LinkedIn)."
 
 #: admin/wbcom/wbcom-admin-settings.php:203
-#, fuzzy
 msgid "BuddyPress Create Group Type"
-msgstr "BuddyPress créer un type de groupe"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:205
-#, fuzzy
 msgid "It will help to create group type for BuddyPress Groups."
 msgstr ""
-"Il aidera à créer le type de groupe pour les groupes de presse de BuddyPress."
 
 #: admin/wbcom/wbcom-admin-settings.php:211
-#, fuzzy
 msgid "BuddyPress Member Reviews"
-msgstr "BuddyPress Évaluation des Membres"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:213
-#, fuzzy
 msgid ""
 "This plugin allows only site members to add reviews to the buddypress "
 "members on the site and even rate the member’s profile out of 5 points with "
 "multiple review criteria."
 msgstr ""
-"Ce plugin permet uniquement aux membres du site d'ajouter des commentaires "
-"aux membres BuddyPress sur le site et même de noter le profil du membre sur "
-"5 points avec plusieurs critères d'examen."
 
 #: admin/wbcom/wbcom-admin-settings.php:219
-#, fuzzy
 msgid "BuddyPress Group Reviews"
-msgstr "BuddyPress Group Evaluations"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:221
-#, fuzzy
 msgid ""
 "This plugin allows the BuddyPress Members to give reviews to the BuddyPress "
 "groups on the site. The review form allows the users to give text review, "
 "even rate the group on the basis of multiple criterias."
 msgstr ""
-"Ce plugin permet aux membres BuddyPress de donner des avis aux Groupes "
-"BuddyPress sur le site. Le formulaire d'évaluation permet aux utilisateurs "
-"de donner leur avis en évaluant le groupe basé sur des critères de "
-"classement et leur avis personnel."
 
 #: admin/wbcom/wbcom-admin-settings.php:227
-#, fuzzy
 msgid "BuddyPress Favorite Notification"
-msgstr "BuddyPress Notification des Favoris"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:229
-#, fuzzy
 msgid ""
 "BuddyPress Favorite Notification adds a notification for BuddyPress activity."
 msgstr ""
-"BuddyPress favori notification ajoute une notification pour l'activité "
-"BuddyPress."
 
 #: admin/wbcom/wbcom-admin-settings.php:235
-#, fuzzy
 msgid "Custom Email Options"
-msgstr "Options de messagerie personnalisées"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:237
-#, fuzzy
 msgid "Override default email options of Worpdress."
-msgstr "Substituez les options de messagerie par défaut de Worppress."
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:243
-#, fuzzy
 msgid "BuddyPress Checkins"
-msgstr "BuddyPress checkins"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:245
-#, fuzzy
 msgid ""
 "This plugin allows BuddyPress members to share their location when they are "
 "posting activities, you can add places where you visited, nearby locations "
 "based on google places."
 msgstr ""
-"Ce plugin permet aux membres de BuddyPress de partager leur emplacement "
-"quand ils sont affichant des activités, vous pouvez ajouter des endroits où "
-"vous avez visité, emplacements à proximité basés sur des endroits de Google."
 
 #: admin/wbcom/wbcom-admin-settings.php:251
-#, fuzzy
 msgid "BuddyPress Job Manager"
-msgstr "BuddyPress Job Manager"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:253
-#, fuzzy
 msgid ""
 "Incorporates BuddyPress with the WP Job Manager plugin by creating specific "
 "tabs in employer’s and candidate’s profiles."
 msgstr ""
-"Incorpore BuddyPress avec le plugin WP Job Manager en créant des onglets "
-"spécifiques dans les profils de l'employeur et du candidat."
 
 #: admin/wbcom/wbcom-admin-settings.php:259
-#, fuzzy
 msgid "BuddyPress user ToDo List"
-msgstr "Liste des tâches utilisateur BuddyPress"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:261
-#, fuzzy
 msgid ""
 "This plugin allows you to create your personal task list with timestamp. You "
 "can mark them complete when you are done with them. It will also send "
 "reminder when you have any overdue task."
 msgstr ""
-"Ce plugin vous permet de créer votre liste de tâches personnelles avec "
-"timestamp. Vous pouvez les marquer complète lorsque vous en avez terminé "
-"avec eux. Il enverra également le rappel quand vous avez n'importe quelle "
-"tâche en retard."
 
 #: admin/wbcom/wbcom-admin-settings.php:267
-#, fuzzy
 msgid "Shortcodes for BuddyPress"
-msgstr "Shortcodes pour BuddyPress"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:269
-#, fuzzy
 msgid ""
 "This plugin will add an extended feature to the big name “BuddyPress” that "
 "will generate Shortcode for Listing Activity Streams , Members and Groups on "
 "any post/page in website."
 msgstr ""
-"Ce plugin ajoutera une fonction étendue au grand nom «BuddyPress» qui "
-"générera shortcode pour énumérer des flux d'activité, des membres et des "
-"groupes sur n'importe quel poteau/page dans le site Web."
 
 #: admin/wbcom/wbcom-admin-settings.php:275
-#, fuzzy
 msgid "Woo Open Graph"
-msgstr "Woo Open Graph"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:277
-#, fuzzy
 msgid ""
 "This plugin will add an extended feature to the big name “WooCommerce” that "
 "will adds well executed and accurate Open Graph Meta Tags to your site with "
 "title,description and WooCommerce featured image."
 msgstr ""
-"Ce plugin ajoutera une fonction étendue au grand nom \"WooCommerce\" qui "
-"ajoutera bien exécuté et précis les balises Meta de graphique ouvert à votre "
-"emplacement avec le titre, la description et l'image en vedette de "
-"WooCommerce."
 
 #: admin/wbcom/wbcom-admin-settings.php:283
-#, fuzzy
 msgid "BuddyPress Lock"
-msgstr "Vérouillage BuddyPress"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:285
-#, fuzzy
 msgid ""
 "This plugin allows the administrator to lock the certain parts of their "
 "site. It help to create private BuddyPress community by locking certain "
 "BuddyPress Components, WordPress Pages, Custom Post Types for public view "
 "without using any membership plugin."
 msgstr ""
-"Ce plugin permet à l'administrateur de verrouiller les certaines parties de "
-"leur site. Il aider à créer la communauté BuddyPress privé en verrouillant "
-"certains composants BuddyPress, pages WordPress, types de post personnalisé "
-"pour la vue publique sans utiliser n'importe quel plugin d'adhésion."
 
 #: admin/wbcom/wbcom-admin-settings.php:291
-#, fuzzy
 msgid "Woo Audio Preview"
-msgstr "Woo Extrait Audio"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:293
-#, fuzzy
 msgid ""
 "This plugin Allows playing the audio files in sample mode to prevent "
 "unauthorized downloading of the audio files. It helps to display sample "
 "files at single product page."
 msgstr ""
-"Ce plugin permet de lire les fichiers audio en mode échantillon pour "
-"empêcher le téléchargement non autorisé des fichiers audio. Il permet "
-"d'afficher des exemples de fichiers sur une seule page de produit."
 
 #: admin/wbcom/wbcom-admin-settings.php:299
-#, fuzzy
 msgid "WordPress System Log"
-msgstr "Log système WordPress"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:301
-#, fuzzy
 msgid ""
 "This plugin helps administrators of the site see their environment on which "
 "the site is currently running that includes WordPress environment, tha "
 "database it requires, Server Environment and the plugins installed and "
 "activated on the site."
 msgstr ""
-"Ce plugin aide les administrateurs du site voir leur environnement sur "
-"lequel le site est en cours d'exécution qui comprend l'environnement "
-"WordPress, la base de données, il nécessite, Server Environment et les "
-"plugins installés et activés sur le site."
 
 #: admin/wbcom/wbcom-admin-settings.php:307
-#, fuzzy
 msgid "BP Post From Anywhere"
-msgstr "Poteau de BP de n'importe où"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:309
-#, fuzzy
 msgid ""
 "This plugin will generate shortcode and widgets for post updates section for "
 "activities so you can post update from anywhere, it might be sidebar, some "
 "page or any template file."
 msgstr ""
-"Ce plugin va générer shortcode et widgets pour la section post mises à jour "
-"pour les activités de sorte que vous pouvez poster la mise à jour de "
-"n'importe où, il pourrait être encadré, une page ou un fichier de modèle."
 
 #: admin/wbcom/wbcom-admin-settings.php:315
-#, fuzzy
 msgid "Woo Document Preview"
-msgstr "Woo Aperçu de Document"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:317
-#, fuzzy
 msgid ""
 "This will allow you to add document preview at single product page. Which "
 "helps to offer more better idea when you are selling ebooks, pdf or some "
 "documents."
 msgstr ""
-"Cela vous permettra d'ajouter l'aperçu de document sur une seule page de "
-"produit. Ce qui aide à offrir une meilleure idée lorsque vous vendez des "
-"ebooks, PDF ou certains documents."
 
 #: admin/wbcom/wbcom-admin-settings.php:323
-#, fuzzy
 msgid "WordPress Media Category"
-msgstr "Catégories de Médias Wordpress"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:325
 #: admin/wbcom/wbcom-admin-settings.php:341
-#, fuzzy
 msgid ""
 "This plugin helps administrators of the site categorize their wordpress "
 "media."
 msgstr ""
-"Ce plugin aide les administrateurs du site catégoriser leurs médias "
-"WordPress."
 
 #: admin/wbcom/wbcom-admin-settings.php:331
-#, fuzzy
 msgid "Woo Price Quotes"
-msgstr "Woo prix citations"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:333
-#, fuzzy
 msgid ""
 "This plugin helps in quoting the products that admin wishes to hide its "
 "purchasing details."
 msgstr ""
-"Ce plugin aide à citer les produits qui admin souhaite cacher ses détails "
-"d'achat."
 
 #: admin/wbcom/wbcom-admin-settings.php:339
-#, fuzzy
 msgid "EDD Service Extended"
-msgstr "Service EDD étendu"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:347
-#, fuzzy
 msgid "WB Ads Rotator with Split Test"
-msgstr "WB ADS Rotator avec Split test"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:349
-#, fuzzy
 msgid ""
 "This plugin is designed for the SPLIT TESTING, you can check performance of "
 "your ads layout and on the basis of them you can select one of them for your "
 "regular use."
 msgstr ""
-"Ce plugin est conçu pour le SPLIT TESTING, vous pouvez vérifier les "
-"performances de votre mise en page des annonces et sur la base d'entre eux, "
-"vous pouvez sélectionner l'un d'eux pour votre utilisation régulière."
 
 #: admin/wbcom/wbcom-admin-settings.php:367
-#, fuzzy
 msgid "BuddyPress Moderation Pro"
-msgstr "BuddyPress Moderation Pro"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:368
-#, fuzzy
 msgid ""
 "BuddyPress Community Moderation offers a solution for site owners to keep "
 "their communities straight. With community policing strategy, members of the "
 "community have an option for moderation sitewide by attaching flags to "
 "content created within the various components."
 msgstr ""
-"La modération communautaire de BuddyPress offre une solution pour que les "
-"propriétaires de sites gardent leurs communautés droites. Avec la stratégie "
-"de police communautaire, les membres de la communauté ont une option pour la "
-"modération du SiteWide en attachant des drapeaux au contenu créé au sein des "
-"différents composants."
 
 #: admin/wbcom/wbcom-admin-settings.php:373
-#, fuzzy
 msgid "BuddyPress Polls"
-msgstr "Sondages BuddyPress"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:374
-#, fuzzy
 msgid ""
 "Use BuddyPress Polls plugin to create polls inside the activity, let your "
 "user response to your polls. Members can create pools like activities, "
 "easily votes on them."
 msgstr ""
-"Utilisez BuddyPress sondages plugin pour créer des sondages à l'intérieur de "
-"l'activité, laissez votre réponse de l'utilisateur à vos sondages. Les "
-"membres peuvent créer des pools comme des activités, voter facilement sur "
-"eux."
 
 #: admin/wbcom/wbcom-admin-settings.php:379
-#, fuzzy
 msgid "BuddyPress Resume Manager"
-msgstr "BuddyPress gestionnaire de CV"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:380
-#, fuzzy
 msgid ""
 "BuddyPress Resume Manager adds a separate BuddyPress Resume menu at a user’s "
 "BuddyPress Profile Page to display individual member resume. We have added "
 "predefined fields for the resumes and site admin and enable and disable them."
 msgstr ""
-"BuddyPress Resume Manager ajoute un menu de résumé BuddyPress distinct sur "
-"la page profil de BuddyPress de l'utilisateur pour afficher le curriculum "
-"vitae de chaque membre. Nous avons ajouté des champs prédéfinis pour les "
-"curriculum vitae et admin du site et les activer et les désactiver."
 
 #: admin/wbcom/wbcom-admin-settings.php:385
-#, fuzzy
 msgid "BuddyPress Profanity"
-msgstr "BuddyPress Filtre de Grossièreté"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:386
-#, fuzzy
 msgid ""
 "Use BuddyPress Profanity plugin to censor content in your community! Easily "
 "Censor all the unwanted words in activities, private messages contents by "
 "specifying a list of keywords to be filtered."
 msgstr ""
-"Utilisez BuddyPress Profanity plugin pour censurer le contenu de votre "
-"communauté! Censurer facilement tous les mots indésirables dans les "
-"activités, le contenu des messages privés en spécifiant une liste de mots "
-"clés à filtrer."
 
 #: admin/wbcom/wbcom-admin-settings.php:391
-#, fuzzy
 msgid "BuddyPress Private Community Pro"
-msgstr "BuddyPress Communauté Privée Pro"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:392
-#, fuzzy
 msgid ""
 "This plugin offers a lockdown for BuddyPress Component and will ask users to "
 "log in go further to check profile or any other protected details."
 msgstr ""
-"Ce plugin offre un verrouillage pour le composant BuddyPress et demandera "
-"aux utilisateurs de se connecter aller plus loin pour vérifier le profil ou "
-"tout autre détail protégé."
 
 #: admin/wbcom/wbcom-admin-settings.php:397
-#, fuzzy
 msgid "BuddyPress Profile Pro"
-msgstr "Profil BuddyPress Pro"
+msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:398
-#, fuzzy
 msgid ""
 "This plugin gives you the power to extend BuddyPress Profiles with repeater "
 "fields and groups. You can easily add multiple field groups and display them "
 "at member’s profile."
 msgstr ""
-"Ce plugin vous donne le pouvoir d'étendre les profils BuddyPress avec des "
-"champs répétiteurs et des groupes. Vous pouvez facilement ajouter plusieurs "
-"groupes de champs et les afficher au profil du membre."
 
 #: admin/wbcom/wbcom-admin-settings.php:534
 #: admin/wbcom/wbcom-admin-settings.php:613
 #, fuzzy
 msgid "Components"
-msgstr "Composants"
+msgstr "केडीई अवयव:"
 
 #: admin/wbcom/wbcom-admin-settings.php:537
 #: admin/wbcom/wbcom-admin-settings.php:619
 #, fuzzy
 msgid "Themes"
-msgstr "Thèmes"
+msgstr "थीम्स"
 
 #: admin/wbcom/wbcom-admin-settings.php:607 bp-checkins.php:193
 #, fuzzy
 msgid "Settings"
-msgstr "Paramètres"
+msgstr "भाषा बदलें"
 
 #: bp-checkins.php:138 bp-checkins.php:158
 msgid ""
@@ -1046,9 +844,8 @@ msgid ""
 msgstr ""
 
 #: bp-checkins.php:148
-#, fuzzy
 msgid "Activity component required."
-msgstr "Composante d'Activité requise."
+msgstr ""
 
 #: bp-checkins.php:224
 #, fuzzy
@@ -1056,117 +853,109 @@ msgid "BuddyPress"
 msgstr "BuddyPress"
 
 #: bp-checkins.php:226
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s is ineffective now as it requires %2$s to be installed and active."
 msgstr ""
-"%1$s est inefficace maintenant car il nécessite %2$s pour être installé et "
-"actif."
 
 #: public/class-bp-checkins-public.php:81
-#, fuzzy
 msgid "Start typing your location..."
-msgstr "Commencez à taper votre lieu..."
+msgstr "अपना स्थान टाइप करना शुरू करें ..."
 
 #: public/class-bp-checkins-public.php:85
 #: public/class-bp-checkins-public.php:688
-#, fuzzy
 msgid "Add as my location"
-msgstr "Ajouter en tant que mon lieu"
+msgstr "मेरे स्थान के रूप में जोड़ें"
 
 #: public/class-bp-checkins-public.php:86
-#, fuzzy
 msgid "Saving location..."
-msgstr "Sauvegarde du lieu..."
+msgstr "स्थान की बचत..."
 
 #: public/class-bp-checkins-public.php:190
-#, fuzzy
 msgid "My Locations"
-msgstr "Mes Lieux"
+msgstr "मेरे स्थान"
 
 #: public/class-bp-checkins-public.php:390
 msgid "Check-ins Update"
-msgstr ""
+msgstr "चेक-इन अपडेट"
 
 #: public/class-bp-checkins-public.php:404
 #, php-format
 msgid "%s checked-in"
-msgstr ""
+msgstr "%s चेक-इन"
 
 #: public/class-bp-checkins-public.php:597
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s checked-in in the group %2$s"
-msgstr "%1$s checked-in dans le groupe %2$s"
+msgstr "समूह में %1$s चेक-इन %2$s"
 
 #: public/class-bp-checkins-public.php:667
 msgid "places-found"
-msgstr ""
+msgstr "स्थान-पाया"
 
 #: public/class-bp-checkins-public.php:682
 #, fuzzy
 msgid "Select"
-msgstr "Sélectionner"
+msgstr "चुनें"
 
 #: public/class-bp-checkins-public.php:693
 msgid "places-not-found"
-msgstr ""
+msgstr "स्थान-नहीं मिले"
 
 #: public/class-bp-checkins-public.php:694
 msgid "Places not found !"
-msgstr ""
+msgstr "स्थान नहीं मिले!"
 
 #: public/class-bp-checkins-public.php:725
 msgid "place-details-found"
-msgstr ""
+msgstr "स्थान-विवरण-पाया गया"
 
 #: public/class-bp-checkins-public.php:741
-#, fuzzy
 msgid "Click here to cancel your checkin."
-msgstr "Cliquez ici pour annuler votre checkin."
+msgstr "अपना चेकइन रद्द करने के लिए यहां क्लिक करें।"
 
 #: public/class-bp-checkins-public.php:744
-#, fuzzy
 msgid "Show Locations"
-msgstr "﻿Afficher les lieux"
+msgstr "स्थान दिखाएं"
 
 #: public/class-bp-checkins-public.php:765
 msgid "place-details-not-found"
-msgstr ""
+msgstr "स्थान-विवरण-नहीं मिला"
 
 #: public/class-bp-checkins-public.php:766
 msgid "Place details not found !"
-msgstr ""
+msgstr "जगह विवरण नहीं मिला!"
 
 #: public/class-bp-checkins-public.php:787
 msgid "Checkin cancelled !"
-msgstr ""
+msgstr "चेकइन रद्द!"
 
 #: public/templates/checkin/bp-checkins-activity.php:45
 #, fuzzy
 msgid "Address"
-msgstr "Adresse"
+msgstr "पता"
 
 #: public/templates/checkin/bp-checkins-activity.php:53
 #, fuzzy
 msgid "Street"
-msgstr "Rue"
+msgstr "सड़क"
 
 #: public/templates/checkin/bp-checkins-activity.php:61
 #, fuzzy
 msgid "Postal Code"
-msgstr "Code postal"
+msgstr "डाक कोड"
 
 #: public/templates/checkin/bp-checkins-activity.php:69
 #, fuzzy
 msgid "City"
-msgstr "Ville"
+msgstr "शहर"
 
 #: public/templates/checkin/bp-checkins-activity.php:77
 msgid "Visited Date"
-msgstr ""
+msgstr "यात्रा की तारीख"
 
 #: public/templates/checkin/bp-checkins-activity.php:90
 msgid "Sorry, there was no location found. Please try adding a location."
-msgstr ""
+msgstr "क्षमा करें, कोई स्थान नहीं मिला। कृपया एक स्थान जोड़ने का प्रयास करें।"
 
 #. Plugin URI of the plugin/theme
 msgid "https://wbcomdesigns.com/downloads/buddypress-checkins/"
@@ -1180,9 +969,8 @@ msgid ""
 msgstr ""
 
 #. Author of the plugin/theme
-#, fuzzy
 msgid "Wbcom Designs"
-msgstr "Wbcom Designs"
+msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "https://wbcomdesigns.com/"
