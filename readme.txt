@@ -4,7 +4,7 @@ Contributors: wbcomdesigns, vapvarun
 Donate link: https://wbcomdesigns.com/donate/
 Tags: buddypress, check-ins , BuddyPress Location, update check-ins, location
 Requires at least: 5.0.0
-Tested up to: 5.3.2
+Tested up to: 5.4.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -70,6 +70,9 @@ If you need additional help you can contact us for <a href="https://wbcomdesigns
 3. screenshot-3 -
 
 == Changelog ==
+
+= 1.5.0 =
+* Fix - Alingment issue with rtmedia
 
 = 1.4.0 =
 * Fix - Added plugin review notice.
