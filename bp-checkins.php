@@ -30,9 +30,15 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define Plugin Constants.
-define( 'BPCHK_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-define( 'BPCHK_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'BP_CHECKINS_PLUGIN_BASENAME',  plugin_basename( __FILE__ ) );
+if ( ! defined( 'BPCHK_PLUGIN_PATH' ) ) {
+	define( 'BPCHK_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+}
+if ( ! defined( 'BPCHK_PLUGIN_URL' ) ) {
+	define( 'BPCHK_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+}
+if ( ! defined( 'BP_CHECKINS_PLUGIN_BASENAME' ) ) {
+	define( 'BP_CHECKINS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+}
 if ( ! defined( 'BPCHK_TEXT_DOMAIN' ) ) {
 	define( 'BPCHK_TEXT_DOMAIN', 'bp-checkins' );
 }
@@ -90,19 +96,19 @@ add_action( 'bp_loaded', 'bpchk_plugin_init' );
  * @since    1.0.0
  */
 function bpchk_plugin_init() {
-	if ( bp_checkins_check_config() ){
+	if ( bp_checkins_check_config() ) {
 		run_bp_checkins();
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bpchk_plugin_links' );
 	}
 }
 
-function bp_checkins_check_config(){
+function bp_checkins_check_config() {
 	global $bp;
 
 	$config = array(
 		'blog_status'    => false,
 		'network_active' => false,
-		'network_status' => true
+		'network_status' => true,
 	);
 	if ( get_current_blog_id() == bp_get_root_blog_id() ) {
 		$config['blog_status'] = true;
@@ -111,10 +117,11 @@ function bp_checkins_check_config(){
 	$network_plugins = get_site_option( 'active_sitewide_plugins', array() );
 
 	// No Network plugins
-	if ( empty( $network_plugins ) )
+	if ( empty( $network_plugins ) ) {
 
-	// Looking for BuddyPress and bp-activity plugin
-	$check[] = $bp->basename;
+		// Looking for BuddyPress and bp-activity plugin
+		$check[] = $bp->basename;
+	}
 	$check[] = BP_CHECKINS_PLUGIN_BASENAME;
 
 	// Are they active on the network ?
@@ -122,30 +129,31 @@ function bp_checkins_check_config(){
 
 	// If result is 1, your plugin is network activated
 	// and not BuddyPress or vice & versa. Config is not ok
-	if ( count( $network_active ) == 1 )
+	if ( count( $network_active ) == 1 ) {
 		$config['network_status'] = false;
+	}
 
 	// We need to know if the plugin is network activated to choose the right
 	// notice ( admin or network_admin ) to display the warning message.
 	$config['network_active'] = isset( $network_plugins[ BP_CHECKINS_PLUGIN_BASENAME ] );
 
 	// if BuddyPress config is different than bp-activity plugin
-	if ( !$config['blog_status'] || !$config['network_status'] ) {
+	if ( ! $config['blog_status'] || ! $config['network_status'] ) {
 
 		$warnings = array();
-		if ( !bp_core_do_network_admin() && !$config['blog_status'] ) {
+		if ( ! bp_core_do_network_admin() && ! $config['blog_status'] ) {
 			add_action( 'admin_notices', 'bpcheckins_same_blog' );
-			$warnings[] = __( 'BuddyPress Check-ins requires to be activated on the blog where BuddyPress is activated.', 'bp-checkins'  );
+			$warnings[] = __( 'BuddyPress Check-ins requires to be activated on the blog where BuddyPress is activated.', 'bp-checkins' );
 		}
 
-		if ( bp_core_do_network_admin() && !$config['network_status'] ) {
+		if ( bp_core_do_network_admin() && ! $config['network_status'] ) {
 			add_action( 'admin_notices', 'bpcheckins_same_network_config' );
-			$warnings[] = __( 'BuddyPress Check-ins and BuddyPress need to share the same network configuration.',  'bp-checkins');
+			$warnings[] = __( 'BuddyPress Check-ins and BuddyPress need to share the same network configuration.', 'bp-checkins' );
 		}
-		$bp_active_components = bp_get_option( 'bp-active-components');
+		$bp_active_components = bp_get_option( 'bp-active-components' );
 		if ( ! array_key_exists( 'activity', $bp_active_components ) ) {
 			add_action( $config['network_active'] ? 'network_admin_notices' : 'admin_notices', 'bpchk_plugin_require_activity_component_admin_notice' );
-			$warnings[] = __( 'Activity component required.',  'bp-checkins');
+			$warnings[] = __( 'Activity component required.', 'bp-checkins' );
 		}
 		if ( ! empty( $warnings ) ) :
 			return false;
@@ -153,13 +161,13 @@ function bp_checkins_check_config(){
 	}
 	return true;
 }
-function bpcheckins_same_blog(){
+function bpcheckins_same_blog() {
 	echo '<div class="error"><p>'
-	. esc_html( __( 'BuddyPress Check-ins requires to be activated on the blog where BuddyPress is activated.', 'bp-checkins'  ) )
+	. esc_html( __( 'BuddyPress Check-ins requires to be activated on the blog where BuddyPress is activated.', 'bp-checkins' ) )
 	. '</p></div>';
 }
 
-function bpcheckins_same_network_config(){
+function bpcheckins_same_network_config() {
 	echo '<div class="error"><p>'
 	. esc_html( __( 'BuddyPress Check-ins and BuddyPress need to share the same network configuration.', 'bp-checkins' ) )
 	. '</p></div>';
@@ -199,15 +207,13 @@ function bpchk_plugin_links( $links ) {
 /**
  *  Check if buddypress activate.
  */
-function bpchk_requires_buddypress()
-{
-
-    if ( !class_exists( 'Buddypress' ) ) {
-        deactivate_plugins( plugin_basename( __FILE__ ) );
-        //deactivate_plugins('buddypress-polls/buddypress-polls.php');
-        add_action( 'admin_notices', 'bpchk_required_plugin_admin_notice' );
-        unset($_GET['activate']);
-    }
+function bpchk_requires_buddypress() {
+	if ( ! class_exists( 'Buddypress' ) ) {
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+		// deactivate_plugins('buddypress-polls/buddypress-polls.php');
+		add_action( 'admin_notices', 'bpchk_required_plugin_admin_notice' );
+		unset( $_GET['activate'] );
+	}
 }
 
 add_action( 'admin_init', 'bpchk_requires_buddypress' );
@@ -217,15 +223,13 @@ add_action( 'admin_init', 'bpchk_requires_buddypress' );
  * @author wbcomdesigns
  * @since  1.1.0
  */
-function bpchk_required_plugin_admin_notice()
-{
-
-    $bpquotes_plugin          = esc_html__('BuddyPress Check-ins', 'bp-checkins');
-    $bp_plugin                = esc_html__('BuddyPress', 'bp-checkins');
-    echo '<div class="error"><p>';
-    echo sprintf(esc_html__('%1$s is ineffective now as it requires %2$s to be installed and active.', 'bp-checkins'), '<strong>' . esc_html($bpquotes_plugin) . '</strong>', '<strong>' . esc_html($bp_plugin) . '</strong>');
-    echo '</p></div>';
-    if (isset($_GET['activate']) ) {
-        unset($_GET['activate']);
-    }
+function bpchk_required_plugin_admin_notice() {
+	$bpquotes_plugin = esc_html__( 'BuddyPress Check-ins', 'bp-checkins' );
+	$bp_plugin       = esc_html__( 'BuddyPress', 'bp-checkins' );
+	echo '<div class="error"><p>';
+	echo sprintf( esc_html__( '%1$s is ineffective now as it requires %2$s to be installed and active.', 'bp-checkins' ), '<strong>' . esc_html( $bpquotes_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' );
+	echo '</p></div>';
+	if ( isset( $_GET['activate'] ) ) {
+		unset( $_GET['activate'] );
+	}
 }
