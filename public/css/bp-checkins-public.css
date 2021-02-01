@@ -406,3 +406,7 @@ span.bpchk-allow-checkin {
     width: 100%;
     margin: 15px 0;
 }
+
+#youzer .disable-container {
+    display: none;
+}

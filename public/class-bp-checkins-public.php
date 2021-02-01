@@ -75,9 +75,14 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			global $allowedposttags;
 			$checkin_html = '';
 			if ( is_user_logged_in() ) {
+
+				if ( class_exists( 'Youzer' ) ) {
+					$container_class = 'disable-container';
+				}
+
 				// Create the checkin html.
 				if ( $bp_checkins->apikey ) {
-					$checkin_html .= '<div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
+					$checkin_html .= '<div class="bpchk-marker-container ' . $container_class . ' "><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
 					$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
 
 					$checkin_html     .= '<div class="checkin-by-autocomplete">';
