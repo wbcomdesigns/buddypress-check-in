@@ -260,5 +260,17 @@ if ( ! class_exists( 'Bp_Checkins_Admin' ) ) :
 			}
 		}
 
+		/**
+		 * Add check in activity stting in youzr settings.
+		 *
+		 * @param array $post_types
+		 * @return array $post_types
+		 */
+		public function bp_checkin_add_yozer_activity_setting( $post_types ) {
+			$post_types['activity_bpchk_chkins'] = __( 'Activity Check-Ins', 'bp-checkins' );
+
+			return $post_types;
+		}
+
 	}
 endif;

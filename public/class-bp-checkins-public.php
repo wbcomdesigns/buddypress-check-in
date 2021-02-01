@@ -9,17 +9,19 @@
  * @subpackage Bp_Checkins/public
  */
 
-/**
- * The public-facing functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    Bp_Checkins
- * @subpackage Bp_Checkins/public
- * @author     Wbcom Designs <admin@wbcomdesigns.com>
- */
+
 if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
+
+	/**
+	 * The public-facing functionality of the plugin.
+	 *
+	 * Defines the plugin name, version, and two examples hooks for how to
+	 * enqueue the admin-specific stylesheet and JavaScript.
+	 *
+	 * @package    Bp_Checkins
+	 * @subpackage Bp_Checkins/public
+	 * @author     Wbcom Designs <admin@wbcomdesigns.com>
+	 */
 	class Bp_Checkins_Public {
 
 		/**
@@ -395,7 +397,7 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 				__( 'Check-ins Update', 'bp-checkins' ),
 				array( $this, 'bp_activity_format_activity_action_activity_bpchk_chkins' ),
 				__( 'Check-ins', 'bp-checkins' ),
-				array( 'member' )
+				array( 'activity', 'member', 'group', 'member_groups' )
 			);
 		}
 
@@ -830,6 +832,39 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 				}
 			}
 			die;
+		}
+
+		/**
+		 * Add bp check in as post type in youzer wall
+		 *
+		 * @param array $post_types
+		 * @return array
+		 */
+		public function bp_checkin_add_youzer_wall_post_types_button( $post_types ) {
+
+			$bp_checkin = array(
+				'icon'     => 'fas fa-map-marker',
+				'uploader' => 'off',
+				'name'     => __( 'Checkin', 'bp-checkins' ),
+			);
+
+			$post_types['activity_bpchk_chkins'] = $bp_checkin;
+			return $post_types;
+
+		}
+
+		/**
+		 * Add buddypress chckin activity on yozer activity
+		 *
+		 * @param array $post_types
+		 * @return array
+		 */
+		public function bp_checkin_allow_youzer_activity( $post_types ) {
+			if ( is_array( $post_types ) ) {
+				array_push( $post_types, 'activity_bpchk_chkins' );
+
+			}
+			return $post_types;
 		}
 
 	}
