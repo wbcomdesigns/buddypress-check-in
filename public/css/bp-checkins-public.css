@@ -396,3 +396,8 @@ span.bpchk-allow-checkin {
 }
 
 /**********************/
+
+/* Compatibility with Youzer */
+#youzer .bpchk-marker-container {
+    margin: 0;
+}
