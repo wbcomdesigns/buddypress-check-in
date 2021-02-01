@@ -401,3 +401,8 @@ span.bpchk-allow-checkin {
 #youzer .bpchk-marker-container {
     margin: 0;
 }
+
+#youzer .bp-checkins.bp-checkin-panel {
+    width: 100%;
+    margin: 15px 0;
+}
