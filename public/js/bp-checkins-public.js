@@ -372,10 +372,4 @@ jQuery(document).ready(function ($) {
 		});
 	});
 
-	if (jQuery('#youzer').length) {
-		jQuery(document).on('click', '#yz-wall-add-activity_bpchk_chkins', function(){
-			jQuery('#yz-wall-actions .bpchk-marker-container').removeClass( 'disable-container' );
-		});
-	}
-
 });

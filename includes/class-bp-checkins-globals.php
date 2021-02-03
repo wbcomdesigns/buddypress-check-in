@@ -8,15 +8,8 @@
  * @package    Bp_Checkins
  * @subpackage Bp_Checkins/includes
  * @author     Wbcom Designs <admin@wbcomdesigns.com>
- */
+ **/
 
-/**
- * The admin-specific functionality of the plugin.
- *
- * @package    Bp_Checkins
- * @subpackage Bp_Checkins/admin
- * @author     Wbcom Designs <admin@wbcomdesigns.com>
- */
 if ( ! class_exists( 'Bp_Checkins_Globals' ) ) :
 	class Bp_Checkins_Globals {
 		/**

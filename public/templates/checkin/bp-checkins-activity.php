@@ -7,7 +7,7 @@
  *
  * @package    Bp_Checkins
  * @subpackage Bp_Checkins/admin
- */
+ **/
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -28,9 +28,10 @@ if ( $bpchk_fav_places ) { ?>
 	<div id="accordion" class="bpchk-fav-loc-map-container">
 	<?php
 	foreach ( $bpchk_fav_places as $key => $fav_places ) {
-		$map_url = 'https://www.google.com/maps/embed/v1/place?key=' . $apikey . '&q=' . $fav_places['formatted_address']; ?>
+		$map_url = 'https://www.google.com/maps/embed/v1/place?key=' . $apikey . '&q=' . $fav_places['formatted_address'];
+		?>
 		<h3><?php echo esc_attr( $fav_places['place'] ); ?>
-			<?php if( bp_displayed_user_id() === get_current_user_id() ) { ?>
+			<?php if ( bp_displayed_user_id() === get_current_user_id() ) { ?>
 				<span class="checkin-trash"><i class="fa fa-trash bpcp-checkin-trash" attr-key="<?php echo esc_attr( $fav_places['activity_id'] ); ?>"></i></span>
 			<?php } ?>
 		</h3>
@@ -83,10 +84,13 @@ if ( $bpchk_fav_places ) { ?>
 			<div class="clear"></div>
 		</div>
 	<?php } ?>
-	</div><?php
-}else{
-	?><aside class="bp-feedback bp-messages info">
+	</div>
+	<?php
+} else {
+	?>
+	<aside class="bp-feedback bp-messages info">
 	<span class="bp-icon" aria-hidden="true"></span>
 	<p><?php esc_html_e( 'Sorry, there was no location found. Please try adding a location.', 'bp-checkins' ); ?></p>
-	</aside><?php
+	</aside>
+	<?php
 }

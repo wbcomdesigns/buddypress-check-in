@@ -7,8 +7,7 @@
  *
  * @package    Bp_Checkins
  * @subpackage Bp_Checkins/public
- */
-
+ **/
 
 if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 
@@ -76,13 +75,9 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			$checkin_html = '';
 			if ( is_user_logged_in() ) {
 
-				if ( class_exists( 'Youzer' ) ) {
-					$container_class = 'disable-container';
-				}
-
 				// Create the checkin html.
 				if ( $bp_checkins->apikey ) {
-					$checkin_html .= '<div class="bpchk-marker-container ' . $container_class . ' "><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
+					$checkin_html .= '<div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
 					$checkin_html .= '<div class="bp-checkins bp-checkin-panel">';
 
 					$checkin_html     .= '<div class="checkin-by-autocomplete">';
@@ -111,8 +106,8 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		public function enqueue_styles() {
 
 			if ( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() || strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), 'checkin' ) ) {
-				wp_enqueue_style( $this->plugin_name . '-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui.css' );
-				wp_enqueue_style( $this->plugin_name . '-font-awesome', plugin_dir_url( __FILE__ ) . 'css/font-awesome.min.css' );
+				wp_enqueue_style( $this->plugin_name . '-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui.css', array(), $this->version, 'all' );
+				wp_enqueue_style( $this->plugin_name . '-font-awesome', plugin_dir_url( __FILE__ ) . 'css/font-awesome.min.css', array(), $this->version, 'all' );
 				wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bp-checkins-public.css', array(), $this->version, 'all' );
 			}
 		}
@@ -126,7 +121,7 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			if ( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() || strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), 'checkin' ) ) {
 				global $bp_checkins;
 				wp_enqueue_script( 'jquery-ui-accordion' );
-				wp_enqueue_script( $this->plugin_name . '-google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $bp_checkins->apikey, array( 'jquery' ) );
+				wp_enqueue_script( $this->plugin_name . '-google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $bp_checkins->apikey, array( 'jquery' ), $this->version, false );
 				wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
 				if ( is_user_logged_in() ) {
 					if ( xprofile_get_field_id_from_name( 'Location' ) ) {
@@ -174,7 +169,7 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 					array(
 						'name'            => __( 'Check-ins', 'bp-checkins' ),
 						'slug'            => 'check-ins',
-						'parent_url'      => bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/',
+						'parent_url'      => bp_core_get_userlink( $displayed_uid, false, true ) . esc_url( $parent_slug ) . '/',
 						'parent_slug'     => esc_attr( $parent_slug ),
 						'screen_function' => array( $this, 'bpchk_checkins_activity_show_screen' ),
 						'position'        => 100,
@@ -416,7 +411,12 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @return string $action
 		 */
 		public function bp_activity_format_activity_action_activity_bpchk_chkins( $action, $activity ) {
-			$action = sprintf( __( '%s checked-in', 'bp-checkins' ), bp_core_get_userlink( $activity->user_id ) );
+
+			$action = sprintf(
+				/* translators: s: User name */
+				__( '%s checked-in', 'bp-checkins' ),
+				bp_core_get_userlink( $activity->user_id )
+			);
 
 			/**
 			 * Filters the formatted activity action update string.
@@ -632,8 +632,12 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			global $wpdb, $bp_checkins;
 			$activity_meta_tbl = $wpdb->base_prefix . 'bp_activity_meta';
 
-			$qry    = "SELECT `meta_value` from `$activity_meta_tbl` where `activity_id` = $activity_id AND `meta_key` = 'bpchk_place_details'";
-			$result = $wpdb->get_results( $qry );
+			$result = $wpdb->get_results(
+				$wpdb->prepare(
+					"SELECT `meta_value` from `$activity_meta_tbl` where `activity_id` = $activity_id AND `meta_key` = 'bpchk_place_details'"
+				)
+			);
+
 			if ( ! empty( $result ) ) {
 				$place         = unserialize( $result[0]->meta_value );
 				$apikey        = $bp_checkins->apikey;
@@ -695,14 +699,14 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 						foreach ( $places->results as $place ) {
 							$places_html .= '<li class="bpchk-single-place">';
 							$places_html .= '<div class="place-icon">';
-							$places_html .= '<img height="18px" width="18px" title="' . $place->name . '" src="' . $place->icon . '">';
+							$places_html .= '<img height="18px" width="18px" title="' . esc_html( $place->name ) . '" src="' . esc_url( $place->icon ) . '">';
 							$places_html .= '</div>';
 							$places_html .= '<div class="place-details">';
-							$places_html .= '<b>' . $place->name . '</b>';
-							$places_html .= '<div>' . $place->vicinity . '</div>';
+							$places_html .= '<b>' . esc_html( $place->name ) . '</b>';
+							$places_html .= '<div>' . esc_html( $place->vicinity ) . '</div>';
 							$places_html .= '</div>';
 							$places_html .= '<div class="place-actions">';
-							$places_html .= '<a href="javascript:void(0);" class="bpchk-select-place-to-checkin" data-place_reference="' . $place->reference . '" data-place_id="' . $place->place_id . '">' . __( 'Select', 'bp-checkins' ) . '</a>';
+							$places_html .= '<a href="javascript:void(0);" class="bpchk-select-place-to-checkin" data-place_reference="' . esc_attr( $place->reference ) . '" data-place_id="' . $place->place_id . '">' . __( 'Select', 'bp-checkins' ) . '</a>';
 							$places_html .= '</div>';
 							$places_html .= '</li>';
 						}
@@ -720,7 +724,7 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 					'message' => $msg,
 					'html'    => stripslashes( $places_html ),
 				);
-				echo json_encode( $result );
+				echo wp_json_encode( $result );
 				die;
 			}
 		}
@@ -759,16 +763,19 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 						'add_as_my_place' => filter_input( INPUT_POST, 'add_as_my_place', FILTER_SANITIZE_STRING ),
 					);
 
-					$href        = 'http://maps.google.com/maps/place/' . $place_name . "/@$latitude,$longitude";
-					$place_html .= "<div class='bpchk-checkin-temp-location'>-at <a title='" . $place_name . "' href='" . $href . "' target='_blank' id='bpchk-temp-location'>" . $place_name . '</a>';
+					$href        = 'http://maps.google.com/maps/place/' . esc_utl( $place_name ) . "/@$latitude,$longitude";
+					$place_html .= "<div class='bpchk-checkin-temp-location'>-at <a title='" . esc_html( $place_name ) . "' href='" . esc_url( $href ) . "' target='_blank' id='bpchk-temp-location'>" . esc_html( $place_name ) . '</a>';
 					$place_html .= ' <a href="javascript:void(0);" id="bpchk-cancel-checkin" title="' . __( 'Click here to cancel your checkin.', 'bp-checkins' ) . '"><i class="fa fa-times"></i></a>';
 					$place_html .= '</div>';
 					$place_html .= '<div>';
 					$place_html .= '<a class="button" href="javascript:void(0);" id="bpchk-show-places-panel">' . __( 'Show Locations', 'bp-checkins' ) . '</a>';
 					$place_html .= '</div>';
 
-					$qry    = "SELECT `option_id`, `option_value` from $options_tbl where `option_name` = 'bpchk_temp_location'";
-					$result = $wpdb->get_results( $qry );
+					$result = $wpdb->get_results(
+						$wpdb->prepare(
+							"SELECT `option_id`, `option_value` from $options_tbl where `option_name` = 'bpchk_temp_location'"
+						)
+					);
 					if ( empty( $result ) ) {
 						// Insert the temp location in options table.
 						$wpdb->insert(
@@ -831,31 +838,12 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 				$bpchk_fav_places = $bpchk_fav_places;
 			}
 			foreach ( $bpchk_fav_places as $key => $fav_places ) {
-				if ( $fav_places['activity_id'] == $activity_id ) {
+				if ( $fav_places['activity_id'] === $activity_id ) {
 					unset( $bpchk_fav_places[ $key ] );
 					update_user_meta( bp_displayed_user_id(), 'bpchk_fav_places', $bpchk_fav_places );
 				}
 			}
 			die;
-		}
-
-		/**
-		 * Add bp check in as post type in youzer wall
-		 *
-		 * @param array $post_types
-		 * @return array
-		 */
-		public function bp_checkin_add_youzer_wall_post_types_button( $post_types ) {
-
-			$bp_checkin = array(
-				'icon'     => 'fas fa-map-marker',
-				'uploader' => 'off',
-				'name'     => __( 'Checkin', 'bp-checkins' ),
-			);
-
-			$post_types['activity_bpchk_chkins'] = $bp_checkin;
-			return $post_types;
-
 		}
 
 		/**
@@ -874,3 +862,5 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 
 	}
 endif;
+
+

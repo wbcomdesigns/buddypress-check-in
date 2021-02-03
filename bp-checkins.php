@@ -110,7 +110,7 @@ function bp_checkins_check_config() {
 		'network_active' => false,
 		'network_status' => true,
 	);
-	if ( get_current_blog_id() == bp_get_root_blog_id() ) {
+	if ( get_current_blog_id() === bp_get_root_blog_id() ) {
 		$config['blog_status'] = true;
 	}
 
@@ -183,7 +183,8 @@ function bpchk_plugin_require_activity_component_admin_notice() {
 	$bp_component = 'BuddyPress\'s Activity Component';
 
 	echo '<div class="error"><p>'
-	. sprintf( esc_attr( '%1$s is ineffective now as it requires %2$s to be active.', 'bp-checkins' ), '<strong>' . esc_attr( $bpchk_plugin ) . '</strong>', '<strong>' . esc_attr( $bp_component ) . '</strong>' )
+	/* translators: 1: Name of the plugin 2: Name of the dependent plugin */
+	. sprintf( esc_html__( '%1$s is ineffective now as it requires %2$s to be active.', 'bp-checkins' ), '<strong>' . esc_attr( $bpchk_plugin ) . '</strong>', '<strong>' . esc_attr( $bp_component ) . '</strong>' )
 	. '</p></div>';
 	if ( isset( $_GET['activate'] ) ) {
 		unset( $_GET['activate'] );
@@ -210,7 +211,6 @@ function bpchk_plugin_links( $links ) {
 function bpchk_requires_buddypress() {
 	if ( ! class_exists( 'Buddypress' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
-		// deactivate_plugins('buddypress-polls/buddypress-polls.php');
 		add_action( 'admin_notices', 'bpchk_required_plugin_admin_notice' );
 		unset( $_GET['activate'] );
 	}
@@ -227,7 +227,13 @@ function bpchk_required_plugin_admin_notice() {
 	$bpquotes_plugin = esc_html__( 'BuddyPress Check-ins', 'bp-checkins' );
 	$bp_plugin       = esc_html__( 'BuddyPress', 'bp-checkins' );
 	echo '<div class="error"><p>';
-	echo sprintf( esc_html__( '%1$s is ineffective now as it requires %2$s to be installed and active.', 'bp-checkins' ), '<strong>' . esc_html( $bpquotes_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' );
+
+	printf(
+		/* translators: 1: Name of the plugin 2: Name of the dependent plugin */
+		esc_html__( '%1$s is ineffective now as it requires %2$s to be installed and active.', 'bp-checkins' ),
+		'<strong>' . esc_html( $bpquotes_plugin ) . '</strong>',
+		'<strong>' . esc_html( $bp_plugin ) . '</strong>'
+	);
 	echo '</p></div>';
 	if ( isset( $_GET['activate'] ) ) {
 		unset( $_GET['activate'] );

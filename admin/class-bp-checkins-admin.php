@@ -62,8 +62,8 @@ if ( ! class_exists( 'Bp_Checkins_Admin' ) ) :
 		 */
 		public function enqueue_styles() {
 			if ( ( strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), 'bp-checkins' ) !== false ) ) {
-				wp_enqueue_style( $this->plugin_name . '-font-awesome', BPCHK_PLUGIN_URL . 'public/css/font-awesome.min.css' );
-				wp_enqueue_style( $this->plugin_name . '-selectize-css', plugin_dir_url( __FILE__ ) . 'css/selectize.css' );
+				wp_enqueue_style( $this->plugin_name . '-font-awesome', BPCHK_PLUGIN_URL . 'public/css/font-awesome.min.css', array(), $this->version, 'all' );
+				wp_enqueue_style( $this->plugin_name . '-selectize-css', plugin_dir_url( __FILE__ ) . 'css/selectize.css', array(), $this->version, 'all' );
 				wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bp-checkins-admin.css', array(), $this->version, 'all' );
 			}
 
@@ -76,7 +76,7 @@ if ( ! class_exists( 'Bp_Checkins_Admin' ) ) :
 		 */
 		public function enqueue_scripts() {
 			if ( strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), 'bp-checkins' ) !== false ) {
-				wp_enqueue_script( $this->plugin_name . '-selectize-js', plugin_dir_url( __FILE__ ) . 'js/selectize.min.js', array( 'jquery' ) );
+				wp_enqueue_script( $this->plugin_name . '-selectize-js', plugin_dir_url( __FILE__ ) . 'js/selectize.min.js', array( 'jquery' ), $this->version, false );
 				wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-admin.js', array( 'jquery' ), $this->version, false );
 
 				wp_localize_script(
@@ -96,9 +96,6 @@ if ( ! class_exists( 'Bp_Checkins_Admin' ) ) :
 		 * @since    1.0.0
 		 */
 		public function bpchk_add_menu_page() {
-
-			// add_menu_page( __( 'BuddyPress Checkins Settings', 'bp-checkins' ), __( 'Check-ins', 'bp-checkins' ), 'manage_options', $this->plugin_name, array( $this, 'bpchk_admin_settings_page' ), 'dashicons-location', 59 );
-
 			if ( empty( $GLOBALS['admin_page_hooks']['wbcomplugins'] ) ) {
 
 				add_menu_page( esc_html__( 'WB Plugins', 'bp-checkins' ), esc_html__( 'WB Plugins', 'bp-checkins' ), 'manage_options', 'wbcomplugins', array( $this, 'bpchk_admin_settings_page' ), 'dashicons-lightbulb', 59 );

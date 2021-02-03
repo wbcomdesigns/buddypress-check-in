@@ -216,7 +216,6 @@ if ( ! class_exists( 'Bp_Checkins' ) ) :
 			$this->loader->add_action( 'wp_ajax_nopriv_bpchk_delete_user_checkin_location', $plugin_public, 'bpchk_delete_user_checkin_location' );
 
 			if ( class_exists( 'Youzer' ) ) {
-				$this->loader->add_filter( 'yz_wall_form_post_types_buttons', $plugin_public, 'bp_checkin_add_youzer_wall_post_types_button' );
 				$this->loader->add_filter( 'yz_allowed_form_post_types', $plugin_public, 'bp_checkin_allow_youzer_activity' );
 			}
 		}
