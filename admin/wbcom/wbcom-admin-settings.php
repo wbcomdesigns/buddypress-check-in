@@ -481,7 +481,7 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 		 */
 		public function wbcom_enqueue_admin_scripts() {
 			if ( ! wp_style_is( 'font-awesome', 'enqueued' ) ) {
-				wp_enqueue_style( 'font-awesome', '//use.fontawesome.com/releases/v5.5.0/css/all.css', array(), '1.0.0', all );
+				wp_enqueue_style( 'font-awesome', '//use.fontawesome.com/releases/v5.5.0/css/all.css', array(), '1.0.0', 'all' );
 			}
 			if ( ! wp_script_is( 'wbcom_admin_setting_js', 'enqueued' ) ) {
 
@@ -506,7 +506,7 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 			}
 
 			if ( ! wp_style_is( 'wbcom-admin-setting-css', 'enqueued' ) ) {
-				wp_enqueue_style( 'wbcom-admin-setting-css', BPCHK_PLUGIN_URL . 'admin/wbcom/assets/css/wbcom-admin-setting.css', array(), '1.0.0', all );
+				wp_enqueue_style( 'wbcom-admin-setting-css', BPCHK_PLUGIN_URL . 'admin/wbcom/assets/css/wbcom-admin-setting.css', array(), '1.0.0', 'all' );
 			}
 
 			if ( function_exists( 'get_current_screen' ) ) {
