@@ -15,10 +15,35 @@ $verify_btn_style = 'display: none;';
 if ( ! empty( $bp_checkins->apikey ) ) {
 	$verify_btn_style = '';
 }
-?>
+
+?>	
 
 <table class="form-table bpchk-admin-page-table">
 	<tbody>
+		<!-- Checkin Tab Visibility  -->
+		<tr>
+			<th scope="row"><label for="tab-visibilty"><?php esc_html_e( 'Enable Check-ins Tab', 'bp-checkins' ); ?></label></th>
+			<td>
+				<input class="regular-text" type="checkbox" value="1" name="bpchk-tab-visibilty" id="bpchk-tab-visibilty" <?php isset( $bp_checkins->tab_visibility ) ? checked( $bp_checkins->tab_visibility, 1 ) : ''; ?>>
+			</td>
+		</tr>
+		<!-- Checkin Tab Visibility  -->
+		<!-- Rename Checkin Tab  -->
+		<tr>
+			<th scope="row"><label for="tab-name"><?php esc_html_e( 'Rename Checkin Tab', 'bp-checkins' ); ?></label></th>
+			<td>
+				<input class="regular-text" type="text" value="<?php echo isset( $bp_checkins->tab_name ) ? esc_html( $bp_checkins->tab_name ) : ''; ?>" name="bpchk-tab-name" id="bpchk-tab-name" placeholder="<?php esc_html_e( 'Check-ins', 'bp-checkins' ); ?>">
+			</td>
+		</tr>
+		<!-- Rename Checkin Tab  -->
+		<!-- Enable Location xProfile Field  -->
+		<tr>
+			<th scope="row"><label for="tab-name"><?php esc_html_e( 'Enable Location xProfile Field', 'bp-checkins' ); ?></label></th>
+			<td>
+				<input class="regular-text" type="checkbox" value="1" name="bpchk-enable-xprofile-filed" id="bpchk-enable-xprofile-filed" <?php isset( $bp_checkins->enable_location_field ) ? checked( $bp_checkins->enable_location_field, 1 ) : ''; ?> >
+			</td>
+		</tr>
+		<!-- Enable Location xProfile Field  -->
 		<!-- API Key -->
 		<tr>
 			<th scope="row"><label for="api-key"><?php esc_html_e( 'API Key', 'bp-checkins' ); ?></label></th>
@@ -33,7 +58,8 @@ if ( ! empty( $bp_checkins->apikey ) ) {
 						<?php esc_html_e( '( How to Get Google API Key? )', 'bp-checkins' ); ?>
 				</a>
 			</td>
-		</tr>		
+		</tr>
+		<!-- API Key -->		
 	</tbody>
 </table>
 <p class="submit">

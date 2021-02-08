@@ -111,33 +111,33 @@ if ( ! class_exists( 'Bp_Checkins_Admin' ) ) :
 			global $allowedposttags;
 			$tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : $this->plugin_name;
 			?>
-		<div class="wrap">
-			<div class="blpro-header">
-				<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
-				<h1 class="wbcom-plugin-heading">
-					<?php esc_html_e( 'BuddyPress Check-ins Settings', 'bp-checkins' ); ?>
-				</h1>
-			</div>
-			<div class="wbcom-admin-settings-page">
-				<?php $this->bpchk_plugin_settings_tabs(); ?>
-				<div class="wbcom-tab-content">
-					<form method="POST" action="">
-						<?php
-						settings_errors();
-						if ( filter_input( INPUT_POST, 'bpchk-submit-general-settings' ) !== null ) {
-							$success_msg  = "<div class='notice updated is-dismissible' id='message'>";
-							$success_msg .= '<p>' . __( '<strong>Settings Saved.</strong>', 'bp-checkins' ) . '</p>';
-							$success_msg .= '</div>';
-							echo wp_kses( $success_msg, $allowedposttags );
-						}
+			<div class="wrap">
+				<div class="blpro-header">
+					<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
+					<h1 class="wbcom-plugin-heading">
+						<?php esc_html_e( 'BuddyPress Check-ins Settings', 'bp-checkins' ); ?>
+					</h1>
+				</div>
+				<div class="wbcom-admin-settings-page">
+					<?php $this->bpchk_plugin_settings_tabs(); ?>
+					<div class="wbcom-tab-content">
+						<form method="POST" action="">
+							<?php
+							settings_errors();
+							if ( filter_input( INPUT_POST, 'bpchk-submit-general-settings' ) !== null ) {
+								$success_msg  = "<div class='notice updated is-dismissible' id='message'>";
+								$success_msg .= '<p>' . __( '<strong>Settings Saved.</strong>', 'bp-checkins' ) . '</p>';
+								$success_msg .= '</div>';
+								echo wp_kses( $success_msg, $allowedposttags );
+							}
 
-						settings_fields( $tab );
-						?>
-						<?php do_settings_sections( $tab ); ?>
-					</form>
+							settings_fields( $tab );
+							?>
+							<?php do_settings_sections( $tab ); ?>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
 			<?php
 		}
 
@@ -198,10 +198,13 @@ if ( ! class_exists( 'Bp_Checkins_Admin' ) ) :
 				}
 
 				$admin_settings = array(
-					'apikey'     => filter_input( INPUT_POST, 'bpchk-api-key', FILTER_SANITIZE_STRING ),
-					'checkin_by' => $checkin_by,
-					'range'      => filter_input( INPUT_POST, 'bpchk-google-places-range', FILTER_SANITIZE_STRING ),
-					'placetypes' => ( ! empty( $_POST['bpchk-google-place-types'] ) ) ? wp_unslash( $_POST['bpchk-google-place-types'] ) : array(),
+					'apikey'                => filter_input( INPUT_POST, 'bpchk-api-key', FILTER_SANITIZE_STRING ),
+					'checkin_by'            => $checkin_by,
+					'range'                 => filter_input( INPUT_POST, 'bpchk-google-places-range', FILTER_SANITIZE_STRING ),
+					'placetypes'            => ( ! empty( $_POST['bpchk-google-place-types'] ) ) ? wp_unslash( $_POST['bpchk-google-place-types'] ) : array(),
+					'tab_visibility'        => isset( $_POST['bpchk-tab-visibilty'] ) ? filter_var( wp_unslash( $_POST['bpchk-tab-visibilty'] ), FILTER_SANITIZE_NUMBER_INT ) : '',
+					'tab_name'              => isset( $_POST['bpchk-tab-name'] ) ? sanitize_text_field( wp_unslash( $_POST['bpchk-tab-name'] ) ) : '',
+					'enable_location_field' => isset( $_POST['bpchk-enable-xprofile-filed'] ) ? filter_var( wp_unslash( $_POST['bpchk-enable-xprofile-filed'] ), FILTER_SANITIZE_NUMBER_INT ) : '',
 				);
 
 				bp_update_option( 'bpchk_general_settings', $admin_settings );

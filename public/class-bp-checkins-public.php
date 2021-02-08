@@ -151,29 +151,26 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 */
 		public function bpchk_member_profile_checkin_tab() {
 			if ( bp_is_my_profile() ) {
-				$displayed_uid  = bp_displayed_user_id();
-				$parent_slug    = 'checkin';
-				$my_places_link = bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/check-ins';
+
+				global $bp_checkins;
+
+				if ( isset( $bp_checkins->tab_visibility ) && '1' !== $bp_checkins->tab_visibility ) {
+					return;
+				}
+
+				$displayed_uid    = bp_displayed_user_id();
+				$parent_slug      = 'checkin';
+				$my_places_link   = bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/check-ins';
+				$checkin_tab_name = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : '';
 
 				bp_core_new_nav_item(
 					array(
-						'name'                    => __( 'Check-ins', 'bp-checkins' ),
+						'name'                    => apply_filters( 'bpchk_member_profile_checkin_tab_name', esc_html( $checkin_tab_name ) ),
 						'slug'                    => 'checkin',
-						'screen_function'         => array( $this, 'bpchk_checkin_tab_function_to_show_screen' ),
+						'screen_function'         => array( $this, 'bpchk_checkins_activity_show_screen' ),
 						'position'                => 75,
 						'default_subnav_slug'     => 'check-ins',
 						'show_for_displayed_user' => true,
-					)
-				);
-				bp_core_new_subnav_item(
-					array(
-						'name'            => __( 'Check-ins', 'bp-checkins' ),
-						'slug'            => 'check-ins',
-						'parent_url'      => bp_core_get_userlink( $displayed_uid, false, true ) . esc_url( $parent_slug ) . '/',
-						'parent_slug'     => esc_attr( $parent_slug ),
-						'screen_function' => array( $this, 'bpchk_checkins_activity_show_screen' ),
-						'position'        => 100,
-						'link'            => $my_places_link,
 					)
 				);
 			}
@@ -311,9 +308,16 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @since 1.0.1
 		 */
 		public function bpchk_add_location_xprofile_field() {
+			global $bp_checkins;
+
+			if( isset( $bp_checkins->enable_location_field ) && '1' !== $bp_checkins->enable_location_field ){
+				return;
+			}
+
 			if ( xprofile_get_field_id_from_name( 'Location' ) ) {
 				return;
 			}
+			
 			$location_list_args = array(
 				'field_group_id' => 1,
 				'type'           => 'textbox',
@@ -355,6 +359,7 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @param int    $field_id    ID for the profile field.
 		 */
 		public function bpchk_show_xprofile_location( $field_value, $field_type, $field_id ) {
+			global $bp_checkins;
 			if ( xprofile_get_field_id_from_name( 'Location' ) ) {
 				$bpchk_location_id = xprofile_get_field_id_from_name( 'Location' );
 				if ( $field_id === $bpchk_location_id ) {
