@@ -239,3 +239,19 @@ function bpchk_required_plugin_admin_notice() {
 		unset( $_GET['activate'] );
 	}
 }
+
+
+/**
+ * Load the plugin text domain for translation.
+ *
+ * @since    1.6.1
+ */
+function bpchk_load_plugin_textdomain() {	
+	
+	load_plugin_textdomain(
+				'bp-checkins',
+				false,
+				 dirname( plugin_basename( __FILE__ ) )  . '/languages/'
+			);
+}
+add_action( 'plugins_loaded', 'bpchk_load_plugin_textdomain' );
