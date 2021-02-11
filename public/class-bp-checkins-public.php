@@ -75,6 +75,10 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			$checkin_html = '';
 			if ( is_user_logged_in() ) {
 
+				if ( ! self::bp_checkins_is_youzer_activity() ) {
+					return;
+				}
+
 				// Create the checkin html.
 				if ( $bp_checkins->apikey ) {
 					$checkin_html .= '<div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
@@ -310,14 +314,14 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		public function bpchk_add_location_xprofile_field() {
 			global $bp_checkins;
 
-			if( isset( $bp_checkins->enable_location_field ) && '1' !== $bp_checkins->enable_location_field ){
+			if ( isset( $bp_checkins->enable_location_field ) && '1' !== $bp_checkins->enable_location_field ) {
 				return;
 			}
 
 			if ( xprofile_get_field_id_from_name( 'Location' ) ) {
 				return;
 			}
-			
+
 			$location_list_args = array(
 				'field_group_id' => 1,
 				'type'           => 'textbox',
@@ -860,12 +864,31 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		public function bp_checkin_allow_youzer_activity( $post_types ) {
 			if ( is_array( $post_types ) ) {
 				array_push( $post_types, 'activity_bpchk_chkins' );
-
 			}
 			return $post_types;
 		}
 
+		/**
+		 * Static function to check if youzer wall option enable or not.
+		 *
+		 * @return boolean
+		 */
+		public static function bp_checkins_is_youzer_activity() {
+			if ( class_exists( 'Youzer' ) ) {
+				$unallowed_activities = yz_option( 'yz_unallowed_activities' );
+				$is_enable            = true;
+				if ( ! empty( $unallowed_activities ) ) {
+					$unallowed_activities = (array) array_flip( $unallowed_activities );
+
+					if ( ! array_key_exists( 'activity_bpchk_chkins', $unallowed_activities ) ) {
+						$is_enable = true;
+					} else {
+						$is_enable = false;
+					}
+				}
+				return $is_enable;
+			}
+		}
+
 	}
 endif;
-
-
