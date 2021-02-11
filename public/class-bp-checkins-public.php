@@ -166,11 +166,12 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 				$parent_slug      = 'checkin';
 				$my_places_link   = bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/check-ins';
 				$checkin_tab_name = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : '';
+				$checkin_tab_slug = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : '';
 
 				bp_core_new_nav_item(
 					array(
 						'name'                    => apply_filters( 'bpchk_member_profile_checkin_tab_name', esc_html( $checkin_tab_name ) ),
-						'slug'                    => 'checkin',
+						'slug'                    => apply_filters( 'bpchk_member_profile_checkin_tab_slug', sanitize_title( $checkin_tab_slug ) ),
 						'screen_function'         => array( $this, 'bpchk_checkins_activity_show_screen' ),
 						'position'                => 75,
 						'default_subnav_slug'     => 'check-ins',
