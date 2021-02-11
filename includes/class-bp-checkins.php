@@ -218,6 +218,8 @@ if ( ! class_exists( 'Bp_Checkins' ) ) :
 			if ( class_exists( 'Youzer' ) ) {
 				$this->loader->add_filter( 'yz_allowed_form_post_types', $plugin_public, 'bp_checkin_allow_youzer_activity' );
 			}
+
+			$this->loader->add_filter( 'bp_after_has_profile_parse_args', $plugin_public, 'bp_checkin_hide_profile_field' );
 		}
 
 		/**

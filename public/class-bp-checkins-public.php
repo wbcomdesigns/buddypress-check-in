@@ -891,5 +891,23 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			}
 		}
 
+		public function bp_checkin_hide_profile_field( $retval ) {
+			global $bp_checkins;
+
+			if ( ! empty( $bp_checkins->enable_location_field ) && '1' === $bp_checkins->enable_location_field ) {
+				$field_id = xprofile_get_field_id_from_name( 'Location' );
+
+				// allow field on register page
+				if ( bp_is_register_page() ) {
+					$retval['include_fields'] = $field_id; // ID's separated by comma
+				}
+				// hide the field on profile view tab
+				if ( $data = bp_get_profile_field_data( 'field=' . $field_id ) ) {
+					$retval['exclude_fields'] = $field_id; // ID's separated by comma
+				}
+			}
+			return $retval;
+		}
+
 	}
 endif;
