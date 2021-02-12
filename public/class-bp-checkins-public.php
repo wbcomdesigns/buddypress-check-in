@@ -875,9 +875,9 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @return boolean
 		 */
 		public static function bp_checkins_is_youzer_activity() {
+			$is_enable = true;
 			if ( class_exists( 'Youzer' ) ) {
 				$unallowed_activities = yz_option( 'yz_unallowed_activities' );
-				$is_enable            = true;
 				if ( ! empty( $unallowed_activities ) ) {
 					$unallowed_activities = (array) array_flip( $unallowed_activities );
 
@@ -887,8 +887,8 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 						$is_enable = false;
 					}
 				}
-				return $is_enable;
 			}
+			return $is_enable;
 		}
 
 		public function bp_checkin_hide_profile_field( $retval ) {
