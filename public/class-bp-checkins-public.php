@@ -108,8 +108,10 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @since    1.0.0
 		 */
 		public function enqueue_styles() {
-
-			if ( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() || strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), 'checkin' ) ) {
+			global $bp_checkins;
+			$checkin_tab_slug = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : 'checkin';
+			$checkin_tab_slug = apply_filters( 'bpchk_member_profile_checkin_tab_slug', sanitize_title( $checkin_tab_slug ) );
+			if ( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() || strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug ) ) {
 				wp_enqueue_style( $this->plugin_name . '-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui.css', array(), $this->version, 'all' );
 				wp_enqueue_style( $this->plugin_name . '-font-awesome', plugin_dir_url( __FILE__ ) . 'css/font-awesome.min.css', array(), $this->version, 'all' );
 				wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bp-checkins-public.css', array(), $this->version, 'all' );
@@ -122,8 +124,10 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @since    1.0.0
 		 */
 		public function enqueue_scripts() {
-			if ( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() || strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), 'checkin' ) ) {
-				global $bp_checkins;
+			global $bp_checkins;
+			$checkin_tab_slug = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : 'checkin';
+			$checkin_tab_slug = apply_filters( 'bpchk_member_profile_checkin_tab_slug', sanitize_title( $checkin_tab_slug ) );
+			if ( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() || strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug ) ) {
 				wp_enqueue_script( 'jquery-ui-accordion' );
 				wp_enqueue_script( $this->plugin_name . '-google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $bp_checkins->apikey, array( 'jquery' ), $this->version, false );
 				wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
@@ -166,7 +170,7 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 				$parent_slug      = 'checkin';
 				$my_places_link   = bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/check-ins';
 				$checkin_tab_name = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : '';
-				$checkin_tab_slug = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : '';
+				$checkin_tab_slug = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : 'checkin';
 
 				bp_core_new_nav_item(
 					array(
