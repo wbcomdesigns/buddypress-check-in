@@ -897,13 +897,19 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			if ( ! empty( $bp_checkins->enable_location_field ) && '1' === $bp_checkins->enable_location_field ) {
 				$field_id = xprofile_get_field_id_from_name( 'Location' );
 
+				// hide the field on profile view tab
+				if ( ! bp_is_user_profile_edit() ) {
+					$retval['exclude_fields'] = $field_id; // ID's separated by comma
+				}
+
+				// hide the field on profile edit tab
+				if ( bp_is_user_profile_edit() ) {
+					$retval['exclude_fields'] = $field_id; // ID's separated by comma
+				}
+
 				// allow field on register page
 				if ( bp_is_register_page() ) {
 					$retval['include_fields'] = $field_id; // ID's separated by comma
-				}
-				// hide the field on profile view tab
-				if ( $data = bp_get_profile_field_data( 'field=' . $field_id ) ) {
-					$retval['exclude_fields'] = $field_id; // ID's separated by comma
 				}
 			}
 			return $retval;
