@@ -243,9 +243,11 @@ if ( ! class_exists( 'Bp_Checkins_Admin' ) ) :
 		 * @param    array $wp_admin_nav    BuddyPress Check-ins nav array.
 		 */
 		public function bpchk_setup_admin_bar_links( $wp_admin_nav = array() ) {
-			global $wp_admin_bar;
-			$profile_menu_slug  = 'checkin';
-			$profile_menu_title = __( 'Check-ins', 'bp-checkins' );
+			global $wp_admin_bar, $bp_checkins;
+
+			$checkin_tab_name   = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : '';
+			$profile_menu_slug  = apply_filters( 'bpchk_member_profile_checkin_tab_slug', sanitize_title( $checkin_tab_name ) );
+			$profile_menu_title = apply_filters( 'bpchk_member_profile_checkin_tab_name', esc_html( $checkin_tab_name ) );
 
 			$base_url = bp_loggedin_user_domain() . $profile_menu_slug;
 			if ( is_user_logged_in() ) {
