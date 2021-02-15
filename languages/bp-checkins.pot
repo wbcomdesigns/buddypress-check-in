@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-03 16:02:34+00:00\n"
+"POT-Creation-Date: 2021-02-15 22:12:16+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -115,10 +115,9 @@ msgstr ""
 msgid "BuddyPress Check-ins Settings Page"
 msgstr ""
 
-#: admin/class-bp-checkins-admin.php:104 admin/class-bp-checkins-admin.php:245
-#: public/class-bp-checkins-public.php:160
-#: public/class-bp-checkins-public.php:170
-#: public/class-bp-checkins-public.php:399
+#: admin/class-bp-checkins-admin.php:104
+#: admin/includes/bp-checkins-general-settings.php:35
+#: public/class-bp-checkins-public.php:413
 msgid "Check-ins"
 msgstr ""
 
@@ -138,34 +137,46 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: admin/class-bp-checkins-admin.php:267
+#: admin/class-bp-checkins-admin.php:272
 msgid "Activity Check-Ins"
 msgstr ""
 
-#: admin/includes/bp-checkins-general-settings.php:24
-#: admin/includes/bp-checkins-general-settings.php:26
+#: admin/includes/bp-checkins-general-settings.php:25
+msgid "Enable Check-ins Tab"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:33
+msgid "Rename Checkin Tab"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:41
+msgid "Disable Location xProfile Field"
+msgstr ""
+
+#: admin/includes/bp-checkins-general-settings.php:49
+#: admin/includes/bp-checkins-general-settings.php:51
 msgid "API Key"
 msgstr ""
 
-#: admin/includes/bp-checkins-general-settings.php:27
+#: admin/includes/bp-checkins-general-settings.php:52
 msgid "Verify"
 msgstr ""
 
-#: admin/includes/bp-checkins-general-settings.php:29
+#: admin/includes/bp-checkins-general-settings.php:54
 msgid ""
 "Due to changes in Google Maps API it's required to use an API key for the "
 "BuddyPress Check-ins plugin to work properly."
 msgstr ""
 
-#: admin/includes/bp-checkins-general-settings.php:31
+#: admin/includes/bp-checkins-general-settings.php:56
 msgid "Generate API Key - ( MUST be logged in to your Google account )"
 msgstr ""
 
-#: admin/includes/bp-checkins-general-settings.php:31
+#: admin/includes/bp-checkins-general-settings.php:56
 msgid "Generate API Key"
 msgstr ""
 
-#: admin/includes/bp-checkins-general-settings.php:33
+#: admin/includes/bp-checkins-general-settings.php:58
 msgid "( How to Get Google API Key? )"
 msgstr ""
 
@@ -815,73 +826,73 @@ msgstr ""
 msgid "%1$s is ineffective now as it requires %2$s to be installed and active."
 msgstr ""
 
-#: public/class-bp-checkins-public.php:84
+#: public/class-bp-checkins-public.php:88
 msgid "Start typing your location..."
 msgstr ""
 
-#: public/class-bp-checkins-public.php:88
-#: public/class-bp-checkins-public.php:715
+#: public/class-bp-checkins-public.php:92
+#: public/class-bp-checkins-public.php:723
 msgid "Add as my location"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:89
+#: public/class-bp-checkins-public.php:93
 msgid "Saving location..."
 msgstr ""
 
-#: public/class-bp-checkins-public.php:195
+#: public/class-bp-checkins-public.php:201
 msgid "My Locations"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:397
+#: public/class-bp-checkins-public.php:411
 msgid "Check-ins Update"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:417
+#: public/class-bp-checkins-public.php:431
 #. translators: s: User name
 msgid "%s checked-in"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:620
+#: public/class-bp-checkins-public.php:634
 msgid "%1$s checked-in in the group %2$s"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:694
+#: public/class-bp-checkins-public.php:702
 msgid "places-found"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:709
+#: public/class-bp-checkins-public.php:717
 msgid "Select"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:720
+#: public/class-bp-checkins-public.php:728
 msgid "places-not-found"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:721
+#: public/class-bp-checkins-public.php:729
 msgid "Places not found !"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:752
+#: public/class-bp-checkins-public.php:760
 msgid "place-details-found"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:768
+#: public/class-bp-checkins-public.php:776
 msgid "Click here to cancel your checkin."
 msgstr ""
 
-#: public/class-bp-checkins-public.php:771
+#: public/class-bp-checkins-public.php:779
 msgid "Show Locations"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:798
+#: public/class-bp-checkins-public.php:806
 msgid "place-details-not-found"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:799
+#: public/class-bp-checkins-public.php:807
 msgid "Place details not found !"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:820
+#: public/class-bp-checkins-public.php:828
 msgid "Checkin cancelled !"
 msgstr ""
 
