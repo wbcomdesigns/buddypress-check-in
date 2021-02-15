@@ -851,8 +851,9 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			} else {
 				$bpchk_fav_places = $bpchk_fav_places;
 			}
+
 			foreach ( $bpchk_fav_places as $key => $fav_places ) {
-				if ( $fav_places['activity_id'] === $activity_id ) {
+				if ( $fav_places['activity_id'] == $activity_id ) {
 					unset( $bpchk_fav_places[ $key ] );
 					update_user_meta( bp_displayed_user_id(), 'bpchk_fav_places', $bpchk_fav_places );
 				}
