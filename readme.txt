@@ -1,10 +1,10 @@
-=== Wbcom Designs – Checkins for BP Activity ===
+=== Wbcom Designs – Checkins for BuddyPress Activity ===
 
 Contributors: wbcomdesigns, vapvarun
 Donate link: https://wbcomdesigns.com/donate/
 Tags: buddypress, check-ins , BuddyPress Location, update check-ins, location
 Requires at least: 5.0.0
-Tested up to: 5.6.0
+Tested up to: 5.6.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -70,6 +70,17 @@ If you need additional help you can contact us for <a href="https://wbcomdesigns
 3. screenshot-3 -
 
 == Changelog ==
+
+= 1.7.0 =
+* Fix - Fixed PHP Notices and warnings
+* Fix - #83) Fixed delete location is not working
+* Fix - #81) Fixed distort the location UI on single user profile
+* Fix - #77) Fixed check in icon not showing if youzer is not installed
+* Fix - #79) Fixed xprofile field settings
+* Fix - #77) Fixed default youzer setting issue
+* Fix - #75) Fixed - Translation issue
+* Enhancement- (#78) Changed tab slug as per tab name
+* Enhancement- Update BuddyPress Tab's name as per settings
 
 = 1.6.0 =
 * Fix: PHPCS fixes
