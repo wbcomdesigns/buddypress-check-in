@@ -645,15 +645,9 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			$activity_id = bp_get_activity_id();
 			global $wpdb, $bp_checkins;
 			$activity_meta_tbl = $wpdb->base_prefix . 'bp_activity_meta';
+			$place             = bp_activity_get_meta( $activity_id, 'bpchk_place_details', true );
 
-			$result = $wpdb->get_results(
-				$wpdb->prepare(
-					"SELECT `meta_value` from `$activity_meta_tbl` where `activity_id` = $activity_id AND `meta_key` = 'bpchk_place_details'"
-				)
-			);
-
-			if ( ! empty( $result ) ) {
-				$place         = unserialize( $result[0]->meta_value );
+			if ( ! empty( $place ) ) {
 				$apikey        = $bp_checkins->apikey;
 				$latitude      = $place['latitude'];
 				$longitude     = $place['longitude'];
