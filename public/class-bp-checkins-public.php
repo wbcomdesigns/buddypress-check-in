@@ -75,6 +75,10 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			$checkin_html = '';
 			if ( is_user_logged_in() ) {
 
+				if ( ! self::bp_checkins_is_youzer_activity() ) {
+					return;
+				}
+
 				// Create the checkin html.
 				if ( $bp_checkins->apikey ) {
 					$checkin_html .= '<div class="bpchk-marker-container"><span class="bpchk-allow-checkin"><i class="fa fa-map-marker" aria-hidden="true"></i></span></div>';
@@ -104,8 +108,10 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @since    1.0.0
 		 */
 		public function enqueue_styles() {
-
-			if ( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() || strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), 'checkin' ) ) {
+			global $bp_checkins;
+			$checkin_tab_slug = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : 'checkin';
+			$checkin_tab_slug = apply_filters( 'bpchk_member_profile_checkin_tab_slug', sanitize_title( $checkin_tab_slug ) );
+			if ( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() || strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug ) ) {
 				wp_enqueue_style( $this->plugin_name . '-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui.css', array(), $this->version, 'all' );
 				wp_enqueue_style( $this->plugin_name . '-font-awesome', plugin_dir_url( __FILE__ ) . 'css/font-awesome.min.css', array(), $this->version, 'all' );
 				wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bp-checkins-public.css', array(), $this->version, 'all' );
@@ -118,8 +124,10 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @since    1.0.0
 		 */
 		public function enqueue_scripts() {
-			if ( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() || strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), 'checkin' ) ) {
-				global $bp_checkins;
+			global $bp_checkins;
+			$checkin_tab_slug = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : 'checkin';
+			$checkin_tab_slug = apply_filters( 'bpchk_member_profile_checkin_tab_slug', sanitize_title( $checkin_tab_slug ) );
+			if ( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() || strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug ) ) {
 				wp_enqueue_script( 'jquery-ui-accordion' );
 				wp_enqueue_script( $this->plugin_name . '-google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $bp_checkins->apikey, array( 'jquery' ), $this->version, false );
 				wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
@@ -151,29 +159,27 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 */
 		public function bpchk_member_profile_checkin_tab() {
 			if ( bp_is_my_profile() ) {
-				$displayed_uid  = bp_displayed_user_id();
-				$parent_slug    = 'checkin';
-				$my_places_link = bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/check-ins';
+
+				global $bp_checkins;
+
+				if ( isset( $bp_checkins->tab_visibility ) && '1' !== $bp_checkins->tab_visibility ) {
+					return;
+				}
+
+				$displayed_uid    = bp_displayed_user_id();
+				$parent_slug      = 'checkin';
+				$my_places_link   = bp_core_get_userlink( $displayed_uid, false, true ) . $parent_slug . '/check-ins';
+				$checkin_tab_name = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : '';
+				$checkin_tab_slug = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : 'checkin';
 
 				bp_core_new_nav_item(
 					array(
-						'name'                    => __( 'Check-ins', 'bp-checkins' ),
-						'slug'                    => 'checkin',
-						'screen_function'         => array( $this, 'bpchk_checkin_tab_function_to_show_screen' ),
+						'name'                    => apply_filters( 'bpchk_member_profile_checkin_tab_name', esc_html( $checkin_tab_name ) ),
+						'slug'                    => apply_filters( 'bpchk_member_profile_checkin_tab_slug', sanitize_title( $checkin_tab_slug ) ),
+						'screen_function'         => array( $this, 'bpchk_checkins_activity_show_screen' ),
 						'position'                => 75,
 						'default_subnav_slug'     => 'check-ins',
 						'show_for_displayed_user' => true,
-					)
-				);
-				bp_core_new_subnav_item(
-					array(
-						'name'            => __( 'Check-ins', 'bp-checkins' ),
-						'slug'            => 'check-ins',
-						'parent_url'      => bp_core_get_userlink( $displayed_uid, false, true ) . esc_url( $parent_slug ) . '/',
-						'parent_slug'     => esc_attr( $parent_slug ),
-						'screen_function' => array( $this, 'bpchk_checkins_activity_show_screen' ),
-						'position'        => 100,
-						'link'            => $my_places_link,
 					)
 				);
 			}
@@ -311,9 +317,16 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @since 1.0.1
 		 */
 		public function bpchk_add_location_xprofile_field() {
+			global $bp_checkins;
+
+			if ( isset( $bp_checkins->enable_location_field ) && '1' !== $bp_checkins->enable_location_field ) {
+				return;
+			}
+
 			if ( xprofile_get_field_id_from_name( 'Location' ) ) {
 				return;
 			}
+
 			$location_list_args = array(
 				'field_group_id' => 1,
 				'type'           => 'textbox',
@@ -355,6 +368,7 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @param int    $field_id    ID for the profile field.
 		 */
 		public function bpchk_show_xprofile_location( $field_value, $field_type, $field_id ) {
+			global $bp_checkins;
 			if ( xprofile_get_field_id_from_name( 'Location' ) ) {
 				$bpchk_location_id = xprofile_get_field_id_from_name( 'Location' );
 				if ( $field_id === $bpchk_location_id ) {
@@ -631,15 +645,9 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			$activity_id = bp_get_activity_id();
 			global $wpdb, $bp_checkins;
 			$activity_meta_tbl = $wpdb->base_prefix . 'bp_activity_meta';
+			$place             = bp_activity_get_meta( $activity_id, 'bpchk_place_details', true );
 
-			$result = $wpdb->get_results(
-				$wpdb->prepare(
-					"SELECT `meta_value` from `$activity_meta_tbl` where `activity_id` = $activity_id AND `meta_key` = 'bpchk_place_details'"
-				)
-			);
-
-			if ( ! empty( $result ) ) {
-				$place         = unserialize( $result[0]->meta_value );
+			if ( ! empty( $place ) ) {
 				$apikey        = $bp_checkins->apikey;
 				$latitude      = $place['latitude'];
 				$longitude     = $place['longitude'];
@@ -837,8 +845,9 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			} else {
 				$bpchk_fav_places = $bpchk_fav_places;
 			}
+
 			foreach ( $bpchk_fav_places as $key => $fav_places ) {
-				if ( $fav_places['activity_id'] === $activity_id ) {
+				if ( $fav_places['activity_id'] == $activity_id ) {
 					unset( $bpchk_fav_places[ $key ] );
 					update_user_meta( bp_displayed_user_id(), 'bpchk_fav_places', $bpchk_fav_places );
 				}
@@ -855,12 +864,55 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		public function bp_checkin_allow_youzer_activity( $post_types ) {
 			if ( is_array( $post_types ) ) {
 				array_push( $post_types, 'activity_bpchk_chkins' );
-
 			}
 			return $post_types;
 		}
 
+		/**
+		 * Static function to check if youzer wall option enable or not.
+		 *
+		 * @return boolean
+		 */
+		public static function bp_checkins_is_youzer_activity() {
+			$is_enable = true;
+			if ( class_exists( 'Youzer' ) ) {
+				$unallowed_activities = yz_option( 'yz_unallowed_activities' );
+				if ( ! empty( $unallowed_activities ) ) {
+					$unallowed_activities = (array) array_flip( $unallowed_activities );
+
+					if ( ! array_key_exists( 'activity_bpchk_chkins', $unallowed_activities ) ) {
+						$is_enable = true;
+					} else {
+						$is_enable = false;
+					}
+				}
+			}
+			return $is_enable;
+		}
+
+		public function bp_checkin_hide_profile_field( $retval ) {
+			global $bp_checkins;
+
+			if ( ! empty( $bp_checkins->enable_location_field ) && '1' === $bp_checkins->enable_location_field ) {
+				$field_id = xprofile_get_field_id_from_name( 'Location' );
+
+				// hide the field on profile view tab
+				if ( ! bp_is_user_profile_edit() ) {
+					$retval['exclude_fields'] = $field_id; // ID's separated by comma
+				}
+
+				// hide the field on profile edit tab
+				if ( bp_is_user_profile_edit() ) {
+					$retval['exclude_fields'] = $field_id; // ID's separated by comma
+				}
+
+				// allow field on register page
+				if ( bp_is_register_page() ) {
+					$retval['include_fields'] = $field_id; // ID's separated by comma
+				}
+			}
+			return $retval;
+		}
+
 	}
 endif;
-
-

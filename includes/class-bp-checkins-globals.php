@@ -67,6 +67,33 @@ if ( ! class_exists( 'Bp_Checkins_Globals' ) ) :
 		public $place_types;
 
 		/**
+		 * To set tab visibilty on member profile, dedfault = 1
+		 *
+		 * @since    1.0.0
+		 * @access   public
+		 * @var      string    $place_types
+		 */
+		public $tab_visibility;
+
+		/**
+		 * To change tab name, default is Check-ins
+		 *
+		 * @since    1.0.0
+		 * @access   public
+		 * @var      string    $place_types
+		 */
+		public $tab_name;
+
+		/**
+		 * Set buddypress xprofile field location as location for members
+		 *
+		 * @since    1.0.0
+		 * @access   public
+		 * @var      string    $place_types
+		 */
+		public $enable_location_field;
+
+		/**
 		 * Define the core functionality of the plugin.
 		 *
 		 * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -112,6 +139,21 @@ if ( ! class_exists( 'Bp_Checkins_Globals' ) ) :
 			$this->place_types = array();
 			if ( isset( $bpchk_settings['placetypes'] ) ) {
 				$this->place_types = $bpchk_settings['placetypes'];
+			}
+
+			$this->tab_visibility = 1;
+			if ( isset( $bpchk_settings['tab_visibility'] ) ) {
+				$this->tab_visibility = $bpchk_settings['tab_visibility'];
+			}
+
+			$this->tab_name = 'Check-ins';
+			if ( isset( $bpchk_settings['tab_name'] ) ) {
+				$this->tab_name = $bpchk_settings['tab_name'];
+			}
+
+			$this->enable_location_field = 1;
+			if ( isset( $bpchk_settings['enable_location_field'] ) ) {
+				$this->enable_location_field = $bpchk_settings['enable_location_field'];
 			}
 		}
 	}
