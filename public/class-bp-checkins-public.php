@@ -108,10 +108,30 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @since    1.0.0
 		 */
 		public function enqueue_styles() {
-			global $bp_checkins;
+			global $bp_checkins, $post;
+			
+			$current_component = '';
+			if ( isset($post->ID) && $post->ID != '' && $post->ID != '0') {
+				$_elementor_controls_usage = get_post_meta($post->ID, '_elementor_controls_usage', true);
+				if (  !empty($_elementor_controls_usage)) {
+					foreach($_elementor_controls_usage as $key=>$value) {
+						if ( $key == 'buddypress_shortcode_activity_widget' ) {
+							$current_component = 'activity';
+							break;
+						}
+					}
+				}
+			}
+			
 			$checkin_tab_slug = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : 'checkin';
 			$checkin_tab_slug = apply_filters( 'bpchk_member_profile_checkin_tab_slug', sanitize_title( $checkin_tab_slug ) );
-			if ( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() || strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug ) ) {
+			if ( bp_is_groups_component() 
+					|| bp_is_activity_component() 
+					|| bp_is_profile_component() 
+					|| strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug ) 
+					|| ( isset($post->post_content) && ( has_shortcode( $post->post_content, 'activity-listing' ) ) )
+					|| $current_component == 'activity'
+					) {
 				wp_enqueue_style( $this->plugin_name . '-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui.css', array(), $this->version, 'all' );
 				wp_enqueue_style( $this->plugin_name . '-font-awesome', plugin_dir_url( __FILE__ ) . 'css/font-awesome.min.css', array(), $this->version, 'all' );
 				wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bp-checkins-public.css', array(), $this->version, 'all' );
@@ -124,10 +144,29 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @since    1.0.0
 		 */
 		public function enqueue_scripts() {
-			global $bp_checkins;
+			global $bp_checkins, $post;
+			$current_component = '';
+			if ( isset($post->ID) && $post->ID != '' && $post->ID != '0') {
+				$_elementor_controls_usage = get_post_meta($post->ID, '_elementor_controls_usage', true);
+				if (  !empty($_elementor_controls_usage)) {
+					foreach($_elementor_controls_usage as $key=>$value) {
+						if ( $key == 'buddypress_shortcode_activity_widget' ) {
+							$current_component = 'activity';
+							break;
+						}
+					}
+				}
+			}
+			
 			$checkin_tab_slug = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : 'checkin';
 			$checkin_tab_slug = apply_filters( 'bpchk_member_profile_checkin_tab_slug', sanitize_title( $checkin_tab_slug ) );
-			if ( bp_is_groups_component() || bp_is_activity_component() || bp_is_profile_component() || strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug ) ) {
+			if ( bp_is_groups_component() 
+					|| bp_is_activity_component() 
+					|| bp_is_profile_component() 
+					|| strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug ) 
+					|| ( isset($post->post_content) && ( has_shortcode( $post->post_content, 'activity-listing' ) ) )
+					|| $current_component == 'activity'
+					) {
 				wp_enqueue_script( 'jquery-ui-accordion' );
 				wp_enqueue_script( $this->plugin_name . '-google-places-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=' . $bp_checkins->apikey, array( 'jquery' ), $this->version, false );
 				wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bp-checkins-public.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
