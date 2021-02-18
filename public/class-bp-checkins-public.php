@@ -130,6 +130,7 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 					|| bp_is_profile_component() 
 					|| strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug ) 
 					|| ( isset($post->post_content) && ( has_shortcode( $post->post_content, 'activity-listing' ) ) )
+					|| ( isset($post->post_content) && ( has_shortcode( $post->post_content, 'bppfa_postform' ) ) )
 					|| $current_component == 'activity'
 					) {
 				wp_enqueue_style( $this->plugin_name . '-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui.css', array(), $this->version, 'all' );
@@ -165,6 +166,7 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 					|| bp_is_profile_component() 
 					|| strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug ) 
 					|| ( isset($post->post_content) && ( has_shortcode( $post->post_content, 'activity-listing' ) ) )
+					|| ( isset($post->post_content) && ( has_shortcode( $post->post_content, 'bppfa_postform' ) ) )
 					|| $current_component == 'activity'
 					) {
 				wp_enqueue_script( 'jquery-ui-accordion' );
