@@ -355,7 +355,7 @@ jQuery(document).ready(function ($) {
 		);
 	});
 
-	$(document).on('focus', '#whats-new', function () {
+	$(document).on('focus', '#whats-new, #bppfa-whats-new', function () {
 
 		if ($(".rtmedia-plupload-container .bpchk-marker-container").length == 0 && $(".rtmedia-plupload-container").length != 0) {
 			$(".bpchk-marker-container").appendTo(".rtmedia-plupload-container");
