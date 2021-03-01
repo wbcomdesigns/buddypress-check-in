@@ -1,0 +1,1152 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: BuddyPress Check-ins v1.8.0\n"
+"POT-Creation-Date: 2021-02-27 20:23+0100\n"
+"PO-Revision-Date: 2021-02-27 20:25+0100\n"
+"Last-Translator: Thorsten Wollenhöfer <thorsten.wollenhoefer@gmail.com>\n"
+"Language-Team: Thorsten Wollenhöfer <thorsten.wollenhoefer@gmail.com>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: bp-checkins.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#. translators: Number of years
+#: admin/class-bp-checkins-admin-feedback.php:88
+#, php-format
+msgid "%s years"
+msgstr "%s Jahre"
+
+#: admin/class-bp-checkins-admin-feedback.php:90
+msgid "a year"
+msgstr "einem Jahr"
+
+#. translators: Number of weeks
+#: admin/class-bp-checkins-admin-feedback.php:97
+#, php-format
+msgid "%s weeks"
+msgstr "%s Wochen"
+
+#: admin/class-bp-checkins-admin-feedback.php:99
+msgid "a week"
+msgstr "einer Woche"
+
+#. translators: Number of days
+#: admin/class-bp-checkins-admin-feedback.php:106
+#, php-format
+msgid "%s days"
+msgstr "%s Tagen"
+
+#: admin/class-bp-checkins-admin-feedback.php:108
+msgid "a day"
+msgstr "einem Tag"
+
+#. translators: Number of hours
+#: admin/class-bp-checkins-admin-feedback.php:115
+#, php-format
+msgid "%s hours"
+msgstr "%s Stunden"
+
+#: admin/class-bp-checkins-admin-feedback.php:117
+msgid "an hour"
+msgstr "einer Stunde"
+
+#. translators: Number of minutes
+#: admin/class-bp-checkins-admin-feedback.php:124
+#, php-format
+msgid "%s minutes"
+msgstr "%s Minuten"
+
+#: admin/class-bp-checkins-admin-feedback.php:126
+msgid "a minute"
+msgstr "einer Minute"
+
+#. translators: Number of seconds
+#: admin/class-bp-checkins-admin-feedback.php:133
+#, php-format
+msgid "%s seconds"
+msgstr "%s Sekunden"
+
+#: admin/class-bp-checkins-admin-feedback.php:135
+msgid "a second"
+msgstr "einer Sekunde"
+
+#: admin/class-bp-checkins-admin-feedback.php:271
+#: admin/class-bp-checkins-admin-feedback.php:311 bp-checkins.php:227
+msgid "BuddyPress Check-ins"
+msgstr "BuddyPress Check-ins"
+
+#: admin/class-bp-checkins-admin-feedback.php:274
+msgid "Are you enjoying BuddyPress Check-ins?"
+msgstr "Gefällt Ihnen der BuddyPress-Check-in?"
+
+#. translators: 1. Name
+#: admin/class-bp-checkins-admin-feedback.php:277
+#, php-format
+msgid ""
+"We hope you're enjoying %1$s! Could you please do us a BIG favor and give it "
+"a 5-star rating on WordPress to help us spread the word and boost our "
+"motivation?"
+msgstr ""
+"Wir hoffen, Sie haben Freude an %1$s! Könnten Sie uns bitte einen GROSSEN "
+"Gefallen tun und es mit 5 Sternen bei WordPress bewerten, um uns bei der "
+"Verbreitung der Nachricht zu helfen und unsere Motivation zu steigern?"
+
+#: admin/class-bp-checkins-admin-feedback.php:281
+msgid "Leave a Review"
+msgstr "Hinterlassen Sie eine Bewertung"
+
+#: admin/class-bp-checkins-admin-feedback.php:282
+msgid "No thanks / I already have"
+msgstr "Nein, danke / Ich habe bereits bewertet"
+
+#: admin/class-bp-checkins-admin.php:101
+msgid "WB Plugins"
+msgstr "WB-Plugins"
+
+#: admin/class-bp-checkins-admin.php:102 admin/class-bp-checkins-admin.php:162
+msgid "General"
+msgstr "Allgemein"
+
+#: admin/class-bp-checkins-admin.php:104
+msgid "BuddyPress Check-ins Settings Page"
+msgstr "BuddyPress Check-in-Einstellungsseite"
+
+#: admin/class-bp-checkins-admin.php:104
+#: admin/includes/bp-checkins-general-settings.php:35
+#: public/class-bp-checkins-public.php:454
+msgid "Check-ins"
+msgstr "Standorte"
+
+#: admin/class-bp-checkins-admin.php:118
+msgid "BuddyPress Check-ins Settings"
+msgstr "BuddyPress Check-in Einstellungen"
+
+#: admin/class-bp-checkins-admin.php:129
+msgid "<strong>Settings Saved.</strong>"
+msgstr "<strong>Einstellungen gespeichert.</strong>"
+
+#: admin/class-bp-checkins-admin.php:167
+#: admin/wbcom/templates/wbcom-support-page.php:3
+#: admin/wbcom/wbcom-admin-settings.php:563
+#: admin/wbcom/wbcom-admin-settings.php:564
+#: admin/wbcom/wbcom-admin-settings.php:657 bp-checkins.php:203
+msgid "Support"
+msgstr "Support"
+
+#: admin/class-bp-checkins-admin.php:272
+msgid "Activity Check-Ins"
+msgstr "Aktivität Check-Ins"
+
+#: admin/includes/bp-checkins-general-settings.php:25
+msgid "Enable Check-ins Tab"
+msgstr "Registerkarte „Einchecken“ aktivieren"
+
+#: admin/includes/bp-checkins-general-settings.php:33
+msgid "Rename Checkin Tab"
+msgstr "Registerkarte „Einchecken“ umbenennen"
+
+#: admin/includes/bp-checkins-general-settings.php:41
+msgid "Disable Location xProfile Field"
+msgstr "Standort xProfile-Feld deaktivieren"
+
+#: admin/includes/bp-checkins-general-settings.php:49
+#: admin/includes/bp-checkins-general-settings.php:51
+msgid "API Key"
+msgstr "API-Schlüssel"
+
+#: admin/includes/bp-checkins-general-settings.php:52
+msgid "Verify"
+msgstr "Verifizieren"
+
+#: admin/includes/bp-checkins-general-settings.php:54
+msgid ""
+"Due to changes in Google Maps API it's required to use an API key for the "
+"BuddyPress Check-ins plugin to work properly."
+msgstr ""
+"Aufgrund von Änderungen in der Google Maps-API muss ein API-Schlüssel "
+"verwendet werden, damit das BuddyPress Check-in-Plug-in ordnungsgemäß "
+"funktioniert."
+
+#: admin/includes/bp-checkins-general-settings.php:56
+msgid "Generate API Key - ( MUST be logged in to your Google account )"
+msgstr ""
+"API-Schlüssel generieren – (Sie müssen in Ihrem Google-Konto angemeldet sein)"
+
+#: admin/includes/bp-checkins-general-settings.php:56
+msgid "Generate API Key"
+msgstr "API-Schlüssel generieren"
+
+#: admin/includes/bp-checkins-general-settings.php:58
+msgid "( How to Get Google API Key? )"
+msgstr "(Wie den Google API-Schlüssel bekommen?)"
+
+#: admin/includes/bp-checkins-support-settings.php:14
+msgid "FAQ(s)"
+msgstr "Häufig gestellte Fragen (FAQ)"
+
+#: admin/includes/bp-checkins-support-settings.php:20
+msgid "Does this plugin require BuddyPress?"
+msgstr "Benötigt dieses Plugin BuddyPress?"
+
+#: admin/includes/bp-checkins-support-settings.php:22
+msgid "Yes, It needs you to have BuddyPress installed and activated."
+msgstr "Ja, BuddyPress muss installiert und aktiviert sein."
+
+#: admin/includes/bp-checkins-support-settings.php:23
+msgid ""
+"You'll also get an admin notice and the plugin will become ineffective if "
+"the required plugin will not be there."
+msgstr ""
+"Sie erhalten auch eine Administratorbenachrichtigung und das Plugin wird "
+"unwirksam, wenn das erforderliche Plugin nicht vorhanden ist."
+
+#: admin/includes/bp-checkins-support-settings.php:29
+msgid "What is the use of API Key option provided in general settings section?"
+msgstr "Welche API-Option wird in den allgemeinen Einstellungen verwendet?"
+
+#: admin/includes/bp-checkins-support-settings.php:31
+msgid ""
+"With the help of Google Places Api Key, user can check-in with places "
+"autocomplete while updating post in buddypress and list checked in location "
+"in google map."
+msgstr ""
+"Mit Hilfe der Google Places Api Key kann der Benutzer mit der Funktion "
+"\"Autovervollständigen\" seinen Ort in Google Map mit Einstellen eines "
+"Beitrags in Buddypress einchecken und eingecheckte Orte auflisten."
+
+#: admin/includes/bp-checkins-support-settings.php:37
+msgid "Does this plugin require current location service?"
+msgstr "Benötigt dieses Plugin einen aktuellen Standortdienst?"
+
+#: admin/includes/bp-checkins-support-settings.php:39
+msgid ""
+"Yes, this plugin require location service and you can allow it from browser "
+"settings."
+msgstr ""
+"Ja, für dieses Plugin ist ein Ortungsdienst erforderlich, den Sie in den "
+"Browsereinstellungen zulassen können."
+
+#: admin/includes/bp-checkins-support-settings.php:45
+msgid ""
+"How to check-in using Location Autocomplete option provided in general "
+"settings section?"
+msgstr ""
+"Wie checke ich mit der Option Location Autocomplete ein, die im Abschnitt "
+"Allgemeine Einstellungen enthalten ist?"
+
+#: admin/includes/bp-checkins-support-settings.php:47
+msgid ""
+"Location Autocomplete setting provide an interface at activity page to post "
+"an update using google places autocomplete."
+msgstr ""
+"Location Autocomplete stellt eine Schnittstelle auf der Aktivitätsseite "
+"bereit, um eine Aktualisierung mit Google Places-Autocomplete "
+"bereitzustellen."
+
+#: admin/includes/bp-checkins-support-settings.php:48
+msgid ""
+"There is an option [Add as my location] to set current check-in location as "
+"a favourite location."
+msgstr ""
+"Es gibt eine Option [Als meinen Standort hinzufügen], um den aktuellen Check-"
+"In-Standort als bevorzugten Standort festzulegen."
+
+#: admin/includes/bp-checkins-support-settings.php:54
+msgid ""
+"How to check-in using Place Types option provided in general settings "
+"section?"
+msgstr ""
+"Wie checke ich mit der Option Place Types ein, die im Abschnitt Allgemeine "
+"Einstellungen enthalten ist?"
+
+#: admin/includes/bp-checkins-support-settings.php:56
+msgid ""
+"Place Types setting provide an interface at activity page to post an update "
+"using selected google places types. Range option will set the range in "
+"kilometers for fetching the places during check-in."
+msgstr ""
+"Die Einstellung \"Ortstypen\" bietet eine Schnittstelle auf der "
+"Aktivitätsseite, um ein Update mit ausgewählten Google-Ortstypen zu "
+"veröffentlichen. Mit der Option Range wird die Entfernung in Kilometern zum "
+"Abrufen der Orte während des Check-Ins festgelegt."
+
+#: admin/includes/bp-checkins-support-settings.php:62
+msgid "Where can I see all check-ins activity?"
+msgstr "Wo kann ich alle Check-In-Aktivitäten sehen?"
+
+#: admin/includes/bp-checkins-support-settings.php:64
+msgid ""
+"Check-ins filter option provides BuddyPress filter drop-down to list all "
+"check-ins activity."
+msgstr ""
+"Die Check-In-Filteroption enthält die Dropdown-Liste des BuddyPress-Filters, "
+"um alle Check-In-Aktivitäten aufzulisten."
+
+#: admin/includes/bp-checkins-support-settings.php:70
+msgid "Where can I see favourite locations?"
+msgstr "Wo kann ich Lieblingsorte sehen?"
+
+#: admin/includes/bp-checkins-support-settings.php:72
+msgid ""
+"We are listing all favorite locations under Check-ins tab at BuddyPress "
+"profile page."
+msgstr ""
+"Wir listen alle bevorzugten Standorte auf der BuddyPress-Profilseite auf der "
+"Registerkarte Check-ins auf."
+
+#: admin/includes/bp-checkins-support-settings.php:78
+msgid "How to set location at profile page?"
+msgstr "Wie wird der Ort auf der Profilseite festgelegt?"
+
+#: admin/includes/bp-checkins-support-settings.php:80
+msgid ""
+"The plugin provides xprofile location field to set location at BuddyPress "
+"edit profile page."
+msgstr ""
+"Das Plugin enthält ein Feld für ein xprofile-Feld, um den Ort auf der "
+"BuddyPress-Profilseite für das Profil festzulegen."
+
+#: admin/includes/bp-checkins-support-settings.php:86
+msgid "If I need to customize plugin, to whom I should contact?"
+msgstr "Wenn ich das Plugin anpassen muss, an wen muss ich mich wenden?"
+
+#: admin/includes/bp-checkins-support-settings.php:88
+msgid ""
+"If you need additional help you can contact us at <a href=\"https://"
+"wbcomdesigns.com/contact/\" target=\"_blank\" title=\"Wbcom Designs\">Wbcom "
+"Designs</a>."
+msgstr ""
+"Wenn Sie zusätzliche Hilfe benötigen, können Sie uns unter <a href=\"https://"
+"wbcomdesigns.com/contact/\" target=\"_blank\" title=\"Wbcom Designs\">Wbcom "
+"Designs</a> kontaktieren."
+
+#: admin/wbcom/templates/wbcom-plugins-page.php:8
+msgid "Free Addons"
+msgstr "Kostenlose Addons"
+
+#: admin/wbcom/templates/wbcom-plugins-page.php:14
+msgid "Install"
+msgstr "Installieren"
+
+#: admin/wbcom/templates/wbcom-plugins-page.php:18
+#: admin/wbcom/wbcom-admin-settings.php:500
+msgid "Activate"
+msgstr "Aktivieren"
+
+#: admin/wbcom/templates/wbcom-plugins-page.php:22
+#: admin/wbcom/wbcom-admin-settings.php:501
+msgid "Deactivate"
+msgstr "Deaktivieren"
+
+#: admin/wbcom/templates/wbcom-plugins-page.php:50
+msgid "Paid Addons"
+msgstr "Bezahlte Addons"
+
+#: admin/wbcom/templates/wbcom-plugins-page.php:68
+msgid "View"
+msgstr "Ansicht"
+
+#: admin/wbcom/templates/wbcom-support-page.php:5
+msgid "Having any question or issue ?"
+msgstr "Haben Sie eine Frage oder ein Problem?"
+
+#: admin/wbcom/templates/wbcom-support-page.php:7
+msgid ""
+"Our team is here to help you out at anytime. If you have any idea about how "
+"we could improve. You can share access to your site on our helpdesk if it "
+"can help getting faster. There are two ways to in touch with us :"
+msgstr ""
+"Unser Team ist jederzeit für Sie da, wenn Sie eine Idee haben, wie wir uns "
+"verbessern können. Sie können den Zugriff auf Ihre Website in unserem "
+"Helpdesk freigeben, wenn dies zu einer schnelleren Entwicklung beiträgt. Es "
+"gibt zwei Möglichkeiten, mit uns in Kontakt zu treten:"
+
+#: admin/wbcom/templates/wbcom-support-page.php:19
+msgid "Tickets Support"
+msgstr "Support Tickets"
+
+#: admin/wbcom/templates/wbcom-support-page.php:20
+msgid ""
+"Open a ticket on our helpdesk, we don't guarantee a fast response but within "
+"a week. Except if you've purchased one of our product we'll reply within 24 "
+"hours."
+msgstr ""
+"Öffnen Sie ein Ticket in unserem Helpdesk; zwar garantieren wir keine "
+"schnelle Antwort, doch innerhalb einer Woche bestimmt. Außer wenn Sie eines "
+"unserer Produkte gekauft haben, dann antworten wir innerhalb von 24 Stunden."
+
+#: admin/wbcom/templates/wbcom-support-page.php:24
+msgid "Open a ticket"
+msgstr "Ein Ticket öffnen"
+
+#: admin/wbcom/templates/wbcom-support-page.php:39
+#: admin/wbcom/templates/wbcom-support-page.php:44
+msgid "Contact Us"
+msgstr "Kontaktieren Sie uns"
+
+#: admin/wbcom/templates/wbcom-support-page.php:40
+msgid ""
+"Create a new thread on our plugin page, participation is open to anyone from "
+"all around the world. We'll be there to help as well but can't guarantee any "
+"delay."
+msgstr ""
+"Erstellen Sie einen neuen Thread auf unserer Plugin-Seite, die Teilnahme ist "
+"für alle aus der ganzen Welt offen. Wir erden auch dort für Sie da sein, "
+"doch können wir unseren Aufenthalt nicht garantieren."
+
+#: admin/wbcom/templates/wbcom-themes-page.php:4
+msgid "Reign BuddyPress"
+msgstr "BuddyPress Regentschaft"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:12
+msgid "REIGN Community"
+msgstr "REIGN Community"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:14
+msgid "Multiple Member Directory Layout"
+msgstr "Layout für mehrere Mitgliederverzeichnisse"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:15
+msgid "Multiple Member Header Layout"
+msgstr "Header-Layout für mehrere Mitglieder"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:16
+msgid "Multiple Group Directory Layout"
+msgstr "Layout für mehrere Gruppenverzeichnisse"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:17
+msgid "Multiple Group Header Layout"
+msgstr "Layout für mehrere Gruppenkopfzeilen"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:18
+msgid "BuddyPress Customization Options"
+msgstr ""
+"Individualisierungsoptionen von BuddyPressBuddyPress Checkins Einstellungen"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:19
+msgid "BuddyPress Extra Widgets"
+msgstr "BuddyPress Extra-Widgets"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:20
+msgid "Inbuilt Social Profile Module"
+msgstr "Eingebautes Social-Profile-Modul"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:23
+#: admin/wbcom/templates/wbcom-themes-page.php:49
+#: admin/wbcom/templates/wbcom-themes-page.php:73
+#: admin/wbcom/templates/wbcom-themes-page.php:96
+msgid "Purchase"
+msgstr "Kaufen"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:24
+#: admin/wbcom/templates/wbcom-themes-page.php:50
+#: admin/wbcom/templates/wbcom-themes-page.php:74
+#: admin/wbcom/templates/wbcom-themes-page.php:97
+msgid "Preview"
+msgstr "Vorschau"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:30
+msgid "LearnMate"
+msgstr "LearnMate"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:38
+msgid "Learnmate"
+msgstr "Learnmate"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:40
+msgid "Add Review to your course"
+msgstr "Fügen Sie eine Bewertung Ihrem Kurs hinzu"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:41
+msgid "Course Coming Soon"
+msgstr "Kurs in Kürze"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:42
+#: admin/wbcom/templates/wbcom-themes-page.php:69
+msgid "Grid And List Layout"
+msgstr "Raster- und Listenlayout"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:43
+msgid "Learndash/LifterLMS Extra Widgets"
+msgstr "Learndash / LifterLMS Extra Widgets"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:44
+msgid "Unparalleled Course Layout"
+msgstr "Einmaliges Kurslayout"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:45
+msgid "Awesome Learndash/LifterLMS Pages"
+msgstr "Hammermäßiges Learndash / LifterLMS-Seiten"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:46
+msgid "Distraction Free Reading"
+msgstr "Ablenkungsfreies Lesen"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:56
+msgid "StoreMate"
+msgstr "StoreMate"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:64
+msgid "ShopMate Dokan"
+msgstr "ShopMate Dokan"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:66
+msgid "Dokan Extra Widgets"
+msgstr "Dokan Extra Widgets"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:67
+msgid "Unique Single Product Page Customization"
+msgstr "Einzigartige Anpassung einzelner Produktseiten"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:68
+msgid "Awesome WooCommerce Pages"
+msgstr "Tolle WooCommerce-Seiten"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:70
+msgid "Automated Mega Menu Support"
+msgstr "Automatisierte Unterstützung von Megamenüs"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:80
+msgid "Jobmate"
+msgstr "Jobmate"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:88
+msgid "Jobmate Theme"
+msgstr "Jobmate Theme"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:90
+msgid "Simple live searching and filtering"
+msgstr "Einfaches Live-Suchen und Filtern"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:91
+msgid "Unique Job listing Page"
+msgstr "Einzigartige Jobliste"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:92
+msgid "Awesome Resume list Page"
+msgstr "Tolle Lebenslaufliste"
+
+#: admin/wbcom/templates/wbcom-themes-page.php:93
+msgid "Outstanding all job maanger pagesLayout"
+msgstr "Hervorragendes Layout aller Jobmanagerseiten"
+
+#: admin/wbcom/wbcom-admin-settings.php:185
+msgid "Custom Font Uploader"
+msgstr "Benutzerdefinierter Schriftarten-Uploader"
+
+#: admin/wbcom/wbcom-admin-settings.php:187
+msgid ""
+"It also allows you to upload your own custom font to your site and use them "
+"using custom css."
+msgstr ""
+"Außerdem können Sie Ihre eigene benutzerdefinierte Schriftart auf Ihre "
+"Website hochladen und sie mit benutzerdefiniertem CSS verwenden."
+
+#: admin/wbcom/wbcom-admin-settings.php:193
+msgid "BuddyPress Activity Filter"
+msgstr "BuddyPress-Aktivitätsfilter"
+
+#: admin/wbcom/wbcom-admin-settings.php:195
+msgid ""
+"Admin can set default and customised activities to be listed on front-end."
+msgstr ""
+"Der Administrator kann festlegen, dass standardmäßige und benutzerdefinierte "
+"Aktivitäten im Front-End aufgelistet werden."
+
+#: admin/wbcom/wbcom-admin-settings.php:201
+msgid "BuddyPress Activity Social Share"
+msgstr "BuddyPress Activity Social Share"
+
+#: admin/wbcom/wbcom-admin-settings.php:203
+msgid ""
+"This plugin allows anyone easily share BuddyPress Activites on major social "
+"media (Facebook, Twitter, Google+, Linkedin )."
+msgstr ""
+"Mit diesem Plugin kann jeder BuddyPress-Aktivitäten auf einfache Weise in "
+"wichtigen sozialen Medien (Facebook, Twitter, Google+, Linkedin) teilen."
+
+#: admin/wbcom/wbcom-admin-settings.php:209
+msgid "BuddyPress Create Group Type"
+msgstr "BuddyPress Gruppentyp erstellen"
+
+#: admin/wbcom/wbcom-admin-settings.php:211
+msgid "It will help to create group type for BuddyPress Groups."
+msgstr ""
+"Es ist hilfreich, einen Gruppentyp für BuddyPress-Gruppen zu erstellen."
+
+#: admin/wbcom/wbcom-admin-settings.php:217
+msgid "BuddyPress Member Reviews"
+msgstr "BuddyPress Mitgliederbewertungen"
+
+#: admin/wbcom/wbcom-admin-settings.php:219
+msgid ""
+"This plugin allows only site members to add reviews to the buddypress "
+"members on the site and even rate the member’s profile out of 5 points with "
+"multiple review criteria."
+msgstr ""
+"Mit diesem Plugin können nur Website-Mitglieder den BuddyPress-Mitgliedern "
+"auf der Website Bewertungen hinzufügen und sogar das Profil des Mitglieds "
+"mit mehreren Bewertungskriterien mit 5 von 5 Punkten bewerten."
+
+#: admin/wbcom/wbcom-admin-settings.php:225
+msgid "BuddyPress Group Reviews"
+msgstr "BuddyPress Gruppen-Bewertungen"
+
+#: admin/wbcom/wbcom-admin-settings.php:227
+msgid ""
+"This plugin allows the BuddyPress Members to give reviews to the BuddyPress "
+"groups on the site. The review form allows the users to give text review, "
+"even rate the group on the basis of multiple criterias."
+msgstr ""
+"Mit diesem Plugin können die BuddyPress-Mitglieder den BuddyPress-Gruppen "
+"auf der Website Bewertungen geben. Über das Überprüfungsformular können die "
+"Benutzer Textüberprüfungen durchführen und die Gruppe sogar anhand mehrerer "
+"Kriterien bewerten."
+
+#: admin/wbcom/wbcom-admin-settings.php:233
+msgid "BuddyPress Favorite Notification"
+msgstr "BuddyPress Favoritenbenachrichtigung"
+
+#: admin/wbcom/wbcom-admin-settings.php:235
+msgid ""
+"BuddyPress Favorite Notification adds a notification for BuddyPress activity."
+msgstr ""
+"BuddyPress Favorite Notification fügt eine Benachrichtigung für BuddyPress-"
+"Aktivitäten hinzu."
+
+#: admin/wbcom/wbcom-admin-settings.php:241
+msgid "Custom Email Options"
+msgstr "Benutzerdefinierte E-Mail-Optionen"
+
+#: admin/wbcom/wbcom-admin-settings.php:243
+msgid "Override default email options of Worpdress."
+msgstr "Überschreibt die Standard-E-Mail-Optionen in Wordpress."
+
+#: admin/wbcom/wbcom-admin-settings.php:249
+msgid "BuddyPress Checkins"
+msgstr "BuddyPress Checkins"
+
+#: admin/wbcom/wbcom-admin-settings.php:251
+msgid ""
+"This plugin allows BuddyPress members to share their location when they are "
+"posting activities, you can add places where you visited, nearby locations "
+"based on google places."
+msgstr ""
+"Mit diesem Plugin können BuddyPress-Mitglieder ihren Standort teilen, wenn "
+"sie Aktivitäten veröffentlichen. Sie können Orte in der Nähe, die Sie "
+"besucht haben, basierend auf Google Places hinzufügen."
+
+#: admin/wbcom/wbcom-admin-settings.php:257
+msgid "BuddyPress Job Manager"
+msgstr "BuddyPress Job Manager"
+
+#: admin/wbcom/wbcom-admin-settings.php:259
+msgid ""
+"Incorporates BuddyPress with the WP Job Manager plugin by creating specific "
+"tabs in employer’s and candidate’s profiles."
+msgstr ""
+"Integriert BuddyPress mit dem WP Job Manager-Plugin, indem bestimmte "
+"Registerkarten in den Profilen von Arbeitgebern und Kandidaten erstellt "
+"werden."
+
+#: admin/wbcom/wbcom-admin-settings.php:265
+msgid "BuddyPress user ToDo List"
+msgstr "BuddyPress-Benutzer-ToDo-Liste"
+
+#: admin/wbcom/wbcom-admin-settings.php:267
+msgid ""
+"This plugin allows you to create your personal task list with timestamp. You "
+"can mark them complete when you are done with them. It will also send "
+"reminder when you have any overdue task."
+msgstr ""
+"Mit diesem Plugin können Sie Ihre persönliche Aufgabenliste mit Zeitstempel "
+"erstellen. Sie können sie als vollständig markieren, wenn Sie fertig sind. "
+"Es wird auch eine Erinnerung gesendet, wenn Sie eine überfällige Aufgabe "
+"haben."
+
+#: admin/wbcom/wbcom-admin-settings.php:273
+msgid "Shortcodes for BuddyPress"
+msgstr "Shortcodes für BuddyPress"
+
+#: admin/wbcom/wbcom-admin-settings.php:275
+msgid ""
+"This plugin will add an extended feature to the big name “BuddyPress” that "
+"will generate Shortcode for Listing Activity Streams , Members and Groups on "
+"any post/page in website."
+msgstr ""
+"Dieses Plugin fügt dem großen Namen \"BuddyPress\" eine erweiterte Funktion "
+"hinzu, die einen Shortcode für das Auflisten von Aktivitätsströmen, "
+"Mitgliedern und Gruppen auf jedem Beitrag / jeder Seite in einer Website "
+"generiert."
+
+#: admin/wbcom/wbcom-admin-settings.php:281
+msgid "Woo Open Graph"
+msgstr "Woo Open Graph"
+
+#: admin/wbcom/wbcom-admin-settings.php:283
+msgid ""
+"This plugin will add an extended feature to the big name “WooCommerce” that "
+"will adds well executed and accurate Open Graph Meta Tags to your site with "
+"title,description and WooCommerce featured image."
+msgstr ""
+"Dieses Plugin wird dem großen Namen \"WooCommerce\" eine erweiterte Funktion "
+"hinzufügen, die Ihrer Website gut ausgeführte und genaue Open Graph Meta "
+"Tags mit Titel, Beschreibung und WooCommerce-Bild hinzufügt."
+
+#: admin/wbcom/wbcom-admin-settings.php:289
+msgid "BuddyPress Lock"
+msgstr "BuddyPress Lock"
+
+#: admin/wbcom/wbcom-admin-settings.php:291
+msgid ""
+"This plugin allows the administrator to lock the certain parts of their "
+"site. It help to create private BuddyPress community by locking certain "
+"BuddyPress Components, WordPress Pages, Custom Post Types for public view "
+"without using any membership plugin."
+msgstr ""
+"Mit diesem Plugin kann der Administrator bestimmte Teile seiner Website "
+"sperren. Sie können eine private BuddyPress-Community erstellen, indem Sie "
+"bestimmte BuddyPress-Komponenten, WordPress-Seiten und benutzerdefinierte "
+"Beitragstypen für die öffentliche Ansicht sperren, ohne ein Mitgliedschafts-"
+"Plugin zu verwenden."
+
+#: admin/wbcom/wbcom-admin-settings.php:297
+msgid "Woo Audio Preview"
+msgstr "Woo Audio Vorschau"
+
+#: admin/wbcom/wbcom-admin-settings.php:299
+msgid ""
+"This plugin Allows playing the audio files in sample mode to prevent "
+"unauthorized downloading of the audio files. It helps to display sample "
+"files at single product page."
+msgstr ""
+"Dieses Plugin ermöglicht das Abspielen der Audiodateien im Sample-Modus, um "
+"ein unbefugtes Herunterladen der Audiodateien zu verhindern. Es ist "
+"hilfreich, Beispieldateien auf einer einzelnen Produktseite anzuzeigen."
+
+#: admin/wbcom/wbcom-admin-settings.php:305
+msgid "WordPress System Log"
+msgstr "WordPress-Systemprotokoll"
+
+#: admin/wbcom/wbcom-admin-settings.php:307
+msgid ""
+"This plugin helps administrators of the site see their environment on which "
+"the site is currently running that includes WordPress environment, tha "
+"database it requires, Server Environment and the plugins installed and "
+"activated on the site."
+msgstr ""
+"Dieses Plugin hilft Administratoren der Website dabei, ihre Umgebung zu "
+"erkennen, in der die Website derzeit ausgeführt wird. Dazu gehören die "
+"WordPress-Umgebung, die erforderliche Datenbank, die Serverumgebung und die "
+"auf der Site installierten und aktivierten Plugins."
+
+#: admin/wbcom/wbcom-admin-settings.php:313
+msgid "BP Post From Anywhere"
+msgstr "BP Post von überall"
+
+#: admin/wbcom/wbcom-admin-settings.php:315
+msgid ""
+"This plugin will generate shortcode and widgets for post updates section for "
+"activities so you can post update from anywhere, it might be sidebar, some "
+"page or any template file."
+msgstr ""
+"Dieses Plugin generiert einen Shortcode und Widgets für den Abschnitt zum "
+"Posten von Aktualisierungen für Aktivitäten, sodass Sie Aktualisierungen von "
+"jedem Ort aus posten können. Dies kann eine Seitenleiste, eine Seite oder "
+"eine Vorlagendatei sein."
+
+#: admin/wbcom/wbcom-admin-settings.php:321
+msgid "Woo Document Preview"
+msgstr "Woo-Dokumentvorschau"
+
+#: admin/wbcom/wbcom-admin-settings.php:323
+msgid ""
+"This will allow you to add document preview at single product page. Which "
+"helps to offer more better idea when you are selling ebooks, pdf or some "
+"documents."
+msgstr ""
+"This Plugin generiert einen Shortcode und ein Widget für den Abschnitt, in "
+"dem die Aktivitäten aktualisiert werden, so dass Sie Aktualisierungen von "
+"jedem Ort aus posten können. Dies kann eine Seitenleiste, eine Seite oder "
+"eine Vorlagendatei sein."
+
+#: admin/wbcom/wbcom-admin-settings.php:329
+msgid "WordPress Media Category"
+msgstr "WordPress-Medienkategorie"
+
+#: admin/wbcom/wbcom-admin-settings.php:331
+#: admin/wbcom/wbcom-admin-settings.php:347
+msgid ""
+"This plugin helps administrators of the site categorize their wordpress "
+"media."
+msgstr ""
+"Dieses Plugin hilft Administratoren der Website, ihre WordPress-Medien zu "
+"kategorisieren."
+
+#: admin/wbcom/wbcom-admin-settings.php:337
+msgid "Woo Price Quotes"
+msgstr "Woo Preisangebote (Woo Price Quotes)"
+
+#: admin/wbcom/wbcom-admin-settings.php:339
+msgid ""
+"This plugin helps in quoting the products that admin wishes to hide its "
+"purchasing details."
+msgstr ""
+"Dieses Plugin hilft bei der Angabe der Produkte, deren Kaufdetails der "
+"Administrator verbergen möchte."
+
+#: admin/wbcom/wbcom-admin-settings.php:345
+msgid "EDD Service Extended"
+msgstr "EDD-Service erweitert"
+
+#: admin/wbcom/wbcom-admin-settings.php:353
+msgid "WB Ads Rotator with Split Test"
+msgstr "WB Ads Rotator mit Split-Test"
+
+#: admin/wbcom/wbcom-admin-settings.php:355
+msgid ""
+"This plugin is designed for the SPLIT TESTING, you can check performance of "
+"your ads layout and on the basis of them you can select one of them for your "
+"regular use."
+msgstr ""
+"Dieses Plugin wurde für die SPLIT-PRÜFUNG entwickelt. Sie können die "
+"Leistung Ihres Anzeigenlayouts überprüfen und eines davon für die "
+"regelmäßige Verwendung auswählen."
+
+#: admin/wbcom/wbcom-admin-settings.php:373
+msgid "BuddyPress Moderation Pro"
+msgstr "BuddyPress Moderation Pro"
+
+#: admin/wbcom/wbcom-admin-settings.php:374
+msgid ""
+"BuddyPress Community Moderation offers a solution for site owners to keep "
+"their communities straight. With community policing strategy, members of the "
+"community have an option for moderation sitewide by attaching flags to "
+"content created within the various components."
+msgstr ""
+"BuddyPress Community Moderation bietet eine Lösung, mit der Websitebesitzer "
+"ihre Communitys aufrechterhalten können. Mit der Community-"
+"Überwachungsstrategie haben Mitglieder der Community die Möglichkeit, "
+"Inhalte, die in den verschiedenen Komponenten erstellt wurden, durch "
+"Anhängen von Flags zu moderieren."
+
+#: admin/wbcom/wbcom-admin-settings.php:379
+msgid "BuddyPress Polls"
+msgstr "BuddyPress Umfragen"
+
+#: admin/wbcom/wbcom-admin-settings.php:380
+msgid ""
+"Use BuddyPress Polls plugin to create polls inside the activity, let your "
+"user response to your polls. Members can create pools like activities, "
+"easily votes on them."
+msgstr ""
+"Verwenden Sie das BuddyPress-Plugin für Umfragen, um Umfragen innerhalb der "
+"Aktivität zu erstellen. Lassen Sie Ihren Benutzer auf Ihre Umfragen "
+"antworten. Mitglieder können Pools wie Aktivitäten erstellen und einfach "
+"über diese abstimmen."
+
+#: admin/wbcom/wbcom-admin-settings.php:385
+msgid "BuddyPress Resume Manager"
+msgstr "BuddyPress Lebenslauf-Manager"
+
+#: admin/wbcom/wbcom-admin-settings.php:386
+msgid ""
+"BuddyPress Resume Manager adds a separate BuddyPress Resume menu at a user’s "
+"BuddyPress Profile Page to display individual member resume. We have added "
+"predefined fields for the resumes and site admin and enable and disable them."
+msgstr ""
+"BuddyPress Resume Manager fügt ein separates BuddyPress Resume-Menü auf der "
+"BuddyPress-Profilseite eines Benutzers hinzu, um den Lebenslauf einzelner "
+"Mitglieder anzuzeigen. Wir haben vordefinierte Felder für die Lebensläufe "
+"und den Website-Administrator hinzugefügt und diese aktiviert und "
+"deaktiviert."
+
+#: admin/wbcom/wbcom-admin-settings.php:391
+msgid "BuddyPress Profanity"
+msgstr "BuddyPress Profanity"
+
+#: admin/wbcom/wbcom-admin-settings.php:392
+msgid ""
+"Use BuddyPress Profanity plugin to censor content in your community! Easily "
+"Censor all the unwanted words in activities, private messages contents by "
+"specifying a list of keywords to be filtered."
+msgstr ""
+"Verwenden Sie das BuddyPress Profanity-Plugin, um Inhalte in Ihrer Community "
+"zu zensieren! Zensieren Sie auf einfache Weise alle unerwünschten Wörter in "
+"Aktivitäten und den Inhalt privater Nachrichten, indem Sie eine Liste der zu "
+"filternden Schlüsselwörter angeben."
+
+#: admin/wbcom/wbcom-admin-settings.php:397
+msgid "BuddyPress Private Community Pro"
+msgstr "BuddyPress Private Community Pro"
+
+#: admin/wbcom/wbcom-admin-settings.php:398
+msgid ""
+"This plugin offers a lockdown for BuddyPress Component and will ask users to "
+"log in go further to check profile or any other protected details."
+msgstr ""
+"Dieses Plugin bietet eine Sperre für BuddyPress Component und fordert "
+"Benutzer auf, sich einzuloggen, um das Profil oder andere geschützte Details "
+"zu überprüfen."
+
+#: admin/wbcom/wbcom-admin-settings.php:403
+msgid "BuddyPress Profile Pro"
+msgstr "BuddyPress Profile Pro"
+
+#: admin/wbcom/wbcom-admin-settings.php:404
+msgid ""
+"This plugin gives you the power to extend BuddyPress Profiles with repeater "
+"fields and groups. You can easily add multiple field groups and display them "
+"at member’s profile."
+msgstr ""
+"Mit diesem Plugin können Sie BuddyPress-Profile mit Repeater-Feldern und -"
+"Gruppen erweitern. Sie können problemlos mehrere Feldgruppen hinzufügen und "
+"diese im Profil des Mitglieds anzeigen."
+
+#: admin/wbcom/wbcom-admin-settings.php:547
+#: admin/wbcom/wbcom-admin-settings.php:548
+#: admin/wbcom/wbcom-admin-settings.php:645
+msgid "Components"
+msgstr "Komponenten"
+
+#: admin/wbcom/wbcom-admin-settings.php:555
+#: admin/wbcom/wbcom-admin-settings.php:556
+#: admin/wbcom/wbcom-admin-settings.php:651
+msgid "Themes"
+msgstr "Themes"
+
+#: admin/wbcom/wbcom-admin-settings.php:639 bp-checkins.php:202
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: bp-checkins.php:146 bp-checkins.php:166
+msgid ""
+"BuddyPress Check-ins requires to be activated on the blog where BuddyPress "
+"is activated."
+msgstr ""
+"BuddyPress Check-Ins müssen in dem Blog aktiviert werden, in dem BuddyPress "
+"aktiviert ist."
+
+#: bp-checkins.php:151 bp-checkins.php:172
+msgid ""
+"BuddyPress Check-ins and BuddyPress need to share the same network "
+"configuration."
+msgstr ""
+"BuddyPress Check-Ins und BuddyPress müssen dieselbe Netzwerkkonfiguration "
+"verwenden."
+
+#: bp-checkins.php:156
+msgid "Activity component required."
+msgstr "Aktivitätskomponente erforderlich."
+
+#. translators: 1: Name of the plugin 2: Name of the dependent plugin
+#: bp-checkins.php:187
+#, php-format
+msgid "%1$s is ineffective now as it requires %2$s to be active."
+msgstr "%1$s ist jetzt unwirksam, da %2$s aktiv ist."
+
+#: bp-checkins.php:228
+msgid "BuddyPress"
+msgstr "BuddyPress"
+
+#. translators: 1: Name of the plugin 2: Name of the dependent plugin
+#: bp-checkins.php:233
+#, php-format
+msgid "%1$s is ineffective now as it requires %2$s to be installed and active."
+msgstr ""
+"%1$s ist jetzt unwirksam, da es erfordert, dass %2$s installiert und aktiv "
+"ist."
+
+#: public/class-bp-checkins-public.php:88
+msgid "Start typing your location..."
+msgstr "Beginnen Sie Ihren Standort einzugeben ..."
+
+#: public/class-bp-checkins-public.php:92
+#: public/class-bp-checkins-public.php:764
+msgid "Add as my location"
+msgstr "Als meinen Standort hinzufügen"
+
+#: public/class-bp-checkins-public.php:93
+msgid "Saving location..."
+msgstr "Speichere den Standort ..."
+
+#: public/class-bp-checkins-public.php:242
+msgid "My Locations"
+msgstr "Meine Standorte"
+
+#: public/class-bp-checkins-public.php:452
+msgid "Check-ins Update"
+msgstr "Einchecken-Aktualisierung"
+
+#. translators: s: User name
+#: public/class-bp-checkins-public.php:472
+#, php-format
+msgid "%s checked-in"
+msgstr "%s teilte einen neuen Standort"
+
+#: public/class-bp-checkins-public.php:675
+#, php-format
+msgid "%1$s checked-in in the group %2$s"
+msgstr "%1$s teilte einen neuen Standort in der Gruppe %2$s"
+
+#: public/class-bp-checkins-public.php:743
+msgid "places-found"
+msgstr "orte-gefunden"
+
+#: public/class-bp-checkins-public.php:758
+msgid "Select"
+msgstr "Auswählen"
+
+#: public/class-bp-checkins-public.php:769
+msgid "places-not-found"
+msgstr "ort-nicht-gefunden"
+
+#: public/class-bp-checkins-public.php:770
+msgid "Places not found !"
+msgstr "Keine Orte gefunden!"
+
+#: public/class-bp-checkins-public.php:801
+msgid "place-details-found"
+msgstr "ortsdetails-gefunden"
+
+#: public/class-bp-checkins-public.php:817
+msgid "Click here to cancel your checkin."
+msgstr "Klicken Sie hier, um das Einchecken abzubrechen."
+
+#: public/class-bp-checkins-public.php:820
+msgid "Show Locations"
+msgstr "Standorte anzeigen"
+
+#: public/class-bp-checkins-public.php:847
+msgid "place-details-not-found"
+msgstr "ortsdetails-nicht-gefunden"
+
+#: public/class-bp-checkins-public.php:848
+msgid "Place details not found !"
+msgstr "Keine Ortsdetails gefunden!"
+
+#: public/class-bp-checkins-public.php:869
+msgid "Checkin cancelled !"
+msgstr "Einchecken abgebrochen!"
+
+#: public/templates/checkin/bp-checkins-activity.php:46
+msgid "Address"
+msgstr "Anschrift"
+
+#: public/templates/checkin/bp-checkins-activity.php:54
+msgid "Street"
+msgstr "Straße"
+
+#: public/templates/checkin/bp-checkins-activity.php:62
+msgid "Postal Code"
+msgstr "Postleitzahl"
+
+#: public/templates/checkin/bp-checkins-activity.php:70
+msgid "City"
+msgstr "Stadt"
+
+#: public/templates/checkin/bp-checkins-activity.php:78
+msgid "Visited Date"
+msgstr "Besuchsdatum"
+
+#: public/templates/checkin/bp-checkins-activity.php:93
+msgid "Sorry, there was no location found. Please try adding a location."
+msgstr ""
+"Entschuldigung, es wurde kein(e) Ort(e) gefunden. Bitte versuchen Sie, einen "
+"Standort hinzuzufügen."
+
+#. Plugin Name of the plugin/theme
+msgid "Wbcom Designs - BuddyPress Check-ins"
+msgstr "Wbcom Designs - BuddyPress Check-ins"
+
+#. Plugin URI of the plugin/theme
+msgid "https://wbcomdesigns.com/downloads/buddypress-checkins/"
+msgstr "https://wbcomdesigns.com/downloads/buddypress-checkins/"
+
+#. Description of the plugin/theme
+msgid ""
+"BuddyPress Check-ins allows members to share their location when posting "
+"activities; you can add places where you visited, nearby locations using "
+"Google Place API."
+msgstr ""
+"BuddyPress Check-ins ermöglicht es Mitgliedern, ihren Standort zu teilen, "
+"wenn sie Aktivitäten posten; Sie können Orte hinzufügen, an denen Sie sich "
+"aufgehalten haben, Orte in der Nähe, die die Google Place API nutzen."
+
+#. Author of the plugin/theme
+msgid "Wbcom Designs"
+msgstr "Wbcom Designs"
+
+#. Author URI of the plugin/theme
+msgid "https://wbcomdesigns.com/"
+msgstr "https://wbcomdesigns.com/"
+
+#~ msgid ""
+#~ "This plugin allows BuddyPress members to share their location when they "
+#~ "are posting activities, just like other social sites, you can add places "
+#~ "where you visited."
+#~ msgstr ""
+#~ "Mit diesem Plugin können BuddyPress-Mitglieder ihren Standort freigeben, "
+#~ "wenn sie Aktivitäten veröffentlichen. Ebenso wie andere soziale Websites "
+#~ "können Sie Orte hinzufügen, die bereits besucht haben."
+
+#~ msgid "Locations"
+#~ msgstr "Standorte"
+
+#~ msgid "-at "
+#~ msgstr " - momentan in "
+
+#~ msgid "here."
+#~ msgstr "Hier."
+
+#~ msgid "Location Autocomplete"
+#~ msgstr "Standort Autovervollständigung"
+
+#~ msgid "Place Types"
+#~ msgstr "Ortstypen"
+
+#~ msgid ""
+#~ "This setting will help the users check-in by autocomplete or place type "
+#~ "google features."
+#~ msgstr ""
+#~ "Diese Einstellung hilft den Benutzern beim Einchecken über die "
+#~ "automatische Vervollständigung oder die Google-Funktionen des Typs \"Ort"
+#~ "\"."
+
+#~ msgid "Range"
+#~ msgstr "Entfernung"
+
+#~ msgid "This will set the range for fetching the places while check-in."
+#~ msgstr ""
+#~ "Dadurch wird die Entfernung für das Abrufen der Orte beim Einchecken "
+#~ "festgelegt."
+
+#~ msgid "Select All"
+#~ msgstr "Alle auswählen"
+
+#~ msgid "Unselect All"
+#~ msgstr "Alle abwählen"
+
+#~ msgid ""
+#~ "This will help in fetching the place types, that will be selected here."
+#~ msgstr "Dies hilft beim Abrufen der Ortstypen, die hier ausgewählt werden."
+
+#~ msgid "Please Wait.."
+#~ msgstr "Bitte warten..."
+
+#~ msgid "User Manual"
+#~ msgstr "Benutzerhandbuch"
+
+#~ msgid "Rate Us on WordPress.org"
+#~ msgstr "Bewerten Sie uns auf WordPress.org"
