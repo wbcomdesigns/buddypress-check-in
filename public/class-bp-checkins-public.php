@@ -109,12 +109,12 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 */
 		public function enqueue_styles() {
 			global $bp_checkins, $post;
-			
+
 			$current_component = '';
-			if ( isset($post->ID) && $post->ID != '' && $post->ID != '0') {
-				$_elementor_controls_usage = get_post_meta($post->ID, '_elementor_controls_usage', true);
-				if (  !empty($_elementor_controls_usage)) {
-					foreach($_elementor_controls_usage as $key=>$value) {
+			if ( isset( $post->ID ) && $post->ID != '' && $post->ID != '0' ) {
+				$_elementor_controls_usage = get_post_meta( $post->ID, '_elementor_controls_usage', true );
+				if ( ! empty( $_elementor_controls_usage ) ) {
+					foreach ( $_elementor_controls_usage as $key => $value ) {
 						if ( $key == 'buddypress_shortcode_activity_widget' || $key == 'bp_newsfeed_element_widget' ) {
 							$current_component = 'activity';
 							break;
@@ -122,15 +122,15 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 					}
 				}
 			}
-			
+
 			$checkin_tab_slug = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : 'checkin';
 			$checkin_tab_slug = apply_filters( 'bpchk_member_profile_checkin_tab_slug', sanitize_title( $checkin_tab_slug ) );
-			if ( bp_is_groups_component() 
-					|| bp_is_activity_component() 
-					|| bp_is_profile_component() 
-					|| strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug ) 
-					|| ( isset($post->post_content) && ( has_shortcode( $post->post_content, 'activity-listing' ) ) )
-					|| ( isset($post->post_content) && ( has_shortcode( $post->post_content, 'bppfa_postform' ) ) )
+			if ( bp_is_groups_component()
+					|| bp_is_activity_component()
+					|| bp_is_profile_component()
+					|| strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug )
+					|| ( isset( $post->post_content ) && ( has_shortcode( $post->post_content, 'activity-listing' ) ) )
+					|| ( isset( $post->post_content ) && ( has_shortcode( $post->post_content, 'bppfa_postform' ) ) )
 					|| $current_component == 'activity'
 					) {
 				wp_enqueue_style( $this->plugin_name . '-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui.css', array(), $this->version, 'all' );
@@ -147,10 +147,10 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		public function enqueue_scripts() {
 			global $bp_checkins, $post;
 			$current_component = '';
-			if ( isset($post->ID) && $post->ID != '' && $post->ID != '0') {
-				$_elementor_controls_usage = get_post_meta($post->ID, '_elementor_controls_usage', true);
-				if (  !empty($_elementor_controls_usage)) {
-					foreach($_elementor_controls_usage as $key=>$value) {
+			if ( isset( $post->ID ) && $post->ID != '' && $post->ID != '0' ) {
+				$_elementor_controls_usage = get_post_meta( $post->ID, '_elementor_controls_usage', true );
+				if ( ! empty( $_elementor_controls_usage ) ) {
+					foreach ( $_elementor_controls_usage as $key => $value ) {
 						if ( $key == 'buddypress_shortcode_activity_widget' || $key == 'bp_newsfeed_element_widget' ) {
 							$current_component = 'activity';
 							break;
@@ -158,15 +158,15 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 					}
 				}
 			}
-			
+
 			$checkin_tab_slug = isset( $bp_checkins->tab_name ) ? $bp_checkins->tab_name : 'checkin';
 			$checkin_tab_slug = apply_filters( 'bpchk_member_profile_checkin_tab_slug', sanitize_title( $checkin_tab_slug ) );
-			if ( bp_is_groups_component() 
-					|| bp_is_activity_component() 
-					|| bp_is_profile_component() 
-					|| strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug ) 
-					|| ( isset($post->post_content) && ( has_shortcode( $post->post_content, 'activity-listing' ) ) )
-					|| ( isset($post->post_content) && ( has_shortcode( $post->post_content, 'bppfa_postform' ) ) )
+			if ( bp_is_groups_component()
+					|| bp_is_activity_component()
+					|| bp_is_profile_component()
+					|| strpos( filter_input( INPUT_SERVER, 'REQUEST_URI' ), $checkin_tab_slug )
+					|| ( isset( $post->post_content ) && ( has_shortcode( $post->post_content, 'activity-listing' ) ) )
+					|| ( isset( $post->post_content ) && ( has_shortcode( $post->post_content, 'bppfa_postform' ) ) )
 					|| $current_component == 'activity'
 					) {
 				wp_enqueue_script( 'jquery-ui-accordion' );
@@ -507,16 +507,27 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 		 * @since 1.0.1
 		 */
 		public function bpchk_update_meta_on_post_update( $content, $user_id, $activity_id ) {
-			global $wpdb;
+			global $wpdb, $bp_checkins;
 			$place_details = bp_get_option( 'bpchk_temp_location' );
 			$activity_tbl  = $wpdb->base_prefix . 'bp_activity';
-			global $bp_checkins;
-			$apikey = $bp_checkins->apikey;
+			$apikey        = $bp_checkins->apikey;
+
 			if ( ! empty( $place_details ) ) {
 				$place           = $place_details['place'];
 				$longitude       = $place_details['longitude'];
 				$latitude        = $place_details['latitude'];
 				$add_as_my_place = $place_details['add_as_my_place'];
+				$usernames       = bp_activity_find_mentions( $content );
+
+				// We have mentions!
+				if ( ! empty( $usernames ) ) {
+					// Replace @mention text with userlinks.
+					foreach ( (array) $usernames as $user_id => $username ) {
+						$content = preg_replace( '/(@' . $username . '\b)/', "<a class='bp-suggestions-mention' href='" . bp_core_get_user_domain( $user_id ) . "' rel='nofollow'>@$username</a>", $content );
+					}
+					// Temporary variable to avoid having to run bp_activity_find_mentions() again.
+					buddypress()->activity->mentioned_users = $usernames;
+				}
 
 				$location_html = ' -at <a class=checkin-loc href="http://maps.google.com/maps/place/' . $place . '/@' . $latitude . ',' . $longitude . '" target="_blank" title="' . $place . '">' . $place . '</a>';
 				$content      .= $location_html;
@@ -569,24 +580,24 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 						}
 					}
 				}
-				/**
-				 * Delete the temp location after posting update,
-				 * so that the same place doesn't gets posted
-				 * when no checkin is done.
-				 */
-				delete_option( 'bpchk_temp_location' );
+					/**
+					 * Delete the temp location after posting update,
+					 * so that the same place doesn't gets posted
+					 * when no checkin is done.
+					 */
+					delete_option( 'bpchk_temp_location' );
 			}
 		}
 
-		/**
-		 * Action performed to save the group activity update to show the checkin.
-		 *
-		 * @param string $content The group activity content.
-		 * @param int    $user_id The user id.
-		 * @param int    $group_id The group id.
-		 * @param int    $activity_id The group id.
-		 * @since 1.0.1
-		 */
+			/**
+			 * Action performed to save the group activity update to show the checkin.
+			 *
+			 * @param string $content The group activity content.
+			 * @param int    $user_id The user id.
+			 * @param int    $group_id The group id.
+			 * @param int    $activity_id The group id.
+			 * @since 1.0.1
+			 */
 		public function bpchk_update_group_meta_on_post_update( $content, $user_id, $group_id, $activity_id ) {
 			global $wpdb;
 			$place_details = bp_get_option( 'bpchk_temp_location' );
@@ -661,12 +672,12 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			}
 		}
 
-		/**
-		 * To set activity action for check-in type activity in group.
-		 *
-		 * @param string $activity_action The group activity action.
-		 * @since 1.0.1
-		 */
+			/**
+			 * To set activity action for check-in type activity in group.
+			 *
+			 * @param string $activity_action The group activity action.
+			 * @since 1.0.1
+			 */
 		public function bpchk_groups_activity_new_update_action( $activity_action ) {
 			global $bp;
 			$user_id       = bp_loggedin_user_id();
@@ -677,11 +688,11 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			return $activity_action;
 		}
 
-		/**
-		 * Show mep on checkin activities
-		 *
-		 * @since 1.0.1
-		 */
+			/**
+			 * Show mep on checkin activities
+			 *
+			 * @since 1.0.1
+			 */
 		public function bpchk_show_google_map_in_checkin_activity() {
 			$activity_id = bp_get_activity_id();
 			global $wpdb, $bp_checkins;
@@ -710,9 +721,9 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			}
 		}
 
-		/**
-		 * Ajax served to fetch the places on page load
-		 */
+			/**
+			 * Ajax served to fetch the places on page load
+			 */
 		public function bpchk_fetch_places() {
 			global $bp_checkins;
 			if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && 'bpchk_fetch_places' === filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) ) {
@@ -778,9 +789,9 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			}
 		}
 
-		/**
-		 * Ajax served to save the temporary location
-		 */
+			/**
+			 * Ajax served to save the temporary location
+			 */
 		public function bpchk_select_place_to_checkin() {
 			if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && 'bpchk_select_place_to_checkin' === filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) ) {
 				global $bp_checkins, $wpdb;
@@ -857,9 +868,9 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			}
 		}
 
-		/**
-		 * Ajax served to cancel the checkin
-		 */
+			/**
+			 * Ajax served to cancel the checkin
+			 */
 		public function bpchk_cancel_checkin() {
 			if ( filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) && 'bpchk_cancel_checkin' === filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) ) {
 				global $wpdb;
@@ -873,9 +884,9 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			}
 		}
 
-		/**
-		 * Ajax served to delete checkin locations from check-ins tab.
-		 */
+			/**
+			 * Ajax served to delete checkin locations from check-ins tab.
+			 */
 		public function bpchk_delete_user_checkin_location() {
 			global $bp;
 			$activity_id      = filter_input( INPUT_POST, 'checkin_id', FILTER_SANITIZE_STRING );
@@ -896,12 +907,12 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			die;
 		}
 
-		/**
-		 * Add buddypress chckin activity on yozer activity
-		 *
-		 * @param array $post_types
-		 * @return array
-		 */
+			/**
+			 * Add buddypress chckin activity on yozer activity
+			 *
+			 * @param array $post_types
+			 * @return array
+			 */
 		public function bp_checkin_allow_youzer_activity( $post_types ) {
 			if ( is_array( $post_types ) ) {
 				array_push( $post_types, 'activity_bpchk_chkins' );
@@ -909,11 +920,11 @@ if ( ! class_exists( 'Bp_Checkins_Public' ) ) :
 			return $post_types;
 		}
 
-		/**
-		 * Static function to check if youzer wall option enable or not.
-		 *
-		 * @return boolean
-		 */
+			/**
+			 * Static function to check if youzer wall option enable or not.
+			 *
+			 * @return boolean
+			 */
 		public static function bp_checkins_is_youzer_activity() {
 			$is_enable = true;
 			if ( class_exists( 'Youzer' ) ) {
