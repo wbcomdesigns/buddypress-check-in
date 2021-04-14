@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 10:41:45+00:00\n"
+"POT-Creation-Date: 2021-04-14 11:34:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -831,7 +831,7 @@ msgid "Start typing your location..."
 msgstr ""
 
 #: public/class-bp-checkins-public.php:92
-#: public/class-bp-checkins-public.php:764
+#: public/class-bp-checkins-public.php:775
 msgid "Add as my location"
 msgstr ""
 
@@ -852,47 +852,47 @@ msgstr ""
 msgid "%s checked-in"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:675
+#: public/class-bp-checkins-public.php:686
 msgid "%1$s checked-in in the group %2$s"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:743
+#: public/class-bp-checkins-public.php:754
 msgid "places-found"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:758
+#: public/class-bp-checkins-public.php:769
 msgid "Select"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:769
+#: public/class-bp-checkins-public.php:780
 msgid "places-not-found"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:770
+#: public/class-bp-checkins-public.php:781
 msgid "Places not found !"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:801
+#: public/class-bp-checkins-public.php:812
 msgid "place-details-found"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:817
+#: public/class-bp-checkins-public.php:828
 msgid "Click here to cancel your checkin."
 msgstr ""
 
-#: public/class-bp-checkins-public.php:820
+#: public/class-bp-checkins-public.php:831
 msgid "Show Locations"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:847
+#: public/class-bp-checkins-public.php:858
 msgid "place-details-not-found"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:848
+#: public/class-bp-checkins-public.php:859
 msgid "Place details not found !"
 msgstr ""
 
-#: public/class-bp-checkins-public.php:869
+#: public/class-bp-checkins-public.php:880
 msgid "Checkin cancelled !"
 msgstr ""
 
