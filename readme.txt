@@ -98,6 +98,10 @@ If you need additional help you can contact us for <a href="https://wbcomdesigns
 3. screenshot-3 -
 
 == Changelog ==
+= 1.9.0 =
+* Fix -(#84)Fixed unable to mention friend
+* Fix - call js and css when newfeed widget element set
+
 = 1.8.0 =
 * Fix - Hide activate option when open another option
 * Fix - #108 - Compatibility issue with Checkins
