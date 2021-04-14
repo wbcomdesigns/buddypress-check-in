@@ -15,7 +15,7 @@
  * Plugin Name:       Wbcom Designs - BuddyPress Check-ins
  * Plugin URI:        https://wbcomdesigns.com/downloads/buddypress-checkins/
  * Description:       BuddyPress Check-ins allows members to share their location when posting activities; you can add places where you visited, nearby locations using Google Place API.
- * Version:           1.8.0
+ * Version:           1.9.0
  * Author:            Wbcom Designs
  * Author URI:        https://wbcomdesigns.com/
  * License:           GPL-2.0+
