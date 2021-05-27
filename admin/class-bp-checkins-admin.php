@@ -109,7 +109,7 @@ if ( ! class_exists( 'Bp_Checkins_Admin' ) ) :
 		 */
 		public function bpchk_admin_settings_page() {
 			global $allowedposttags;
-			$tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : $this->plugin_name;
+			$tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : 'bpchk-welcome';
 			?>
 			<div class="wrap">
 				<div class="blpro-header">
@@ -145,7 +145,7 @@ if ( ! class_exists( 'Bp_Checkins_Admin' ) ) :
 		 * Actions performed to create tabs on the sub menu page
 		 */
 		public function bpchk_plugin_settings_tabs() {
-			$current_tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : $this->plugin_name;
+			$current_tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : 'bpchk-welcome';
 			echo '<div class="wbcom-tabs-section"><h2 class="nav-tab-wrapper">';
 			foreach ( $this->plugin_settings_tabs as $tab_key => $tab_caption ) {
 				$active = $current_tab === $tab_key ? 'nav-tab-active' : '';
@@ -159,6 +159,10 @@ if ( ! class_exists( 'Bp_Checkins_Admin' ) ) :
 		 */
 		public function bpchk_plugin_settings() {
 			// General settings tab.
+			$this->plugin_settings_tabs['bpchk-welcome'] = __( 'Welcome', 'bp-checkins' );			
+			add_settings_section( 'bpchk-welcome', ' ', array( &$this, 'bpchk_welcome_content' ), 'bpchk-welcome' );
+			
+			// General settings tab.
 			$this->plugin_settings_tabs['bp-checkins'] = __( 'General', 'bp-checkins' );
 			register_setting( 'bp-checkins', 'bp-checkins' );
 			add_settings_section( 'bp-checkins-section', ' ', array( &$this, 'bpchk_general_settings_content' ), 'bp-checkins' );
@@ -168,7 +172,12 @@ if ( ! class_exists( 'Bp_Checkins_Admin' ) ) :
 			register_setting( 'bpchk-support', 'bpchk-support' );
 			add_settings_section( 'bpchk-support-section', ' ', array( &$this, 'bpchk_support_settings_content' ), 'bpchk-support' );
 		}
-
+		
+		public function bpchk_welcome_content() {
+			if ( file_exists( dirname( __FILE__ ) . '/includes/bp-welcome-page.php' ) ) {
+				require_once dirname( __FILE__ ) . '/includes/bp-welcome-page.php';
+			}
+		}
 		/**
 		 * General Tab Content
 		 */

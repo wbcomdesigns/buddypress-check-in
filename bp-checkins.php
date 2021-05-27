@@ -255,3 +255,17 @@ function bpchk_load_plugin_textdomain() {
 			);
 }
 add_action( 'plugins_loaded', 'bpchk_load_plugin_textdomain' );
+
+
+/**
+ * redirect to plugin settings page after activated
+ */
+
+add_action( 'activated_plugin', 'bpchk_activation_redirect_settings' );
+function bpchk_activation_redirect_settings( $plugin ){
+
+	if( $plugin == plugin_basename( __FILE__ ) ) {
+		wp_redirect( admin_url( 'admin.php?page=bp-checkins' ) ) ;
+		exit;
+	}
+}
