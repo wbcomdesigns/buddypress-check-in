@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
     <div class="wbcom-welcome-main-wrapper">
         <div class="wbcom-welcome-head">
             <h2 class="wbcom-welcome-title"><?php esc_html_e( 'Wbcom Designs - BuddyPress Check-ins', 'bp-checkins' ); ?></h2>
-            <p class="wbcom-welcome-description"><?php esc_html_e( 'Allow the site admin to select global friends for all his members with BuddyPress Auto friends plugin. If you are starting an online community with BuddyPress and want some common friends to be added to the friend list of your members, BuddyPress Auto friends is the perfect option for you.', 'bp-checkins' ) ?></p>
+            <p class="wbcom-welcome-description"><?php esc_html_e( 'BuddyPress Check-ins Plugin allows to select place type for your members, like if you are foodies, you can select food-related place type and your members will be able to post food-related places on your website activity stream.', 'bp-checkins' ) ?></p>
         </div><!-- .wbcom-welcome-head -->
 
         <div class="wbcom-welcome-content">
@@ -31,8 +31,8 @@ if (!defined('ABSPATH')) {
 
                     <div class="col">
                         <h3><span class="dashicons dashicons-book"></span><?php esc_html_e( 'Documentation', 'bp-checkins' ); ?></h3>
-                        <p><?php esc_html_e( 'We have prepared an extensive guide on BuddyPress Auto Friends to learn all aspects of the plugin. You will find most of your answers here.', 'bp-checkins' ); ?></p>
-                        <a href="<?php echo esc_url( 'https://wbcomdesigns.com/docs/buddypress-paid-addons/bp-checkins/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Read Documentation', 'bp-checkins' ); ?></a>
+                        <p><?php esc_html_e( 'We have prepared an extensive guide on BuddyPress Check-ins to learn all aspects of the plugin. You will find most of your answers here.', 'bp-checkins' ); ?></p>
+                        <a href="<?php echo esc_url( 'https://wbcomdesigns.com/docs/buddypress-free-addons/buddypress-check-ins/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Read Documentation', 'bp-checkins' ); ?></a>
                     </div>
 
                     <div class="col">
